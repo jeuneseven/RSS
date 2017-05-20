@@ -1,0 +1,11 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform:ios, '7.0'
+
+abstract_target 'share_pods' do
+
+  target 'RSS' do
+  end
+  
+  inhibit_all_warnings!
+end
