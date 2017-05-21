@@ -423,7 +423,11 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = arm64;
-				WARNING_CFLAGS = "";
+				WARNING_CFLAGS = (
+					"-Weverything",
+					"-Wextra",
+					"-Wall",
+				);
 			};
 			name = Debug;
 		};
@@ -465,7 +469,11 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = arm64;
-				WARNING_CFLAGS = "";
+				WARNING_CFLAGS = (
+					"-Weverything",
+					"-Wextra",
+					"-Wall",
+				);
 			};
 			name = Release;
 		};
