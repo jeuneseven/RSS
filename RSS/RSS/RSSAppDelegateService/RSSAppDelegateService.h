@@ -6,8 +6,12 @@
 //  Copyright © 2017年 kkk. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
+@import Foundation;
+/**
+ *  处理AppDelegate相关内容
+ */
 @interface RSSAppDelegateService : NSObject
+
++ (RSSAppDelegateService*)sharedApplication;
 
 @end

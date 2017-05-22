@@ -6,8 +6,12 @@
 //  Copyright © 2017年 kkk. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
+@import Foundation;
+/**
+ *  处理用户相关信息
+ */
 @interface RSSUserContext : NSObject
+
++ (RSSUserContext*)sharedUserContext;
 
 @end

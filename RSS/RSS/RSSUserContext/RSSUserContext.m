@@ -10,4 +10,15 @@
 
 @implementation RSSUserContext
 
++ (RSSUserContext*)sharedUserContext
+{
+    static dispatch_once_t pred = 0;
+    __strong static id sharedObject = nil;
+    dispatch_once(&pred, ^{
+        sharedObject = [[self alloc] init];
+    });
+    
+    return sharedObject;
+}
+
 @end

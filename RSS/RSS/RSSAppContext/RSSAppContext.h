@@ -6,8 +6,12 @@
 //  Copyright © 2017年 kkk. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
+@import Foundation;
+/**
+ *  处理App相关信息
+ */
 @interface RSSAppContext : NSObject
+
++ (RSSAppContext*)sharedAppContext;
 
 @end
