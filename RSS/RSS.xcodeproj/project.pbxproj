@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		1D8A57B4982D60BD48EC21B6 /* libPods-share_pods-RSS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAFB4818989F3CC3BF619376 /* libPods-share_pods-RSS.a */; };
+		D88768051ED396530075D6D4 /* RSSAppDelegateService.m in Sources */ = {isa = PBXBuildFile; fileRef = D88768041ED396530075D6D4 /* RSSAppDelegateService.m */; };
+		D88768061ED396550075D6D4 /* RSSAppDelegateService.m in Sources */ = {isa = PBXBuildFile; fileRef = D88768041ED396530075D6D4 /* RSSAppDelegateService.m */; };
+		D88768071ED396550075D6D4 /* RSSAppDelegateService.m in Sources */ = {isa = PBXBuildFile; fileRef = D88768041ED396530075D6D4 /* RSSAppDelegateService.m */; };
+		D887680B1ED396780075D6D4 /* RSSAppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D887680A1ED396780075D6D4 /* RSSAppContext.m */; };
+		D887680C1ED396780075D6D4 /* RSSAppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D887680A1ED396780075D6D4 /* RSSAppContext.m */; };
+		D887680D1ED396780075D6D4 /* RSSAppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D887680A1ED396780075D6D4 /* RSSAppContext.m */; };
+		D88768111ED3968F0075D6D4 /* RSSUserContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D88768101ED3968F0075D6D4 /* RSSUserContext.m */; };
+		D88768121ED3968F0075D6D4 /* RSSUserContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D88768101ED3968F0075D6D4 /* RSSUserContext.m */; };
+		D88768131ED3968F0075D6D4 /* RSSUserContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D88768101ED3968F0075D6D4 /* RSSUserContext.m */; };
 		D8F493751ECBEB4400924DA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F493741ECBEB4400924DA3 /* main.m */; };
 		D8F493781ECBEB4400924DA3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F493771ECBEB4400924DA3 /* AppDelegate.m */; };
 		D8F4937B1ECBEB4400924DA3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F4937A1ECBEB4400924DA3 /* ViewController.m */; };
@@ -38,6 +47,12 @@
 		4FC20EDBCE23E56B81CBF8D4 /* Pods-share_pods-RSS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-share_pods-RSS.release.xcconfig"; path = "Pods/Target Support Files/Pods-share_pods-RSS/Pods-share_pods-RSS.release.xcconfig"; sourceTree = "<group>"; };
 		6591E4C8BAFFA788F3C40530 /* Pods-share_pods-RSS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-share_pods-RSS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-share_pods-RSS/Pods-share_pods-RSS.debug.xcconfig"; sourceTree = "<group>"; };
 		BAFB4818989F3CC3BF619376 /* libPods-share_pods-RSS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-share_pods-RSS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D88768031ED396530075D6D4 /* RSSAppDelegateService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSAppDelegateService.h; sourceTree = "<group>"; };
+		D88768041ED396530075D6D4 /* RSSAppDelegateService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSAppDelegateService.m; sourceTree = "<group>"; };
+		D88768091ED396780075D6D4 /* RSSAppContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSAppContext.h; sourceTree = "<group>"; };
+		D887680A1ED396780075D6D4 /* RSSAppContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSAppContext.m; sourceTree = "<group>"; };
+		D887680F1ED3968F0075D6D4 /* RSSUserContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSUserContext.h; sourceTree = "<group>"; };
+		D88768101ED3968F0075D6D4 /* RSSUserContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSUserContext.m; sourceTree = "<group>"; };
 		D8F493701ECBEB4400924DA3 /* RSS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8F493741ECBEB4400924DA3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D8F493761ECBEB4400924DA3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -98,6 +113,33 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D88768021ED396490075D6D4 /* RSSAppDelegateService */ = {
+			isa = PBXGroup;
+			children = (
+				D88768031ED396530075D6D4 /* RSSAppDelegateService.h */,
+				D88768041ED396530075D6D4 /* RSSAppDelegateService.m */,
+			);
+			path = RSSAppDelegateService;
+			sourceTree = "<group>";
+		};
+		D88768081ED396700075D6D4 /* RSSAppContext */ = {
+			isa = PBXGroup;
+			children = (
+				D88768091ED396780075D6D4 /* RSSAppContext.h */,
+				D887680A1ED396780075D6D4 /* RSSAppContext.m */,
+			);
+			path = RSSAppContext;
+			sourceTree = "<group>";
+		};
+		D887680E1ED396870075D6D4 /* RSSUserContext */ = {
+			isa = PBXGroup;
+			children = (
+				D887680F1ED3968F0075D6D4 /* RSSUserContext.h */,
+				D88768101ED3968F0075D6D4 /* RSSUserContext.m */,
+			);
+			path = RSSUserContext;
+			sourceTree = "<group>";
+		};
 		D8F493671ECBEB4400924DA3 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +169,9 @@
 				D8F493771ECBEB4400924DA3 /* AppDelegate.m */,
 				D8F493791ECBEB4400924DA3 /* ViewController.h */,
 				D8F4937A1ECBEB4400924DA3 /* ViewController.m */,
+				D887680E1ED396870075D6D4 /* RSSUserContext */,
+				D88768081ED396700075D6D4 /* RSSAppContext */,
+				D88768021ED396490075D6D4 /* RSSAppDelegateService */,
 				D8F493821ECBEB4400924DA3 /* Assets.xcassets */,
 				D8F493871ECBEB4400924DA3 /* Info.plist */,
 				D8F4937F1ECBEB4400924DA3 /* RSS.xcdatamodeld */,
@@ -342,8 +387,11 @@
 			files = (
 				D8F493811ECBEB4400924DA3 /* RSS.xcdatamodeld in Sources */,
 				D8F4937B1ECBEB4400924DA3 /* ViewController.m in Sources */,
+				D88768051ED396530075D6D4 /* RSSAppDelegateService.m in Sources */,
 				D8F493781ECBEB4400924DA3 /* AppDelegate.m in Sources */,
+				D887680B1ED396780075D6D4 /* RSSAppContext.m in Sources */,
 				D8F493751ECBEB4400924DA3 /* main.m in Sources */,
+				D88768111ED3968F0075D6D4 /* RSSUserContext.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +400,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8F493911ECBEB4400924DA3 /* RSSTests.m in Sources */,
+				D887680C1ED396780075D6D4 /* RSSAppContext.m in Sources */,
+				D88768061ED396550075D6D4 /* RSSAppDelegateService.m in Sources */,
+				D88768121ED3968F0075D6D4 /* RSSUserContext.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +411,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8F4939C1ECBEB4400924DA3 /* RSSUITests.m in Sources */,
+				D887680D1ED396780075D6D4 /* RSSAppContext.m in Sources */,
+				D88768071ED396550075D6D4 /* RSSAppDelegateService.m in Sources */,
+				D88768131ED3968F0075D6D4 /* RSSUserContext.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
