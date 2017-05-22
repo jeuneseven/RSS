@@ -7,15 +7,24 @@
 //
 
 #import "RSSAppDelegateService.h"
+#import "AppDelegate.h"
 
 @implementation RSSAppDelegateService
 
 +(void)load {
     [super load];
     
-    
+    __block id observer =
+    [[NSNotificationCenter defaultCenter]
+     addObserverForName:UIApplicationDidFinishLaunchingNotification
+     object:nil
+     queue:nil
+     usingBlock:^(NSNotification *note) {
+         NSLog(@"note == %@", note);
+//         [self setup]; // Do whatever you want
+         [[NSNotificationCenter defaultCenter] removeObserver:observer];
+     }];
 }
-
 
 + (RSSAppDelegateService*)sharedApplication
 {

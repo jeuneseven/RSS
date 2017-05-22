@@ -16,6 +16,11 @@
 @implementation AppDelegate
 @synthesize window;
 
+- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(nullable NSDictionary *)launchOptions {
+    NSLog(@"application == %@ launchOptions == %@", application, launchOptions);
+    
+    return YES;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSLog(@"application == %@ launchOptions == %@", application, launchOptions);
