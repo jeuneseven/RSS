@@ -5,7 +5,23 @@ platform:ios, '7.0'
 abstract_target 'share_pods' do
 
   target 'RSS' do
+    pod 'MJRefresh'
+    pod 'MBProgressHUD'
+    pod 'AFNetworking'
+    pod 'SDWebImage'
+    pod 'RegexKitLite'
+    pod 'TPKeyboardAvoiding'
+    pod 'FMDB'
+    pod 'UICKeyChainStore'
+    pod 'Reachability'
+    pod 'NJKWebViewProgress'
+    pod 'GoogleToolboxForMac'#, '2.1.1', :subspecs => ['URLBuilder', 'NSDictionary+URLArguments', 'NSString+URLArguments', 'iPhone']
+    #pod 'KZPlayground', '0.3.3'
+    #pod 'MJGAvailability', '1.0.0'
+    pod 'YTKKeyValueStore'
+    pod 'MWFeedParser'
+    pod 'YTKNetwork'
   end
-  
+
   inhibit_all_warnings!
 end
