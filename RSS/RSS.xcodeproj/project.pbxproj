@@ -7,53 +7,68 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D8A57B4982D60BD48EC21B6 /* libPods-share_pods-RSS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAFB4818989F3CC3BF619376 /* libPods-share_pods-RSS.a */; };
-		D88768051ED396530075D6D4 /* RSSAppDelegateService.m in Sources */ = {isa = PBXBuildFile; fileRef = D88768041ED396530075D6D4 /* RSSAppDelegateService.m */; };
+		D8080FCE1F177C90000E9712 /* RSS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D8F4937F1ECBEB4400924DA3 /* RSS.xcdatamodeld */; };
+		D8080FCF1F177C90000E9712 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F4937A1ECBEB4400924DA3 /* ViewController.m */; };
+		D8080FD01F177C90000E9712 /* RSSAppDelegateService.m in Sources */ = {isa = PBXBuildFile; fileRef = D88768041ED396530075D6D4 /* RSSAppDelegateService.m */; };
+		D8080FD11F177C90000E9712 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F493771ECBEB4400924DA3 /* AppDelegate.m */; };
+		D8080FD21F177C90000E9712 /* RSSAppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D887680A1ED396780075D6D4 /* RSSAppContext.m */; };
+		D8080FD31F177C90000E9712 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F493741ECBEB4400924DA3 /* main.m */; };
+		D8080FD41F177C90000E9712 /* RSSUserContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D88768101ED3968F0075D6D4 /* RSSUserContext.m */; };
+		D8080FD61F177C90000E9712 /* libPods-share_pods-RSS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAFB4818989F3CC3BF619376 /* libPods-share_pods-RSS.a */; };
+		D8080FD81F177C90000E9712 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8F493821ECBEB4400924DA3 /* Assets.xcassets */; };
+		D8080FE31F177CA8000E9712 /* RSS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D8F4937F1ECBEB4400924DA3 /* RSS.xcdatamodeld */; };
+		D8080FE41F177CA8000E9712 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F4937A1ECBEB4400924DA3 /* ViewController.m */; };
+		D8080FE51F177CA8000E9712 /* RSSAppDelegateService.m in Sources */ = {isa = PBXBuildFile; fileRef = D88768041ED396530075D6D4 /* RSSAppDelegateService.m */; };
+		D8080FE61F177CA8000E9712 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F493771ECBEB4400924DA3 /* AppDelegate.m */; };
+		D8080FE71F177CA8000E9712 /* RSSAppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D887680A1ED396780075D6D4 /* RSSAppContext.m */; };
+		D8080FE81F177CA8000E9712 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F493741ECBEB4400924DA3 /* main.m */; };
+		D8080FE91F177CA8000E9712 /* RSSUserContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D88768101ED3968F0075D6D4 /* RSSUserContext.m */; };
+		D8080FEB1F177CA8000E9712 /* libPods-share_pods-RSS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAFB4818989F3CC3BF619376 /* libPods-share_pods-RSS.a */; };
+		D8080FED1F177CA8000E9712 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8F493821ECBEB4400924DA3 /* Assets.xcassets */; };
+		D8080FF81F177CB0000E9712 /* RSS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D8F4937F1ECBEB4400924DA3 /* RSS.xcdatamodeld */; };
+		D8080FF91F177CB0000E9712 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F4937A1ECBEB4400924DA3 /* ViewController.m */; };
+		D8080FFA1F177CB0000E9712 /* RSSAppDelegateService.m in Sources */ = {isa = PBXBuildFile; fileRef = D88768041ED396530075D6D4 /* RSSAppDelegateService.m */; };
+		D8080FFB1F177CB0000E9712 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F493771ECBEB4400924DA3 /* AppDelegate.m */; };
+		D8080FFC1F177CB0000E9712 /* RSSAppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D887680A1ED396780075D6D4 /* RSSAppContext.m */; };
+		D8080FFD1F177CB0000E9712 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F493741ECBEB4400924DA3 /* main.m */; };
+		D8080FFE1F177CB0000E9712 /* RSSUserContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D88768101ED3968F0075D6D4 /* RSSUserContext.m */; };
+		D80810001F177CB0000E9712 /* libPods-share_pods-RSS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAFB4818989F3CC3BF619376 /* libPods-share_pods-RSS.a */; };
+		D80810021F177CB0000E9712 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8F493821ECBEB4400924DA3 /* Assets.xcassets */; };
+		D808102D1F177FDD000E9712 /* RSS-Adhoc-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D808102C1F177FDD000E9712 /* RSS-Adhoc-Info.plist */; };
+		D808102E1F177FDD000E9712 /* RSS-Adhoc-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D808102C1F177FDD000E9712 /* RSS-Adhoc-Info.plist */; };
+		D808102F1F177FDD000E9712 /* RSS-Adhoc-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D808102C1F177FDD000E9712 /* RSS-Adhoc-Info.plist */; };
+		D80810311F177FE6000E9712 /* RSS-Dev-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D80810301F177FE6000E9712 /* RSS-Dev-Info.plist */; };
+		D80810321F177FE6000E9712 /* RSS-Dev-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D80810301F177FE6000E9712 /* RSS-Dev-Info.plist */; };
+		D80810331F177FE6000E9712 /* RSS-Dev-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D80810301F177FE6000E9712 /* RSS-Dev-Info.plist */; };
+		D80810351F177FF0000E9712 /* RSS-Dis-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D80810341F177FF0000E9712 /* RSS-Dis-Info.plist */; };
+		D80810361F177FF0000E9712 /* RSS-Dis-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D80810341F177FF0000E9712 /* RSS-Dis-Info.plist */; };
+		D80810371F177FF0000E9712 /* RSS-Dis-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D80810341F177FF0000E9712 /* RSS-Dis-Info.plist */; };
 		D88768061ED396550075D6D4 /* RSSAppDelegateService.m in Sources */ = {isa = PBXBuildFile; fileRef = D88768041ED396530075D6D4 /* RSSAppDelegateService.m */; };
 		D88768071ED396550075D6D4 /* RSSAppDelegateService.m in Sources */ = {isa = PBXBuildFile; fileRef = D88768041ED396530075D6D4 /* RSSAppDelegateService.m */; };
-		D887680B1ED396780075D6D4 /* RSSAppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D887680A1ED396780075D6D4 /* RSSAppContext.m */; };
 		D887680C1ED396780075D6D4 /* RSSAppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D887680A1ED396780075D6D4 /* RSSAppContext.m */; };
 		D887680D1ED396780075D6D4 /* RSSAppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D887680A1ED396780075D6D4 /* RSSAppContext.m */; };
-		D88768111ED3968F0075D6D4 /* RSSUserContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D88768101ED3968F0075D6D4 /* RSSUserContext.m */; };
 		D88768121ED3968F0075D6D4 /* RSSUserContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D88768101ED3968F0075D6D4 /* RSSUserContext.m */; };
 		D88768131ED3968F0075D6D4 /* RSSUserContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D88768101ED3968F0075D6D4 /* RSSUserContext.m */; };
-		D8F493751ECBEB4400924DA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F493741ECBEB4400924DA3 /* main.m */; };
-		D8F493781ECBEB4400924DA3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F493771ECBEB4400924DA3 /* AppDelegate.m */; };
-		D8F4937B1ECBEB4400924DA3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F4937A1ECBEB4400924DA3 /* ViewController.m */; };
-		D8F493811ECBEB4400924DA3 /* RSS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D8F4937F1ECBEB4400924DA3 /* RSS.xcdatamodeld */; };
-		D8F493831ECBEB4400924DA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8F493821ECBEB4400924DA3 /* Assets.xcassets */; };
 		D8F493911ECBEB4400924DA3 /* RSSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F493901ECBEB4400924DA3 /* RSSTests.m */; };
 		D8F4939C1ECBEB4400924DA3 /* RSSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D8F4939B1ECBEB4400924DA3 /* RSSUITests.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		D8F4938D1ECBEB4400924DA3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D8F493681ECBEB4400924DA3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D8F4936F1ECBEB4400924DA3;
-			remoteInfo = RSS;
-		};
-		D8F493981ECBEB4400924DA3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D8F493681ECBEB4400924DA3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D8F4936F1ECBEB4400924DA3;
-			remoteInfo = RSS;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4FC20EDBCE23E56B81CBF8D4 /* Pods-share_pods-RSS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-share_pods-RSS.release.xcconfig"; path = "Pods/Target Support Files/Pods-share_pods-RSS/Pods-share_pods-RSS.release.xcconfig"; sourceTree = "<group>"; };
 		6591E4C8BAFFA788F3C40530 /* Pods-share_pods-RSS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-share_pods-RSS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-share_pods-RSS/Pods-share_pods-RSS.debug.xcconfig"; sourceTree = "<group>"; };
 		BAFB4818989F3CC3BF619376 /* libPods-share_pods-RSS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-share_pods-RSS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8080FDE1F177C90000E9712 /* RSS-Dis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RSS-Dis.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8080FF31F177CA8000E9712 /* RSS-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RSS-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D80810081F177CB0000E9712 /* RSS-Adhoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RSS-Adhoc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D808102C1F177FDD000E9712 /* RSS-Adhoc-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RSS-Adhoc-Info.plist"; sourceTree = "<group>"; };
+		D80810301F177FE6000E9712 /* RSS-Dev-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RSS-Dev-Info.plist"; sourceTree = "<group>"; };
+		D80810341F177FF0000E9712 /* RSS-Dis-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RSS-Dis-Info.plist"; sourceTree = "<group>"; };
 		D88768031ED396530075D6D4 /* RSSAppDelegateService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSAppDelegateService.h; sourceTree = "<group>"; };
 		D88768041ED396530075D6D4 /* RSSAppDelegateService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSAppDelegateService.m; sourceTree = "<group>"; };
 		D88768091ED396780075D6D4 /* RSSAppContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSAppContext.h; sourceTree = "<group>"; };
 		D887680A1ED396780075D6D4 /* RSSAppContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSAppContext.m; sourceTree = "<group>"; };
 		D887680F1ED3968F0075D6D4 /* RSSUserContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSUserContext.h; sourceTree = "<group>"; };
 		D88768101ED3968F0075D6D4 /* RSSUserContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSUserContext.m; sourceTree = "<group>"; };
-		D8F493701ECBEB4400924DA3 /* RSS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8F493741ECBEB4400924DA3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D8F493761ECBEB4400924DA3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D8F493771ECBEB4400924DA3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -71,11 +86,27 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D8F4936D1ECBEB4400924DA3 /* Frameworks */ = {
+		D8080FD51F177C90000E9712 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D8A57B4982D60BD48EC21B6 /* libPods-share_pods-RSS.a in Frameworks */,
+				D8080FD61F177C90000E9712 /* libPods-share_pods-RSS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8080FEA1F177CA8000E9712 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8080FEB1F177CA8000E9712 /* libPods-share_pods-RSS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8080FFF1F177CB0000E9712 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D80810001F177CB0000E9712 /* libPods-share_pods-RSS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +142,16 @@
 				4FC20EDBCE23E56B81CBF8D4 /* Pods-share_pods-RSS.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D808101F1F177DD6000E9712 /* InfoPlists */ = {
+			isa = PBXGroup;
+			children = (
+				D80810301F177FE6000E9712 /* RSS-Dev-Info.plist */,
+				D808102C1F177FDD000E9712 /* RSS-Adhoc-Info.plist */,
+				D80810341F177FF0000E9712 /* RSS-Dis-Info.plist */,
+			);
+			path = InfoPlists;
 			sourceTree = "<group>";
 		};
 		D88768021ED396490075D6D4 /* RSSAppDelegateService */ = {
@@ -155,9 +196,11 @@
 		D8F493711ECBEB4400924DA3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D8F493701ECBEB4400924DA3 /* RSS.app */,
 				D8F4938C1ECBEB4400924DA3 /* RSSTests.xctest */,
 				D8F493971ECBEB4400924DA3 /* RSSUITests.xctest */,
+				D8080FDE1F177C90000E9712 /* RSS-Dis.app */,
+				D8080FF31F177CA8000E9712 /* RSS-Dev.app */,
+				D80810081F177CB0000E9712 /* RSS-Adhoc.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -165,6 +208,7 @@
 		D8F493721ECBEB4400924DA3 /* RSS */ = {
 			isa = PBXGroup;
 			children = (
+				D808101F1F177DD6000E9712 /* InfoPlists */,
 				D8F493761ECBEB4400924DA3 /* AppDelegate.h */,
 				D8F493771ECBEB4400924DA3 /* AppDelegate.m */,
 				D8F493791ECBEB4400924DA3 /* ViewController.h */,
@@ -209,24 +253,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D8F4936F1ECBEB4400924DA3 /* RSS */ = {
+		D8080FCB1F177C90000E9712 /* RSS-Dis */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D8F493A01ECBEB4400924DA3 /* Build configuration list for PBXNativeTarget "RSS" */;
+			buildConfigurationList = D8080FDB1F177C90000E9712 /* Build configuration list for PBXNativeTarget "RSS-Dis" */;
 			buildPhases = (
-				8A04013F1E83ACE79D4E0779 /* [CP] Check Pods Manifest.lock */,
-				D8F4936C1ECBEB4400924DA3 /* Sources */,
-				D8F4936D1ECBEB4400924DA3 /* Frameworks */,
-				D8F4936E1ECBEB4400924DA3 /* Resources */,
-				A37DB9B6BE55273B67743480 /* [CP] Embed Pods Frameworks */,
-				27E6B675A6F080FC8C4C08FB /* [CP] Copy Pods Resources */,
+				D8080FCC1F177C90000E9712 /* [CP] Check Pods Manifest.lock */,
+				D8080FCD1F177C90000E9712 /* Sources */,
+				D8080FD51F177C90000E9712 /* Frameworks */,
+				D8080FD71F177C90000E9712 /* Resources */,
+				D8080FD91F177C90000E9712 /* [CP] Embed Pods Frameworks */,
+				D8080FDA1F177C90000E9712 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = RSS;
+			name = "RSS-Dis";
 			productName = RSS;
-			productReference = D8F493701ECBEB4400924DA3 /* RSS.app */;
+			productReference = D8080FDE1F177C90000E9712 /* RSS-Dis.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D8080FE01F177CA8000E9712 /* RSS-Dev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8080FF01F177CA8000E9712 /* Build configuration list for PBXNativeTarget "RSS-Dev" */;
+			buildPhases = (
+				D8080FE11F177CA8000E9712 /* [CP] Check Pods Manifest.lock */,
+				D8080FE21F177CA8000E9712 /* Sources */,
+				D8080FEA1F177CA8000E9712 /* Frameworks */,
+				D8080FEC1F177CA8000E9712 /* Resources */,
+				D8080FEE1F177CA8000E9712 /* [CP] Embed Pods Frameworks */,
+				D8080FEF1F177CA8000E9712 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "RSS-Dev";
+			productName = RSS;
+			productReference = D8080FF31F177CA8000E9712 /* RSS-Dev.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D8080FF51F177CB0000E9712 /* RSS-Adhoc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D80810051F177CB0000E9712 /* Build configuration list for PBXNativeTarget "RSS-Adhoc" */;
+			buildPhases = (
+				D8080FF61F177CB0000E9712 /* [CP] Check Pods Manifest.lock */,
+				D8080FF71F177CB0000E9712 /* Sources */,
+				D8080FFF1F177CB0000E9712 /* Frameworks */,
+				D80810011F177CB0000E9712 /* Resources */,
+				D80810031F177CB0000E9712 /* [CP] Embed Pods Frameworks */,
+				D80810041F177CB0000E9712 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "RSS-Adhoc";
+			productName = RSS;
+			productReference = D80810081F177CB0000E9712 /* RSS-Adhoc.app */;
 			productType = "com.apple.product-type.application";
 		};
 		D8F4938B1ECBEB4400924DA3 /* RSSTests */ = {
@@ -240,7 +324,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				D8F4938E1ECBEB4400924DA3 /* PBXTargetDependency */,
 			);
 			name = RSSTests;
 			productName = RSSTests;
@@ -258,7 +341,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				D8F493991ECBEB4400924DA3 /* PBXTargetDependency */,
 			);
 			name = RSSUITests;
 			productName = RSSUITests;
@@ -274,9 +356,6 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = kkk;
 				TargetAttributes = {
-					D8F4936F1ECBEB4400924DA3 = {
-						CreatedOnToolsVersion = 7.3;
-					};
 					D8F4938B1ECBEB4400924DA3 = {
 						CreatedOnToolsVersion = 7.3;
 						TestTargetID = D8F4936F1ECBEB4400924DA3;
@@ -300,19 +379,40 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D8F4936F1ECBEB4400924DA3 /* RSS */,
 				D8F4938B1ECBEB4400924DA3 /* RSSTests */,
 				D8F493961ECBEB4400924DA3 /* RSSUITests */,
+				D8080FCB1F177C90000E9712 /* RSS-Dis */,
+				D8080FE01F177CA8000E9712 /* RSS-Dev */,
+				D8080FF51F177CB0000E9712 /* RSS-Adhoc */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D8F4936E1ECBEB4400924DA3 /* Resources */ = {
+		D8080FD71F177C90000E9712 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8F493831ECBEB4400924DA3 /* Assets.xcassets in Resources */,
+				D80810371F177FF0000E9712 /* RSS-Dis-Info.plist in Resources */,
+				D8080FD81F177C90000E9712 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8080FEC1F177CA8000E9712 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8080FED1F177CA8000E9712 /* Assets.xcassets in Resources */,
+				D80810331F177FE6000E9712 /* RSS-Dev-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D80810011F177CB0000E9712 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D80810021F177CB0000E9712 /* Assets.xcassets in Resources */,
+				D808102F1F177FDD000E9712 /* RSS-Adhoc-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +420,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D808102D1F177FDD000E9712 /* RSS-Adhoc-Info.plist in Resources */,
+				D80810351F177FF0000E9712 /* RSS-Dis-Info.plist in Resources */,
+				D80810311F177FE6000E9712 /* RSS-Dev-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,28 +430,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D808102E1F177FDD000E9712 /* RSS-Adhoc-Info.plist in Resources */,
+				D80810361F177FF0000E9712 /* RSS-Dis-Info.plist in Resources */,
+				D80810321F177FE6000E9712 /* RSS-Dev-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		27E6B675A6F080FC8C4C08FB /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-share_pods-RSS/Pods-share_pods-RSS-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8A04013F1E83ACE79D4E0779 /* [CP] Check Pods Manifest.lock */ = {
+		D8080FCC1F177C90000E9712 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -363,7 +454,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		A37DB9B6BE55273B67743480 /* [CP] Embed Pods Frameworks */ = {
+		D8080FD91F177C90000E9712 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -378,20 +469,153 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-share_pods-RSS/Pods-share_pods-RSS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D8080FDA1F177C90000E9712 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-share_pods-RSS/Pods-share_pods-RSS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8080FE11F177CA8000E9712 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D8080FEE1F177CA8000E9712 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-share_pods-RSS/Pods-share_pods-RSS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8080FEF1F177CA8000E9712 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-share_pods-RSS/Pods-share_pods-RSS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8080FF61F177CB0000E9712 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D80810031F177CB0000E9712 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-share_pods-RSS/Pods-share_pods-RSS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D80810041F177CB0000E9712 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-share_pods-RSS/Pods-share_pods-RSS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D8F4936C1ECBEB4400924DA3 /* Sources */ = {
+		D8080FCD1F177C90000E9712 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8F493811ECBEB4400924DA3 /* RSS.xcdatamodeld in Sources */,
-				D8F4937B1ECBEB4400924DA3 /* ViewController.m in Sources */,
-				D88768051ED396530075D6D4 /* RSSAppDelegateService.m in Sources */,
-				D8F493781ECBEB4400924DA3 /* AppDelegate.m in Sources */,
-				D887680B1ED396780075D6D4 /* RSSAppContext.m in Sources */,
-				D8F493751ECBEB4400924DA3 /* main.m in Sources */,
-				D88768111ED3968F0075D6D4 /* RSSUserContext.m in Sources */,
+				D8080FCE1F177C90000E9712 /* RSS.xcdatamodeld in Sources */,
+				D8080FCF1F177C90000E9712 /* ViewController.m in Sources */,
+				D8080FD01F177C90000E9712 /* RSSAppDelegateService.m in Sources */,
+				D8080FD11F177C90000E9712 /* AppDelegate.m in Sources */,
+				D8080FD21F177C90000E9712 /* RSSAppContext.m in Sources */,
+				D8080FD31F177C90000E9712 /* main.m in Sources */,
+				D8080FD41F177C90000E9712 /* RSSUserContext.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8080FE21F177CA8000E9712 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8080FE31F177CA8000E9712 /* RSS.xcdatamodeld in Sources */,
+				D8080FE41F177CA8000E9712 /* ViewController.m in Sources */,
+				D8080FE51F177CA8000E9712 /* RSSAppDelegateService.m in Sources */,
+				D8080FE61F177CA8000E9712 /* AppDelegate.m in Sources */,
+				D8080FE71F177CA8000E9712 /* RSSAppContext.m in Sources */,
+				D8080FE81F177CA8000E9712 /* main.m in Sources */,
+				D8080FE91F177CA8000E9712 /* RSSUserContext.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8080FF71F177CB0000E9712 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8080FF81F177CB0000E9712 /* RSS.xcdatamodeld in Sources */,
+				D8080FF91F177CB0000E9712 /* ViewController.m in Sources */,
+				D8080FFA1F177CB0000E9712 /* RSSAppDelegateService.m in Sources */,
+				D8080FFB1F177CB0000E9712 /* AppDelegate.m in Sources */,
+				D8080FFC1F177CB0000E9712 /* RSSAppContext.m in Sources */,
+				D8080FFD1F177CB0000E9712 /* main.m in Sources */,
+				D8080FFE1F177CB0000E9712 /* RSSUserContext.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,20 +643,91 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		D8F4938E1ECBEB4400924DA3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D8F4936F1ECBEB4400924DA3 /* RSS */;
-			targetProxy = D8F4938D1ECBEB4400924DA3 /* PBXContainerItemProxy */;
-		};
-		D8F493991ECBEB4400924DA3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D8F4936F1ECBEB4400924DA3 /* RSS */;
-			targetProxy = D8F493981ECBEB4400924DA3 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
+		D8080FDC1F177C90000E9712 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6591E4C8BAFFA788F3C40530 /* Pods-share_pods-RSS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "RSS/InfoPlists/RSS-Dis-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = RSS.RSS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = arm64;
+			};
+			name = Debug;
+		};
+		D8080FDD1F177C90000E9712 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4FC20EDBCE23E56B81CBF8D4 /* Pods-share_pods-RSS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "RSS/InfoPlists/RSS-Dis-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = RSS.RSS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = arm64;
+			};
+			name = Release;
+		};
+		D8080FF11F177CA8000E9712 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6591E4C8BAFFA788F3C40530 /* Pods-share_pods-RSS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "RSS/InfoPlists/RSS-Dev-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = RSS.RSS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = arm64;
+			};
+			name = Debug;
+		};
+		D8080FF21F177CA8000E9712 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4FC20EDBCE23E56B81CBF8D4 /* Pods-share_pods-RSS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "RSS/InfoPlists/RSS-Dev-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = RSS.RSS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = arm64;
+			};
+			name = Release;
+		};
+		D80810061F177CB0000E9712 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6591E4C8BAFFA788F3C40530 /* Pods-share_pods-RSS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "RSS/InfoPlists/RSS-Adhoc-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = RSS.RSS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = arm64;
+			};
+			name = Debug;
+		};
+		D80810071F177CB0000E9712 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4FC20EDBCE23E56B81CBF8D4 /* Pods-share_pods-RSS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "RSS/InfoPlists/RSS-Adhoc-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = RSS.RSS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = arm64;
+			};
+			name = Release;
+		};
 		D8F4939E1ECBEB4400924DA3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -531,34 +826,6 @@
 			};
 			name = Release;
 		};
-		D8F493A11ECBEB4400924DA3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6591E4C8BAFFA788F3C40530 /* Pods-share_pods-RSS.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = RSS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = RSS.RSS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = arm64;
-			};
-			name = Debug;
-		};
-		D8F493A21ECBEB4400924DA3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4FC20EDBCE23E56B81CBF8D4 /* Pods-share_pods-RSS.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = RSS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = RSS.RSS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = arm64;
-			};
-			name = Release;
-		};
 		D8F493A41ECBEB4400924DA3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -608,20 +875,38 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D8080FDB1F177C90000E9712 /* Build configuration list for PBXNativeTarget "RSS-Dis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8080FDC1F177C90000E9712 /* Debug */,
+				D8080FDD1F177C90000E9712 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8080FF01F177CA8000E9712 /* Build configuration list for PBXNativeTarget "RSS-Dev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8080FF11F177CA8000E9712 /* Debug */,
+				D8080FF21F177CA8000E9712 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D80810051F177CB0000E9712 /* Build configuration list for PBXNativeTarget "RSS-Adhoc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D80810061F177CB0000E9712 /* Debug */,
+				D80810071F177CB0000E9712 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D8F4936B1ECBEB4400924DA3 /* Build configuration list for PBXProject "RSS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D8F4939E1ECBEB4400924DA3 /* Debug */,
 				D8F4939F1ECBEB4400924DA3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D8F493A01ECBEB4400924DA3 /* Build configuration list for PBXNativeTarget "RSS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D8F493A11ECBEB4400924DA3 /* Debug */,
-				D8F493A21ECBEB4400924DA3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
