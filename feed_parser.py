@@ -4,6 +4,8 @@ import spacy
 from spacy.lang.en.stop_words import STOP_WORDS
 import numpy as np
 from collections import Counter
+import networkx as nx
+from sklearn.metrics.pairwise import cosine_similarity
 
 
 def clean_html_text(text):
@@ -22,9 +24,9 @@ def clean_html_text(text):
     return text
 
 
-def extractive_summarization(text, num_sentences=3):
+def textrank_summarization(text, num_sentences=3):
     """
-    Generate an extractive summary using spaCy's linguistic features
+    Generate an extractive summary using TextRank algorithm
     """
     # Check if text is empty
     if not text or len(text.strip()) == 0:
@@ -34,64 +36,77 @@ def extractive_summarization(text, num_sentences=3):
     clean_text = clean_html_text(text)
 
     try:
-        # Load spaCy model - using small model for efficiency
+        # Load spaCy model
         nlp = spacy.load("en_core_web_sm")
 
         # Process the text with spaCy
         doc = nlp(clean_text)
 
-        # Tokenize the text into sentences using spaCy
+        # Extract sentences
         sentences = [sent.text.strip() for sent in doc.sents]
 
         # Check if we have enough sentences to summarize
         if len(sentences) <= num_sentences:
             return clean_text
 
-        # Calculate word frequencies with proper lemmatization
-        word_frequencies = Counter()
-        for word in doc:
-            if not word.is_stop and not word.is_punct and not word.is_space:
-                # Use lemma to normalize words
-                word_frequencies[word.lemma_] += 1
+        # Create sentence embeddings
+        sentence_vectors = []
+        for sent in sentences:
+            # Process each sentence to get its vector
+            sent_doc = nlp(sent)
+            # Skip empty sentences
+            if len(sent_doc) == 0:
+                # Default vector dimension for en_core_web_sm
+                sentence_vectors.append(np.zeros((96,)))
+                continue
 
-        # Normalize word frequencies
-        max_frequency = max(word_frequencies.values(), default=1)
-        normalized_frequencies = {
-            word: freq/max_frequency for word, freq in word_frequencies.items()}
+            # Get average word vector for the sentence
+            vec = np.mean(
+                [word.vector for word in sent_doc if not word.is_stop and not word.is_punct], axis=0)
+            sentence_vectors.append(vec)
 
-        # Calculate sentence scores based on word frequencies
-        sentence_scores = {}
-        for i, sentence in enumerate(doc.sents):
-            for word in sentence:
-                if word.lemma_ in normalized_frequencies:
-                    # Add additional weight to named entities
-                    entity_weight = 1.5 if word.ent_type_ else 1.0
-                    # Add weight for being in the first sentence
-                    position_weight = 1.2 if i == 0 else 1.0
+        # Create similarity matrix
+        sim_matrix = np.zeros([len(sentences), len(sentences)])
 
-                    if i not in sentence_scores:
-                        sentence_scores[i] = 0
+        # Calculate similarity between sentence vectors
+        for i in range(len(sentences)):
+            for j in range(len(sentences)):
+                if i != j:
+                    # Handle zero vectors (sentences with only stop words)
+                    if np.all(sentence_vectors[i] == 0) or np.all(sentence_vectors[j] == 0):
+                        sim_matrix[i][j] = 0
+                    else:
+                        # Reshape vectors for cosine_similarity which expects 2D arrays
+                        vec_i = sentence_vectors[i].reshape(1, -1)
+                        vec_j = sentence_vectors[j].reshape(1, -1)
+                        sim_matrix[i][j] = cosine_similarity(vec_i, vec_j)[
+                            0, 0]
 
-                    sentence_scores[i] += normalized_frequencies[word.lemma_] * \
-                        entity_weight * position_weight
+        # Apply PageRank algorithm
+        nx_graph = nx.from_numpy_array(sim_matrix)
+        scores = nx.pagerank(nx_graph)
 
-            # Normalize by sentence length
-            if i in sentence_scores and len(sentence) > 0:
-                sentence_scores[i] = sentence_scores[i] / len(sentence)
+        # Add position bias - give higher weight to sentences at the beginning
+        for i in range(len(sentences)):
+            # Decreasing weight for later sentences
+            position_weight = 1 / (1 + 0.1 * i)
+            scores[i] = scores[i] * position_weight
 
-        # Select top sentences
+        # Get top-ranked sentences
         ranked_sentences = sorted(
-            sentence_scores.items(), key=lambda x: x[1], reverse=True)
-        top_sentence_indices = [idx for idx,
-                                _ in ranked_sentences[:num_sentences]]
-        top_sentence_indices.sort()  # Sort by position in original text
+            ((scores[i], i, s) for i, s in enumerate(sentences)), reverse=True)
 
-        # Combine selected sentences
+        # Select top N sentences and sort them by position in the original text
+        top_sentence_indices = sorted(
+            [idx for _, idx, _ in ranked_sentences[:num_sentences]])
+
+        # Build summary by joining selected sentences
         summary = ' '.join(sentences[i] for i in top_sentence_indices)
 
         return summary
+
     except Exception as e:
-        print(f"Error in summarization: {e}")
+        print(f"Error in TextRank summarization: {e}")
         # Fallback to first few sentences if processing fails
         return ' '.join(sentences[:num_sentences]) if 'sentences' in locals() else "Error generating summary."
 
@@ -120,9 +135,10 @@ def process_rss_feed(file_path='rss.xml'):
             content = get_entry_content(entry)
 
             # Generate and print summary
-            summary = extractive_summarization(
+            summary = textrank_summarization(
                 content, 2)  # Get 2 key sentences
             print(f"Original length: {len(content)} characters")
+            print(f"Original: {content}")
             print(f"Summary length: {len(summary)} characters")
             print(f"Summary: {summary}")
             print("-" * 50)
