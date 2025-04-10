@@ -1,11 +1,10 @@
 import feedparser
 import re
-import spacy
-from spacy.lang.en.stop_words import STOP_WORDS
-import numpy as np
-from collections import Counter
-import networkx as nx
-from sklearn.metrics.pairwise import cosine_similarity
+from sumy.parsers.plaintext import PlaintextParser
+from sumy.nlp.tokenizers import Tokenizer
+from sumy.summarizers.text_rank import TextRankSummarizer
+from transformers import pipeline
+from rouge import Rouge
 
 
 def clean_html_text(text):
@@ -26,126 +25,95 @@ def clean_html_text(text):
 
 def textrank_summarization(text, num_sentences=3):
     """
-    Generate an extractive summary using TextRank algorithm
+    Generate an extractive summary using TextRank algorithm from sumy library
     """
-    # Check if text is empty
     if not text or len(text.strip()) == 0:
         return "No content available to summarize."
 
-    # Clean text (remove HTML tags)
-    clean_text = clean_html_text(text)
+    try:
+        # Clean text
+        clean_text = clean_html_text(text)
+
+        # Parse the text
+        parser = PlaintextParser.from_string(clean_text, Tokenizer("english"))
+
+        # Use TextRank algorithm
+        summarizer = TextRankSummarizer()
+        summary = summarizer(parser.document, sentences_count=num_sentences)
+
+        # Join the sentences into a string
+        summary_text = " ".join(str(sentence) for sentence in summary)
+
+        return summary_text
+
+    except Exception as e:
+        print(f"Error in TextRank summarization: {e}")
+        # Fallback to first few sentences
+        sentences = clean_text.split('. ')
+        return '. '.join(sentences[:num_sentences]) + ('.' if not sentences[0].endswith('.') else '')
+
+
+def bart_summarization(text, max_length=150, min_length=40):
+    """
+    Generate an abstractive summary using BART model from transformers library
+    """
+    if not text or len(text.strip()) == 0:
+        return "No content available to summarize."
 
     try:
-        # Load spaCy model
-        nlp = spacy.load("en_core_web_sm")
+        # Clean text
+        clean_text = clean_html_text(text)
 
-        # Process the text with spaCy
-        doc = nlp(clean_text)
+        # Initialize the summarization pipeline with BART
+        summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
 
-        # Extract sentences
-        sentences = [sent.text.strip() for sent in doc.sents]
+        # BART has input token limits
+        max_input_chars = 1024  # Conservative limit
+        if len(clean_text) > max_input_chars:
+            clean_text = clean_text[:max_input_chars]
+            print(
+                f"Text truncated to {max_input_chars} characters for BART model")
 
-        # Check if we have enough sentences to summarize
-        if len(sentences) <= num_sentences:
-            return clean_text
-
-        # Create sentence embeddings
-        sentence_vectors = []
-        for sent in sentences:
-            # Process each sentence to get its vector
-            sent_doc = nlp(sent)
-            # Skip empty sentences
-            if len(sent_doc) == 0:
-                # Default vector dimension for en_core_web_sm
-                sentence_vectors.append(np.zeros((96,)))
-                continue
-
-            # Get average word vector for the sentence
-            vec = np.mean(
-                [word.vector for word in sent_doc if not word.is_stop and not word.is_punct], axis=0)
-            sentence_vectors.append(vec)
-
-        # Create similarity matrix
-        sim_matrix = np.zeros([len(sentences), len(sentences)])
-
-        # Calculate similarity between sentence vectors
-        for i in range(len(sentences)):
-            for j in range(len(sentences)):
-                if i != j:
-                    # Handle zero vectors (sentences with only stop words)
-                    if np.all(sentence_vectors[i] == 0) or np.all(sentence_vectors[j] == 0):
-                        sim_matrix[i][j] = 0
-                    else:
-                        # Reshape vectors for cosine_similarity which expects 2D arrays
-                        vec_i = sentence_vectors[i].reshape(1, -1)
-                        vec_j = sentence_vectors[j].reshape(1, -1)
-                        sim_matrix[i][j] = cosine_similarity(vec_i, vec_j)[
-                            0, 0]
-
-        # Apply PageRank algorithm
-        nx_graph = nx.from_numpy_array(sim_matrix)
-        scores = nx.pagerank(nx_graph)
-
-        # Add position bias - give higher weight to sentences at the beginning
-        for i in range(len(sentences)):
-            # Decreasing weight for later sentences
-            position_weight = 1 / (1 + 0.1 * i)
-            scores[i] = scores[i] * position_weight
-
-        # Get top-ranked sentences
-        ranked_sentences = sorted(
-            ((scores[i], i, s) for i, s in enumerate(sentences)), reverse=True)
-
-        # Select top N sentences and sort them by position in the original text
-        top_sentence_indices = sorted(
-            [idx for _, idx, _ in ranked_sentences[:num_sentences]])
-
-        # Build summary by joining selected sentences
-        summary = ' '.join(sentences[i] for i in top_sentence_indices)
+        # Generate summary
+        summary = summarizer(clean_text, max_length=max_length, min_length=min_length)[
+            0]['summary_text']
 
         return summary
 
     except Exception as e:
-        print(f"Error in TextRank summarization: {e}")
-        # Fallback to first few sentences if processing fails
-        return ' '.join(sentences[:num_sentences]) if 'sentences' in locals() else "Error generating summary."
+        print(f"Error in BART summarization: {e}")
+        # Fallback to extractive summary if generative fails
+        return textrank_summarization(text, 2)
 
 
-def process_rss_feed(file_path='rss.xml'):
-    """Process an RSS feed and generate summaries for articles"""
-    try:
-        print(f"Parsing RSS file: {file_path}")
-        feed = feedparser.parse(file_path)
+def evaluate_summaries(original_text, summaries):
+    """
+    Evaluate summaries against original text using ROUGE metrics
+    Returns a dictionary of scores for each summary
+    """
+    rouge = Rouge()
+    results = {}
 
-        # Print basic information
-        print(f"Feed title: {feed.feed.get('title', 'No title')}")
-        print(f"Found {len(feed.entries)} articles")
+    for name, summary in summaries.items():
+        try:
+            # Calculate ROUGE scores
+            scores = rouge.get_scores(summary, original_text)
 
-        # Check if there are entries
-        if len(feed.entries) == 0:
-            print("No articles found.")
-            return
+            # Store the results
+            results[name] = {
+                'rouge-1': scores[0]['rouge-1'],
+                'rouge-2': scores[0]['rouge-2'],
+                'rouge-l': scores[0]['rouge-l']
+            }
+        except Exception as e:
+            print(f"Error calculating ROUGE scores for {name}: {e}")
+            results[name] = {
+                'rouge-1': {'f': 0.0, 'p': 0.0, 'r': 0.0},
+                'rouge-2': {'f': 0.0, 'p': 0.0, 'r': 0.0},
+                'rouge-l': {'f': 0.0, 'p': 0.0, 'r': 0.0}
+            }
 
-        print("\nArticles with summaries:")
-        for i, entry in enumerate(feed.entries[:3]):  # Process first 3 entries
-            print(f"\nArticle {i+1}:")
-            print(f"Title: {entry.get('title', 'No title')}")
-
-            # Find content using a more robust approach
-            content = get_entry_content(entry)
-
-            # Generate and print summary
-            summary = textrank_summarization(
-                content, 2)  # Get 2 key sentences
-            print(f"Original length: {len(content)} characters")
-            print(f"Original: {content}")
-            print(f"Summary length: {len(summary)} characters")
-            print(f"Summary: {summary}")
-            print("-" * 50)
-    except Exception as e:
-        print(f"Error parsing RSS: {e}")
-        import traceback
-        traceback.print_exc()
+    return results
 
 
 def get_entry_content(entry):
@@ -177,6 +145,108 @@ def get_entry_content(entry):
     # Return fallback message if no content found
     print("No suitable content field found")
     return "No content available to summarize."
+
+
+def process_rss_feed(file_path='rss.xml'):
+    """Process an RSS feed, summarize the first article, and evaluate with ROUGE"""
+    try:
+        print(f"Parsing RSS file: {file_path}")
+        feed = feedparser.parse(file_path)
+
+        # Print basic information
+        print(f"Feed title: {feed.feed.get('title', 'No title')}")
+        print(f"Found {len(feed.entries)} articles")
+
+        # Check if there are entries
+        if len(feed.entries) == 0:
+            print("No articles found.")
+            return
+
+        # Process only the first article
+        entry = feed.entries[0]
+        print("\nAnalyzing first article:")
+        print(f"Title: {entry.get('title', 'No title')}")
+
+        # Find content
+        content = get_entry_content(entry)
+        print(f"Original length: {len(content)} characters")
+        # Show just the beginning for readability
+        print(f"Original: {content[:300]}..." if len(
+            content) > 300 else f"Original: {content}")
+
+        # Generate summaries
+        print("\nGenerating summaries...")
+        textrank_summary = textrank_summarization(content, 3)
+        bart_summary = bart_summarization(content)
+
+        # Print summaries
+        print(f"\nExtractive Summary (TextRank):")
+        print(f"Length: {len(textrank_summary)} characters")
+        print(f"Summary: {textrank_summary}")
+
+        print(f"\nAbstractive Summary (BART):")
+        print(f"Length: {len(bart_summary)} characters")
+        print(f"Summary: {bart_summary}")
+
+        # Evaluate summaries using ROUGE
+        print("\nEvaluating summaries using ROUGE metrics...")
+        summaries = {
+            'TextRank': textrank_summary,
+            'BART': bart_summary
+        }
+
+        # Since we don't have a human-written reference summary,
+        # we'll use the original text as the reference
+        # Note: This is not ideal, but provides a basis for comparison
+        rouge_scores = evaluate_summaries(content, summaries)
+
+        # Print ROUGE scores
+        print("\n--- ROUGE Evaluation Results ---")
+        for name, scores in rouge_scores.items():
+            print(f"\n{name} Summary:")
+            print(f"ROUGE-1 F1: {scores['rouge-1']['f']:.4f}")
+            print(f"ROUGE-2 F1: {scores['rouge-2']['f']:.4f}")
+            print(f"ROUGE-L F1: {scores['rouge-l']['f']:.4f}")
+
+            print(f"ROUGE-1 Precision: {scores['rouge-1']['p']:.4f}")
+            print(f"ROUGE-2 Precision: {scores['rouge-2']['p']:.4f}")
+            print(f"ROUGE-L Precision: {scores['rouge-l']['p']:.4f}")
+
+            print(f"ROUGE-1 Recall: {scores['rouge-1']['r']:.4f}")
+            print(f"ROUGE-2 Recall: {scores['rouge-2']['r']:.4f}")
+            print(f"ROUGE-L Recall: {scores['rouge-l']['r']:.4f}")
+
+        # Compare the summaries
+        print("\n--- Summary Comparison ---")
+        if rouge_scores['TextRank']['rouge-1']['f'] > rouge_scores['BART']['rouge-1']['f']:
+            print("TextRank performed better on ROUGE-1 F1 score.")
+        elif rouge_scores['TextRank']['rouge-1']['f'] < rouge_scores['BART']['rouge-1']['f']:
+            print("BART performed better on ROUGE-1 F1 score.")
+        else:
+            print("TextRank and BART performed equally on ROUGE-1 F1 score.")
+
+        if rouge_scores['TextRank']['rouge-2']['f'] > rouge_scores['BART']['rouge-2']['f']:
+            print("TextRank performed better on ROUGE-2 F1 score.")
+        elif rouge_scores['TextRank']['rouge-2']['f'] < rouge_scores['BART']['rouge-2']['f']:
+            print("BART performed better on ROUGE-2 F1 score.")
+        else:
+            print("TextRank and BART performed equally on ROUGE-2 F1 score.")
+
+        if rouge_scores['TextRank']['rouge-l']['f'] > rouge_scores['BART']['rouge-l']['f']:
+            print("TextRank performed better on ROUGE-L F1 score.")
+        elif rouge_scores['TextRank']['rouge-l']['f'] < rouge_scores['BART']['rouge-l']['f']:
+            print("BART performed better on ROUGE-L F1 score.")
+        else:
+            print("TextRank and BART performed equally on ROUGE-L F1 score.")
+
+        print("\nNOTE: Since we're using the original text as the reference, these scores")
+        print("      reflect how well each summary retains information from the original.")
+        print("      Extractive methods may have an advantage in this evaluation setting.")
+
+    except Exception as e:
+        print(f"Error processing RSS: {e}")
+        import traceback
+        traceback.print_exc()
 
 
 if __name__ == "__main__":
