@@ -5,6 +5,7 @@ from sumy.nlp.tokenizers import Tokenizer
 from sumy.summarizers.text_rank import TextRankSummarizer
 from transformers import pipeline
 from rouge import Rouge
+from bert_classifier import BERTTextClassifier, classify_rss_entries
 
 
 def clean_html_text(text):
