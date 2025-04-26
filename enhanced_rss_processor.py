@@ -123,27 +123,6 @@ def save_results_to_file(results, output_file='processed_feed.json'):
 
 
 def main():
-    # Initialize a classifier
-    classifier = BERTTextClassifier()
-
-    # Classify a single article
-    content = get_entry_content(entry)
-    classification = classifier.classify(content)
-    print(f"Category: {classification['top_category']}")
-
-    # Or classify all entries in a feed
-    classified_entries = classify_rss_entries(feed.entries)
-    # Initialize a classifier
-    classifier = BERTTextClassifier()
-
-    # Classify a single article
-    content = get_entry_content(entry)
-    classification = classifier.classify(content)
-    print(f"Category: {classification['top_category']}")
-
-    # Or classify all entries in a feed
-    classified_entries = classify_rss_entries(feed.entries)
-
     """Main function to run the enhanced RSS processor"""
     parser = argparse.ArgumentParser(
         description='Process RSS feeds with summarization and classification')
