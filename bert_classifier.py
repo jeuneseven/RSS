@@ -1,6 +1,11 @@
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 import numpy as np
+import feedparser
+import traceback
+
+# Import common utilities
+from utils import get_entry_content
 
 
 class BERTTextClassifier:
@@ -222,14 +227,14 @@ def classify_rss_entries(feed_entries, custom_labels=None):
     return classified_entries
 
 
-# Example of how to use these functions with your existing RSS processor
-def process_rss_feed_with_classification(file_path='rss.xml', classify=True):
+def process_rss_feed_with_classification(file_path='rss.xml', classify=True, custom_labels=None):
     """
     Process an RSS feed with text classification
 
     Args:
         file_path (str): Path to the RSS feed file
         classify (bool): Whether to classify the entries
+        custom_labels (list): Optional list of custom labels
 
     Returns:
         dict: Processing results
@@ -253,7 +258,8 @@ def process_rss_feed_with_classification(file_path='rss.xml', classify=True):
         # Process entries
         if classify:
             print("\nClassifying articles...")
-            classified_entries = classify_rss_entries(feed.entries)
+            classified_entries = classify_rss_entries(
+                feed.entries, custom_labels)
 
             for entry in classified_entries:
                 print(f"\nTitle: {entry.get('title', 'No title')}")
@@ -281,6 +287,11 @@ def process_rss_feed_with_classification(file_path='rss.xml', classify=True):
 
     except Exception as e:
         print(f"Error processing RSS: {e}")
-        import traceback
         traceback.print_exc()
         return {"status": "error", "message": str(e)}
+
+
+if __name__ == "__main__":
+    # Simple example usage when script is run directly
+    results = process_rss_feed_with_classification()
+    print(f"\nProcessed {len(results['entries'])} articles")

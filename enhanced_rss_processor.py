@@ -1,11 +1,16 @@
-# Import your existing modules
-from feed_parser import clean_html_text, get_entry_content, textrank_summarization, bart_summarization, evaluate_summaries
-# Import the BERT classifier
-from bert_classifier import BERTTextClassifier, classify_rss_entries
-
 import feedparser
 import argparse
 import json
+import traceback
+
+# Import summarization functions from feed_parser_summary
+from feed_parser_summary import textrank_summarization, bart_summarization, evaluate_summaries
+
+# Import classification functions from bert_classifier
+from bert_classifier import BERTTextClassifier, classify_rss_entries, process_rss_feed_with_classification
+
+# Import common utilities
+from utils import get_entry_content
 
 
 def process_rss_feed_enhanced(file_path='rss.xml', summarize=True, classify=True, custom_labels=None):
@@ -107,7 +112,6 @@ def process_rss_feed_enhanced(file_path='rss.xml', summarize=True, classify=True
 
     except Exception as e:
         print(f"Error processing RSS: {e}")
-        import traceback
         traceback.print_exc()
         return {"status": "error", "message": str(e)}
 
@@ -136,6 +140,10 @@ def main():
                         help='Comma-separated list of custom labels for classification')
     parser.add_argument('--output', type=str,
                         default='processed_feed.json', help='Output file path')
+    parser.add_argument('--summary-only', action='store_true',
+                        help='Only run summarization (old behavior)')
+    parser.add_argument('--classify-only', action='store_true',
+                        help='Only run classification')
 
     args = parser.parse_args()
 
@@ -146,7 +154,24 @@ def main():
                          for label in args.custom_labels.split(',')]
         print(f"Using custom labels: {custom_labels}")
 
-    # Process the feed
+    # Handle special modes
+    if args.summary_only:
+        # Use the original feed_parser_summary functionality
+        from feed_parser_summary import process_rss_feed
+        process_rss_feed(args.feed)
+        return
+
+    if args.classify_only:
+        # Use the classification-only functionality
+        results = process_rss_feed_with_classification(
+            file_path=args.feed,
+            classify=True,
+            custom_labels=custom_labels
+        )
+        save_results_to_file(results, args.output)
+        return
+
+    # Process the feed with enhanced functionality
     results = process_rss_feed_enhanced(
         file_path=args.feed,
         summarize=not args.no_summarize,
