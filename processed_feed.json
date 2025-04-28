@@ -1,0 +1,96 @@
+{
+  "status": "success",
+  "feed_title": "Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics",
+  "entries": [
+    {
+      "title": "Samsung’s 2025 Bespoke appliances are going all in on AI",
+      "link": "https://www.engadget.com/home/kitchen-tech/samsungs-2025-bespoke-appliances-are-going-all-in-on-ai-020018377.html?src=rss",
+      "published": "Sun, 30 Mar 2025 02:00:18 +0000",
+      "author": "Sam Rutherford",
+      "extractive_summary": "Back at CES , Samsung teased some of its upcoming high-end appliances for 2025. But more recently, I got a chance to check out the entire lineup all in one place. It seemed like a perfect time to do a quick rundown of some of the most interesting new products and features coming to Samsung’s Bespoke portfolio later this year.",
+      "abstractive_summary": "Samsung's Bespoke line of appliances will go on sale later this year. The French-Door refrigerator is now available with two different-sized screens. There’s a model with a smaller 9-inch screen that starts at $3,999 or a massive 32-inch panel.",
+      "classification": {
+        "predictions": [
+          {
+            "label": "Technology",
+            "confidence": 0.22159263491630554
+          }
+        ],
+        "top_category": "Technology",
+        "confidence": 0.22159263491630554
+      }
+    },
+    {
+      "title": "A live orchestra will perform Undertale’s soundtrack in London to celebrate its 10th anniversary",
+      "link": "https://www.engadget.com/gaming/a-live-orchestra-will-perform-undertales-soundtrack-in-london-to-celebrate-its-10th-anniversary-214830716.html?src=rss",
+      "published": "Sat, 29 Mar 2025 21:48:30 +0000",
+      "author": "Cheyenne MacDonald",
+      "extractive_summary": "We’re coming up on the 10-year anniversary of Undertale ’s release, and to mark the occasion, a 25-piece orchestra will perform the game’s soundtrack for a one-night-only concert at London's Eventim Apollo this summer. The event, dubbed The Determination Symphony , will be held on June 22, and tickets are on sale now. The Determination Symphony is described as “a musical journey from your initial fall at Mount Ebott, leading you through Froggit Village, the Snowdin Forest, Temmie Village and so much more.” Attendees (who I’m deeply envious of) will be able to watch all of that on screen while the orchestra makes its way through arrangements of the soundtrack.",
+      "abstractive_summary": "A 25-piece orchestra will perform the game’s soundtrack for a one-night-only concert at London's Eventim Apollo this summer. The event, dubbed The Determination Symphony, will be held on June 22.",
+      "classification": {
+        "predictions": [
+          {
+            "label": "Entertainment",
+            "confidence": 0.212738037109375
+          }
+        ],
+        "top_category": "Entertainment",
+        "confidence": 0.212738037109375
+      }
+    },
+    {
+      "title": "The new Tamagotchi game for Nintendo Switch will connect with Tamagotchi Uni",
+      "link": "https://www.engadget.com/gaming/nintendo/the-new-tamagotchi-game-for-nintendo-switch-will-connect-with-tamagotchi-uni-160639100.html?src=rss",
+      "published": "Sat, 29 Mar 2025 16:06:39 +0000",
+      "author": "Cheyenne MacDonald",
+      "extractive_summary": "The Nintendo Direct livestream on Thursday brought some unexpected news for Tamagotchi fans: the Tamagotchi Connection: Corner Shop game series of the early 2000s is being resurrected with a new entry, Tamagotchi Plaza . But it seems the announcement trailer left out the best part. As spotted by Tama-Palace , Bandai Namco says on the game’s official website that Tamagotchi Plaza will be compatible with the Tamagotchi Uni .",
+      "abstractive_summary": "The Tamagotchi Connection: Corner Shop game series of the early 2000s is being resurrected with a new entry. Players will be able to link their Uni devices to the game to access special perks. The game comes out on June 27.",
+      "classification": {
+        "predictions": [
+          {
+            "label": "Entertainment",
+            "confidence": 0.20918503403663635
+          }
+        ],
+        "top_category": "Entertainment",
+        "confidence": 0.20918503403663635
+      }
+    },
+    {
+      "title": "Amazon Spring Sale tech deals under $50: The best discounts on chargers, earbuds, accessories and more",
+      "link": "https://www.engadget.com/deals/amazon-spring-sale-tech-deals-under-50-the-best-discounts-on-chargers-earbuds-accessories-and-more-091512674.html?src=rss",
+      "published": "Sat, 29 Mar 2025 15:40:08 +0000",
+      "author": "Jeff Dunn",
+      "extractive_summary": "Amazon’s latest sales event is underway. The so-called Spring Sale runs through March 31, and while it mostly focuses on things like apparel and outdoor goods, it still includes a handful of discounts on electronics. Per usual with these big Amazon events, most of those aren’t anything special.",
+      "abstractive_summary": "Amazon’s Spring Sale runs through March 31. While it mostly focuses on apparel and outdoor goods, it still includes a handful of discounts on electronics. We’ve rounded up a few actually decent tech deals that are available now and priced below $50.",
+      "classification": {
+        "predictions": [
+          {
+            "label": "Technology",
+            "confidence": 0.21497997641563416
+          }
+        ],
+        "top_category": "Technology",
+        "confidence": 0.21497997641563416
+      }
+    },
+    {
+      "title": "The best Amazon Spring Sale deals on kitchen tech from Ninja, Breville, KitchenAid and others",
+      "link": "https://www.engadget.com/deals/the-best-amazon-spring-sale-deals-on-kitchen-tech-from-ninja-breville-kitchenaid-and-others-092909576.html?src=rss",
+      "published": "Sat, 29 Mar 2025 15:35:12 +0000",
+      "author": "Amy Skorheim",
+      "extractive_summary": "Food is probably the third most-discussed topic in Engadget’s Slack rooms. Having more than a few cuisine-obsessed folk on staff means when there’s an opportunity to review a new bit of cooking tech, we jump at the chance. Right now, thanks to Amazon’s Spring Sale , a long list of the kitchen tech we’ve covered is on sale.",
+      "abstractive_summary": "Breville Juice Fountain Plus is on sale for $140 ($40 off) on Amazon. The powerful Juice Fountain impressed us with its extraction abilities. It takes up a good amount of space, but can extract an impressive amount of juice.",
+      "classification": {
+        "predictions": [
+          {
+            "label": "Technology",
+            "confidence": 0.2116662710905075
+          }
+        ],
+        "top_category": "Technology",
+        "confidence": 0.2116662710905075
+      }
+    }
+  ]
+}
