@@ -12,12 +12,12 @@
       "classification": {
         "predictions": [
           {
-            "label": "Technology",
-            "confidence": 0.22159263491630554
+            "label": "Entertainment",
+            "confidence": 0.21664173901081085
           }
         ],
-        "top_category": "Technology",
-        "confidence": 0.22159263491630554
+        "top_category": "Entertainment",
+        "confidence": 0.21664173901081085
       }
     },
     {
@@ -31,11 +31,11 @@
         "predictions": [
           {
             "label": "Entertainment",
-            "confidence": 0.212738037109375
+            "confidence": 0.2182418704032898
           }
         ],
         "top_category": "Entertainment",
-        "confidence": 0.212738037109375
+        "confidence": 0.2182418704032898
       }
     },
     {
@@ -49,11 +49,11 @@
         "predictions": [
           {
             "label": "Entertainment",
-            "confidence": 0.20918503403663635
+            "confidence": 0.21507422626018524
           }
         ],
         "top_category": "Entertainment",
-        "confidence": 0.20918503403663635
+        "confidence": 0.21507422626018524
       }
     },
     {
@@ -66,12 +66,12 @@
       "classification": {
         "predictions": [
           {
-            "label": "Technology",
-            "confidence": 0.21497997641563416
+            "label": "Entertainment",
+            "confidence": 0.2140515148639679
           }
         ],
-        "top_category": "Technology",
-        "confidence": 0.21497997641563416
+        "top_category": "Entertainment",
+        "confidence": 0.2140515148639679
       }
     },
     {
@@ -84,12 +84,12 @@
       "classification": {
         "predictions": [
           {
-            "label": "Technology",
-            "confidence": 0.2116662710905075
+            "label": "Entertainment",
+            "confidence": 0.22482790052890778
           }
         ],
-        "top_category": "Technology",
-        "confidence": 0.2116662710905075
+        "top_category": "Entertainment",
+        "confidence": 0.22482790052890778
       }
     }
   ]
