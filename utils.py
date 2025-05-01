@@ -2,24 +2,36 @@ import re
 
 
 def clean_html_text(text):
-    """Remove HTML tags and entities from text"""
-    # Remove HTML tags
-    text = re.sub(r'<.*?>', ' ', text)
-    # Replace HTML entities
+    """
+    Remove HTML tags and special entities from a given text.
+
+    Args:
+        text (str): Raw HTML text
+
+    Returns:
+        str: Cleaned plain text
+    """
+    text = re.sub(r'<.*?>', ' ', text)  # Remove HTML tags
     text = re.sub(r'&nbsp;', ' ', text)
     text = re.sub(r'&amp;', '&', text)
     text = re.sub(r'&lt;', '<', text)
     text = re.sub(r'&gt;', '>', text)
     text = re.sub(r'&quot;', '"', text)
     text = re.sub(r'&apos;', "'", text)
-    # Remove extra whitespace
-    text = re.sub(r'\s+', ' ', text).strip()
+    text = re.sub(r'\s+', ' ', text).strip()  # Remove extra spaces
     return text
 
 
 def get_entry_content(entry):
-    """Extract content from RSS entry trying various fields"""
-    # Define priority order of fields to check
+    """
+    Try to extract main content from an RSS entry by checking common fields.
+
+    Args:
+        entry (dict): RSS feed entry
+
+    Returns:
+        str: Extracted content or fallback message
+    """
     content_fields = [
         ('description', lambda e: e.get('description')),
         ('content', lambda e: e.get('content', [{}])[0].get('value') if isinstance(
@@ -28,14 +40,12 @@ def get_entry_content(entry):
         ('summary_detail', lambda e: e.get('summary_detail', {}).get('value'))
     ]
 
-    # Try each field in order
     for field_name, getter in content_fields:
         content = getter(entry)
         if content and len(content.strip()) > 0:
             print(f"Found content in '{field_name}' field")
-            return content
+            return clean_html_text(content)
 
-    # If no content found in standard fields, check all fields
     print("No standard content fields found, checking all fields for text content")
     for key in entry.keys():
         value = entry.get(key)
@@ -43,6 +53,21 @@ def get_entry_content(entry):
             print(f"Found content in '{key}' field")
             return value
 
-    # Return fallback message if no content found
     print("No suitable content field found")
     return "No content available to summarize."
+
+
+def split_into_sentences(text):
+    """
+    Split a block of text into individual sentences using basic punctuation rules.
+
+    Args:
+        text (str): Input paragraph or article
+
+    Returns:
+        list: List of sentence strings
+    """
+    text = re.sub(r'([.!?])', r'\1<SPLIT>', text)
+    parts = text.split('<SPLIT>')
+    sentences = [s.strip() for s in parts if len(s.strip()) > 0]
+    return sentences
