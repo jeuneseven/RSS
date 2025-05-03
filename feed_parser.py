@@ -5,6 +5,12 @@ from sumy.summarizers.text_rank import TextRankSummarizer
 from transformers import pipeline
 from rouge import Rouge
 import traceback
+# Ensure punkt tokenizer is available
+import nltk
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
 
 # Import common utilities
 from utils import clean_html_text, get_entry_content
@@ -73,6 +79,44 @@ def bart_summarization(text, max_length=150, min_length=40):
         return textrank_summarization(text, 2)
 
 
+def bart_summarization_from_textrank(text, num_textrank_sentences=5, max_length=150, min_length=40):
+    """
+    Generate an abstractive summary using BART, where the input is the TextRank extractive summary
+    This implements the TextRank→BART pipeline
+    """
+    if not text or len(text.strip()) == 0:
+        return "No content available to summarize."
+
+    try:
+        # First, get TextRank extractive summary with more sentences
+        textrank_summary = textrank_summarization(text, num_textrank_sentences)
+
+        # Then, use this as input for BART
+        # Clean text for BART
+        clean_text = clean_html_text(textrank_summary)
+
+        # Initialize the summarization pipeline with BART
+        summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
+
+        # BART has input token limits
+        max_input_chars = 1024  # Conservative limit
+        if len(clean_text) > max_input_chars:
+            clean_text = clean_text[:max_input_chars]
+            print(
+                f"Text truncated to {max_input_chars} characters for BART model")
+
+        # Generate summary
+        summary = summarizer(clean_text, max_length=max_length, min_length=min_length)[
+            0]['summary_text']
+
+        return summary
+
+    except Exception as e:
+        print(f"Error in TextRank→BART summarization: {e}")
+        # Fallback to simple TextRank summary if pipeline fails
+        return textrank_summarization(text, 2)
+
+
 def evaluate_summaries(original_text, summaries):
     """
     Evaluate summaries against original text using ROUGE metrics
@@ -134,6 +178,7 @@ def process_rss_feed(file_path='rss.xml'):
         print("\nGenerating summaries...")
         textrank_summary = textrank_summarization(content, 3)
         bart_summary = bart_summarization(content)
+        textrank_to_bart_summary = bart_summarization_from_textrank(content)
 
         # Print summaries
         print(f"\nExtractive Summary (TextRank):")
@@ -144,11 +189,16 @@ def process_rss_feed(file_path='rss.xml'):
         print(f"Length: {len(bart_summary)} characters")
         print(f"Summary: {bart_summary}")
 
+        print(f"\nTextRank→BART Pipeline Summary:")
+        print(f"Length: {len(textrank_to_bart_summary)} characters")
+        print(f"Summary: {textrank_to_bart_summary}")
+
         # Evaluate summaries using ROUGE
         print("\nEvaluating summaries using ROUGE metrics...")
         summaries = {
             'TextRank': textrank_summary,
-            'BART': bart_summary
+            'BART': bart_summary,
+            'TextRank→BART': textrank_to_bart_summary
         }
 
         # Since we don't have a human-written reference summary,

@@ -2,12 +2,20 @@ import feedparser
 import argparse
 import json
 import traceback
+# Ensure NLTK Punkt tokenizer is available
+import nltk
+
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    print("Downloading NLTK punkt tokenizer...")
+    nltk.download('punkt')
 
 # Import summarization functions from feed_parser_summary
-from feed_parser_summary import textrank_summarization, bart_summarization, evaluate_summaries
+from feed_parser import textrank_summarization, bart_summarization, bart_summarization_from_textrank, evaluate_summaries
 
 # Import classification functions from bert_classifier
-from bert_classifier import BERTTextClassifier, classify_rss_entries, process_rss_feed_with_classification
+from classifier import BERTTextClassifier, process_rss_feed_with_classification_and_summary
 
 # Import common utilities
 from utils import get_entry_content
@@ -73,11 +81,13 @@ def process_rss_feed_enhanced(file_path='rss.xml', summarize=True, classify=True
             if summarize:
                 print("Generating summaries...")
 
+                # TextRank (extractive)
                 textrank_summary = textrank_summarization(content, 3)
                 entry_result["extractive_summary"] = textrank_summary
                 print(
                     f"Extractive summary length: {len(textrank_summary)} chars")
 
+                # BART (abstractive)
                 try:
                     bart_summary = bart_summarization(content)
                     entry_result["abstractive_summary"] = bart_summary
@@ -86,6 +96,34 @@ def process_rss_feed_enhanced(file_path='rss.xml', summarize=True, classify=True
                 except Exception as e:
                     print(f"Error generating abstractive summary: {e}")
                     entry_result["abstractive_summary"] = "Error generating summary"
+
+                # TextRank → BART pipeline
+                try:
+                    textrank_to_bart_summary = bart_summarization_from_textrank(
+                        content)
+                    entry_result["textrank_to_bart_summary"] = textrank_to_bart_summary
+                    print(
+                        f"TextRank→BART summary length: {len(textrank_to_bart_summary)} chars")
+                except Exception as e:
+                    print(f"Error generating TextRank→BART summary: {e}")
+                    entry_result["textrank_to_bart_summary"] = "Error generating summary"
+
+                # Evaluate and compare summaries
+                summaries = {
+                    'TextRank': textrank_summary,
+                    'BART': bart_summary,
+                    'TextRank→BART': textrank_to_bart_summary
+                }
+
+                rouge_scores = evaluate_summaries(content, summaries)
+                entry_result["rouge_scores"] = rouge_scores
+
+                # Print comparison
+                print("\n--- Summary Comparison ---")
+                for metric in ['rouge-1', 'rouge-2', 'rouge-l']:
+                    print(f"\n{metric.upper()} F1 Scores:")
+                    for method, scores in rouge_scores.items():
+                        print(f"  {method}: {scores[metric]['f']:.4f}")
 
             # Classify content if requested
             if classify and classifier:
@@ -157,7 +195,7 @@ def main():
     # Handle special modes
     if args.summary_only:
         # Use the original feed_parser_summary functionality
-        from feed_parser_summary import process_rss_feed
+        from feed_parser import process_rss_feed
         process_rss_feed(args.feed)
         return
 
