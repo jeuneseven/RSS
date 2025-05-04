@@ -1,15 +1,16 @@
 import re
+from typing import Dict, List, Any, Optional
 
 
-def clean_html_text(text):
+def clean_html_text(text: str) -> str:
     """
-    Remove HTML tags and special entities from a given text.
+    Remove HTML tags and special entities from text
 
     Args:
-        text (str): Raw HTML text
+        text: Raw HTML text
 
     Returns:
-        str: Cleaned plain text
+        Clean plain text
     """
     # Remove HTML tags
     text = re.sub(r'<.*?>', ' ', text)
@@ -28,15 +29,15 @@ def clean_html_text(text):
     return text
 
 
-def get_entry_content(entry):
+def get_entry_content(entry: Dict[str, Any]) -> str:
     """
-    Try to extract main content from an RSS entry by checking common fields.
+    Extract main content from an RSS entry
 
     Args:
-        entry (dict): RSS feed entry
+        entry: RSS feed entry dictionary
 
     Returns:
-        str: Extracted content or fallback message
+        Extracted content text
     """
     # Define content fields to check in order of preference
     content_fields = [
@@ -51,52 +52,51 @@ def get_entry_content(entry):
     for field_name, getter in content_fields:
         content = getter(entry)
         if content and len(content.strip()) > 0:
-            print(f"Found content in '{field_name}' field")
             return clean_html_text(content)
 
     # If no standard fields found, check all fields for text content
-    print("No standard content fields found, checking all fields for text content")
     for key in entry.keys():
         value = entry.get(key)
         if isinstance(value, str) and len(value) > 100:
-            print(f"Found content in '{key}' field")
-            return value
+            return clean_html_text(value)
 
-    print("No suitable content field found")
     return "No content available to summarize."
 
 
-def split_into_sentences(text):
+def split_into_sentences(text: str) -> List[str]:
     """
-    Split a block of text into individual sentences using basic punctuation rules.
+    Split a block of text into individual sentences
 
     Args:
-        text (str): Input paragraph or article
+        text: Input paragraph or article
 
     Returns:
-        list: List of sentence strings
+        List of sentence strings
     """
-    # Add markers for sentence endings
-    text = re.sub(r'([.!?])', r'\1<SPLIT>', text)
+    try:
+        import nltk
+        nltk.download('punkt', quiet=True)
+        return nltk.sent_tokenize(text)
+    except (ImportError, LookupError):
+        # Fallback method if NLTK is not available
+        # Add markers for sentence endings
+        text = re.sub(r'([.!?])', r'\1<SPLIT>', text)
+        # Split on markers
+        parts = text.split('<SPLIT>')
+        # Clean and filter sentences
+        sentences = [s.strip() for s in parts if len(s.strip()) > 0]
+        return sentences
 
-    # Split on markers
-    parts = text.split('<SPLIT>')
 
-    # Clean and filter sentences
-    sentences = [s.strip() for s in parts if len(s.strip()) > 0]
-
-    return sentences
-
-
-def format_results_for_display(results):
+def format_results_for_display(results: Dict[str, Any]) -> str:
     """
     Format processing results for better display
 
     Args:
-        results (dict): Raw processing results
+        results: Raw processing results
 
     Returns:
-        str: Formatted string for display
+        Formatted string for display
     """
     output = []
     output.append("=== RSS Feed Processing Results ===\n")
@@ -147,3 +147,27 @@ def format_results_for_display(results):
         output.append(f"... and {len(results['entries']) - 5} more entries")
 
     return "\n".join(output)
+
+
+def get_best_summary_method(rouge_scores: Dict[str, Dict]) -> str:
+    """
+    Determine which summarization method performed best based on ROUGE-1 F1 score
+
+    Args:
+        rouge_scores: Dictionary of ROUGE scores for different methods
+
+    Returns:
+        Name of the best-performing summarization method
+    """
+    methods = ['TextRank', 'BART', 'TextRank→BART']
+    best_method = methods[0]
+    best_score = 0.0
+
+    for method in methods:
+        if method in rouge_scores:
+            score = rouge_scores[method]['rouge-1']['f']
+            if score > best_score:
+                best_score = score
+                best_method = method
+
+    return best_method

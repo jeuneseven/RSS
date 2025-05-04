@@ -8,8 +8,8 @@
       "published": "Sun, 30 Mar 2025 02:00:18 +0000",
       "author": "Sam Rutherford",
       "extractive_summary": "Back at CES , Samsung teased some of its upcoming high-end appliances for 2025. But more recently, I got a chance to check out the entire lineup all in one place. It seemed like a perfect time to do a quick rundown of some of the most interesting new products and features coming to Samsung’s Bespoke portfolio later this year.",
-      "abstractive_summary": "Samsung's Bespoke line of appliances will go on sale later this year. The French-Door refrigerator is now available with two different-sized screens. There’s a model with a smaller 9-inch screen that starts at $3,999 or a massive 32-inch panel.",
-      "textrank_to_bart_summary": "Samsung's Bespoke line of appliances will go on sale later this year. The French-Door refrigerator is now available with two different-sized screens. There’s a model with a smaller 9-inch screen that starts at $3,999 or one with a massive 32-inch panel.",
+      "abstractive_summary": " The centerpiece of the Bespoke line remains Samsung’s 4-door French-Door refrigerator . The larger model is for families who aren’t afraid of having a small TV in their face every time they open their fridge .",
+      "textrank_to_bart_summary": " The centerpiece of the Bespoke line remains Samsung’s 4-door French-Door refrigerator . The larger model is for families who aren’t afraid of having a small TV in their face every time they open their fridge .",
       "rouge_scores": {
         "TextRank": {
           "rouge-1": {
@@ -30,48 +30,48 @@
         },
         "BART": {
           "rouge-1": {
-            "r": 0.06398537477148081,
-            "p": 0.9722222222222222,
-            "f": 0.12006860947591716
+            "r": 0.056672760511883,
+            "p": 1.0,
+            "f": 0.10726643497102525
           },
           "rouge-2": {
-            "r": 0.028484231943031537,
-            "p": 0.7368421052631579,
-            "f": 0.05484818733426641
+            "r": 0.03153611393692777,
+            "p": 0.9393939393939394,
+            "f": 0.061023621418737205
           },
           "rouge-l": {
-            "r": 0.062157221206581355,
-            "p": 0.9444444444444444,
-            "f": 0.11663807774349863
+            "r": 0.056672760511883,
+            "p": 1.0,
+            "f": 0.10726643497102525
           }
         },
         "TextRank→BART": {
           "rouge-1": {
-            "r": 0.06581352833638025,
-            "p": 0.972972972972973,
-            "f": 0.12328767004603351
+            "r": 0.056672760511883,
+            "p": 1.0,
+            "f": 0.10726643497102525
           },
           "rouge-2": {
-            "r": 0.030518819938962362,
-            "p": 0.7692307692307693,
-            "f": 0.05870841413871348
+            "r": 0.03153611393692777,
+            "p": 0.9393939393939394,
+            "f": 0.061023621418737205
           },
           "rouge-l": {
-            "r": 0.06398537477148081,
-            "p": 0.9459459459459459,
-            "f": 0.11986301251178695
+            "r": 0.056672760511883,
+            "p": 1.0,
+            "f": 0.10726643497102525
           }
         }
       },
       "classification": {
         "predictions": [
           {
-            "label": "Health",
-            "confidence": 0.2150622010231018
+            "label": "Technology",
+            "confidence": 0.21955880522727966
           }
         ],
-        "top_category": "Health",
-        "confidence": 0.2150622010231018
+        "top_category": "Technology",
+        "confidence": 0.21955880522727966
       }
     },
     {
@@ -80,8 +80,8 @@
       "published": "Sat, 29 Mar 2025 21:48:30 +0000",
       "author": "Cheyenne MacDonald",
       "extractive_summary": "We’re coming up on the 10-year anniversary of Undertale ’s release, and to mark the occasion, a 25-piece orchestra will perform the game’s soundtrack for a one-night-only concert at London's Eventim Apollo this summer. The event, dubbed The Determination Symphony , will be held on June 22, and tickets are on sale now. The Determination Symphony is described as “a musical journey from your initial fall at Mount Ebott, leading you through Froggit Village, the Snowdin Forest, Temmie Village and so much more.” Attendees (who I’m deeply envious of) will be able to watch all of that on screen while the orchestra makes its way through arrangements of the soundtrack.",
-      "abstractive_summary": "A 25-piece orchestra will perform the game’s soundtrack for a one-night-only concert at London's Eventim Apollo this summer. The event, dubbed The Determination Symphony, will be held on June 22.",
-      "textrank_to_bart_summary": "A 25-piece orchestra will perform the game’s soundtrack for a one-night-only concert. The event, dubbed The Determination Symphony, will be held on June 22. Tickets are on sale now.",
+      "abstractive_summary": " A 25-piece orchestra will perform the game's soundtrack for a one-night-only concert at London's Eventim Apollo this summer . The Determination Symphony will be held on June 22, and tickets are on sale now . It's hard to believe that Toby Fox’s Undertale is already 10 years old,",
+      "textrank_to_bart_summary": " A 25-piece orchestra will perform the game's soundtrack for a one-night-only concert at London's Eventim Apollo this summer . The Determination Symphony will be held on June 22, and tickets are on sale now . It's hard to believe that Toby Fox’s Undertale is already 10 years old,",
       "rouge_scores": {
         "TextRank": {
           "rouge-1": {
@@ -102,48 +102,48 @@
         },
         "BART": {
           "rouge-1": {
-            "r": 0.1953125,
-            "p": 0.8928571428571429,
-            "f": 0.32051281756739
+            "r": 0.3203125,
+            "p": 0.9318181818181818,
+            "f": 0.47674418223904824
           },
           "rouge-2": {
-            "r": 0.1488095238095238,
-            "p": 0.8620689655172413,
-            "f": 0.25380710408822704
+            "r": 0.23214285714285715,
+            "p": 0.8666666666666667,
+            "f": 0.3661971797659195
           },
           "rouge-l": {
-            "r": 0.1953125,
-            "p": 0.8928571428571429,
-            "f": 0.32051281756739
+            "r": 0.3203125,
+            "p": 0.9318181818181818,
+            "f": 0.47674418223904824
           }
         },
         "TextRank→BART": {
           "rouge-1": {
-            "r": 0.171875,
-            "p": 0.8461538461538461,
-            "f": 0.28571428290774165
+            "r": 0.3203125,
+            "p": 0.9318181818181818,
+            "f": 0.47674418223904824
           },
           "rouge-2": {
-            "r": 0.125,
-            "p": 0.75,
-            "f": 0.2142857118367347
+            "r": 0.23214285714285715,
+            "p": 0.8666666666666667,
+            "f": 0.3661971797659195
           },
           "rouge-l": {
-            "r": 0.171875,
-            "p": 0.8461538461538461,
-            "f": 0.28571428290774165
+            "r": 0.3203125,
+            "p": 0.9318181818181818,
+            "f": 0.47674418223904824
           }
         }
       },
       "classification": {
         "predictions": [
           {
-            "label": "Entertainment",
-            "confidence": 0.2144826352596283
+            "label": "Technology",
+            "confidence": 0.231674924492836
           }
         ],
-        "top_category": "Entertainment",
-        "confidence": 0.2144826352596283
+        "top_category": "Technology",
+        "confidence": 0.231674924492836
       }
     },
     {
@@ -152,8 +152,8 @@
       "published": "Sat, 29 Mar 2025 16:06:39 +0000",
       "author": "Cheyenne MacDonald",
       "extractive_summary": "The Nintendo Direct livestream on Thursday brought some unexpected news for Tamagotchi fans: the Tamagotchi Connection: Corner Shop game series of the early 2000s is being resurrected with a new entry, Tamagotchi Plaza . But it seems the announcement trailer left out the best part. As spotted by Tama-Palace , Bandai Namco says on the game’s official website that Tamagotchi Plaza will be compatible with the Tamagotchi Uni .",
-      "abstractive_summary": "The Tamagotchi Connection: Corner Shop game series of the early 2000s is being resurrected with a new entry. Players will be able to link their Uni devices to the game to access special perks. The game comes out on June 27.",
-      "textrank_to_bart_summary": "The Tamagotchi Connection: Corner Shop game series of the early 2000s is being resurrected with a new entry. The game's official website says it will be compatible with the TamagOTchi Uni. Players will be able to link their Uni devices to the game.",
+      "abstractive_summary": " The Tamagotchi Connection: Corner Shop game series of the early 2000s is being resurrected with a new entry . Players will be able to link their Uni devices to the game to access special perks . The game comes out on June 27 .",
+      "textrank_to_bart_summary": " The Tamagotchi Connection: Corner Shop game series of the early 2000s is being resurrected with a new entry . Players will be able to link their Uni devices to the game to access special perks . The game comes out on June 27 .",
       "rouge_scores": {
         "TextRank": {
           "rouge-1": {
@@ -191,31 +191,31 @@
         },
         "TextRank→BART": {
           "rouge-1": {
-            "r": 0.17032967032967034,
-            "p": 0.9117647058823529,
-            "f": 0.2870370343844308
+            "r": 0.18681318681318682,
+            "p": 0.9714285714285714,
+            "f": 0.3133640525940241
           },
           "rouge-2": {
-            "r": 0.11923076923076924,
-            "p": 0.7560975609756098,
-            "f": 0.20598006409200784
+            "r": 0.13076923076923078,
+            "p": 0.85,
+            "f": 0.22666666435555557
           },
           "rouge-l": {
-            "r": 0.16483516483516483,
-            "p": 0.8823529411764706,
-            "f": 0.2777777751251715
+            "r": 0.18681318681318682,
+            "p": 0.9714285714285714,
+            "f": 0.3133640525940241
           }
         }
       },
       "classification": {
         "predictions": [
           {
-            "label": "Entertainment",
-            "confidence": 0.22230586409568787
+            "label": "Technology",
+            "confidence": 0.22325646877288818
           }
         ],
-        "top_category": "Entertainment",
-        "confidence": 0.22230586409568787
+        "top_category": "Technology",
+        "confidence": 0.22325646877288818
       }
     },
     {
@@ -224,8 +224,8 @@
       "published": "Sat, 29 Mar 2025 15:40:08 +0000",
       "author": "Jeff Dunn",
       "extractive_summary": "Amazon’s latest sales event is underway. The so-called Spring Sale runs through March 31, and while it mostly focuses on things like apparel and outdoor goods, it still includes a handful of discounts on electronics. Per usual with these big Amazon events, most of those aren’t anything special.",
-      "abstractive_summary": "Amazon’s Spring Sale runs through March 31. While it mostly focuses on apparel and outdoor goods, it still includes a handful of discounts on electronics. We’ve rounded up a few actually decent tech deals that are available now and priced below $50.",
-      "textrank_to_bart_summary": "Amazon’s Spring Sale runs through March 31. While it mostly focuses on apparel and outdoor goods, it still includes a handful of discounts on electronics. We've rounded up a few actually decent tech deals that are available now and priced below $50.",
+      "abstractive_summary": " The PowerConf C200 is our favorite webcam for those on a tighter budget due to its crisp video quality, easy setup, solid microphones and built-in privacy cover . Some of the discounts below have technically been live for a few days . The offers include several devices we recommend in our buying guides .",
+      "textrank_to_bart_summary": " The PowerConf C200 is our favorite webcam for those on a tighter budget due to its crisp video quality, easy setup, solid microphones and built-in privacy cover . Some of the discounts below have technically been live for a few days . The offers include several devices we recommend in our buying guides .",
       "rouge_scores": {
         "TextRank": {
           "rouge-1": {
@@ -246,48 +246,48 @@
         },
         "BART": {
           "rouge-1": {
-            "r": 0.07708779443254818,
-            "p": 0.9473684210526315,
-            "f": 0.1425742560340359
+            "r": 0.09850107066381156,
+            "p": 0.9787234042553191,
+            "f": 0.1789883251866796
           },
           "rouge-2": {
-            "r": 0.043037974683544304,
-            "p": 0.8292682926829268,
-            "f": 0.081829120602235
+            "r": 0.056962025316455694,
+            "p": 0.9,
+            "f": 0.10714285602324264
           },
           "rouge-l": {
-            "r": 0.07708779443254818,
-            "p": 0.9473684210526315,
-            "f": 0.1425742560340359
+            "r": 0.09850107066381156,
+            "p": 0.9787234042553191,
+            "f": 0.1789883251866796
           }
         },
         "TextRank→BART": {
           "rouge-1": {
-            "r": 0.07708779443254818,
-            "p": 0.9473684210526315,
-            "f": 0.1425742560340359
+            "r": 0.09850107066381156,
+            "p": 0.9787234042553191,
+            "f": 0.1789883251866796
           },
           "rouge-2": {
-            "r": 0.043037974683544304,
-            "p": 0.8292682926829268,
-            "f": 0.081829120602235
+            "r": 0.056962025316455694,
+            "p": 0.9,
+            "f": 0.10714285602324264
           },
           "rouge-l": {
-            "r": 0.07708779443254818,
-            "p": 0.9473684210526315,
-            "f": 0.1425742560340359
+            "r": 0.09850107066381156,
+            "p": 0.9787234042553191,
+            "f": 0.1789883251866796
           }
         }
       },
       "classification": {
         "predictions": [
           {
-            "label": "Health",
-            "confidence": 0.21560920774936676
+            "label": "Technology",
+            "confidence": 0.23198458552360535
           }
         ],
-        "top_category": "Health",
-        "confidence": 0.21560920774936676
+        "top_category": "Technology",
+        "confidence": 0.23198458552360535
       }
     },
     {
@@ -296,8 +296,8 @@
       "published": "Sat, 29 Mar 2025 15:35:12 +0000",
       "author": "Amy Skorheim",
       "extractive_summary": "Food is probably the third most-discussed topic in Engadget’s Slack rooms. Having more than a few cuisine-obsessed folk on staff means when there’s an opportunity to review a new bit of cooking tech, we jump at the chance. Right now, thanks to Amazon’s Spring Sale , a long list of the kitchen tech we’ve covered is on sale.",
-      "abstractive_summary": "Breville Juice Fountain Plus is on sale for $140 ($40 off) on Amazon. The powerful Juice Fountain impressed us with its extraction abilities. It takes up a good amount of space, but can extract an impressive amount of juice.",
-      "textrank_to_bart_summary": "Amazon's Spring Sale has a long list of kitchen tech on sale. We're seeing discounts on brands like KitchenAid, Breville, Instant Pot and more. If it's time to update your meal prep situation or invest in a time saver, check out the best deals.",
+      "abstractive_summary": " The best Amazon Spring Sale deals on air fryers, Instant Pots and more Breville Juice Fountain Plus for $140 ($40 off) The powerful Juice Fountain impressed us with its extraction abilities .",
+      "textrank_to_bart_summary": " The best Amazon Spring Sale deals on air fryers, Instant Pots and more Breville Juice Fountain Plus for $140 ($40 off) The powerful Juice Fountain impressed us with its extraction abilities .",
       "rouge_scores": {
         "TextRank": {
           "rouge-1": {
@@ -318,49 +318,102 @@
         },
         "BART": {
           "rouge-1": {
-            "r": 0.06500956022944551,
+            "r": 0.05353728489483748,
             "p": 1.0,
-            "f": 0.12208258413197143
+            "f": 0.10163339286471391
           },
           "rouge-2": {
-            "r": 0.03128258602711158,
-            "p": 0.8333333333333334,
-            "f": 0.06030150684025152
+            "r": 0.029197080291970802,
+            "p": 0.9655172413793104,
+            "f": 0.05668016137350637
           },
           "rouge-l": {
-            "r": 0.06309751434034416,
-            "p": 0.9705882352941176,
-            "f": 0.11849191985908093
+            "r": 0.05353728489483748,
+            "p": 1.0,
+            "f": 0.10163339286471391
           }
         },
         "TextRank→BART": {
           "rouge-1": {
-            "r": 0.07265774378585087,
-            "p": 0.926829268292683,
-            "f": 0.13475177170143607
+            "r": 0.05353728489483748,
+            "p": 1.0,
+            "f": 0.10163339286471391
           },
           "rouge-2": {
-            "r": 0.03336809176225235,
-            "p": 0.7441860465116279,
-            "f": 0.06387225466757106
+            "r": 0.029197080291970802,
+            "p": 0.9655172413793104,
+            "f": 0.05668016137350637
           },
           "rouge-l": {
-            "r": 0.07265774378585087,
-            "p": 0.926829268292683,
-            "f": 0.13475177170143607
+            "r": 0.05353728489483748,
+            "p": 1.0,
+            "f": 0.10163339286471391
           }
         }
       },
       "classification": {
         "predictions": [
           {
-            "label": "Health",
-            "confidence": 0.21493174135684967
+            "label": "Technology",
+            "confidence": 0.22211435437202454
           }
         ],
-        "top_category": "Health",
-        "confidence": 0.21493174135684967
+        "top_category": "Technology",
+        "confidence": 0.22211435437202454
       }
     }
-  ]
+  ],
+  "average_scores": {
+    "TextRank": {
+      "rouge-1": {
+        "f": 0.3576454900678482,
+        "p": 1.0,
+        "r": 0.2517914994890399
+      },
+      "rouge-2": {
+        "f": 0.3018370860348761,
+        "p": 1.0,
+        "r": 0.21219844885563802
+      },
+      "rouge-l": {
+        "f": 0.3576454900678482,
+        "p": 1.0,
+        "r": 0.2517914994890399
+      }
+    },
+    "BART": {
+      "rouge-1": {
+        "f": 0.23559927757109822,
+        "p": 0.9763940315004145,
+        "r": 0.14316736057674376
+      },
+      "rouge-2": {
+        "f": 0.16354209658739224,
+        "p": 0.9043155694879832,
+        "r": 0.09612146149148845
+      },
+      "rouge-l": {
+        "f": 0.23559927757109822,
+        "p": 0.9763940315004145,
+        "r": 0.14316736057674376
+      }
+    },
+    "TextRank→BART": {
+      "rouge-1": {
+        "f": 0.23559927757109822,
+        "p": 0.9763940315004145,
+        "r": 0.14316736057674376
+      },
+      "rouge-2": {
+        "f": 0.16354209658739224,
+        "p": 0.9043155694879832,
+        "r": 0.09612146149148845
+      },
+      "rouge-l": {
+        "f": 0.23559927757109822,
+        "p": 0.9763940315004145,
+        "r": 0.14316736057674376
+      }
+    }
+  }
 }

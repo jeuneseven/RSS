@@ -1,18 +1,22 @@
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 import numpy as np
-import feedparser
-import traceback
-from utils import get_entry_content, split_into_sentences
-from sklearn.metrics.pairwise import cosine_similarity
-from sentence_transformers import SentenceTransformer
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+from typing import Dict, List, Any, Union, Optional
+
+# Ensure common utilities are available
+from utils import clean_html_text
 
 
 class BERTTextClassifier:
-    def __init__(self, model_name="distilbert-base-uncased", num_labels=5, labels=None):
+    def __init__(self, model_name: str = "distilbert-base-uncased", num_labels: int = 5, labels: Optional[List[str]] = None):
         """
         Initialize BERT text classifier with custom labels
         Uses DistilBERT for efficient processing on CPU
+
+        Args:
+            model_name: Name of the pre-trained model to use
+            num_labels: Number of classification labels
+            labels: List of label names (defaults to common categories if None)
         """
         self.labels = labels or [
             "Technology", "Business", "Science", "Entertainment", "Health"]
@@ -21,10 +25,10 @@ class BERTTextClassifier:
                 f"Number of labels ({len(self.labels)}) must match num_labels ({num_labels})")
 
         # Force CPU usage for Intel i9 compatibility
-        self.device = torch.device("cpu")  # Your Intel i9 doesn't have CUDA
-        print(f"Using device: {self.device}")
+        self.device = torch.device("cpu")
+        print(f"Using device: {self.device} for text classification")
 
-        # Use a more lightweight model for CPU inference
+        # Use a lightweight model for CPU inference
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModelForSequenceClassification.from_pretrained(
             model_name,
@@ -37,23 +41,31 @@ class BERTTextClassifier:
         # Set model to inference mode
         self.model.eval()
 
-    def classify(self, text, threshold=0.3):
+    def classify(self, text: str, threshold: float = 0.3) -> Dict[str, Any]:
         """
         Classify text into predefined categories using BERT
 
         Args:
-            text (str): Text to classify
-            threshold (float): Minimum confidence threshold for predictions
+            text: Text to classify
+            threshold: Minimum confidence threshold for predictions
 
         Returns:
-            dict: Classification results with predictions and confidence scores
+            Dictionary with classification results, predictions and confidence scores
         """
         if not text or len(text.strip()) == 0:
             return {"error": "No content available to classify"}
 
+        # Clean the text first
+        clean_text = clean_html_text(text)
+
         # Tokenize input text
         inputs = self.tokenizer(
-            text, truncation=True, max_length=512, padding="max_length", return_tensors="pt")
+            clean_text,
+            truncation=True,
+            max_length=512,
+            padding="max_length",
+            return_tensors="pt"
+        )
         inputs = {k: v.to(self.device) for k, v in inputs.items()}
 
         # Perform inference
@@ -72,8 +84,10 @@ class BERTTextClassifier:
         # If no predictions meet threshold, use the highest confidence one
         if not predictions:
             max_idx = np.argmax(probabilities)
-            predictions.append(
-                {"label": self.labels[max_idx], "confidence": float(probabilities[max_idx])})
+            predictions.append({
+                "label": self.labels[max_idx],
+                "confidence": float(probabilities[max_idx])
+            })
 
         # Sort by confidence
         predictions.sort(key=lambda x: x["confidence"], reverse=True)
@@ -88,26 +102,54 @@ class BERTTextClassifier:
 class ExtractiveSummarizer:
     """
     Extractive summarizer using sentence embeddings and cosine similarity
+    This is an alternative summarization approach that can be used if sentence-transformers is installed
     """
 
-    def __init__(self):
-        # Use a lightweight model for CPU inference
-        self.model = SentenceTransformer('all-MiniLM-L6-v2')
+    def __init__(self, model_name: str = 'all-MiniLM-L6-v2'):
+        """
+        Initialize with a lightweight sentence transformer model
 
-    def summarize(self, text, top_n=3):
+        Args:
+            model_name: Name of the sentence transformer model to use
+        """
+        try:
+            from sentence_transformers import SentenceTransformer
+            self.model = SentenceTransformer(model_name)
+            print(f"Initialized ExtractiveSummarizer with model: {model_name}")
+            self.initialized = True
+        except ImportError:
+            print(
+                "Warning: sentence-transformers not installed. ExtractiveSummarizer will not function.")
+            print("Install with: pip install sentence-transformers")
+            self.initialized = False
+
+    def summarize(self, text: str, top_n: int = 3) -> Dict[str, Any]:
         """
         Generate extractive summary using sentence embedding similarity
 
         Args:
-            text (str): Text to summarize
-            top_n (int): Number of sentences to extract
+            text: Text to summarize
+            top_n: Number of sentences to extract
 
         Returns:
-            dict: Summary information including selected sentences and weights
+            Dictionary with summary information including selected sentences and weights
         """
-        sentences = split_into_sentences(text)
+        if not self.initialized:
+            return {"error": "SentenceTransformer not initialized. Install sentence-transformers package."}
+
+        from sklearn.metrics.pairwise import cosine_similarity
+        import nltk
+        nltk.download('punkt', quiet=True)
+
+        # Split text into sentences
+        sentences = nltk.sent_tokenize(text)
+
         if len(sentences) <= top_n:
-            return {"summary": " ".join(sentences), "weights": [1.0] * len(sentences)}
+            return {
+                "summary": text,
+                "weights": [1.0] * len(sentences),
+                "indices": list(range(len(sentences)))
+            }
 
         # Generate embeddings for all sentences
         embeddings = self.model.encode(sentences)
@@ -119,7 +161,11 @@ class ExtractiveSummarizer:
         similarities = cosine_similarity([doc_embedding], embeddings)[0]
 
         # Select top N sentences
-        top_indices = np.argsort(similarities)[-top_n:][::-1]
+        top_indices = np.argsort(similarities)[-top_n:]
+
+        # Sort indices by original order to maintain narrative flow
+        top_indices.sort()
+
         summary_sentences = [sentences[i] for i in top_indices]
 
         # Normalize similarity scores to weights
@@ -132,95 +178,3 @@ class ExtractiveSummarizer:
             "weights": norm_weights.tolist(),
             "indices": top_indices.tolist()
         }
-
-
-def classify_and_summarize_entries(feed_entries, custom_labels=None):
-    """
-    Process RSS feed entries with classification and summarization
-
-    Args:
-        feed_entries: List of feed entries
-        custom_labels: Optional custom classification labels
-
-    Returns:
-        list: Processed entries with classification and summary
-    """
-    labels = custom_labels or ["Technology",
-                               "Business", "Science", "Entertainment", "Health"]
-    classifier = BERTTextClassifier(num_labels=len(labels), labels=labels)
-    summarizer = ExtractiveSummarizer()
-
-    results = []
-    for entry in feed_entries:
-        content = get_entry_content(entry)
-        classification = classifier.classify(content)
-        summary = summarizer.summarize(content)
-
-        entry_result = {
-            "title": entry.get("title", "No title"),
-            "link": entry.get("link", ""),
-            "published": entry.get("published", ""),
-            "classification": classification,
-            "summary": summary
-        }
-        results.append(entry_result)
-
-    return results
-
-
-def process_rss_feed_with_classification_and_summary(file_path='rss.xml', classify=True, custom_labels=None):
-    """
-    Process RSS feed with classification and summarization
-
-    Args:
-        file_path (str): Path to RSS feed
-        classify (bool): Whether to classify entries
-        custom_labels (list): Optional custom labels
-
-    Returns:
-        dict: Processing results
-    """
-    try:
-        print(f"Parsing RSS file: {file_path}")
-        feed = feedparser.parse(file_path)
-
-        if len(feed.entries) == 0:
-            print("No articles found.")
-            return {"status": "error", "message": "No articles found"}
-
-        results = {
-            "status": "success",
-            "feed_title": feed.feed.get('title', 'No title'),
-            "entries": []
-        }
-
-        if classify:
-            print("\nClassifying and summarizing articles...")
-            processed = classify_and_summarize_entries(
-                feed.entries, custom_labels)
-
-            for entry in processed:
-                print(f"\nTitle: {entry['title']}")
-                print(f"Top category: {entry['classification']['top_category']} "
-                      f"(Confidence: {entry['classification']['confidence']:.4f})")
-                print(f"Summary: {entry['summary']['summary']}")
-                results["entries"].append(entry)
-        else:
-            for entry in feed.entries:
-                results["entries"].append({
-                    "title": entry.get('title', 'No title'),
-                    "link": entry.get('link', ''),
-                    "published": entry.get('published', '')
-                })
-
-        return results
-
-    except Exception as e:
-        print(f"Error processing RSS: {e}")
-        traceback.print_exc()
-        return {"status": "error", "message": str(e)}
-
-
-if __name__ == "__main__":
-    results = process_rss_feed_with_classification_and_summary()
-    print(f"\nProcessed {len(results['entries'])} articles")
