@@ -67,11 +67,11 @@
         "predictions": [
           {
             "label": "Technology",
-            "confidence": 0.21955880522727966
+            "confidence": 0.22060418128967285
           }
         ],
         "top_category": "Technology",
-        "confidence": 0.21955880522727966
+        "confidence": 0.22060418128967285
       }
     },
     {
@@ -138,12 +138,12 @@
       "classification": {
         "predictions": [
           {
-            "label": "Technology",
-            "confidence": 0.231674924492836
+            "label": "Health",
+            "confidence": 0.22883503139019012
           }
         ],
-        "top_category": "Technology",
-        "confidence": 0.231674924492836
+        "top_category": "Health",
+        "confidence": 0.22883503139019012
       }
     },
     {
@@ -210,12 +210,12 @@
       "classification": {
         "predictions": [
           {
-            "label": "Technology",
-            "confidence": 0.22325646877288818
+            "label": "Health",
+            "confidence": 0.22795470058918
           }
         ],
-        "top_category": "Technology",
-        "confidence": 0.22325646877288818
+        "top_category": "Health",
+        "confidence": 0.22795470058918
       }
     },
     {
@@ -282,12 +282,12 @@
       "classification": {
         "predictions": [
           {
-            "label": "Technology",
-            "confidence": 0.23198458552360535
+            "label": "Health",
+            "confidence": 0.21933682262897491
           }
         ],
-        "top_category": "Technology",
-        "confidence": 0.23198458552360535
+        "top_category": "Health",
+        "confidence": 0.21933682262897491
       }
     },
     {
@@ -354,12 +354,12 @@
       "classification": {
         "predictions": [
           {
-            "label": "Technology",
-            "confidence": 0.22211435437202454
+            "label": "Health",
+            "confidence": 0.2180698961019516
           }
         ],
-        "top_category": "Technology",
-        "confidence": 0.22211435437202454
+        "top_category": "Health",
+        "confidence": 0.2180698961019516
       }
     }
   ],
