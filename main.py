@@ -1,10 +1,12 @@
+# main.py
 import argparse
 import json
 import traceback
 from typing import Dict, Any, List, Optional
 
 # Import core functionalities
-from summarizer import process_rss_feed, calculate_average_rouge_scores
+from summarization import process_rss_feed, calculate_average_rouge_scores
+from summarizer.summarizer_factory import SummarizerFactory
 from classifier import BERTTextClassifier
 from utils import get_entry_content, clean_html_text
 
@@ -20,47 +22,100 @@ except LookupError:
 def process_rss_feed_enhanced(
     file_path: str = 'rss.xml',
     max_entries: int = 5,
-    textrank_sentences: int = 3,
-    hybrid_textrank_sentences: int = 10,
+    extractive_method: str = "textrank",
+    abstractive_method: str = "bart",
+    hybrid_method: str = "textrank-bart",
+    extractive_sentences: int = 3,
+    hybrid_extractive_sentences: int = 10,
     summarize: bool = True,
     classify: bool = True,
-    custom_labels: Optional[List[str]] = None
+    custom_labels: Optional[List[str]] = None,
+    custom_summarizers: Optional[Dict[str, Any]] = None
 ) -> Dict[str, Any]:
     """
     Enhanced RSS feed processor that combines both summarization and classification
+    with support for different summarization algorithms
 
     Args:
         file_path (str): Path to the RSS feed file
         max_entries (int): Maximum number of entries to process
-        textrank_sentences (int): Number of sentences for TextRank summarization
-        hybrid_textrank_sentences (int): Number of sentences for the TextRank phase in hybrid summarization
+        extractive_method (str): Method for extractive summarization
+        abstractive_method (str): Method for abstractive summarization
+        hybrid_method (str): Method for hybrid summarization
+        extractive_sentences (int): Number of sentences for extractive summarization
+        hybrid_extractive_sentences (int): Number of sentences for the extractive phase in hybrid summarization
         summarize (bool): Whether to generate summaries
         classify (bool): Whether to classify the entries
         custom_labels (list): Optional list of custom labels for classification
+        custom_summarizers (dict): Optional dictionary with custom summarizer instances
 
     Returns:
         dict: Processing results
     """
     try:
+        # Get available summarizers
+        available_summarizers = SummarizerFactory.get_available_summarizers()
+
         print(f"RSS Feed Processor")
         print(f"=================")
         print(f"Feed file: {file_path}")
         print(f"Maximum entries: {max_entries}")
-        print(f"TextRank sentences: {textrank_sentences}")
-        print(f"Hybrid TextRank sentences: {hybrid_textrank_sentences}")
-        print(f"Summarize: {summarize}")
-        print(f"Classify: {classify}")
+
+        if summarize:
+            print(f"Summarization enabled:")
+            print(f"  Extractive method: {extractive_method}")
+            print(f"  Abstractive method: {abstractive_method}")
+            print(f"  Hybrid method: {hybrid_method}")
+            print(f"  Extractive sentences: {extractive_sentences}")
+            print(
+                f"  Hybrid extractive sentences: {hybrid_extractive_sentences}")
+
+            print(f"\nAvailable summarizers:")
+            print(
+                f"  Extractive: {', '.join(available_summarizers['extractive'])}")
+            print(
+                f"  Abstractive: {', '.join(available_summarizers['abstractive'])}")
+            print(f"  Hybrid: {', '.join(available_summarizers['hybrid'])}")
+        else:
+            print(f"Summarization disabled")
+
+        print(f"Classification: {classify}")
         if custom_labels:
             print(f"Custom labels: {custom_labels}")
         print(f"=================\n")
 
         # Process the feed with summarization functionality
-        results = process_rss_feed(
-            file_path=file_path,
-            max_entries=max_entries,
-            textrank_sentences=textrank_sentences,
-            hybrid_textrank_sentences=hybrid_textrank_sentences
-        )
+        if summarize:
+            results = process_rss_feed(
+                file_path=file_path,
+                max_entries=max_entries,
+                extractive_method=extractive_method,
+                abstractive_method=abstractive_method,
+                hybrid_method=hybrid_method,
+                extractive_sentences=extractive_sentences,
+                hybrid_extractive_sentences=hybrid_extractive_sentences,
+                custom_summarizers=custom_summarizers
+            )
+        else:
+            # Process without summarization (just parse the feed)
+            import feedparser
+            feed = feedparser.parse(file_path)
+
+            results = {
+                "status": "success",
+                "feed_title": feed.feed.get('title', 'No title'),
+                "entries": []
+            }
+
+            # Add basic entry info
+            for entry in feed.entries[:max_entries]:
+                entry_result = {
+                    "title": entry.get('title', 'No title'),
+                    "link": entry.get('link', ''),
+                    "published": entry.get('published', ''),
+                    "author": entry.get('author', 'Unknown'),
+                }
+                results["entries"].append(entry_result)
 
         # Skip if there's an error
         if results.get("status") != "success":
@@ -77,10 +132,11 @@ def process_rss_feed_enhanced(
             for entry in results["entries"]:
                 # Extract content from entry
                 title = entry.get("title", "")
-                # Use summary if available to save time
+
+                # Get content for classification
                 content = entry.get("extractive_summary", "")
                 if not content:
-                    # Re-create the content if not available (shouldn't happen normally)
+                    # Re-create the content if not available
                     print(
                         f"Warning: No extractive summary found for '{title}', using full content")
                     import feedparser
@@ -129,6 +185,9 @@ def main():
     Main entry point for the RSS summarizer and classifier application
     Handles command line arguments and executes the processing pipeline
     """
+    # Get available summarizers for help text
+    available_summarizers = SummarizerFactory.get_available_summarizers()
+
     parser = argparse.ArgumentParser(
         description='Process RSS feeds with multiple summarization techniques and optional classification'
     )
@@ -155,18 +214,42 @@ def main():
         help='Maximum number of entries to process (default: 5)'
     )
 
+    # Add summarization method arguments
     parser.add_argument(
-        '--textrank-sentences',
+        '--extractive',
+        type=str,
+        default='textrank',
+        choices=available_summarizers['extractive'],
+        help=f'Extractive summarization method (default: textrank, available: {", ".join(available_summarizers["extractive"])})'
+    )
+
+    parser.add_argument(
+        '--abstractive',
+        type=str,
+        default='bart',
+        choices=available_summarizers['abstractive'],
+        help=f'Abstractive summarization method (default: bart, available: {", ".join(available_summarizers["abstractive"])})'
+    )
+
+    parser.add_argument(
+        '--hybrid',
+        type=str,
+        default='textrank-bart',
+        help=f'Hybrid summarization method (default: textrank-bart, can be a combination of extractive-abstractive)'
+    )
+
+    parser.add_argument(
+        '--extractive-sentences',
         type=int,
         default=3,
-        help='Number of sentences for TextRank summarization (default: 3)'
+        help='Number of sentences for extractive summarization (default: 3)'
     )
 
     parser.add_argument(
         '--hybrid-sentences',
         type=int,
         default=10,
-        help='Number of sentences for TextRank phase in hybrid summarization (default: 10)'
+        help='Number of sentences for the extractive phase in hybrid summarization (default: 10)'
     )
 
     parser.add_argument(
@@ -201,8 +284,11 @@ def main():
     results = process_rss_feed_enhanced(
         file_path=args.feed,
         max_entries=args.max_entries,
-        textrank_sentences=args.textrank_sentences,
-        hybrid_textrank_sentences=args.hybrid_sentences,
+        extractive_method=args.extractive,
+        abstractive_method=args.abstractive,
+        hybrid_method=args.hybrid,
+        extractive_sentences=args.extractive_sentences,
+        hybrid_extractive_sentences=args.hybrid_sentences,
         summarize=not args.no_summarize,
         classify=not args.no_classify,
         custom_labels=custom_labels
@@ -212,15 +298,18 @@ def main():
     save_results_to_file(results, args.output)
 
     # Print final comparison if successful
-    if results.get("status") == "success":
+    if results.get("status") == "success" and not args.no_summarize:
         print("\n=== Summary of Average ROUGE Scores ===")
         avg_scores = results.get("average_scores", {})
 
+        # Determine the actual method names from the results
+        methods = list(avg_scores.keys()) if avg_scores else []
+
         for metric in ['rouge-1', 'rouge-2', 'rouge-l']:
             print(f"\nAverage {metric.upper()} F1 Scores:")
-            for method, scores in avg_scores.items():
-                if method in scores and metric in scores[method]:
-                    print(f"  {method}: {scores[method][metric]['f']:.4f}")
+            for method in methods:
+                if method in avg_scores and metric in avg_scores[method]:
+                    print(f"  {method}: {avg_scores[method][metric]['f']:.4f}")
 
     print("\nProcessing complete!")
 
