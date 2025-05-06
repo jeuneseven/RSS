@@ -1,4 +1,438 @@
 {
-  "status": "error",
-  "message": "Can't instantiate abstract class BaseHybridSummarizer without an implementation for abstract method 'summarize'"
+  "status": "success",
+  "feed_title": "Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics",
+  "entries": [
+    {
+      "title": "Samsung’s 2025 Bespoke appliances are going all in on AI",
+      "link": "https://www.engadget.com/home/kitchen-tech/samsungs-2025-bespoke-appliances-are-going-all-in-on-ai-020018377.html?src=rss",
+      "published": "Sun, 30 Mar 2025 02:00:18 +0000",
+      "author": "Sam Rutherford",
+      "extractive_summary": "You can even play videos from TikTok on it, if that’s what you’re into. While it doesn’t have a Peltier module, the advantage of this model is that it has different doors and hinges that don’t protrude nearly as much when open. Sam Rutherford for Engadget Moving on to laundry, Samsung says its $3,099 Bespoke AI Laundry Vented Combo is the first of its kind, as most combined washer/dryers are typically meant for ventless installations like small apartments (of course, there is a non-vented model as well).",
+      "abstractive_summary": " The centerpiece of the Bespoke line remains Samsung’s 4-door French-Door refrigerator . The larger model is for families who aren’t afraid of having a small TV in their face every time they open their fridge .",
+      "hybrid_summary": " Samsung says its $3,099 Bespoke AI Laundry Vented Combo is the first of its kind . It has a 7-inch display, cameras and sensors inside the oven that can recognize up to 80 different recipes . While in use, the washer tops out at just 38 decibels, which",
+      "rouge_scores": {
+        "Lexrank": {
+          "rouge-1": {
+            "r": 0.13528336380255943,
+            "p": 1.0,
+            "f": 0.2383252797042846
+          },
+          "rouge-2": {
+            "r": 0.08545269582909461,
+            "p": 0.9767441860465116,
+            "f": 0.1571562192875326
+          },
+          "rouge-l": {
+            "r": 0.13528336380255943,
+            "p": 1.0,
+            "f": 0.2383252797042846
+          }
+        },
+        "Bart": {
+          "rouge-1": {
+            "r": 0.056672760511883,
+            "p": 1.0,
+            "f": 0.10726643497102525
+          },
+          "rouge-2": {
+            "r": 0.03153611393692777,
+            "p": 0.9393939393939394,
+            "f": 0.061023621418737205
+          },
+          "rouge-l": {
+            "r": 0.056672760511883,
+            "p": 1.0,
+            "f": 0.10726643497102525
+          }
+        },
+        "Lexrank→bart": {
+          "rouge-1": {
+            "r": 0.07861060329067641,
+            "p": 1.0,
+            "f": 0.14576271051301354
+          },
+          "rouge-2": {
+            "r": 0.03967446592065107,
+            "p": 0.8666666666666667,
+            "f": 0.0758754855441604
+          },
+          "rouge-l": {
+            "r": 0.07678244972577697,
+            "p": 0.9767441860465116,
+            "f": 0.14237288000453896
+          }
+        }
+      },
+      "classification": {
+        "predictions": [
+          {
+            "label": "Health",
+            "confidence": 0.21998746693134308
+          }
+        ],
+        "top_category": "Health",
+        "confidence": 0.21998746693134308
+      }
+    },
+    {
+      "title": "A live orchestra will perform Undertale’s soundtrack in London to celebrate its 10th anniversary",
+      "link": "https://www.engadget.com/gaming/a-live-orchestra-will-perform-undertales-soundtrack-in-london-to-celebrate-its-10th-anniversary-214830716.html?src=rss",
+      "published": "Sat, 29 Mar 2025 21:48:30 +0000",
+      "author": "Cheyenne MacDonald",
+      "extractive_summary": "We’re coming up on the 10-year anniversary of Undertale ’s release, and to mark the occasion, a 25-piece orchestra will perform the game’s soundtrack for a one-night-only concert at London's Eventim Apollo this summer. The event, dubbed The Determination Symphony , will be held on June 22, and tickets are on sale now. The Determination Symphony is described as “a musical journey from your initial fall at Mount Ebott, leading you through Froggit Village, the Snowdin Forest, Temmie Village and so much more.” Attendees (who I’m deeply envious of) will be able to watch all of that on screen while the orchestra makes its way through arrangements of the soundtrack.",
+      "abstractive_summary": " A 25-piece orchestra will perform the game's soundtrack for a one-night-only concert at London's Eventim Apollo this summer . The Determination Symphony will be held on June 22, and tickets are on sale now . It's hard to believe that Toby Fox’s Undertale is already 10 years old,",
+      "hybrid_summary": " A 25-piece orchestra will perform the game's soundtrack for a one-night-only concert at London's Eventim Apollo this summer . The Determination Symphony will be held on June 22, and tickets are on sale now . It's hard to believe that Toby Fox’s Undertale is already 10 years old,",
+      "rouge_scores": {
+        "Lexrank": {
+          "rouge-1": {
+            "r": 0.671875,
+            "p": 1.0,
+            "f": 0.8037383129496026
+          },
+          "rouge-2": {
+            "r": 0.6369047619047619,
+            "p": 1.0,
+            "f": 0.7781818134278348
+          },
+          "rouge-l": {
+            "r": 0.671875,
+            "p": 1.0,
+            "f": 0.8037383129496026
+          }
+        },
+        "Bart": {
+          "rouge-1": {
+            "r": 0.3203125,
+            "p": 0.9318181818181818,
+            "f": 0.47674418223904824
+          },
+          "rouge-2": {
+            "r": 0.23214285714285715,
+            "p": 0.8666666666666667,
+            "f": 0.3661971797659195
+          },
+          "rouge-l": {
+            "r": 0.3203125,
+            "p": 0.9318181818181818,
+            "f": 0.47674418223904824
+          }
+        },
+        "Lexrank→bart": {
+          "rouge-1": {
+            "r": 0.3203125,
+            "p": 0.9318181818181818,
+            "f": 0.47674418223904824
+          },
+          "rouge-2": {
+            "r": 0.23214285714285715,
+            "p": 0.8666666666666667,
+            "f": 0.3661971797659195
+          },
+          "rouge-l": {
+            "r": 0.3203125,
+            "p": 0.9318181818181818,
+            "f": 0.47674418223904824
+          }
+        }
+      },
+      "classification": {
+        "predictions": [
+          {
+            "label": "Health",
+            "confidence": 0.21941326558589935
+          }
+        ],
+        "top_category": "Health",
+        "confidence": 0.21941326558589935
+      }
+    },
+    {
+      "title": "The new Tamagotchi game for Nintendo Switch will connect with Tamagotchi Uni",
+      "link": "https://www.engadget.com/gaming/nintendo/the-new-tamagotchi-game-for-nintendo-switch-will-connect-with-tamagotchi-uni-160639100.html?src=rss",
+      "published": "Sat, 29 Mar 2025 16:06:39 +0000",
+      "author": "Cheyenne MacDonald",
+      "extractive_summary": "The Nintendo Direct livestream on Thursday brought some unexpected news for Tamagotchi fans: the Tamagotchi Connection: Corner Shop game series of the early 2000s is being resurrected with a new entry, Tamagotchi Plaza . But it seems the announcement trailer left out the best part. For anyone who grew bored of the Uni and has been neglecting it, Tamagotchi Plaza seems like a pretty compelling reason to dust it off and get playing again.",
+      "abstractive_summary": " The Tamagotchi Connection: Corner Shop game series of the early 2000s is being resurrected with a new entry . Players will be able to link their Uni devices to the game to access special perks . The game comes out on June 27 .",
+      "hybrid_summary": " The Tamagotchi Connection: Corner Shop game series of the early 2000s is being resurrected . Players will be able to link their Uni devices to the game to access special perks . Some shops will include the option for local two-player .",
+      "rouge_scores": {
+        "Lexrank": {
+          "rouge-1": {
+            "r": 0.32967032967032966,
+            "p": 1.0,
+            "f": 0.49586776486578793
+          },
+          "rouge-2": {
+            "r": 0.2653846153846154,
+            "p": 0.9857142857142858,
+            "f": 0.4181818148393022
+          },
+          "rouge-l": {
+            "r": 0.32967032967032966,
+            "p": 1.0,
+            "f": 0.49586776486578793
+          }
+        },
+        "Bart": {
+          "rouge-1": {
+            "r": 0.18681318681318682,
+            "p": 0.9714285714285714,
+            "f": 0.3133640525940241
+          },
+          "rouge-2": {
+            "r": 0.13076923076923078,
+            "p": 0.85,
+            "f": 0.22666666435555557
+          },
+          "rouge-l": {
+            "r": 0.18681318681318682,
+            "p": 0.9714285714285714,
+            "f": 0.3133640525940241
+          }
+        },
+        "Lexrank→bart": {
+          "rouge-1": {
+            "r": 0.1813186813186813,
+            "p": 1.0,
+            "f": 0.3069767415874527
+          },
+          "rouge-2": {
+            "r": 0.1346153846153846,
+            "p": 0.9210526315789473,
+            "f": 0.23489932663393545
+          },
+          "rouge-l": {
+            "r": 0.1813186813186813,
+            "p": 1.0,
+            "f": 0.3069767415874527
+          }
+        }
+      },
+      "classification": {
+        "predictions": [
+          {
+            "label": "Health",
+            "confidence": 0.2182266116142273
+          }
+        ],
+        "top_category": "Health",
+        "confidence": 0.2182266116142273
+      }
+    },
+    {
+      "title": "Amazon Spring Sale tech deals under $50: The best discounts on chargers, earbuds, accessories and more",
+      "link": "https://www.engadget.com/deals/amazon-spring-sale-tech-deals-under-50-the-best-discounts-on-chargers-earbuds-accessories-and-more-091512674.html?src=rss",
+      "published": "Sat, 29 Mar 2025 15:40:08 +0000",
+      "author": "Jeff Dunn",
+      "extractive_summary": "Its USB cable is on the shorter side, and it can’t match the overall accuracy of our top pick, but it’s still a clear upgrade over a built-in laptop camera for a much lower price. Amazon Fire TV Stick HD for $20 ($15 off): This is the budget pick in our guide to the best streaming devices . This is another discount that’s been available for a few weeks, but it’s just 10 cents more the best price we’ve seen.",
+      "abstractive_summary": " The PowerConf C200 is our favorite webcam for those on a tighter budget due to its crisp video quality, easy setup, solid microphones and built-in privacy cover . Some of the discounts below have technically been live for a few days . The offers include several devices we recommend in our buying guides .",
+      "hybrid_summary": " Anker's USB cable is on the shorter side, and it can’t match the overall accuracy of our top pick, but it’s still a clear upgrade over a built-in laptop camera for a much lower price . Amazon Fire TV Stick HD is the budget pick in our guide to the best streaming devices .",
+      "rouge_scores": {
+        "Lexrank": {
+          "rouge-1": {
+            "r": 0.13276231263383298,
+            "p": 1.0,
+            "f": 0.23440453479268586
+          },
+          "rouge-2": {
+            "r": 0.09113924050632911,
+            "p": 0.972972972972973,
+            "f": 0.16666666510041583
+          },
+          "rouge-l": {
+            "r": 0.13276231263383298,
+            "p": 1.0,
+            "f": 0.23440453479268586
+          }
+        },
+        "Bart": {
+          "rouge-1": {
+            "r": 0.09850107066381156,
+            "p": 0.9787234042553191,
+            "f": 0.1789883251866796
+          },
+          "rouge-2": {
+            "r": 0.056962025316455694,
+            "p": 0.9,
+            "f": 0.10714285602324264
+          },
+          "rouge-l": {
+            "r": 0.09850107066381156,
+            "p": 0.9787234042553191,
+            "f": 0.1789883251866796
+          }
+        },
+        "Lexrank→bart": {
+          "rouge-1": {
+            "r": 0.09421841541755889,
+            "p": 0.9777777777777777,
+            "f": 0.17187499839668277
+          },
+          "rouge-2": {
+            "r": 0.060759493670886074,
+            "p": 0.9411764705882353,
+            "f": 0.1141498205016111
+          },
+          "rouge-l": {
+            "r": 0.09421841541755889,
+            "p": 0.9777777777777777,
+            "f": 0.17187499839668277
+          }
+        }
+      },
+      "classification": {
+        "predictions": [
+          {
+            "label": "Health",
+            "confidence": 0.22619034349918365
+          }
+        ],
+        "top_category": "Health",
+        "confidence": 0.22619034349918365
+      }
+    },
+    {
+      "title": "The best Amazon Spring Sale deals on kitchen tech from Ninja, Breville, KitchenAid and others",
+      "link": "https://www.engadget.com/deals/the-best-amazon-spring-sale-deals-on-kitchen-tech-from-ninja-breville-kitchenaid-and-others-092909576.html?src=rss",
+      "published": "Sat, 29 Mar 2025 15:35:12 +0000",
+      "author": "Amy Skorheim",
+      "extractive_summary": "We like that it doesn’t take up too much space, but can still cook up a decent amount of food Breville Smart Oven Air Fryer Pro for $320 ($80 off) : If you want a more traditional toaster oven design with a huge capacity, go for our premium air fryer pick. The blender has hit this price a few times over the past few months and the deal isn’t as good as the $77 it sold for at the end of last year. Instant Pot Pro Plus 9-in-1 Electric Pressure Cooker for $133 ($67 off) : We also suggest this fancier Pro Plus model in our guide to kitchen tech .",
+      "abstractive_summary": " The best Amazon Spring Sale deals on air fryers, Instant Pots and more Breville Juice Fountain Plus for $140 ($40 off) The powerful Juice Fountain impressed us with its extraction abilities .",
+      "hybrid_summary": "Breville the Smart Oven Air Fryer Pro for $320 ($80 off) The two-quart capacity is probably best for small kitchens and can crisp up food for one or two people . Instant Vortex 2QT Mini Air fryer for $50 ($10 off)",
+      "rouge_scores": {
+        "Lexrank": {
+          "rouge-1": {
+            "r": 0.1682600382409178,
+            "p": 1.0,
+            "f": 0.2880523706931033
+          },
+          "rouge-2": {
+            "r": 0.11157455683003129,
+            "p": 1.0,
+            "f": 0.20075046723715106
+          },
+          "rouge-l": {
+            "r": 0.1682600382409178,
+            "p": 1.0,
+            "f": 0.2880523706931033
+          }
+        },
+        "Bart": {
+          "rouge-1": {
+            "r": 0.05353728489483748,
+            "p": 1.0,
+            "f": 0.10163339286471391
+          },
+          "rouge-2": {
+            "r": 0.029197080291970802,
+            "p": 0.9655172413793104,
+            "f": 0.05668016137350637
+          },
+          "rouge-l": {
+            "r": 0.05353728489483748,
+            "p": 1.0,
+            "f": 0.10163339286471391
+          }
+        },
+        "Lexrank→bart": {
+          "rouge-1": {
+            "r": 0.06692160611854685,
+            "p": 1.0,
+            "f": 0.1254480274980409
+          },
+          "rouge-2": {
+            "r": 0.0364963503649635,
+            "p": 0.8974358974358975,
+            "f": 0.07014027981010117
+          },
+          "rouge-l": {
+            "r": 0.06692160611854685,
+            "p": 1.0,
+            "f": 0.1254480274980409
+          }
+        }
+      },
+      "classification": {
+        "predictions": [
+          {
+            "label": "Health",
+            "confidence": 0.22103501856327057
+          }
+        ],
+        "top_category": "Health",
+        "confidence": 0.22103501856327057
+      }
+    }
+  ],
+  "summarizers_info": {
+    "extractive": {
+      "name": "LexRank",
+      "type": "extractive",
+      "description": "Graph-based extractive summarization using LexRank algorithm",
+      "language": "english"
+    },
+    "abstractive": {
+      "name": "BART",
+      "type": "abstractive",
+      "description": "Abstractive summarization using the BART model",
+      "model_name": "sshleifer/distilbart-cnn-6-6"
+    },
+    "hybrid": {
+      "name": "BaseHybridSummarizer",
+      "type": "hybrid",
+      "description": "Base hybrid summarizer"
+    }
+  },
+  "average_scores": {
+    "Lexrank": {
+      "rouge-1": {
+        "f": 0.41207765260109286,
+        "p": 1.0,
+        "r": 0.28757020886952794
+      },
+      "rouge-2": {
+        "f": 0.3441873959784473,
+        "p": 0.987086288946754,
+        "r": 0.23809117409096645
+      },
+      "rouge-l": {
+        "f": 0.41207765260109286,
+        "p": 1.0,
+        "r": 0.28757020886952794
+      }
+    },
+    "Bart": {
+      "rouge-1": {
+        "f": 0.23559927757109822,
+        "p": 0.9763940315004145,
+        "r": 0.14316736057674376
+      },
+      "rouge-2": {
+        "f": 0.16354209658739224,
+        "p": 0.9043155694879832,
+        "r": 0.09612146149148845
+      },
+      "rouge-l": {
+        "f": 0.23559927757109822,
+        "p": 0.9763940315004145,
+        "r": 0.14316736057674376
+      }
+    },
+    "Lexrank→bart": {
+      "rouge-1": {
+        "f": 0.24536133204684765,
+        "p": 0.9819191919191919,
+        "r": 0.14827636122909268
+      },
+      "rouge-2": {
+        "f": 0.17225241845114553,
+        "p": 0.8985996665872827,
+        "r": 0.10073771034294847
+      },
+      "rouge-l": {
+        "f": 0.24468336594515275,
+        "p": 0.9772680291284942,
+        "r": 0.1479107305161128
+      }
+    }
+  }
 }

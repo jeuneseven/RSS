@@ -40,3 +40,45 @@ class BaseHybridSummarizer(BaseSummarizer):
             "extractive": str(self.extractive_summarizer) if self.extractive_summarizer else "None",
             "abstractive": str(self.abstractive_summarizer) if self.abstractive_summarizer else "None"
         }
+
+    def summarize(self, text: str, **kwargs) -> str:
+        """
+        Generate a hybrid summary by first using extractive, then abstractive methods
+
+        Args:
+            text: Input text to summarize
+            **kwargs: Additional parameters
+
+        Returns:
+            Hybrid summary
+        """
+        if not text or len(text.strip()) == 0:
+            return "No content available to summarize."
+
+        try:
+            # Step 1: Extract sentences with extractive summarizer
+            extractive_sentences = kwargs.get("extractive_sentences", 10)
+            extractive_summary = self.extractive_summarizer.summarize(
+                text, sentences_count=extractive_sentences)
+
+            # Step 2: Generate abstractive summary from the extracted sentences
+            max_length = kwargs.get("max_length", 100)
+            min_length = kwargs.get("min_length", 30)
+
+            abstractive_params = {
+                "max_length": max_length,
+                "min_length": min_length,
+                "do_sample": kwargs.get("do_sample", False),
+                "num_beams": kwargs.get("num_beams", 4),
+                "early_stopping": kwargs.get("early_stopping", True)
+            }
+
+            final_summary = self.abstractive_summarizer.summarize(
+                extractive_summary, **abstractive_params)
+
+            return final_summary
+
+        except Exception as e:
+            print(f"Error in hybrid summarization: {e}")
+            # Fallback to simple extractive summary
+            return self.extractive_summarizer.summarize(text, sentences_count=3)
