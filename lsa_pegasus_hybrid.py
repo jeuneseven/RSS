@@ -2,8 +2,8 @@
 RSS Feed Summarization and Evaluation
 
 This script analyzes articles from an RSS feed and generates three types of summaries:
-1. Extractive summaries - selects important sentences from the original text
-2. Abstractive summaries - generates new text that captures the essence of the article
+1. Extractive summaries - selects important sentences from the original text using LSA (Latent Semantic Analysis)
+2. Abstractive summaries - generates new text that captures the essence of the article using Pegasus
 3. Hybrid summaries - combines extractive and abstractive approaches
 
 Each summary type is evaluated using ROUGE and BERTScore metrics, and the results are compared.
@@ -19,8 +19,8 @@ import numpy as np
 import networkx as nx
 import torch
 from transformers import (
-    BartForConditionalGeneration,
-    BartTokenizer,
+    PegasusForConditionalGeneration,
+    PegasusTokenizer,
     BertTokenizer,
     BertModel
 )
@@ -31,6 +31,9 @@ import matplotlib.pyplot as plt
 import re
 from bs4 import BeautifulSoup
 import time
+import math
+from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
+from sklearn.decomposition import TruncatedSVD
 
 # Download necessary NLTK data
 try:
@@ -48,11 +51,11 @@ class RSSFeedSummarizer:
 
         # Initialize transformer models
         print("Loading models...")
-        # BART model for abstractive summarization
-        self.bart_tokenizer = BartTokenizer.from_pretrained(
-            'facebook/bart-large-cnn')
-        self.bart_model = BartForConditionalGeneration.from_pretrained(
-            'facebook/bart-large-cnn')
+        # Pegasus model for abstractive summarization
+        self.pegasus_tokenizer = PegasusTokenizer.from_pretrained(
+            'google/pegasus-cnn_dailymail')
+        self.pegasus_model = PegasusForConditionalGeneration.from_pretrained(
+            'google/pegasus-cnn_dailymail')
 
         # BERT model for BERTScore
         self.bert_tokenizer = BertTokenizer.from_pretrained(
@@ -133,9 +136,10 @@ class RSSFeedSummarizer:
 
         return content
 
-    def extractive_summarization(self, text, num_sentences=5):
+    def lsa_summarization(self, text, num_sentences=5, n_components=5):
         """
-        Generate an extractive summary using TextRank algorithm
+        Generate an extractive summary using Latent Semantic Analysis (LSA)
+        LSA uses SVD to identify the most semantically significant sentences in a document.
         """
         # Tokenize text into sentences
         sentences = sent_tokenize(text)
@@ -144,26 +148,41 @@ class RSSFeedSummarizer:
         if len(sentences) <= num_sentences:
             return " ".join(sentences)
 
-        # Create similarity matrix
-        similarity_matrix = np.zeros((len(sentences), len(sentences)))
+        # Create TF-IDF matrix
+        tfidf_vectorizer = TfidfVectorizer(stop_words='english')
+        tfidf_matrix = tfidf_vectorizer.fit_transform(sentences)
 
-        for i in range(len(sentences)):
-            for j in range(len(sentences)):
-                if i != j:
-                    similarity_matrix[i][j] = self._sentence_similarity(
-                        sentences[i], sentences[j])
+        # Compute the LSA (Truncated SVD)
+        # n_components is the number of "topics" or concepts to extract
+        svd = TruncatedSVD(n_components=min(
+            n_components, tfidf_matrix.shape[0]-1, tfidf_matrix.shape[1]-1))
+        svd.fit(tfidf_matrix)
 
-        # Generate graph and apply PageRank
-        nx_graph = nx.from_numpy_array(similarity_matrix)
-        scores = nx.pagerank(nx_graph)
+        # Get sentence scores for each latent topic
+        sentence_scores = np.zeros(len(sentences))
 
-        # Sort sentences by score and select top n
-        ranked_sentences = sorted(
-            ((scores[i], s) for i, s in enumerate(sentences)), reverse=True)
+        # Calculate the magnitude (importance) of each sentence
+        for i, sentence in enumerate(sentences):
+            # Get the TF-IDF vector for this sentence
+            sentence_vector = tfidf_matrix[i]
 
-        # Extract original indices for top sentences to maintain original order
-        top_indices = [sentences.index(ranked_sentences[i][1]) for i in range(
-            min(num_sentences, len(ranked_sentences)))]
+            # Calculate the score based on the sentence's representation across all topics
+            for j in range(svd.components_.shape[0]):
+                # Multiply sentence vector by the SVD components
+                topic_importance = abs(
+                    np.dot(sentence_vector.toarray()[0], svd.components_[j]))
+                # Weight by the importance of this topic (singular value)
+                sentence_scores[i] += topic_importance * \
+                    svd.singular_values_[j]
+
+        # Get the top sentences
+        ranked_sentences = [(score, i, sentences[i])
+                            for i, score in enumerate(sentence_scores)]
+        ranked_sentences.sort(reverse=True)
+
+        # Extract top sentence indices to maintain original order
+        top_indices = [item[1] for item in ranked_sentences[:min(
+            num_sentences, len(ranked_sentences))]]
         top_indices.sort()
 
         # Create summary by joining selected sentences in original order
@@ -171,40 +190,23 @@ class RSSFeedSummarizer:
 
         return summary
 
-    def _sentence_similarity(self, sent1, sent2):
+    def pegasus_summarization(self, text, max_length=150, min_length=50):
         """
-        Compute similarity between two sentences using cosine similarity
+        Generate an abstractive summary using Pegasus model
+        Pegasus is specifically designed for abstractive summarization with a
+        gap-sentences generation pre-training objective
         """
-        # Tokenize and filter words
-        words1 = [word.lower() for word in nltk.word_tokenize(sent1)
-                  if word.lower() not in self.stop_words]
-        words2 = [word.lower() for word in nltk.word_tokenize(sent2)
-                  if word.lower() not in self.stop_words]
-
-        # Create a set of all words
-        all_words = list(set(words1 + words2))
-
-        # Create word vectors
-        vector1 = [1 if word in words1 else 0 for word in all_words]
-        vector2 = [1 if word in words2 else 0 for word in all_words]
-
-        # Calculate cosine similarity
-        if not any(vector1) or not any(vector2):
-            return 0.0
-
-        return 1 - cosine_distance(vector1, vector2)
-
-    def abstractive_summarization(self, text, max_length=150, min_length=50):
-        """
-        Generate an abstractive summary using BART model
-        """
-        # Truncate text if it's too long for BART
-        input_ids = self.bart_tokenizer.encode(
-            text, truncation=True, max_length=1024, return_tensors="pt")
+        # Tokenize input text
+        inputs = self.pegasus_tokenizer(
+            text,
+            truncation=True,
+            max_length=1024,
+            return_tensors="pt"
+        )
 
         # Generate summary
-        summary_ids = self.bart_model.generate(
-            input_ids,
+        summary_ids = self.pegasus_model.generate(
+            inputs['input_ids'],
             max_length=max_length,
             min_length=min_length,
             length_penalty=2.0,
@@ -212,14 +214,16 @@ class RSSFeedSummarizer:
             early_stopping=True
         )
 
-        summary = self.bart_tokenizer.decode(
-            summary_ids[0], skip_special_tokens=True)
+        summary = self.pegasus_tokenizer.decode(
+            summary_ids[0],
+            skip_special_tokens=True
+        )
 
         return summary
 
     def hybrid_summarization(self, text, original_text, extractive_summary, abstractive_summary):
         """
-        Generate a hybrid summary that combines extractive and abstractive approaches
+        Generate a hybrid summary that combines LSA and Pegasus approaches
         to achieve higher ROUGE and BERTScore values
         """
         # Get ROUGE scores for both summaries
@@ -339,6 +343,29 @@ class RSSFeedSummarizer:
 
         return hybrid_summary
 
+    def _sentence_similarity(self, sent1, sent2):
+        """
+        Compute similarity between two sentences using cosine similarity
+        """
+        # Tokenize and filter words
+        words1 = [word.lower() for word in nltk.word_tokenize(sent1)
+                  if word.lower() not in self.stop_words]
+        words2 = [word.lower() for word in nltk.word_tokenize(sent2)
+                  if word.lower() not in self.stop_words]
+
+        # Create a set of all words
+        all_words = list(set(words1 + words2))
+
+        # Create word vectors
+        vector1 = [1 if word in words1 else 0 for word in all_words]
+        vector2 = [1 if word in words2 else 0 for word in all_words]
+
+        # Calculate cosine similarity
+        if not any(vector1) or not any(vector2):
+            return 0.0
+
+        return 1 - cosine_distance(vector1, vector2)
+
     def _evaluate_rouge(self, summary, reference):
         """
         Evaluate summary using ROUGE metrics
@@ -420,13 +447,13 @@ class RSSFeedSummarizer:
                 continue
 
             # Generate summaries
-            print("  Generating extractive summary...")
-            extractive_summary = self.extractive_summarization(content)
+            print("  Generating extractive summary using LSA...")
+            extractive_summary = self.lsa_summarization(content)
 
-            print("  Generating abstractive summary...")
-            abstractive_summary = self.abstractive_summarization(content)
+            print("  Generating abstractive summary using Pegasus...")
+            abstractive_summary = self.pegasus_summarization(content)
 
-            print("  Generating hybrid summary...")
+            print("  Generating hybrid summary (LSA + Pegasus)...")
             hybrid_summary = self.hybrid_summarization(
                 content, content, extractive_summary, abstractive_summary
             )
@@ -462,32 +489,35 @@ class RSSFeedSummarizer:
             print(f"\n  === Summary Results for Article {i+1} ===")
             print(f"  Original length: {len(content.split())} words")
             print(
-                f"  Extractive summary: {len(extractive_summary.split())} words")
+                f"  Extractive summary (LSA): {len(extractive_summary.split())} words")
             print(
-                f"  Abstractive summary: {len(abstractive_summary.split())} words")
-            print(f"  Hybrid summary: {len(hybrid_summary.split())} words")
+                f"  Abstractive summary (Pegasus): {len(abstractive_summary.split())} words")
+            print(
+                f"  Hybrid summary (LSA + Pegasus): {len(hybrid_summary.split())} words")
 
             print("\n  --- ROUGE Scores ---")
             print(
-                f"  Extractive - ROUGE-1: {rouge_extractive['rouge-1']['f']:.4f}, ROUGE-2: {rouge_extractive['rouge-2']['f']:.4f}, ROUGE-L: {rouge_extractive['rouge-l']['f']:.4f}")
+                f"  Extractive (LSA) - ROUGE-1: {rouge_extractive['rouge-1']['f']:.4f}, ROUGE-2: {rouge_extractive['rouge-2']['f']:.4f}, ROUGE-L: {rouge_extractive['rouge-l']['f']:.4f}")
             print(
-                f"  Abstractive - ROUGE-1: {rouge_abstractive['rouge-1']['f']:.4f}, ROUGE-2: {rouge_abstractive['rouge-2']['f']:.4f}, ROUGE-L: {rouge_abstractive['rouge-l']['f']:.4f}")
+                f"  Abstractive (Pegasus) - ROUGE-1: {rouge_abstractive['rouge-1']['f']:.4f}, ROUGE-2: {rouge_abstractive['rouge-2']['f']:.4f}, ROUGE-L: {rouge_abstractive['rouge-l']['f']:.4f}")
             print(
-                f"  Hybrid - ROUGE-1: {rouge_hybrid['rouge-1']['f']:.4f}, ROUGE-2: {rouge_hybrid['rouge-2']['f']:.4f}, ROUGE-L: {rouge_hybrid['rouge-l']['f']:.4f}")
+                f"  Hybrid (LSA + Pegasus) - ROUGE-1: {rouge_hybrid['rouge-1']['f']:.4f}, ROUGE-2: {rouge_hybrid['rouge-2']['f']:.4f}, ROUGE-L: {rouge_hybrid['rouge-l']['f']:.4f}")
 
             print("\n  --- BERTScore ---")
-            print(f"  Extractive - F1: {bertscore_extractive['f1']:.4f}")
-            print(f"  Abstractive - F1: {bertscore_abstractive['f1']:.4f}")
-            print(f"  Hybrid - F1: {bertscore_hybrid['f1']:.4f}")
+            print(f"  Extractive (LSA) - F1: {bertscore_extractive['f1']:.4f}")
+            print(
+                f"  Abstractive (Pegasus) - F1: {bertscore_abstractive['f1']:.4f}")
+            print(
+                f"  Hybrid (LSA + Pegasus) - F1: {bertscore_hybrid['f1']:.4f}")
 
             # Print the summaries
-            print("\n  --- Extractive Summary ---")
+            print("\n  --- Extractive Summary (LSA) ---")
             print(f"  {extractive_summary}")
 
-            print("\n  --- Abstractive Summary ---")
+            print("\n  --- Abstractive Summary (Pegasus) ---")
             print(f"  {abstractive_summary}")
 
-            print("\n  --- Hybrid Summary ---")
+            print("\n  --- Hybrid Summary (LSA + Pegasus) ---")
             print(f"  {hybrid_summary}")
 
         # Calculate and display average scores
@@ -528,14 +558,16 @@ class RSSFeedSummarizer:
         print("\n=== Average Scores Across All Articles ===")
 
         print("\n--- ROUGE Scores ---")
-        for method in ['extractive', 'abstractive', 'hybrid']:
+        for method, label in zip(['extractive', 'abstractive', 'hybrid'],
+                                 ['Extractive (LSA)', 'Abstractive (Pegasus)', 'Hybrid (LSA + Pegasus)']):
             print(
-                f"{method.capitalize()} - ROUGE-1: {avg_scores[method]['rouge-1']:.4f}, ROUGE-2: {avg_scores[method]['rouge-2']:.4f}, ROUGE-L: {avg_scores[method]['rouge-l']:.4f}")
+                f"{label} - ROUGE-1: {avg_scores[method]['rouge-1']:.4f}, ROUGE-2: {avg_scores[method]['rouge-2']:.4f}, ROUGE-L: {avg_scores[method]['rouge-l']:.4f}")
 
         print("\n--- BERTScore ---")
-        for method in ['extractive', 'abstractive', 'hybrid']:
+        for method, label in zip(['extractive', 'abstractive', 'hybrid'],
+                                 ['Extractive (LSA)', 'Abstractive (Pegasus)', 'Hybrid (LSA + Pegasus)']):
             print(
-                f"{method.capitalize()} - F1: {avg_scores[method]['bertscore']:.4f}")
+                f"{label} - F1: {avg_scores[method]['bertscore']:.4f}")
 
         return avg_scores
 
@@ -546,9 +578,9 @@ class RSSFeedSummarizer:
         """
         # Prepare data for visualization with detailed method labels
         methods = [
-            'Extractive\n(TextRank)',
-            'Abstractive\n(BART)',
-            'Hybrid\n(TextRank+BART)'
+            'Extractive\n(LSA)',
+            'Abstractive\n(Pegasus)',
+            'Hybrid\n(LSA+Pegasus)'
         ]
 
         # Calculate average ROUGE-1 F1 scores
@@ -581,7 +613,7 @@ class RSSFeedSummarizer:
 
         # Create a DataFrame for better visualization with algorithm/model info
         data = {
-            'Method': ['Extractive (TextRank)', 'Abstractive (BART)', 'Hybrid (TextRank+BART)'],
+            'Method': ['Extractive (LSA)', 'Abstractive (Pegasus)', 'Hybrid (LSA+Pegasus)'],
             'ROUGE-1': rouge1_scores,
             'ROUGE-2': rouge2_scores,
             'ROUGE-L': rougeL_scores,
@@ -655,16 +687,17 @@ class RSSFeedSummarizer:
         plt.suptitle('Comparison of Summarization Methods and Their Performance',
                      fontsize=16, fontweight='bold', y=0.98)
         plt.figtext(0.5, 0.01,
-                    'TextRank: Graph-based extractive algorithm\n'
-                    'BART: Pre-trained transformer-based abstractive model\n'
-                    'Hybrid: Adaptive combination of TextRank and BART to maximize evaluation scores',
+                    'LSA: Latent Semantic Analysis using SVD for extractive summarization\n'
+                    'Pegasus: Transformer model pre-trained with gap-sentences generation for abstractive summarization\n'
+                    'Hybrid: Adaptive combination of LSA and Pegasus to maximize evaluation scores',
                     ha='center', fontsize=11, bbox={"facecolor": "lightgrey", "alpha": 0.5, "pad": 5})
 
         plt.tight_layout(rect=[0, 0.05, 1, 0.95])
-        plt.savefig('summarization_results.png', dpi=300, bbox_inches='tight')
+        plt.savefig('lsa_pegasus_hybrid_results.png',
+                    dpi=300, bbox_inches='tight')
         plt.close()
 
-        print("\nEnhanced visualization with algorithm/model labels saved as 'summarization_results.png'")
+        print("\nEnhanced visualization with algorithm/model labels saved as 'lsa_pegasus_hybrid_results.png'")
 
 
 def main():
@@ -672,7 +705,7 @@ def main():
     Main function to run the RSS feed summarization and evaluation
     """
     # Initialize the summarizer
-    print("Initializing RSS Feed Summarizer...")
+    print("Initializing RSS Feed Summarizer with LSA and Pegasus...")
     summarizer = RSSFeedSummarizer()
 
     # Get RSS feed URL from user
