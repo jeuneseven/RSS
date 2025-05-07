@@ -4,7 +4,7 @@ Configuration settings for the RSS summarizer application
 """
 
 # File paths
-DEFAULT_RSS_PATH = "rss.xml"
+DEFAULT_RSS_PATH = "index.xml"
 DEFAULT_OUTPUT_PATH = "processed_feed.json"
 
 # Processing settings

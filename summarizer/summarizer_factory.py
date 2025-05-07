@@ -14,7 +14,7 @@ class SummarizerFactory:
         Create an extractive summarizer instance
 
         Args:
-            name: Name of the summarizer (e.g., 'textrank', 'lexrank')
+            name: Name of the summarizer (e.g., 'textrank', 'lexrank', 'lsa')
             **kwargs: Additional parameters for initialization
 
         Returns:
@@ -30,6 +30,10 @@ class SummarizerFactory:
             from summarizer.extractive.lexrank_summarizer import LexRankSummarizer
             return LexRankSummarizer(**kwargs)
 
+        elif name == 'lsa':
+            from summarizer.extractive.lsa_summarizer import LSASummarizer
+            return LSASummarizer(**kwargs)
+
         else:
             raise ValueError(f"Unknown extractive summarizer: {name}")
 
@@ -39,7 +43,7 @@ class SummarizerFactory:
         Create an abstractive summarizer instance
 
         Args:
-            name: Name of the summarizer (e.g., 'bart', 't5')
+            name: Name of the summarizer (e.g., 'bart', 't5', 'pegasus')
             **kwargs: Additional parameters for initialization
 
         Returns:
@@ -55,6 +59,10 @@ class SummarizerFactory:
             from summarizer.abstractive.t5_summarizer import T5Summarizer
             return T5Summarizer(**kwargs)
 
+        elif name == 'pegasus':
+            from summarizer.abstractive.pegasus_summarizer import PegasusSummarizer
+            return PegasusSummarizer(**kwargs)
+
         else:
             raise ValueError(f"Unknown abstractive summarizer: {name}")
 
@@ -64,7 +72,7 @@ class SummarizerFactory:
         Create a hybrid summarizer instance
 
         Args:
-            name: Name of the summarizer (e.g., 'textrank-bart', 'lexrank-t5')
+            name: Name of the summarizer (e.g., 'textrank-bart', 'lexrank-t5', 'lsa-pegasus')
             **kwargs: Additional parameters for initialization
 
         Returns:
@@ -79,6 +87,10 @@ class SummarizerFactory:
         elif name == 'lexrank-t5':
             from summarizer.hybrid.lexrank_t5_summarizer import LexRankT5Summarizer
             return LexRankT5Summarizer(**kwargs)
+
+        elif name == 'lsa-pegasus':
+            from summarizer.hybrid.lsa_pegasus_summarizer import LSAPegasusSummarizer
+            return LSAPegasusSummarizer(**kwargs)
 
         else:
             # Try to dynamically create a hybrid from components
@@ -107,7 +119,7 @@ class SummarizerFactory:
             Dictionary with summarizer types and names
         """
         return {
-            "extractive": ["textrank", "lexrank"],
-            "abstractive": ["bart", "t5"],
-            "hybrid": ["textrank-bart", "lexrank-t5"]
+            "extractive": ["textrank", "lexrank", "lsa"],
+            "abstractive": ["bart", "t5", "pegasus"],
+            "hybrid": ["textrank-bart", "lexrank-t5", "lsa-pegasus"]
         }

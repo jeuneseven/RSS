@@ -19,7 +19,7 @@ from utils import clean_html_text, get_entry_content
 
 
 def process_rss_feed(
-    file_path: str = 'rss.xml',
+    file_path: str = 'index.xml',
     max_entries: int = 5,
     extractive_method: str = "textrank",
     abstractive_method: str = "bart",

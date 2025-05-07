@@ -147,7 +147,7 @@ def evaluate_summaries(original_text, summaries):
     return results
 
 
-def process_rss_feed(file_path='rss.xml'):
+def process_rss_feed(file_path='index.xml'):
     """Process an RSS feed, summarize the first article, and evaluate with ROUGE"""
     try:
         print(f"Parsing RSS file: {file_path}")

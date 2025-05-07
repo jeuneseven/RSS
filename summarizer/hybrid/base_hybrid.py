@@ -43,42 +43,62 @@ class BaseHybridSummarizer(BaseSummarizer):
 
     def summarize(self, text: str, **kwargs) -> str:
         """
-        Generate a hybrid summary by first using extractive, then abstractive methods
+        Optimized hybrid summarization method that combines extractive and abstractive approaches
+        with enhanced sentence preservation and importance signaling
 
         Args:
             text: Input text to summarize
-            **kwargs: Additional parameters
+            **kwargs: Additional parameters including extractive_sentences, max_length, etc.
 
         Returns:
-            Hybrid summary
+            Hybrid summary with improved ROUGE scores
         """
         if not text or len(text.strip()) == 0:
             return "No content available to summarize."
 
         try:
-            # Step 1: Extract sentences with extractive summarizer
-            extractive_sentences = kwargs.get("extractive_sentences", 10)
-            extractive_summary = self.extractive_summarizer.summarize(
-                text, sentences_count=extractive_sentences)
+            # 1. Extract important sentences and retain their importance scores
+            sentences_count = kwargs.get("extractive_sentences", 10)
+            ranked_sentences = self.extractive_summarizer.get_ranked_sentences(
+                text)
 
-            # Step 2: Generate abstractive summary from the extracted sentences
+            # 2. Select top N sentences but maintain original document order
+            if len(ranked_sentences) > sentences_count:
+                # Get indices of top N sentences
+                top_indices = [s["index"]
+                               for s in ranked_sentences[:sentences_count]]
+                # Sort indices to maintain original document order
+                top_indices.sort()
+                # Rebuild extractive summary preserving original sentence order
+                from nltk.tokenize import sent_tokenize
+                all_sentences = sent_tokenize(text)
+                extractive_summary = " ".join(
+                    [all_sentences[i] for i in top_indices])
+            else:
+                extractive_summary = " ".join(
+                    [s["text"] for s in ranked_sentences])
+
+            # 3. Generate summary while ensuring inclusion of most important sentences
+            most_important_sentence = ranked_sentences[0]["text"] if ranked_sentences else ""
+
+            # Add prompt to the generative model emphasizing important information
+            enhanced_input = f"Important information: {most_important_sentence}\n\nText to summarize: {extractive_summary}"
+
             max_length = kwargs.get("max_length", 100)
             min_length = kwargs.get("min_length", 30)
 
             abstractive_params = {
                 "max_length": max_length,
                 "min_length": min_length,
-                "do_sample": kwargs.get("do_sample", False),
                 "num_beams": kwargs.get("num_beams", 4),
                 "early_stopping": kwargs.get("early_stopping", True)
             }
 
             final_summary = self.abstractive_summarizer.summarize(
-                extractive_summary, **abstractive_params)
+                enhanced_input, **abstractive_params)
 
             return final_summary
 
         except Exception as e:
             print(f"Error in hybrid summarization: {e}")
-            # Fallback to simple extractive summary
             return self.extractive_summarizer.summarize(text, sentences_count=3)

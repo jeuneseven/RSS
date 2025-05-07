@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="UTF-8"?><feed
+	xmlns="http://www.w3.org/2005/Atom"
+	xmlns:thr="http://purl.org/syndication/thread/1.0"
+	xml:lang="en-US"
+	>
+	<title type="text">The Verge</title>
+	<subtitle type="text">The Verge is about technology and how it makes us feel. Founded in 2011, we offer our audience everything from breaking news to reviews to award-winning features and investigations, on our site, in video, and in podcasts.</subtitle>
+
+	<updated>2025-05-06T23:28:13+00:00</updated>
+
+	<link rel="alternate" type="text/html" href="https://www.theverge.com" />
+	<id>https://www.theverge.com/rss/index.xml</id>
+	<link rel="self" type="application/atom+xml" href="https://www.theverge.com/rss/index.xml" />
+
+	<icon>https://platform.theverge.com/wp-content/uploads/sites/2/2025/01/verge-rss-large_80b47e.png?w=150&amp;h=150&amp;crop=1</icon>
+		<entry>
+			
+			<author>
+				<name>Tina Nguyen</name>
+			</author>
+			
+			<title type="html"><![CDATA[Senate Dems propose ban on presidents investing or endorsing crypto assets]]></title>
+			<link rel="alternate" type="text/html" href="https://www.theverge.com/news/662313/meme-coin-stablecoin-genius-act-corruption-trump" />
+			<id>https://www.theverge.com/?p=662313</id>
+			<updated>2025-05-06T19:28:13-04:00</updated>
+			<published>2025-05-06T19:28:13-04:00</published>
+			<category scheme="https://www.theverge.com" term="Crypto" /><category scheme="https://www.theverge.com" term="News" /><category scheme="https://www.theverge.com" term="Policy" /><category scheme="https://www.theverge.com" term="Tech" />
+							<summary type="html"><![CDATA[After abruptly pulling their support from what would have been the Senate’s first stablecoin regulatory bill, Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets – a bill directed at Donald Trump and his family’s current stablecoin and meme coin holdings. [&#8230;]]]></summary>
+			
+							<content type="html">
+											<![CDATA[
+
+						
+<figure>
+
+<img alt="" data-caption="" data-portal-copyright="" data-has-syndication-rights="1" src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/02/STK428_CRYPTO_B.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption></figcaption>
+</figure>
+<p class="has-text-align-none">After abruptly pulling their support from what would have been the Senate’s first stablecoin regulatory bill, Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets – a bill directed at Donald Trump and his family’s current stablecoin and meme coin holdings.</p>
+
+<p class="has-text-align-none">“Currently, people who wish to cultivate influence with the president can enrich him personally by buying cryptocurrency he owns or controls,” said Sen. Jeff Merkley (D-OR), who introduced the bill to the Senate floor, <a href="https://www.merkley.senate.gov/merkley-and-schumer-lead-the-charge-to-end-crypto-corruption-by-trump-other-elected-officials/">in a press release</a>. “This is a profoundly corrupt scheme. It endangers our national security and erodes public trust in government. Let’s end this corruption immediately.”</p>
+
+<p class="has-text-align-none">The End Crypto Corruption Act comes in response to concerns inside the Democratic party that the GENIUS Act, which previously had strong bipartisan support, was inadequate at preventing corruption. Though the Senate Banking Committee passed the bill in March with a bipartisan vote, two subsequent developments <a href="https://www.axios.com/2025/05/02/trump-stablecoin-genius-act-schumer-gillibrand">reportedly pushed the Democrats to change course</a>. First, <a href="https://www.nytimes.com/2025/05/01/us/politics/trump-cryptocurrency-usd1-dubai-conference-announcement.html">a <em>New York Times </em>report</a> last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm under the current regulatory framework. Second, <a href="https://www.theverge.com/cryptocurrency/656700/trump-contest-meme-coin">Trump announced a contest</a> in April wherein the top holders of his meme coin would win a private dinner with the president, and the top 25 holders would win an additional guided tour of the White House. According to a report from Chainalysis, the meme coin’s issuers, Official Trump, have earned $320 million from trading fees from the contest alone.</p>
+
+<p class="has-text-align-none">Though they admitted that there’s not much they can do to stop the president right now (see: no laws), Senate Republicans also <a href="https://www.nbcnews.com/politics/congress/senate-republicans-raise-red-flags-trumps-private-dinner-meme-coin-hol-rcna204293">expressed skepticism over the $TRUMP contest to NBC</a>, and at least one staunch Trump ally, Sen. Cynthia Lummis of Wyoming, offered to partner with the Democrats on efforts to regulate lawmakers holding digital assets. “Even what may appear to be ‘cringey’ with regard to meme coins, it’s legal, and what we need to do is have a regulatory framework that makes this more clear, so we don’t have this Wild West scenario,” she told NBC.</p>
+						]]>
+									</content>
+			
+					</entry>
+			<entry>
+			
+			<author>
+				<name>Umar Shakir</name>
+			</author>
+			
+			<title type="html"><![CDATA[Amazon’s Zoox issued a robotaxi software recall after a crash in Las Vegas]]></title>
+			<link rel="alternate" type="text/html" href="https://www.theverge.com/news/662321/amazon-zoox-recall-robotaxi-las-vegas-crash-software-fix" />
+			<id>https://www.theverge.com/?p=662321</id>
+			<updated>2025-05-06T19:12:14-04:00</updated>
+			<published>2025-05-06T19:12:14-04:00</published>
+			<category scheme="https://www.theverge.com" term="Amazon" /><category scheme="https://www.theverge.com" term="Autonomous Cars" /><category scheme="https://www.theverge.com" term="News" /><category scheme="https://www.theverge.com" term="Tech" /><category scheme="https://www.theverge.com" term="Transpo" />
+							<summary type="html"><![CDATA[Amazon-owned Zoox says it issued a software recall for all 270 of its vehicles after an unoccupied robotaxi in Las Vegas crashed into a passenger vehicle on April 8th, Reuters reports. The update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph [&#8230;]]]></summary>
+			
+							<content type="html">
+											<![CDATA[
+
+						
+<figure>
+
+<img alt="" data-caption="" data-portal-copyright="" data-has-syndication-rights="1" src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/05/Image-6.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption></figcaption>
+</figure>
+<p class="has-text-align-none">Amazon-owned Zoox says it issued a software recall for all 270 of its vehicles after an unoccupied robotaxi in Las Vegas crashed into a passenger vehicle on April 8th, <a href="https://www.reuters.com/technology/amazons-robotaxi-unit-zoox-recalls-vehicles-after-self-driving-las-vegas-crash-2025-05-06/"><em>Reuters</em> reports</a>. The update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph closed in on another vehicle that approaches its lane from a perpendicular driveway before stopping.</p>
+
+<p class="has-text-align-none"><a href="https://zoox.com/journal/2025-april-safety-recall-report/">In a press release on Tuesday</a>, Zoox said there was only minor damage to both vehicles and no injuries were reported. Zoox shared how the incident played out in the voluntary <a href="https://static.nhtsa.gov/odi/rcl/2025/RCLRPT-25E029-4731.PDF">safety recall report</a> it sent to the National Highway Traffic Safety Administration (NHTSA) on May 1st:</p>
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="has-text-align-none"><em>The incident involved a passenger car quickly approaching the lane where our purpose-built robotaxi was traveling. Anticipating that the passenger car would proceed forward, the Zoox robotaxi slowed down and steered to the right. Instead, the car came to a stop, fully yielding to the Zoox robotaxi and remaining in the shoulder lane. The Zoox robotaxi braked hard, but contact was unavoidable.</em></p>
+</blockquote>
+
+<p class="has-text-align-none">The report states that, prior to the update, the company says, “In situations where Zoox vehicles are operating at speeds greater than 40mph, and a vehicle incrementally encroaches from a perpendicular driveway approaching the Zoox vehicle’s lane, the Zoox vehicle may make an inaccurately confident prediction that the vehicle is going to proceed into the Zoox vehicle’s lane.” Reacting based on that inaccurate projection could cause a crash, as happened here.</p>
+
+<p class="has-text-align-none">A <a href="https://www.nhtsa.gov/?nhtsaId=25E019000">March recall notice</a> from Zoox also notes that after two incidents where its Toyota Highlander-based robotaxis performed sudden hard braking, <a href="https://www.theverge.com/2024/5/13/24155272/amazon-zoox-robotaxi-crash-motorcyclists-rear-end">causing approaching motorcyclists to rear-end them</a>, it rolled out a software update to address the problem last November.</p>
+						]]>
+									</content>
+			
+					</entry>
+			<entry>
+			
+			<author>
+				<name>Victoria Song</name>
+			</author>
+			
+			<title type="html"><![CDATA[The best fitness trackers to buy right now]]></title>
+			<link rel="alternate" type="text/html" href="https://www.theverge.com/22985108/best-fitness-tracker" />
+			<id>https://www.theverge.com/22985108/best-fitness-tracker</id>
+			<updated>2025-05-06T19:06:44-04:00</updated>
+			<published>2025-05-06T19:06:44-04:00</published>
+			<category scheme="https://www.theverge.com" term="Buying Guide" /><category scheme="https://www.theverge.com" term="Fitness" /><category scheme="https://www.theverge.com" term="Fitness Tracker Reviews" /><category scheme="https://www.theverge.com" term="Reviews" /><category scheme="https://www.theverge.com" term="Tech" /><category scheme="https://www.theverge.com" term="Wearable" />
+							<summary type="html"><![CDATA[Fitness trackers have come a long way from the simple bands that tracked steps and little else. Modern trackers can monitor everything from your heart health to how well you’ve recovered from a hard bout of training. Even flagship smartwatches, which used to be lackluster trackers, have become pretty adept workout companions. Whatever your fitness [&#8230;]]]></summary>
+			
+							<content type="html">
+											<![CDATA[
+
+						
+<figure>
+
+<img alt="" data-caption="" data-portal-copyright="Photo illustration by Alex Castro / The Verge" data-has-syndication-rights="1" src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/23336503/acastro_220321_5092_0001.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption></figcaption>
+</figure>
+<p>Fitness trackers have come a long way from the simple bands that tracked steps and little else. Modern trackers can monitor everything from your heart health to how well you’ve recovered from a hard bout of training. Even flagship smartwatches, which used to be lackluster trackers, have become pretty adept workout companions. Whatever your fitness goals are, there’s probably a fitness tracker that can help you achieve them.</p>
+
+<p>Compared to some other gadgets, wearables are incredibly personal, which means there are <a href="https://www.theverge.com/22940671/fitness-tracker-how-to-choose-specs-price-features-smartwatch">a few extra considerations</a> you’ll have to take into account before reaching for your wallet. It makes it hard to say that any one fitness tracker is the best for everyone. Thankfully, the best thing about fitness trackers in 2025 is that there’s enough variety to fit into every kind of lifestyle.&nbsp;</p>
+
+<h2 class="wp-block-heading">Featured in this article</h2>
+
+<hr class="wp-block-separator has-alpha-channel-opacity" />
+
+
+
+
+
+
+
+
+
+<div class="wp-block-vox-media-methodology-accordion"><div class="wp-block-vox-media-methodology-accordion">
+<div class="wp-block-vox-media-methodology-accordion-item"><div class="wp-block-vox-media-methodology-accordion-item">
+<p class="has-text-align-none c-methodology-accordion__item-heading">How we test fitness trackers</p>
+
+
+
+<p class="has-text-align-none c-methodology-accordion__item-content">Fitness trackers are meant to help you keep track of your health and activity. We do a mix of benchmark testing and experiential, real-life testing. That means snoozing with them, taking them out on GPS activities like runs and hikes, working up a sweat in several workouts, and comparing how they do against long-term control devices for heart rate, sleep, and GPS accuracy. Some factors we consider in our rankings are durability, performance, accuracy versus consistency in metrics, and of course, battery life.</p>
+</div></div>
+
+
+
+<div class="wp-block-vox-media-methodology-accordion-item"><div class="wp-block-vox-media-methodology-accordion-item">
+<p class="has-text-align-none c-methodology-accordion__item-heading">Audience</p>
+
+
+
+<p class="has-text-align-none c-methodology-accordion__item-content">Who is this fitness tracker for? The ideal fitness tracker for hardcore athletes will look different than the best one for casual users looking to get a few more steps in.</p>
+</div></div>
+
+
+
+<div class="wp-block-vox-media-methodology-accordion-item"><div class="wp-block-vox-media-methodology-accordion-item">
+<p class="has-text-align-none c-methodology-accordion__item-heading">Battery life</p>
+
+
+
+<p class="has-text-align-none c-methodology-accordion__item-content">A fitness tracker should be able to go at least two to three days between charges. If it’s a flagship smartwatch, it should at least offer quick charging.</p>
+</div></div>
+
+
+
+<div class="wp-block-vox-media-methodology-accordion-item"><div class="wp-block-vox-media-methodology-accordion-item">
+<p class="has-text-align-none c-methodology-accordion__item-heading">Form factor</p>
+
+
+
+<p class="has-text-align-none c-methodology-accordion__item-content">Is it a band or a smartwatch? Is it comfortable to wear 24/7?</p>
+</div></div>
+
+
+
+<div class="wp-block-vox-media-methodology-accordion-item"><div class="wp-block-vox-media-methodology-accordion-item">
+<p class="has-text-align-none c-methodology-accordion__item-heading">Metrics</p>
+
+
+
+<p class="has-text-align-none c-methodology-accordion__item-content">What metrics does this device track? We prioritize active minutes over steps and calorie burn, but health metrics like resting heart rate, VO2 Max, and sleep quality are plusses.</p>
+</div></div>
+
+
+
+<div class="wp-block-vox-media-methodology-accordion-item"><div class="wp-block-vox-media-methodology-accordion-item">
+<p class="has-text-align-none c-methodology-accordion__item-heading">Consistency</p>
+
+
+
+<p class="has-text-align-none c-methodology-accordion__item-content">Accuracy is nice, but it’s more important for measuring progress that your device delivers consistent results for heart rate, distance tracking, and steps.</p>
+</div></div>
+
+
+
+<div class="wp-block-vox-media-methodology-accordion-item"><div class="wp-block-vox-media-methodology-accordion-item">
+<p class="has-text-align-none c-methodology-accordion__item-heading">Platform</p>
+
+
+
+<p class="has-text-align-none c-methodology-accordion__item-content">Certain trackers are limited to specific phone ecosystems — others will work regardless of what your phone is. We prioritize the latter wherever possible.<br><br></p>
+</div></div>
+</div></div>
+
+<h2 class="wp-block-heading" id="YNni5E">Best fitness tracker overall</h2>
+
+<p><em><em><strong>Size:</strong>&nbsp;43mm w/ 20mm straps /&nbsp;<strong>Weight:</strong>&nbsp;29.5g for standard, 31.7g for premium /&nbsp;<strong>Battery life:</strong>&nbsp;Up to 10 days /&nbsp;<strong>Display type:</strong>&nbsp;OLED touchscreen /&nbsp;<strong>GPS:</strong>&nbsp;Five GNSS systems /&nbsp;<strong>Connectivity:</strong>&nbsp;Bluetooth, Wi-Fi /&nbsp;<strong>Water resistance:</strong>&nbsp;5ATM /&nbsp;<strong>Music storage:</strong>&nbsp;</em>N/A</em></p>
+
+<p>Hear us out: the Amazfit Active 2 is the new all-rounder on the block. Smartwatches are definitely getting more high-tech, but the Active 2 keeps the spirit of a humble fitness tracker — a good price, all the basic health features with a holistic tracking approach, and a comfy yet stylish design. At $99.99 for the standard version, and $129.99 for the premium version, you get an incredible amount of bang for your buck. </p>
+
+<p class="has-text-align-none">The hardware and design are surprisingly chic for the price. The standard version has a stainless steel case and tempered glass screen, while the premium version bumps you up to sapphire crystal and gets you an extra leather strap. The screen itself is nice and bright at 2,000 nits and you get an estimated 10 days of regular use on a single charge. (In testing, I got closer to eight to nine days as a power-user.) European users also get NFC payments. </p>
+<img src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/02/257523_Amazfit_Active_2_AKrales_0080.jpg?quality=90&#038;strip=all&#038;crop=0,10.732984293194,100,78.534031413613" alt="" title="" data-has-syndication-rights="1" data-caption="&lt;em&gt;I almost never get compliments on budget trackers. I got several while wearing the Active 2.&lt;/em&gt; | Photo by Amelia Holowaty Krales / The Verge" data-portal-copyright="Photo by Amelia Holowaty Krales / The Verge" />
+<p class="has-text-align-none">As far as health features go, you get all the basics like continuous heart rate monitoring, blood oxygen rate, heart rate variability, stress tracking, alerts for abnormally high and low heart rate, and skin temperature tracking. It’s also got a daily readiness score and detailed sleep tracking if you’re into recovery metrics. (There’s also a Zepp Aura AI chatbot if you ever want to get more in-depth insights into your recovery metrics; It costs an extra $77 yearly but it’s also totally optional.) For workouts, it supports 160 different sport types, including HYROX and a new strength training mode that automatically counts reps. The Active 2 also adds offline maps, turn-by-turn directions, the ability to connect to third-party peripherals, and Zepp Coach — an AI-powered coach that can generate custom training plans for you. Built-in GPS with five satellite systems is also included.</p>
+
+<p>I don’t have a lot to complain about. My biggest gripes are the touch screen is hard to use with sweaty fingers and the onboard AI assistant for voice commands sometimes requires you to enunciate. You do lack advanced health features, like EKGs or sleep apnea detection, but that’s not really the point of something like the Active 2. This is meant to be a classic, basic fitness tracker that happens to look like a watch — and it does that with aplomb. </p>
+
+<h5 class="wp-block-heading" id="iQzNNC"><a href="https://www.theverge.com/smartwatch-review/608342/amazfit-active-2-review-budget-smartwatch-wearables-fitness-tracker">Read my full Amazfit Active 2 review</a>.</h5>
+
+<h2 class="wp-block-heading" id="oekq80">Best fitness watch for casual users</h2>
+
+<p><em><em><strong>Sizes:</strong>&nbsp;40mm w/ 20mm straps /&nbsp;<strong>Weight:</strong>&nbsp;38g /&nbsp;<strong>Battery life:</strong>&nbsp;Up to 11 days /&nbsp;<strong>Display type:</strong>&nbsp;OLED touchscreen /&nbsp;<strong>GPS:</strong>&nbsp;All-systems GNSS /&nbsp;<strong>Connectivity:</strong>&nbsp;Bluetooth, Ant Plus /&nbsp;<strong>Water resistance:</strong>&nbsp;5ATM /&nbsp;<strong>Music storage:</strong>&nbsp;4GB (for Music Edition)</em></em></p>
+
+<p>The $250 Garmin Venu Sq 2 is the watch I recommend for anyone looking to replace their aging <a href="https://www.theverge.com/2019/9/9/20855458/fitbit-versa-2-review-fitness-tracker-smartwatch-price-specs-features">Fitbit Versa 2</a>, 3,<strong> </strong>or 4. It’s got a similar look and vibe, with a much nicer OLED display and longer battery life.</p>
+
+<p>Garmin is known for its comprehensive fitness tracking, and that’s not an exception here. Of course, you get the basics, like steps and calories burned, but you get a whole lot more, too. There’s built-in GPS for tracking walks, runs, and bike rides, as well as plenty of other sports profiles like yoga and strength training. For smart features, you get push notifications, timers, contactless payments, and a bunch of safety features like Garmin’s Incident Detection, which is its take on fall detection. (You will need to carry your phone with you, however, as this doesn’t have LTE.)</p>
+<img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/24259063/226428_Garmin_Venu_Sq_2_AKrales_0049.jpg?quality=90&#038;strip=all&#038;crop=0,10.732984293194,100,78.534031413613" alt="Garmin Venu Sq 2 showing bright clock face on woman’s wrist" title="Garmin Venu Sq 2 showing bright clock face on woman’s wrist" data-has-syndication-rights="1" data-caption="&lt;em&gt;The Garmin Venu Sq 2 has a bright, beautiful OLED display and long battery life.&lt;/em&gt; | Photo by Amelia Holowaty Krales / The Verge" data-portal-copyright="Photo by Amelia Holowaty Krales / The Verge" />
+<p>If you want the option of onboard music, you can shell out $50 extra for the Music Edition, which comes with enough storage for about 500 songs. I wouldn’t recommend it, however, as you’ll most likely have your phone on you since this isn’t a true standalone watch.</p>
+
+<p>What I like most about this watch, however, is that it’s one that you can grow with. On top of recovery metrics and sleep tracking, it also has Garmin Coach — a built-in, <em>free</em> training program for beginner and intermediate-level runners hoping to tackle a 5K, 10K, or half marathon. For health tracking, you can monitor heart rate, blood oxygen, intensity minutes (how many minutes of moderate exercise you get per week), stress, hydration, respiratory rate, and menstrual cycles. None of these existing data features are locked behind a paywall; however,&nbsp;<a href="https://www.theverge.com/news/636211/garmin-connect-plus-subscription-wearables" target="_blank" rel="noreferrer noopener">Garmin recently introduced a premium tier</a>&nbsp;that provides personalized AI-powered insights and additional features for $6.99 a month (or $69.99 a year).</p>
+
+<p>One note: there is a <a href="https://www.theverge.com/23982519/garmin-venu-3s-review-smartwatch-sleep-tracking-wearable">Venu 3</a>, which adds a newer heart rate sensor and nap detection. I liked it quite a bit, and it ticks off a lot of the right boxes — except for price. It’s $450, which puts it outside what I’d consider ideal for casual users. The other option is Garmin’s <a href="https://www.theverge.com/24107020/garmin-forerunner-165-music-review-smartwatch-wearables">Forerunner 165</a> — it’s a $249 budget training watch that’s quite similar to the Venu Sq 2 feature-wise, albeit with a sportier vibe. Basically, go with what you find on sale. I firmly believe older models are still a good choice if all you want is the fitness-tracking basics. This is especially true since newer software updates often make their way to older Garmins. Garmin users also tend to hang onto their devices for a good while. Strava’s 2023 year-end survey found that the most popular smartwatch among its users <a href="https://www.theverge.com/2024/1/3/24024332/strava-users-are-still-hangin-onto-their-old-garmins">was an eight-year-old Garmin</a>!</p>
+
+<h5 class="wp-block-heading" id="1cZJF6"><a href="https://www.theverge.com/23500640/garmin-venu-sq-2-review-smartwatch-fitness-tracker">Read my full review Garmin Venu Sq 2 review</a>.</h5>
+
+<h2 class="wp-block-heading" id="GnB1mV">Best for serious outdoor athletes</h2>
+
+<p><em><em><strong>Sizes:</strong>&nbsp;7S Pro: 42mm w/ 20mm straps; 7: 47mm w/ 22mm straps; 7X: 51mm w/ 26mm straps /&nbsp;<strong>Weight:</strong>&nbsp;7S Pro: 63g (Solar), 58g or 65g (Sapphire Solar, titanium or stainless steel); 7: 79g (Solar), 73g (Sapphire Solar); 7X: 96g (Solar), 89g (Sapphire Solar) /&nbsp;<strong>Battery life:</strong> 7S: up to 11 days, 14 w/ Solar; 7: up to 18 days, 22 days w/ solar; 7X: up to 28 days, 37 w/ solar /&nbsp;<strong>Display type:</strong>&nbsp;MIP touchscreen /&nbsp;<strong>GPS:</strong>&nbsp;All-systems GNSS and dual-frequency GPS /&nbsp;<strong>Connectivity:</strong>&nbsp;Bluetooth, Ant Plus, Wi-Fi /&nbsp;<strong>Water resistance:</strong>&nbsp;10ATM /&nbsp;<strong>Music storage:</strong>&nbsp;Up to 32GB</em></em></p>
+
+<p>Garmin’s <a href="https://www.theverge.com/22937154/garmin-fenix-7s-review-fitness-tracker-smartwatch">flagship Fenix 7 series</a> is no joke, and the Fenix 7 Pro lineup takes it up a notch. It’s got built-in multiband GPS, solar charging on all models, the option of touchscreen or button navigation, topographical maps, and oodles upon oodles of data. Plus, every Fenix 7 Pro model has a hands-free LED flashlight, an upgraded heart rate sensor, and an improved memory-in-pixel display that’s slightly easier to read in low lighting.</p>
+
+<p>Garmin wearables are also known for providing extensive in-depth metrics, and the Fenix 7 Pro lineup<strong> </strong>is no exception. You get excellent recovery metrics as well as helpful training guides and coaching programs. The best part is that Garmin doesn’t charge extra for those features. That’s good news, as these are expensive watches.</p>
+
+<p>I appreciate how quickly these Fenix 7 watches can pick up a GPS signal. That’s a must if you’re training in the dead of winter. These watches can also take a beating. All models are built to military-grade standards and feature up to 10ATM of water resistance. That means they’re more than capable of a dunk in the ocean.</p>
+<img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/24806204/236729_Garmin_Fenix_7S_Pro_AKrales_0175.jpg?quality=90&#038;strip=all&#038;crop=0,10.732984293194,100,78.534031413613" alt="A straight-on look at the Fenix 7S Pro’s flashlight at maximum brightness" title="A straight-on look at the Fenix 7S Pro’s flashlight at maximum brightness" data-has-syndication-rights="1" data-caption="&lt;em&gt;The hands-free flashlight rules!&lt;/em&gt; | Photo by Amelia Holowaty Krales / The Verge" data-portal-copyright="Photo by Amelia Holowaty Krales / The Verge" />
+<p>Although the screen is brighter, <a href="https://os.mbed.com/teams/JapanDisplayInc/wiki/MIP-reflective-color-display">MIP displays</a> still aren’t my absolute favorite — the OLED on the <a href="https://www.theverge.com/22934516/garmin-epix-2-review">Garmin Epix 2</a> and the Epix Pro<strong> </strong>are much easier on the eyes. It’s admittedly tough to pick between the Fenix 7, Fenix 7 Pro, Epix 2, and Epix Pro lineups — especially now that the Epix Pro also has great battery life, the LED flashlight, and now comes in multiple sizes. What it boils down to is whether you prioritize a brighter display, longer battery life, or price.</p>
+
+<p>Personally, I prefer the Epix Pro for better readability, but the Fenix 7 Pro is the better choice if this is your first introduction to Garmin’s platform. You’ll get better battery life, the same LED flashlight, all the same training features, and a lower starting price. (You can also check out our <a href="https://www.theverge.com/23691498/best-garmin-smartwatch-fitness-tracker-wearables">Garmin buying guide</a> if you’d like even more alternatives.)</p>
+
+<p>Technically, there’s a <a href="https://www.theverge.com/2024/8/27/24228712/garmin-fenix-8-enduro-3-smartwatch-wearables">new Fenix 8 series</a> on the block. That said, I still think the standard Fenix 7 or 7 Pro lineup is the better overall value. The <a href="https://www.theverge.com/24266434/garmin-fenix-8-review-smartwatch-wearables-fitness-tracking">Fenix 8</a> adds diving features and voice assistant capabilities, but it also ups the standard Fenix 7’s starting price of $650 by an additional $350. That’s tough to swallow, especially since retailers may offer discounts on older models to get rid of existing inventory.</p>
+
+<h5 class="wp-block-heading" id="pocjm2"><a href="https://www.theverge.com/23809801/garmin-fenix-7s-pro-review-smartwatch-wearables">Read my full Garmin Fenix 7S Pro review</a>.</h5>
+
+<h2 class="wp-block-heading" id="Tldrb0">Best non-wrist tracker</h2>
+
+<p><em><em><strong>Sizes:</strong>&nbsp;12 proprietary sizes, 4–15, sizing kit needed /&nbsp;<strong>Weight:</strong>&nbsp;4–6g (depends on size) /&nbsp;<strong>Battery life:</strong>&nbsp;Up to seven days /&nbsp;<strong>Display type:</strong>&nbsp;None /&nbsp;<strong>GPS:</strong>&nbsp;None /&nbsp;<strong>Connectivity:</strong>&nbsp;Bluetooth /&nbsp;<strong>Water resistance:</strong>&nbsp;Up to 328 feet /&nbsp;<strong>Music storage:</strong>&nbsp;None</em></em></p>
+
+<p>The vast majority of fitness trackers are worn on the wrist, but the $349 <a href="https://www.theverge.com/24268024/oura-ring-4-review-smart-rings-wearables">Oura Ring</a> isn’t. The smart ring is a good option for people who are looking for something a little more discreet. It’s also less distracting than some other wrist-based options, as it lacks a screen and doesn’t mirror push notifications from your phone.&nbsp;</p>
+
+<p>The new Oura Ring 4 isn’t functionally that much different from the previous Gen 3. It’s slimmer, features a new all-titanium design, has improved battery life, and has a new sensor algorithm that Oura says is more accurate. None of the new software features are gatekept to the Ring 4, so Gen 3 owners shouldn’t feel the need to upgrade unless their ring no longer lasts more than two days on a single charge. That said, the fourth-gen ring has an expanded size range spanning from 4 to 15. If you felt your Gen 3 was a bit snug or couldn’t find a size that fit right, you may have a better option now.</p>
+<img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25665134/247314_Oura_Ring_4_AKrales_0022.jpg?quality=90&#038;strip=all&#038;crop=0,10.732984293194,100,78.534031413613" alt="Close up of Oura Ring 4 " title="Close up of Oura Ring 4 " data-has-syndication-rights="1" data-caption="&lt;em&gt;The Oura Ring 4 has an expanded size range, spanning sizes 4 to 15.&lt;/em&gt; | Photo by Amelia Holowaty Krales / The Verge" data-portal-copyright="Photo by Amelia Holowaty Krales / The Verge" />
+<p>While smaller than your average wearable, the Oura Ring still tracks a ton of metrics, including heart rate variability, body temperature, blood oxygen, all-day heart rate monitoring, and cycle tracking. Since launching, the Oura Ring has also added activity tracking, blood oxygen levels, chronotypes to help visualize your circadian rhythms, a social feature called Circles, improved stress tracking, and cardiovascular age and capacity metrics. More recently, it’s added an AI chatbot, meal logging, and glucose tracking, though you&#8217;ll have to purchase <a href="https://ouraring.com/product/dexcom/stelo-glucose-biosensor/">a $99 Dexcom Stelo CGM</a> to take advantage of the latter. It’s rolled out a more accurate <a href="https://ouraring.com/blog/developing-ouras-latest-sleep-staging-algorithm/">sleep stages algorithm</a> as well, and the app has been entirely revamped to better organize the new features and metrics.</p>
+
+<p>The Oura Ring tracks typical metrics — such as steps and calories burned —&nbsp; but its main focus is sleep and recovery. Each day, you’re given three sets of scores for your readiness, sleep, and activity. It’s a simple, holistic look at your overall wellness and an ideal pick if you want a more hands-off experience with your data.</p>
+
+<p>If you’ve got a Samsung Galaxy Watch, you may want to consider the $399.99 <a href="https://www.theverge.com/24205156/samsung-galaxy-ring-review-smart-ring-wearables">Galaxy Ring</a>. It’s a bit more expensive than the base Oura Ring, but it doesn’t come with a subscription, and you get much better battery life when used with the Galaxy Watch. The hardware is also excellent, especially the charging case. That said, this is only an option for Android users, and even then, you don’t unlock its full potential unless you’ve got other Samsung gear. I also recommend the <a href="https://www.amazon.com/ULTRAHUMAN-AIR-Smart-Health-Tracker-Fitness/dp/B0D983R3N3">Ultrahuman Ring Air</a> for folks who don’t like the idea of Oura’s monthly subscription.</p>
+
+<p>You can read my experiences with <a href="https://www.theverge.com/2024/10/1/24259284/oura-ring-samsung-galaxy-ring-ultrahuman-ring-air-ringconn-circular-ring-evie-ring-review-wearables">a bunch of other smart rings</a>, but right now, the Oura Ring is the most polished with the best overall experience.</p>
+
+<h5 class="wp-block-heading" id="vRevUH"><a href="https://www.theverge.com/24268024/oura-ring-4-review-smart-rings-wearables">Read my full Oura Ring 4 review</a>.</h5>
+
+<h2 class="wp-block-heading" id="uc1OzU">Best fitness band</h2>
+
+<p><em><em><strong>Size:</strong>&nbsp;42mm x 24mm x 12.2mm with 16mm straps /&nbsp;<strong>Weight:</strong>&nbsp;28g /&nbsp;<strong>Battery life:</strong>&nbsp;Up to 18 days /&nbsp;<strong>Display type:</strong>&nbsp;OLED /&nbsp;<strong>GPS:</strong>&nbsp;Tethered /&nbsp;<strong>Connectivity:</strong>&nbsp;Bluetooth /&nbsp;<strong>Water resistance:</strong>&nbsp;5ATM /&nbsp;<strong>Music storage:</strong>&nbsp;None</em></em></p>
+
+<p>It’s truly hard to beat the Amazfit Band 7’s $49.99 price — doubly so since you can often find it on sale for even less. Wearing the Band 7 feels like a throwback to 2014, which is great if all you’re looking for is a simple and casual tracker that won’t break the bank.</p>
+
+<p>No one is going to compliment you on the Band 7’s design, but it’s got a handful of cute watch faces that make good use of its OLED touchscreen. And despite having an OLED display, you’ll still get roughly 14 days of battery life on a single charge. It’s also incredibly lightweight, making it a good option for sleep tracking as well.</p>
+<img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/24477148/236555_Amazfit_Band_7_AKrales_0088.jpg?quality=90&#038;strip=all&#038;crop=0,10.732984293194,100,78.534031413613" alt="Amazfit Band 7 with colorful clock face worn on woman’s wrist." title="Amazfit Band 7 with colorful clock face worn on woman’s wrist." data-has-syndication-rights="1" data-caption="&lt;em&gt;The Amazfit Band 7 won’t turn heads, but it’s the type of capable yet affordable fitness band that’s much harder to find nowadays.&lt;/em&gt; | Photo by Amelia Holowaty Krales / The Verge" data-portal-copyright="Photo by Amelia Holowaty Krales / The Verge" />
+<p>You also get an absurd number of features for the price. That includes Amazon Alexa, continuous heart rate monitoring, blood oxygen monitoring, stress tracking, advanced sleep tracking, training metrics like VO2 max and load, abnormal heart rate alerts, menstrual tracking, push notifications, find my phone, a camera remote, and even a Pomodoro timer. You’re sacrificing contactless payments and will have to settle for tethered GPS, but this is a fair tradeoff considering everything else you’re getting. It’s not the best option for hardcore fitness tracking, but this is a great option if all you’re looking to do is casually track activity and your steps.</p>
+
+<p>Amazfit’s been making surprisingly good budget trackers for a while. That said, if you’re a little wary of a lesser-known brand, the $159.95 <a href="https://www.theverge.com/23958997/fitbit-charge-6-review-fitness-tracker-side-button">Fitbit Charge 6</a> is a decent alternative. It’s pricier, but you get a lot of what Amazfit is missing. That includes Google services like YouTube Music, Google Wallet, and Google Maps. Plus, it has built-in GPS and the ability to broadcast your heart rate with some Bluetooth-compatible gym equipment.</p>
+
+<h5 class="wp-block-heading" id="WDJw0V"><a href="https://www.theverge.com/23652417/amazfit-band-7-review-budget-fitness-tracker">Read my full Amazfit Band 7 review</a>.</h5>
+
+<h2 class="wp-block-heading" id="QxUXWf">Most stylish fitness watch</h2>
+
+<p><em><em><strong>Sizes:</strong>&nbsp;37mm with 18mm straps  /&nbsp;<strong>Weight:</strong>&nbsp;45g /&nbsp;<strong>Battery life:</strong>&nbsp;Up to 39 days /&nbsp;<strong>Display type:</strong>&nbsp; OLED display /&nbsp;<strong>GPS:</strong>&nbsp;Tethered GPS /&nbsp;<strong>Connectivity:</strong>&nbsp;Bluetooth /&nbsp;<strong>Water resistance:</strong>&nbsp;5ATM /&nbsp;<strong>Music storage:</strong>&nbsp;N/A</em></em></p>
+
+<p>The $249.95 Withings ScanWatch Light is a fetching hybrid analog smartwatch. Think of it as a dressier fitness band with some Swatch-like design sensibilities. It’s got all your basics like simple push notifications, timers, and alarms. Plus, you can track steps, sleep, menstrual cycles, and GPS activities straight from the wrist. It looks spiffy on the wrist, and if you like a pop of color, Withings offers minty green and pale blue color options. It’s also got excellent battery life, with an estimated 30 days on a single charge. I got a little less in testing at around 25 days, but that’s still much better than the vast majority of flagship smartwatches. This also looks way more stylish than beefier multisport watches with similar battery life.</p>
+
+<p>As its name suggests, the Light is a pared-down version of the $349.95 ScanWatch 2. The main things you’re missing are an EKG sensor for atrial fibrillation detection, a temperature sensor, blood oxygen tracking, and an altimeter for tracking elevation. For basic fitness tracking, you don’t really need those sensors. That’s why I think the extra $100 in savings is worth it for the Light, especially since both are lacking in safety features, contactless payments, and some other bells and whistles you can get from other watches in the $350 price range. That said, if you want extras, the ScanWatch 2 also gets you a slightly more elegant look thanks to the second step-counter dial.</p>
+<img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25282433/247014_Withings_ScanWatch_2_Light_AKrales_0059.jpg?quality=90&#038;strip=all&#038;crop=0,10.732984293194,100,78.534031413613" alt="Close up of Withings ScanWatch 2" title="Close up of Withings ScanWatch 2" data-has-syndication-rights="1" data-caption="&lt;em&gt;The ScanWatch 2 is about $100 more but adds more advanced health tracking.&lt;/em&gt; | Photo by Amelia Holowaty Krales / The Verge" data-portal-copyright="Photo by Amelia Holowaty Krales / The Verge" />
+<p>Another option I like is the $179.99 <a href="https://www.theverge.com/22882401/garmin-vivomove-sport-review-fitness-tracker-smartwatch-wearables">Garmin Vivomove Sport</a>, which actually dominated this category in the past few years. It’s hard to beat the price, especially since it gets you access to Garmin’s platform. However, Garmin’s “hidden” OLED display can get washed out in bright lighting, and battery life was significantly shorter than other hybrid analog watches at around five days. Still, if you’d prefer a platform with a focus on fitness rather than wellness, the Vivomove Sport may be the better move over a Withings watch.</p>
+
+<h5 class="wp-block-heading" id="dB7TrL"><a href="https://www.theverge.com/24085043/withings-scanwatch-2-scanwatch-light-review-wearables-smartwatch">Read my full reviews of the Withings ScanWatch 2 and Light</a>.</h5>
+
+<h2 class="wp-block-heading" id="xIBcrh">Best fitness tracker for iPhone users</h2>
+
+<p><em><em><strong>Sizes:</strong>&nbsp;42mm, 46mm /&nbsp;<strong>Weight:</strong>&nbsp;29.3g (42mm), 35.3g (46mm) /&nbsp;<strong>Battery life:</strong>&nbsp;Up to 18 hours /&nbsp;<strong>Display type:</strong>&nbsp;Always-on LTPO OLED /&nbsp;<strong>GPS: </strong>Built-in GPS, plus GLONASS, Galileo, QZSS, Beidou&nbsp;/&nbsp;<strong>Connectivity:</strong>&nbsp;LTE (optional), Bluetooth, Wi-Fi /&nbsp;<strong>Water resistance:</strong>&nbsp;Up to 50 meters /&nbsp;<strong>Music storage:</strong>&nbsp;32GB</em></em></p>
+
+<p>If you’re looking for a smartwatch that does fitness well, then iPhone owners need to look no further than the $399 Apple Watch Series 10. (The LTE version costs $50 more.) This is another iterative update, but the Series 10 is a much more comfortable watch than previous models. It’s thinner and lighter, plus there’s a larger display. If you’ve got a Series 5 or older, now is a good time to upgrade.</p>
+
+<p>With watchOS 11, there’s a new suite of training features. There’s <a href="https://www.theverge.com/2024/7/15/24195983/watchos-11-preview-training-load-vitals-fitness">Training Load</a>, which gives you greater insight into how intensely you’ve been working out the past week compared to the last 28 days. There’s also a new Vitals app that flags when key metrics, like sleep duration or heart rate, may be out of whack. Plus, you can <a href="https://www.theverge.com/2024/6/13/24175506/apple-watch-watchos-11-rest-days-wearables">finally pause your rings</a> for rest days. The software update also brings some savvy updates to the Smart Stack. For example, if you’re in a noisy cafe wondering what song’s playing, the Smart Stack can now surface the Shazaam widget. It also now supports Live Activities, turning your wrist into a mini Dynamic Island. Health-wise, we also now have FDA-cleared sleep apnea detection.</p>
+
+<p>Of course, we also have to address <a href="https://www.theverge.com/24009254/apple-watch-itc-ban-patent-dispute">the Apple Watch ban</a>. As of January 18th, 2024, new Apple Watches sold in the US have the blood oxygen feature disabled due to an ongoing patent battle with medical device maker Masimo. This isn’t a huge deal for most people, as this feature isn’t that useful for most people yet, and the new sleep apnea feature exclusively uses the accelerometer rather than the blood oxygen sensor. You might want to consider a refurbished Series 7 or 8 if blood oxygen sensing is important to you, however.</p>
+
+<p>If you’re a first-time buyer, you can also opt for the second-gen <a href="https://www.theverge.com/23369207/apple-watch-se-2022-review-smartwatch">Apple Watch SE</a>. It’s slightly cheaper at $249, and while you don’t get as many features, it’s a good introduction to the ecosystem. Otherwise, if you’re the type of athlete who covets a Garmin, you may also want to consider splurging on the <a href="https://www.theverge.com/23878981/apple-watch-series-9-ultra-2-review-double-tap-precision-finding-siri">Apple Watch Ultra 2</a>. It’s more expensive at $799, but it does have the brightest screen of any Apple Watch, comes with dual-frequency GPS, has diving and hiking safety features, and is made of more durable materials. There’s also <a href="https://www.theverge.com/2024/9/19/24248380/apple-watch-ultra-2-black-smartwatch-wearables">a fetching new black color</a>.</p>
+
+<h5 class="wp-block-heading" id="ic9D8k"><a href="https://www.theverge.com/24246464/apple-watch-series-10-review-smartwatch-wearables">Read my full Apple Watch Series 10 review</a>.</h5>
+
+<h2 class="wp-block-heading" id="AsVbve">Best fitness smartwatch for Samsung phones</h2>
+
+<p><em><em><strong>Sizes:</strong>&nbsp;47mm /&nbsp;<strong>Weight:</strong>&nbsp;60.5g /&nbsp;<strong>Battery life:</strong>&nbsp;Up to 100 hours /&nbsp;<strong>Display type: </strong>Always-on OLED /&nbsp;<strong>GPS: </strong>Built-in GPS&nbsp;/&nbsp;<strong>Connectivity:</strong>&nbsp;LTE (optional), Bluetooth, Wi-Fi /&nbsp;<strong>Water resistance:</strong>&nbsp;10ATM, IP68 /&nbsp;<strong>Music storage:</strong>&nbsp;32GB</em></em></p>
+
+<p>Truthfully, the Samsung Galaxy Watch Ultra left me a bit disappointed after reviewing it — not because it’s a bad piece of hardware, but because it copies a bit too much from Apple. Even so, this is the most full-featured fitness smartwatch a Samsung phone owner can buy.</p>
+
+<p>While I prefer the <a href="https://www.theverge.com/24211888/samsung-galaxy-watch-7-review-smartwatch-wearables">Galaxy Watch 7 </a>myself, I can’t say it’s the best for fitness tracking. There was too much of a gap between it and the Ultra in my testing as far as accuracy, especially for GPS tracking. But what really sealed the deal for me was the difference in battery life. It’s simply night and day, and the Galaxy Watch 7 really struggled in this arena. (The gaps are much less egregious between the base Apple Watch and Ultra 2.)</p>
+
+<p>The caveat is, if all you want is casual fitness tracking, the Galaxy Watch 7 is the better choice for wearability. It’s just more comfortable for sleep tracking and lighter overall. Just keep in mind it lacks the Ultra’s emergency siren and shortcut button, and the screen doesn’t get quite as bright.</p>
+<img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25554228/gwultra_2.jpg?quality=90&#038;strip=all&#038;crop=0,10.732984293194,100,78.534031413613" alt="Close-up of Samsung Galaxy Watch Ultra on shoes" title="Close-up of Samsung Galaxy Watch Ultra on shoes" data-has-syndication-rights="1" data-caption="&lt;em&gt;It’s not the prettiest Samsung watch, but it is the best at fitness tracking.&lt;/em&gt; | Photo by Victoria Song / The Verge" data-portal-copyright="Photo by Victoria Song / The Verge" />
+<p>With both watches, you get a faster processor, a new 3-in-1 BioActive Sensor, some AI health features, and FDA-cleared sleep apnea detection. The newer hardware makes for a more futureproof purchase, but I found the AI health features to be hit-or-miss in practice. As always, some features, like EKGs and sleep apnea detection, are limited to Samsung owners. That makes this hard to wholeheartedly recommend this to non-Samsung Android users.</p>
+
+<p>But if the Ultra doesn’t float your boat, now is a good time to find the <a href="https://www.theverge.com/23818557/samsung-galaxy-watch-6-review-bezels-smartwatch-wearables">Galaxy Watch 6 series</a>, particularly the base models, on sale. The base Galaxy Watch 7 may have newer hardware, but as far as actual use goes, it’s not a massive update over the Watch 6. And if you’re into a physical rotating bezel, just go ahead and snag a Galaxy Watch 6 Classic.</p>
+
+<h5 class="wp-block-heading" id="AbaYyl"><a href="https://www.theverge.com/24210505/samsung-galaxy-watch-ultra-review-smartwatch-wearables">Read my full Samsung Galaxy Watch Ultra review</a>.</h5>
+
+<h2 class="wp-block-heading" id="J4WTr1">Best fitness smartwatch for Android</h2>
+
+<p><em><em><strong>Sizes:</strong>&nbsp;41mm, 45mm /&nbsp;<strong>Weight:</strong>&nbsp;31g /&nbsp;<strong>Battery life:</strong>&nbsp;Up to 24 hours /&nbsp;<strong>Display type: </strong>Always-on OLED /&nbsp;<strong>GPS: </strong>Built-in GPS&nbsp;/&nbsp;<strong>Connectivity:</strong>&nbsp;LTE (optional), Bluetooth, Wi-Fi /&nbsp;<strong>Water resistance:</strong>&nbsp;5ATM /&nbsp;<strong>Music storage:</strong>&nbsp;32GB</em></em></p>
+
+<p>With the Pixel Watch 3, Google is finally done playing catch-up.</p>
+
+<p>There are truly too many updates to call each one out individually, but overall, they fall into two buckets: refinement and expansion. The hardware is mostly the same as the Pixel Watch 2 in terms of design. However, we now have a brighter screen, smaller bezels, and a new 45mm size. The larger size is quite nice, especially if you prefer larger screens without sacrificing wearability.</p>
+
+<p>Battery life is also better. There’s a new battery-saver mode that kicks in when you hit 15 percent, and the new displays are also more power efficient. Plus, bedtime mode is automatic now, so that helps the watch last longer overnight for sleep tracking. It’s only a modest improvement over the Pixel Watch 2, but it’s dramatic compared to the original.</p>
+<img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25610300/247234_Pixel_Watch_3_AKrales_0303.jpg?quality=90&#038;strip=all&#038;crop=0,10.732984293194,100,78.534031413613" alt="Person tying shoes while wearing both sizes of the Pixel Watch 3" title="Person tying shoes while wearing both sizes of the Pixel Watch 3" data-has-syndication-rights="1" data-caption="&lt;em&gt;The Pixel Watch now comes in two sizes: 41mm (right) and 45mm (left).&lt;/em&gt; | Photo by Amelia Holowaty Krales / The Verge" data-portal-copyright="Photo by Amelia Holowaty Krales / The Verge" />
+<p>Software is where the Pixel Watch 3 makes the most updates. There are a ton of new fitness and health features, including a new running dashboard, custom running workouts, and AI-generated workout suggestions. There’s also a revamped Daily Readiness Score and a new Cardio Load metric, which gauges how intensely you’ve been exercising. If you’re located <a href="https://www.theverge.com/news/619929/google-pixel-watch-3-loss-of-pulse-fda-clerance-smartwatch">in the US</a> or Europe, you can also take advantage Google’s new Loss of Pulse feature, which calls emergency services on your behalf if it detects you no longer have a pulse.</p>
+
+<p>The Pixel Watch 3 also better integrates with Google services and the Pixel ecosystem. You can now view your Nest Doorbell or Camera feed straight from the wrist — and it’s quite handy if you get a lot of packages or guests. If you have Google TV, you can use the watch as a remote. Now that the watch has an ultra wideband chip, it can also now unlock your Pixel phone. You can also use the Recorder app to capture audio and send it straight to your Pixel phone.</p>
+
+<p>That said, some of these features now mean the Pixel Watch works best with a Pixel phone. If you’re looking for alternatives to Google and Samsung, the $299.99 <a href="https://www.theverge.com/24132998/one-plus-watch-2-review-smartwatches-wearables">OnePlus Watch 2</a> is a strong alternative. You’re giving up LTE, but it’s a handsome-looking watch with surprisingly long battery life and Google Assistant from the get-go.</p>
+
+<h5 class="wp-block-heading" id="50Vbxm"><a href="https://www.theverge.com/24239115/google-pixel-watch-3-review-smartwatch-wear-os-wearable">Read my full Google Pixel Watch 3 review</a>.</h5>
+
+<h2 class="wp-block-heading" id="4r15d2">Best for early adopters and elite athletes</h2>
+
+<p><em><em><strong>Sizes:</strong> 43mm by 28mm by 10mm<strong> </strong>/&nbsp;<strong>Weight:</strong>&nbsp;18g /&nbsp;<strong>Battery life:</strong>&nbsp;4–5 days /&nbsp;<strong>Display type: </strong>None /&nbsp;<strong>GPS: </strong>None&nbsp;/&nbsp;<strong>Connectivity:</strong>&nbsp;Bluetooth /&nbsp;<strong>Water resistance:</strong>&nbsp;Up to 10 meters /&nbsp;<strong>Music storage:</strong>&nbsp;None</em></em></p>
+
+<p>The <a href="https://www.theverge.com/22957195/whoop-review-fitness-tracker-wearables">Whoop 4.0</a> is not for the casual enthusiast. Not only does it come with an expensive monthly subscription, but the information it provides is only useful if you’re actively training for a cardio-intensive sport. If strength training is your main form of exercise, you’re better off looking elsewhere. Like the Oura Ring, this is a distraction-free tracker that specializes in sleep and recovery. The main difference is this has a more athletic bent. For instance, you’ll get way more insight into how much strain you’ve taken on in the past week.&nbsp;</p>
+
+<p>Whoop also provides <a href="https://shop.whoop.com/en-us/collections/whoopbody/?order_by=featured">a lot of novel ways to wear its tracker</a>, including in underwear and arm/knee sleeves. This makes it an appealing option if you’re one of those unicorns who needs a <em>secondary</em> tracker to supplement another form of fitness tracking. Again, this is a tracker best appreciated by people who go hard and aren’t afraid to experiment.&nbsp;Plus, Whoop recently <a href="https://www.theverge.com/2023/2/16/23602633/whoop-subscription-wearable-fitness-tracker-pricing-inflation">lowered its subscription prices</a> in certain tiers, so while it’s still expensive, it’s not <em>quite</em> as pricey as it used to be.</p>
+
+<h5 class="wp-block-heading" id="ZuYiCM"><a href="https://www.theverge.com/22957195/whoop-review-fitness-tracker-wearables">Read my full Whoop 4.0 review</a>.</h5>
+<img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/23277338/vsong_220225_5048_0008.jpg?quality=90&#038;strip=all&#038;crop=0,17.789497998152,100,78.534031413613" alt="The Whoop 4.0 in a strap, the battery pack, and the sports bra." title="The Whoop 4.0 in a strap, the battery pack, and the sports bra." data-has-syndication-rights="1" data-caption="&lt;em&gt;The Whoop 4.0 is best for elite athletes or people who don’t mind experimental trackers.&lt;/em&gt; | Photo by Victoria Song / The Verge" data-portal-copyright="Photo by Victoria Song / The Verge" />
+<p></p>
+
+<h2 class="wp-block-heading" id="what-s-coming-next"><strong>What’s coming next</strong></h2>
+
+<ul class="wp-block-list">
+<li>We’re currently testing the&nbsp;<a href="https://www.theverge.com/hands-on/612965/oneplus-watch-3-hands-on-smartwatch-wearables" target="_blank" rel="noreferrer noopener">OnePlus Watch 3</a>, which&nbsp;<a href="https://www.theverge.com/news/657170/oneplus-watch-3-price-hike-reversed" target="_blank" rel="noreferrer noopener">recently received a $20 price hike</a>&nbsp;due to ongoing “market conditions” (read: tariffs). The $349.99 smartwatch offers a proper rotating crown and a larger, brighter display than the OnePlus Watch 2. It also introduces new health features, including a wrist temperature sensor and OnePlus’ 60S Health Check-In, which gives you a quick scan of your heart rate, blood oxygen levels, mental wellness, wrist temperature, sleep quality, and vascular age when you touch a side button.</li>
+
+
+
+<li>Samsung launched the <a href="https://www.samsung.com/us/watches/galaxy-fit3/buy/galaxy-fit3-40mm-dark-gray-bluetooth-sm-r390nzaaxaa/?cid=sem-mktg-pfs-wea-us-google-na-01092025-170644-&amp;ds_e=GOOGLE-cr:0-pl:394242536-&amp;ds_c=CN~Watch+Fit3-Other_ID~n_PR~gwatch_SB~wearsmart_PH~long_KS~ba_MK~us_OB~conv_FS~lo_FF~n_BS~me_KM~exact-&amp;ds_ag=ID~n_AG~Watch+Fit3-Other_AE~mass_AT~stads_MD~h_PK~roah_PB~google_PL~sa360_CH~search_FF~n-&amp;ds_k=samsung+watch+fit3+price&amp;gad_source=1&amp;gclid=CjwKCAiA5pq-BhBuEiwAvkzVZW7T5yjl7GNz8eocs7FyMRtq6XsmYoKAPdxl2Mle9AdUBEJjDs-1QhoCsYIQAvD_BwE&amp;gclsrc=aw.ds">$59.99 Galaxy Fit 3</a> in the US on January 9th. The budget-friendly fitness band, which we’re also in the process of testing, doesn’t come with built-in GPS like Samsung’s <a href="https://www.theverge.com/24211888/samsung-galaxy-watch-7-review-smartwatch-wearables">pricier Galaxy Watch 7</a>, but it can monitor your sleep patterns and heart rate, check blood oxygen levels, detect snoring, and track more than 100 workout types.&nbsp;It also features a 1.6-inch AMOLED display and should last up to 13 days on a single charge.</li>
+
+
+
+<li>Lastly, we’re also testing the <a href="https://ringconn.com/products/ringconn-gen-2">$299 RingConn Gen 2</a>. We weren’t super impressed <a href="https://www.theverge.com/2024/10/1/24259284/oura-ring-samsung-galaxy-ring-ultrahuman-ring-air-ringconn-circular-ring-evie-ring-review-wearables">with the original</a>, but the second-gen model does have a few things going for it over the Oura Ring 4. It provides access to all your standard health-tracking features <em>without</em> a subscription, for one thing, and it features both an IP68 dust and water resistance rating and sleep apnea detection. The company also says it offers longer battery life, which is impressive given its predecessor lasted us up to nine days on a single charge.</li>
+</ul>
+
+<p class="has-text-align-none"><em><strong>Update, May 6th:</strong> Adjusted pricing / availability and added new details for both the OnePlus Watch 3 and Oura Ring 4. </em></p>
+						]]>
+									</content>
+			
+					</entry>
+			<entry>
+			
+			<author>
+				<name>Emma Roth</name>
+			</author>
+			
+			<title type="html"><![CDATA[Meta awarded $167.25 million over Pegasus spyware attack]]></title>
+			<link rel="alternate" type="text/html" href="https://www.theverge.com/news/662242/meta-nso-group-pegasus-whatsapp-hack-damages" />
+			<id>https://www.theverge.com/?p=662242</id>
+			<updated>2025-05-06T18:33:39-04:00</updated>
+			<published>2025-05-06T18:33:39-04:00</published>
+			<category scheme="https://www.theverge.com" term="Apps" /><category scheme="https://www.theverge.com" term="Meta" /><category scheme="https://www.theverge.com" term="News" /><category scheme="https://www.theverge.com" term="Security" /><category scheme="https://www.theverge.com" term="Tech" />
+							<summary type="html"><![CDATA[NSO Group, the Israeli spyware-maker behind Pegasus, must pay Meta $167.25 million for hacking 1,400 users across WhatsApp. A federal jury in California made the decision on Tuesday after the court found the NSO Group liable for the attacks last year. Meta sued NSO Group in 2019 after Citizen Lab found a vulnerability that allowed [&#8230;]]]></summary>
+			
+							<content type="html">
+											<![CDATA[
+
+						
+<figure>
+
+<img alt="" data-caption="" data-portal-copyright="" data-has-syndication-rights="1" src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/05/acastro_190204_1777_privacy_0002-1.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption></figcaption>
+</figure>
+<p class="has-text-align-none">NSO Group, the Israeli spyware-maker behind Pegasus, <a href="https://about.fb.com/news/2025/05/winning-the-fight-against-spyware-merchant-nso/">must pay Meta $167.25 million</a> for hacking 1,400 users across WhatsApp. A federal jury in California made the decision on Tuesday after the court <a href="https://www.theverge.com/2024/12/20/24326342/meta-whatsapp-nso-group-pegasus-spyware-hack-liable">found the NSO Group</a> liable for the attacks last year.</p>
+
+<p class="has-text-align-none"><a href="https://www.theverge.com/2019/10/29/20938676/whatsapp-nso-group-spyware-hack-encrypted-chat-lawsuit">Meta sued NSO Group</a> in 2019 after <a href="https://www.theverge.com/2019/5/14/18622744/whatsapp-spyware-nso-pegasus-vulnerability">Citizen Lab found a vulnerability</a> that allowed the spyware vendor to install Pegasus through a phone call – even if users didn’t pick up. Pegasus could then turn on a user’s camera and microphone, look through emails and text messages, and access location information. The hack targeted activists, journalists, diplomats, and others. <a href="https://www.theverge.com/2021/11/23/22798917/apple-nso-group-spyware-pegasus-cybersecurity-research">Apple has also sued the NSO Group</a> for targeting iPhone users with Pegasus.</p>
+
+<p class="has-text-align-none">The jury also awarded Meta $444,719 in compensatory damages. “Today’s verdict in WhatsApp’s case is an important step forward for privacy and security as the first victory against the development and use of illegal spyware that threatens the safety and privacy of everyone,” Meta said in <a href="https://about.fb.com/news/2025/05/winning-the-fight-against-spyware-merchant-nso/">an announcement</a>. “The jury&#8217;s decision to force NSO, a notorious foreign spyware merchant, to pay damages is a critical deterrent to this malicious industry.”</p>
+
+<p class="has-text-align-none">Going forward, Meta will attempt to secure a court order preventing the NSO Group from targeting WhatsApp. It has also published the unofficial transcripts from deposition videos during the trial, and says it will make a donation to digital rights organizations working to protect users from spyware.</p>
+
+<p class="has-text-align-none">NSO Group spokesperson Gil Lainer says the company “will carefully examine the verdict&#8217;s details and pursue appropriate legal remedies, including further proceedings and an appeal.”</p>
+
+<p class="has-text-align-none"><em><strong>Update, May 6th: </strong>Added information from NSO Group.</em></p>
+						]]>
+									</content>
+			
+					</entry>
+			<entry>
+			
+			<author>
+				<name>Jay Peters</name>
+			</author>
+			
+			<title type="html"><![CDATA[Be careful what you read about an Elden Ring movie]]></title>
+			<link rel="alternate" type="text/html" href="https://www.theverge.com/news/662200/elden-ring-movie-nexus-point-news-be-careful" />
+			<id>https://www.theverge.com/?p=662200</id>
+			<updated>2025-05-06T18:12:46-04:00</updated>
+			<published>2025-05-06T17:30:48-04:00</published>
+			<category scheme="https://www.theverge.com" term="Entertainment" /><category scheme="https://www.theverge.com" term="Film" /><category scheme="https://www.theverge.com" term="Gaming" />
+							<summary type="html"><![CDATA[On Tuesday, a publication called Nexus Point News published a headline for what looked to be a major piece of entertainment news: "EXCLUSIVE: Alex Garland Set To Direct 'Elden Ring' Film For A24." The article claimed that Elden Ring "is expected to be Garland's next film" and that shooting is expected to start in 2026. [&#8230;]]]></summary>
+			
+							<content type="html">
+											<![CDATA[
+
+						
+<figure>
+
+<img alt="" data-caption="" data-portal-copyright="" data-has-syndication-rights="1" src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/05/ss_b1b91299d7e4b94201ac840aa64de54d9f5cb7f3.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption></figcaption>
+</figure>
+<p class="has-text-align-none">On Tuesday, a publication called <em>Nexus Point News</em> published a headline for what looked to be a major piece of entertainment news: "EXCLUSIVE: Alex Garland Set To Direct 'Elden Ring' Film For A24." The article claimed that <em>Elden Ring</em> "is expected to be Garland's next film" and that shooting is expected to start in 2026.</p>
+<p class="has-text-align-none">But don't get your hopes up: soon after the article was published, <em>Nexus Point News</em> pulled it, and the publication won't say why. How this article made the rounds is an interesting case study in the way news travels on the internet.</p>
+<p class="has-text-align-none">We first saw the <em>Nexus Point News</em> article from a Wario64 post on X. Generally, Wario64 is a great account to follow to see breaking news in video games almost as soon as it happens. And the account is quite popular, with more than 1 million followers on X. But none of us at <em>The Verge</em> had ever heard of <em>Nexus Point News</em>, let alone recognized it as a place that reliably breaks entertainment news, so something didn't seem right.</p>
+<p class="has-text-align-none">(Another recent <em>Nexus Point News</em> "exclusive" includes a potential cast member "being eyed" <a href="https://www.nexuspointnews.com/post/exclusive-dacre-montgomery-is-being-eyed-to-join-star-wars-starfighter">for one of the male leads</a> of <a href="https://www.theverge.com/news/651695/star-wars-starfighter-date-ryan-gosling"><em>Star Wars: Starfighter</em></a>, but the article includes an update that says "a LucasFilm spokesperso …</p>
+<p><a href="https://www.theverge.com/news/662200/elden-ring-movie-nexus-point-news-be-careful">Read the full story at The Verge.</a></p>
+						]]>
+									</content>
+			
+					</entry>
+			<entry>
+			
+			<author>
+				<name>Lauren Feiner</name>
+			</author>
+			
+			<title type="html"><![CDATA[DOJ’s proposed Google changes would ‘deeply undermine user trust,’ search chief says]]></title>
+			<link rel="alternate" type="text/html" href="https://www.theverge.com/policy/662198/doj-google-antitrust-trial-search-chief-privacy" />
+			<id>https://www.theverge.com/?p=662198</id>
+			<updated>2025-05-06T17:22:15-04:00</updated>
+			<published>2025-05-06T17:22:15-04:00</published>
+			<category scheme="https://www.theverge.com" term="Antitrust" /><category scheme="https://www.theverge.com" term="Google" /><category scheme="https://www.theverge.com" term="Policy" /><category scheme="https://www.theverge.com" term="Politics" /><category scheme="https://www.theverge.com" term="Regulation" /><category scheme="https://www.theverge.com" term="Tech" />
+							<summary type="html"><![CDATA[The government's proposal to make Google share its search data with competitors would "deeply undermine user trust" by putting queries in the hands of potentially less secure rivals, the company's search chief Elizabeth Reid testified Tuesday. The Justice Department has proposed forcing Google to syndicate its ranking signals and other search data to competitors, something [&#8230;]]]></summary>
+			
+							<content type="html">
+											<![CDATA[
+
+						
+<figure>
+
+<img alt="" data-caption="" data-portal-copyright="" data-has-syndication-rights="1" src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/03/STKS487_ANTITRUST_2__STK093_GOOGLE_B.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption></figcaption>
+</figure>
+<p class="has-text-align-none">The government's proposal to make Google share its search data with competitors would "deeply undermine user trust" by putting queries in the hands of potentially less secure rivals, the company's search chief Elizabeth Reid testified Tuesday.</p>
+<p class="has-text-align-none">The <a href="https://www.theverge.com/2024/11/27/24302415/doj-google-search-antitrust-remedies-chrome-android">Justice Department has proposed forcing Google</a> to syndicate its ranking signals and other search data to competitors, something it says will level the playing field and end <a href="https://www.theverge.com/2024/8/5/24155520/judge-rules-on-us-doj-v-google-antitrust-search-suit?showComments=1">Google's search monopoly</a>. But Reid argued that exporting that data would shake users' faith that their searches would stay private, and its value would create an incentive for hackers to go after small competitors. "Once it's turned over to a qualified competitor, there's no further protections we can give," she said. "A startup is generally not a target because it's small, but now it has this huge treasure trove of data."</p>
+<p class="has-text-align-none">Google is fighting the DOJ's sweeping proposals, which also include <a href="https://www.theverge.com/policy/655975/yahoo-search-web-browser-prototype-google-trial-antitrust-chrome">forcing it to sell its Chrome browser</a>, by arguing for more limited changes to its search distribution contracts (it plans to appeal the monopoly ruling, but can't do so until Judge Amit Mehta issues a remedies decision). Reid's testimony follows that of other executives, <a href="https://www.theverge.com/policy/658738/google-ceo-sundar-pichai-testifies-doj-search-antitrust-trial">including …</a></p>
+<p><a href="https://www.theverge.com/policy/662198/doj-google-antitrust-trial-search-chief-privacy">Read the full story at The Verge.</a></p>
+						]]>
+									</content>
+			
+					</entry>
+			<entry>
+			
+			<author>
+				<name>Allison Johnson</name>
+			</author>
+			
+			<title type="html"><![CDATA[The best Android phones]]></title>
+			<link rel="alternate" type="text/html" href="https://www.theverge.com/23674658/best-android-phone" />
+			<id>https://www.theverge.com/23674658/best-android-phone</id>
+			<updated>2025-05-06T17:10:46-04:00</updated>
+			<published>2025-05-06T17:10:46-04:00</published>
+			<category scheme="https://www.theverge.com" term="Buying Guide" /><category scheme="https://www.theverge.com" term="Foldable Phones" /><category scheme="https://www.theverge.com" term="Google" /><category scheme="https://www.theverge.com" term="Google Pixel" /><category scheme="https://www.theverge.com" term="Mobile" /><category scheme="https://www.theverge.com" term="OnePlus" /><category scheme="https://www.theverge.com" term="Samsung" /><category scheme="https://www.theverge.com" term="Tech" />
+							<summary type="html"><![CDATA[The Android ecosystem is all about choice. While iPhone owners have a smaller pool of new devices to pick from when it’s time to upgrade, there’s a wider range of choices on Android. Some Android phones even fold in half! Imagine. On the flip side, all that choice can make for some hard decisions. Here’s [&#8230;]]]></summary>
+			
+							<content type="html">
+											<![CDATA[
+
+						
+<figure>
+
+<img alt="Collage of Google Pixel and Samsung Galaxy 25 Ultra phones." data-caption="" data-portal-copyright="Image: Cath Virginia / The Verge" data-has-syndication-rights="1" src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/01/247288_Phone_Buying_Guides_CVirginia2.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption></figcaption>
+</figure>
+<p>The Android ecosystem is all about choice. While iPhone owners have a smaller pool of new devices to pick from when it’s time to upgrade, there’s a wider range of choices on Android. Some Android phones even fold in half! <a href="https://www.theverge.com/2024/6/15/24177306/apple-foldable-phone-ipados-18">Imagine</a>.</p>
+
+<p>On the flip side, all that choice can make for some hard decisions. Here’s where I’d like to help; I’ve tested a whole boatload of recent Android phones, and I think there are some real winners in the current batch. It’s all a matter of what you’re looking for, what you’re comfortable spending, and what your definition of a “reasonably sized phone” is. (<a href="https://www.theverge.com/2023/5/20/23730130/apple-iphone-13-mini-apple-phones">I have my own</a>, personally.)</p>
+
+<p>As you sift through the options, you’ll almost certainly come across tech’s favorite buzzphrase of the moment: AI. Generally speaking, AI has yet to really impress me on a phone. The Pixel 9 series has some potentially useful features, like a Screenshots app that uses AI to tag relevant info in metadata, and Galaxy devices can translate a phone call for you in real time. These things are nothing to sneeze at! But none of it feels like the platform shift that the big tech companies keep promising. Best not to put too much stock in any company’s AI claims just yet.</p>
+
+<div class="wp-block-vox-media-methodology-accordion"><div class="wp-block-vox-media-methodology-accordion">
+<div class="wp-block-vox-media-methodology-accordion-item"><div class="wp-block-vox-media-methodology-accordion-item">
+<p class="has-text-align-none c-methodology-accordion__item-heading">How we test smartphones</p>
+
+
+
+<p class="has-text-align-none c-methodology-accordion__item-content">There’s no shortcut to properly testing a phone; I put my personal SIM card (physical or otherwise) in each phone I review and live with it for a minimum of one full week. I set up each phone from scratch, load it up with my apps, and go about living my life — stress testing the battery, using GPS navigation on my bike while streaming radio, taking rapid-fire portrait mode photos of my kid — everything I can throw at it. Starting over with a new phone every week either sounds like a dream or your personal hell, depending on how Into Phones you are. For me, switching has become&nbsp;<a href="https://www.theverge.com/23775534/switch-phones-ios-android-iphone-google-pixel-samsung-esim">so routine that it’s mostly painless</a>.</p>
+</div></div>
+
+
+
+<div class="wp-block-vox-media-methodology-accordion-item"><div class="wp-block-vox-media-methodology-accordion-item">
+<p class="has-text-align-none c-methodology-accordion__item-heading">Longevity</p>
+
+
+
+<p class="has-text-align-none c-methodology-accordion__item-content">A great Android phone will go the distance. I look for signs that the hardware and software will keep up for many years to come, including a strong IP rating for dust and water resistance (IP68 is preferred), durable glass panels on the front and back, and a sturdy aluminum frame rather than plastic. Samsung and Google flagships now offer seven years of OS and security updates, which as awesome. As a bare minimum three years of Android OS version upgrades is preferred, along with a total of four or five years of security updates.</p>
+</div></div>
+
+
+
+<div class="wp-block-vox-media-methodology-accordion-item"><div class="wp-block-vox-media-methodology-accordion-item">
+<p class="has-text-align-none c-methodology-accordion__item-heading">A great screen</p>
+
+
+
+<p class="has-text-align-none c-methodology-accordion__item-content">The best Android phones have plenty of resolution to cover their large display area, which means 1440p, ideally. A fast refresh rate of at least 120Hz is preferred — animations and scrolling look super smooth at that rate — and even better if it’s variable down to 1Hz to save on battery life.</p>
+</div></div>
+
+
+
+<div class="wp-block-vox-media-methodology-accordion-item"><div class="wp-block-vox-media-methodology-accordion-item">
+<p class="has-text-align-none c-methodology-accordion__item-heading">Quality cameras</p>
+
+
+
+<p class="has-text-align-none c-methodology-accordion__item-content">Any phone can take a decent photo in good lighting, but the best phone cameras can handle low light and high-contrast scenes well, too. I look for optical (most common) or sensor-shift (rare) image stabilization, which helps compensate for hand shake and enable slower shutter speeds in low light to gather more light. A telephoto lens is great to have too, though high-res sensors are starting to offer better lossless crop modes that mimic short zoom lenses well.</p>
+</div></div>
+
+
+
+<div class="wp-block-vox-media-methodology-accordion-item"><div class="wp-block-vox-media-methodology-accordion-item">
+<p class="has-text-align-none c-methodology-accordion__item-heading">Wireless charging</p>
+
+
+
+<p class="has-text-align-none c-methodology-accordion__item-content">Most phones on this list offer wireless charging, though not all do. Lack of wireless charging isn’t a complete deal-breaker, but it’s becoming an essential feature for a lot of people since it’s convenient for charging many different kinds of devices.<br></p>
+</div></div>
+</div></div>
+
+<p>If you live in the US, I have some bad news about the Android market, though. For complicated reasons having to do with “capitalism” and “geopolitics,” we don’t get nearly as many of the options as you’ll find in Asia and Europe — brands like Huawei, Xiaomi, Honor, and Oppo just aren’t available here. I’ve limited this guide to the devices I’ve personally tested in depth; thus, it is a fairly US-centric set of recommendations.&nbsp;</p>
+
+<p>With that in mind, it’s also worth acknowledging that most people in the US get their phones “for free” from their wireless carrier. If you can manage it, buying a phone unlocked will give you the most flexibility and freedom if you end up wanting to change carriers in the near future. Phone manufacturers also offer financing and trade-in deals to make payment more manageable. But if you’re happy with your carrier and the free phone on offer is the one you really want, by all means, take the free phone. Just make sure you understand the terms, especially if you need to change plans to cash in on the deal.&nbsp;</p>
+
+<p>However you go about it, you have some fantastic options for your next Android phone.</p>
+
+<div class="wp-block-vox-media-highlight vox-media-highlight">
+<h2 class="wp-block-heading"></h2>
+
+
+
+<div class="wp-block-vox-media-table-of-contents"><ol><li><a href="#ueIawV">The best Android phone overall</a></li><li><a href="#d1zQdW">The best maximalist phone</a></li><li><a href="#the-best-android-phone-that-isn-t-huge">The best Android phone that isn’t huge</a></li><li><a href="#oV1Wae">The best phone if you hate waiting for your phone to charge</a></li><li><a href="#SbewYq">The best foldable phone</a></li><li><a href="#W3yT1i">Other Android phones worth considering</a></li></ol></div>
+</div>
+
+<h2 class="wp-block-heading" id="ueIawV">The best Android phone overall</h2>
+
+<p><em><em><strong>Screen: </strong>6.3-inch 1080p 120Hz OLED / <strong>Processor: </strong>Tensor G4 / <strong>Cameras:</strong> 50-megapixel f/1.7 main with OIS, 48-megapixel ultrawide, 10.5-megapixel selfie / <strong>Battery: </strong>4,700mAh / <strong>Charging:</strong> 27W wired, 15W wireless (with Pixel Stand 2) / <strong>Weather resistance:</strong> IP68</em></em></p>
+
+<p>Google’s hardware is better than ever, and the whole Pixel 9 lineup feels just as polished as anything you’d get from Samsung or Apple. But at $799 (and often less than that), the basic Pixel 9 is in a particularly appealing position, and if you don’t need a telephoto camera or the biggest screen, then this is the Android phone to get.</p>
+
+<p>The Pixel 9 comes with some significant quality-of-life improvements like a faster fingerprint scanner for unlocking the phone. The camera is as reliable as ever, and if you’re into AI photo editing tricks, <a href="https://www.theverge.com/2024/8/21/24224084/google-pixel-9-reimagine-ai-photos">boy does this phone have ‘em</a>. There’s a new Screenshots app that acts as a place to store all of the information that would otherwise be lost at sea in your camera roll, and it uses AI to parse information out and make it searchable. Kinda handy.</p>
+<img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25596780/DSC08136.jpg?quality=90&#038;strip=all&#038;crop=0,10.723165084465,100,78.55366983107" alt="Google Pixel 9 on a pink and green background." title="Google Pixel 9 on a pink and green background." data-has-syndication-rights="1" data-caption="&lt;em&gt;You gotta admit, the camera bar is a strong look.&lt;/em&gt; | Photo: Allison Johnson / The Verge" data-portal-copyright="Photo: Allison Johnson / The Verge" />
+<p>Even without AI, this is an excellent phone. It’s also designed to go the distance, with seven years of promised OS updates, which very likely means you’ll outgrow the phone before Google stops supporting it. Its potential for long-term value and the quality of the hardware make it an easy recommendation for anyone who just wants a nice Android phone that works.</p>
+
+<h5 class="wp-block-heading" id="hBOhoM"><a href="https://www.theverge.com/24232480/google-pixel-9-review-screen-camera-battery">Read my full Google Pixel 9 review</a>.</h5>
+
+<h2 class="wp-block-heading" id="d1zQdW">The best maximalist phone</h2>
+
+<p><em><em><strong>Screen:&nbsp;</strong>6.9-inch 1440p 120Hz OLED /&nbsp;<strong>Processor:&nbsp;</strong>Qualcomm Snapdragon 8 Elite /&nbsp;<strong>Cameras:</strong>&nbsp;200-megapixel main with OIS, 50-megapixel 5x telephoto with OIS, 10-megapixel 3x telephoto with OIS, 50-megapixel ultrawide, 12-megapixel selfie /&nbsp;<strong>Battery:&nbsp;</strong>5,000mAh /&nbsp;<strong>Charging:</strong>&nbsp;45W wired, 15W wireless (Qi2 Ready) /&nbsp;<strong>Weather resistance:</strong>&nbsp;IP68</em></em></p>
+
+<p>There’s still no phone quite like the Ultra. The Galaxy S25 Ultra is Samsung’s latest answer to the question, “What if your phone had all of the features?” It’s equipped with two telephoto cameras, a built-in stylus, and a big, bright screen. Good luck finding that combination in another phone. Related: this is one of the most expensive slab-style phones you can buy.</p>
+
+<p class="has-text-align-none">The newest edition of the Ultra comes with rounded corners and flat edges, making it more comfortable in your hand. But if you’re looking for significant year-over-year improvements to the Ultra formula outside of that, well, you won’t find much. Samsung’s focus has been on software features, which is to say AI features. But AI on Galaxy phones remains a mixed bag — it’s certainly not the paradigm shift Samsung wants us to think the S25 series represents.</p>
+<img src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/01/DSC09411_processed.jpg?quality=90&#038;strip=all&#038;crop=0,10.752607989199,100,78.494784021602" alt="" title="" data-has-syndication-rights="1" data-caption="" data-portal-copyright="Photo: Allison Johnson / The Verge" />
+<p class="has-text-align-none">All of that puts the Ultra in a place of slightly less distinction than previous versions. The biggest updates are software features available to the rest of the S25 series. The Ultra looks and feels more like other Galaxy phones this time around, too. More than ever, it’s hard to understand what Samsung means when it calls this phone “Ultra.” Still, it’s your best choice for a feature-packed Android phone — even if it’s not quite as ultra as it once was.</p>
+
+<h5 class="wp-block-heading" id="hQgZWo"><a href="https://www.theverge.com/reviews/604154/samsung-galaxy-s25-ultra-review-ai-screen-battery">Read my full Samsung Galaxy S25 Ultra review</a>.</h5>
+
+<h2 class="wp-block-heading has-text-align-none" id="the-best-android-phone-that-isn-t-huge">The best Android phone that isn’t huge</h2>
+
+<p class="has-text-align-none"><strong>Screen:</strong><i> 6.2-inch 2340 x 1080 120hz OLED / </i><strong>Processor:</strong><i> </i><em><em>Qualcomm Snapdragon 8 Elite</em></em><i> </i><strong>Cameras:</strong><i> </i><em>50-megapixel main with OIS, 12-megapixel ultrawide, 10-megapixel 3x telephoto with OIS, 12-megapixel selfie</em> <em><strong>Battery:</strong> 4000mAh / <strong>Charging:</strong> <em><em>25W wired, 15W wireless (Qi2 Ready) &nbsp;</em></em> / <strong>Weather-resistance rating:</strong> </em>IP68</p>
+
+<p class="has-text-align-none">Most people like a big phone, and I get that. I do. If you want a big Android phone, you have plenty of options in front of you. But some of us like a smaller phone — something that (kind of) fits in your pocket, or feels more comfortable in your hand. For us, there is but one option on Android: the Samsung Galaxy S25.</p>
+
+<p class="has-text-align-none">That’s the <em>regular</em> S25, not the Plus, which is a fine big phone. But the standard S25 is basically the last of its kind: a full-featured phone with a 6.2-inch screen. It’s not small, but it’s not huge, and we’ll have to take what we can get. And it’s a darn good phone that keeps up with the bigger devices in all the important ways: the battery goes all day, it comes with plenty of RAM, and it even has a real telephoto lens — not something you get on a basic, 6.1-inch phone on, say, iOS.</p>
+<img src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/02/257552_Samsung_Galaxy_S25_review_AJohnson_0005.jpg?quality=90&#038;strip=all&#038;crop=0,10.752607989199,100,78.494784021602" alt="" title="" data-has-syndication-rights="1" data-caption="" data-portal-copyright="" />
+<p class="has-text-align-none">The Galaxy S25 isn’t just a good, small-ish phone by default. It’s reliable, durable, and comes with the promise of seven years of OS updates. It’s not my pick for the overall best Android phone because Samsung software can be a bit <em>much</em>, but if you’re comfortable in the Samsung ecosystem and you just want a phone that fits in your dang pocket, then this is the one to go with.</p>
+
+<h2 class="wp-block-heading" id="oV1Wae">The best phone if you hate waiting for your phone to charge</h2>
+
+<p><em><em><strong>Screen: </strong>6.82-inch 1440p 120Hz LTPO OLED / <strong>Processor:</strong> Snapdragon 8 Elite / <strong>Cameras:</strong> 50-megapixel f/1.6 main with OIS, 50-megapixel 3x telephoto with OIS, 50-megapixel f/2.0 ultrawide, 32-megapixel selfie / <strong>Battery: </strong>6,000mAh / <strong>Charging:</strong> 80W wired, 50W wireless / <strong>Weather-resistance rating:</strong> IP6</em>8 and IP69</em></p>
+
+<p>There are plenty of good reasons to consider the OnePlus 13. It has a big, beautiful screen, and costs a hundred bucks less than the Galaxy S25 Plus. Its dust and water resistance is so strong you could practically use the phone in a hurricane without consequences. And its camera system is much improved year over year, particularly when it comes to low-light portraiture. But there’s one standout reason to consider the 13: impatience.</p>
+<img src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/01/257469_OnePlus_13_AJohnson_0003.jpg?quality=90&#038;strip=all&#038;crop=0,10.723165084465,100,78.55366983107" alt="" title="" data-has-syndication-rights="1" data-caption="&lt;em&gt;This vegan leather back panel is so nice.&lt;/em&gt;" data-portal-copyright="" />
+<p class="has-text-align-none">The OnePlus 13 offers enough battery stamina to get through two days of moderate use on a single charge&nbsp;— and that’s with plenty of power-draining features enabled, including the always-on display. If you’re thriftier with your charge, it could even go beyond that. Forgot to charge overnight? No big deal; you can probably just charge it up on night two. Charging is also relatively fast, and in the US, the phone comes with an 80W wired charger in the box. So even if you do need a midday top-off, you’ll be able to get hours of charge in a matter of minutes. No other flagship phone offers that kind of charging (or not charging) flexibility.</p>
+
+<h5 class="wp-block-heading" id="wTR5JS"><a href="https://www.theverge.com/24336534/oneplus-13-review-specs-screen-camera-battery">Read my full OnePlus 13 review</a>.</h5>
+
+<h2 class="wp-block-heading" id="SbewYq">The best foldable phone</h2>
+
+<p><em><em><strong>Screen: </strong>8.0-inch 2076p 120Hz OLED inner screen, 6.3-inch 1080p 120Hz OLED cover screen / <strong>Processor:</strong> Tensor G4 / <strong>Cameras:</strong> 48-megapixel f/1.7 main with OIS, 10.8-megapixel 5x telephoto with OIS, 10.5-megapixel ultrawide, 10-megapixel selfie (cover screen), 10-megapixel inner selfie camera / <strong>Battery: </strong>4,650mAh / <strong>Charging:</strong> 21W wired, 7.5W wireless / <strong>Weather resistance:</strong> IPX8</em></em></p>
+
+<p>Does anyone truly need a folding phone? Probably not. But using one is awfully nice, and the Pixel 9 Pro Fold is the nicest book-style foldable I’ve used to date. It’s pricey, it’s still bulkier than a slab-style phone, and its cameras aren’t quite as nice as the other Pixel 9 Pro phones. But it’s a joy to use, both as a regular phone with the cover screen and when you unfold the big inner screen.</p>
+
+<p>The 9 Pro Fold is Google’s second folding phone, following up the passport-shaped Pixel Fold with a format that feels much more familiar. The outer screen measures 6.3 inches on the diagonal, but more importantly, the ratio is the same as Google’s slab phones. By comparison, Samsung’s Z Fold 6 uses a taller, narrower format that feels cramped. Having used them both, I much prefer the 9 Pro Fold’s approach.</p>
+<img src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25607218/DSC08201_processed.jpg?quality=90&#038;strip=all&#038;crop=0,10.723165084465,100,78.55366983107" alt="Google Pixel 9 Pro Fold in porcelain." title="Google Pixel 9 Pro Fold in porcelain." data-has-syndication-rights="1" data-caption="&lt;em&gt;The inner screen is great and all, but how about that outer screen?&lt;/em&gt; | Photo: Allison Johnson / The Verge" data-portal-copyright="Photo: Allison Johnson / The Verge" />
+<p>That said, the 9 Pro Fold isn’t without compromises. The camera system isn’t quite as good as what you get in the other 9 Pro phones. The outer screen isn’t as sharp or bright as the Pixel 9 Pro’s, either. And it’s not as durable as its slab-style counterparts — there’s no dust resistance, and you can’t get it repaired just anywhere. For $1,800, that’s an awful lot to swallow. For the adventurous early adopter, though, the 9 Pro Fold will be very rewarding.</p>
+
+<h5 class="wp-block-heading" id="aUYw3y"><a href="https://www.theverge.com/24237586/google-pixel-9-pro-fold-review-screen-camera-battery">Read my full Google Pixel 9 Pro Fold review</a>.</h5>
+
+<h2 class="wp-block-heading" id="W3yT1i">Other Android phones worth considering</h2>
+
+<p>There are many more great Android devices that weren’t covered here, and a few are worth calling out that didn’t quite make the cut for a recommendation.</p>
+
+<ul class="wp-block-list">
+<li>First off, there’s the <a href="https://www.amazon.com/SAMSUNG-Smartphone-Camcorder-Interpreter-Manufacturer/dp/B0D191BM26/">Galaxy Z Flip 6</a>, Samsung’s excellent clamshell-style foldable. It’s not as much fun to use as the <a href="https://www.theverge.com/24191156/motorola-razr-plus-2024-review-screen-battery-camera">2024 Motorola Razr Plus</a> — which facilitates using apps on the cover screen more easily — but Motorola’s track record for software updates isn’t great, so the Z Flip 6 is a safer bet for a flip phone. <a href="https://www.theverge.com/24211507/samsung-galaxy-z-flip-6-review-screen-battery-camera">Read our review</a>.</li>
+
+
+
+<li>The <a href="https://www.amazon.com/OnePlus-Open-Foldable-Device-Everything/dp/B0CHN7M531/">OnePlus Open</a> is also another good book-style foldable option. It’s thin and light, and the software includes some thoughtful approaches to multitasking — a crucial part of the folding phone experience. But it won’t be supported with software updates for as long as the Pixel 9 Pro Fold or the Galaxy Z Fold 6. <a href="https://www.theverge.com/23923599/oneplus-open-review-foldable-battery-screen-camera-price">Read our review</a>.</li>
+
+
+
+<li>Speaking of OnePlus, the company also recently launched the <a href="https://www.bestbuy.com/site/oneplus-13r-256gb-unlocked-nebula-noir/6609358.p?">OnePlus 13R</a>, a midrange phone with a big 6.78-inch OLED display and enough battery life to carry you through two full days on a single charge. That said, the $599 handset lacks wireless charging and full water resistance, both of which can be found on other budget-friendly phones for less. <a href="https://www.theverge.com/reviews/656305/oneplus-13r-review-maybe-just-buy-a-pixel-9a">Read our review</a>.</li>
+
+
+
+<li>Last but not least, there’s the <a href="https://www.amazon.com/Google-Pixel-Gemini-Smartphone-Incredible/dp/B0DVHV7N4X">Google Pixel 9A</a>. It comes with some small but important updates over the 8A, including more robust water resistance and a slightly bigger, brighter screen. Better yet, those improvements don’t come with a price bump. With seven years of OS updates included, that’s a strong ROI. <a href="https://www.theverge.com/phone-review/646135/google-pixel-9a-review-a-midrange-phone-done-right">Read our review</a>.</li>
+</ul>
+
+<p><em><strong>Update, May 6th: </strong>Updated current pricing / availability and added a mention of the OnePlus 13R.</em></p>
+
+<p class="has-text-align-none"></p>
+						]]>
+									</content>
+			
+					</entry>
+			<entry>
+			
+			<author>
+				<name>Emma Roth</name>
+			</author>
+			
+			<title type="html"><![CDATA[A new bill would force Apple to allow third-party app stores]]></title>
+			<link rel="alternate" type="text/html" href="https://www.theverge.com/news/662180/app-store-freedom-act-apple-third-party-app-stores" />
+			<id>https://www.theverge.com/?p=662180</id>
+			<updated>2025-05-06T17:02:13-04:00</updated>
+			<published>2025-05-06T17:02:13-04:00</published>
+			<category scheme="https://www.theverge.com" term="Apple" /><category scheme="https://www.theverge.com" term="Apps" /><category scheme="https://www.theverge.com" term="Google" /><category scheme="https://www.theverge.com" term="News" /><category scheme="https://www.theverge.com" term="Policy" /><category scheme="https://www.theverge.com" term="Tech" />
+							<summary type="html"><![CDATA[Representative Kat Cammack (R-FL) introduced a bill Tuesday that would require “large app store operators” like Apple to let users install third-party app stores and set them as their default. The bill, called the App Store Freedom Act, aims to “promote competition and protect consumers and developers in the mobile app marketplace,” according to a [&#8230;]]]></summary>
+			
+							<content type="html">
+											<![CDATA[
+
+						
+<figure>
+
+<img alt="" data-caption="" data-portal-copyright="" data-has-syndication-rights="1" src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/03/STK071_APPLE_I.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption></figcaption>
+</figure>
+<p class="has-text-align-none">Representative Kat Cammack (R-FL) introduced a bill Tuesday that would require “large app store operators” like Apple to let users install third-party app stores and set them as their default. The bill, called <a href="https://cammack.house.gov/sites/evo-subsites/cammack.house.gov/files/evo-media-document/app-store-freedom-119.pdf">the App Store Freedom Act</a>, aims to “promote competition and protect consumers and developers in the mobile app marketplace,” according to a <a href="https://cammack.house.gov/media/press-releases/rep-cammack-introduces-app-store-freedom-act-promote-competition-protect">press release on Tuesday</a>.</p>
+
+<p class="has-text-align-none">Though the bill doesn’t mention Apple by name, it carves out rules for “large app store operators,” which it defines as app stores having more than 100 million users in the US. The bill would target Google’s practices as well, as it would force major app stores to let developers use third-party payment systems.</p>
+
+<p class="has-text-align-none">It would also require Apple and Google to offer developers “equal access to interfaces, features, and development tools without cost or discrimination,” as well as allow users to remove or hide pre-installed apps. Violations of the bill would result in penalties from the Federal Trade Commission, along with an additional civil penalty of up to $1 million for each violation.</p>
+
+<p class="has-text-align-none">The European Union has introduced similar legislation that has forced Apple to let users <a href="https://www.theverge.com/24100979/altstore-europe-app-marketplace-price-games">download third-party app stores</a> and <a href="https://www.theverge.com/2024/10/23/24277926/apple-iphone-default-messaging-apps-ios-18-2">change their default apps</a>. Last week, Apple started allowing <a href="https://www.theverge.com/news/660025/apple-changes-app-store-rules-to-allow-external-purchases">developers to link to outside payments</a> in response to <a href="https://www.theverge.com/news/659246/apple-epic-app-store-judge-ruling-control">a ruling in the <em>Epic v. Apple</em> case</a>. Google has also made changes after the EU’s regulations went into effect, including adding a<a href="https://www.theverge.com/2024/1/17/24041581/google-search-chrome-android-price-comparison-digital-markets-act-eu"> new browser choice screen</a> when users set up their device for the first time.</p>
+
+<p class="has-text-align-none">“Dominant app stores have controlled customer data and forced consumers to use the marketplaces&#8217; own merchant services, instead of the native, in-app offerings provided by the applications and developers themselves,” Cammack said in the press release. The results are higher prices and limited selections for consumers and anti-competitive practices for developers that have stifled innovation.&#8221;</p>
+						]]>
+									</content>
+			
+					</entry>
+			<entry>
+			
+			<author>
+				<name>Umar Shakir</name>
+			</author>
+			
+			<title type="html"><![CDATA[Google&#8217;s Android battery health indicator is only for the newest Pixels]]></title>
+			<link rel="alternate" type="text/html" href="https://www.theverge.com/news/662129/google-android-16-battery-health" />
+			<id>https://www.theverge.com/?p=662129</id>
+			<updated>2025-05-06T15:56:04-04:00</updated>
+			<published>2025-05-06T15:56:04-04:00</published>
+			<category scheme="https://www.theverge.com" term="Android" /><category scheme="https://www.theverge.com" term="Google" /><category scheme="https://www.theverge.com" term="Google Pixel" /><category scheme="https://www.theverge.com" term="News" /><category scheme="https://www.theverge.com" term="Tech" />
+							<summary type="html"><![CDATA[Google has been working on a battery health menu that could help you determine why your Android phone isn’t lasting as long between charges as it used to. It&#8217;s similar to an iPhone feature that launched in 2018, but unlike that rollout, it won&#8217;t be available on the older devices that probably need it the [&#8230;]]]></summary>
+			
+							<content type="html">
+											<![CDATA[
+
+						
+<figure>
+
+<img alt="" data-caption="" data-portal-copyright="" data-has-syndication-rights="1" src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25582589/DSC08015.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption></figcaption>
+</figure>
+<p class="has-text-align-none">Google has been working on a battery health menu that could help you determine why your Android phone isn’t lasting as long between charges as it used to. It&#8217;s similar to an iPhone feature that <a href="https://www.theverge.com/2018/2/7/16984234/how-to-iphone-throttling-ios-11-3">launched in 2018</a>, but unlike that rollout, it won&#8217;t be available on the older devices that probably need it the most.</p>
+
+<p class="has-text-align-none">As reported by <a href="https://www.androidauthority.com/android-16-battery-health-menu-missing-older-google-pixels-3554776/"><em>Android Authority</em></a> and pointed out on <a href="https://www.reddit.com/r/android_beta/comments/1kfxiqy/official_word_from_google_on_battery_health_for/">Reddit</a>, a Google developer on the <a href="https://issuetracker.google.com/issues/403373209?pli=1">public Android Issue Tracker site</a> said the battery health indicator feature will only come to the company&#8217;s Pixel 8A and newer models, and that Google “won’t fix” the problem because it’s “infeasible.”</p>
+
+<p class="has-text-align-none">The note, in response to users testing on devices including the Pixel 6 and Pixel 8 Pro, reads:</p>
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="has-text-align-none"><em>Status: Won&#8217;t Fix (Infeasible)</em></p>
+
+
+
+<p class="has-text-align-none"><em>Thank you for reporting this. The Battery Health Indicator feature is currently supported in Beta 3 on Pixel 8a and Pixel 9 products including 9 Pro Fold. Due to product limitations, this feature will not be available on older in-market Pixel devices.</em></p>
+</blockquote>
+
+<p class="has-text-align-none">Google launched the battery health indicator to Android 16 beta testers in March and has been spotted <a href="https://www.theverge.com/2023/12/21/24011265/android-battery-health-indicator-features">working on some form of the utility</a> since 2023. We asked Google why the feature is restricted to Pixel 8A and Pixel 9, but haven’t received a response yet.</p>
+						]]>
+									</content>
+			
+					</entry>
+			<entry>
+			
+			<author>
+				<name>Jay Peters</name>
+			</author>
+			
+			<title type="html"><![CDATA[Minecraft’s VR support is now gone]]></title>
+			<link rel="alternate" type="text/html" href="https://www.theverge.com/news/662128/minecraft-vr-mixed-reality-support-bedrock-update-1-21-80" />
+			<id>https://www.theverge.com/?p=662128</id>
+			<updated>2025-05-06T15:45:47-04:00</updated>
+			<published>2025-05-06T15:45:47-04:00</published>
+			<category scheme="https://www.theverge.com" term="Entertainment" /><category scheme="https://www.theverge.com" term="Gaming" /><category scheme="https://www.theverge.com" term="News" /><category scheme="https://www.theverge.com" term="Tech" /><category scheme="https://www.theverge.com" term="Virtual Reality" />
+							<summary type="html"><![CDATA[Minecraft’s official support for virtual reality and mixed reality devices is over. Mojang announced last year that Minecraft would stop supporting VR headsets after March 2025, and per today’s Minecraft: Bedrock Edition 1.21.80 Update patch notes, that support has been removed, as reported by PCWorld. When Mojang announced the end of support for VR in [&#8230;]]]></summary>
+			
+							<content type="html">
+											<![CDATA[
+
+						
+<figure>
+
+<img alt="" data-caption="" data-portal-copyright="" data-has-syndication-rights="1" src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/05/apps.47244.13850085746326678.06e2dc5c-7997-46e9-a8e6-0e48b57cb13b.25e7f0ab-9184-421a-8c7a-d1ab2a19aef2.jpeg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption></figcaption>
+</figure>
+<p class="has-text-align-none"><em>Minecraft’s</em> official support for virtual reality and mixed reality devices is over. Mojang announced last year that Minecraft would stop supporting VR headsets after March 2025, and per today’s <em>Minecraft: Bedrock Edition</em> 1.21.80 Update <a href="https://www.minecraft.net/en-us/article/minecraft-bedrock-edition-1-21-80">patch notes</a>, that support has been removed, <a href="https://www.pcworld.com/article/2773555/minecraft-officially-kills-support-for-vr.html">as reported by <em>PCWorld</em></a><em>.</em></p>
+
+<p class="has-text-align-none">When Mojang announced the end of support for VR <a href="https://www.theverge.com/2024/10/24/24278397/minecraft-virtual-reality-support-end-2025">in October</a>, it said that you’ll still get updates on your PC, you’ll still be able to play without a VR / MR device, and that you’ll be able to continue building worlds or use any Marketplace purchases. At the time, Mojang’s reasoning for removing support <a href="https://www.minecraft.net/en-us/article/minecraft-1-21-40-bedrock-changelog">was that</a> “our ability to support VR / MR devices has come to an end.”</p>
+
+<p class="has-text-align-none">However, there are still ways to play <em>Minecraft</em> on a VR headset, if you’d like. If you have the Java version of the game for PC, you can use a mod like <a href="https://www.vivecraft.org/">Vivecraft</a>, which works on many VR platforms, or <a href="https://questcraft.org/">QuestCraft</a>, a port specific to Meta Quest headsets.</p>
+
+<p class="has-text-align-none">Still, I’m a little sad to see official VR support ending for <em>Minecraft</em>, especially if you, like me, can remember the incredibly impressive <em>Minecraft</em> demo for HoloLens from <a href="https://www.theverge.com/2015/1/21/7868363/minecraft-hololens-microsoft-freecell">way back in the day</a>. </p>
+						]]>
+									</content>
+			
+					</entry>
+	</feed>
