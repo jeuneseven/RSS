@@ -387,79 +387,32 @@ def iterative_refinement_with_early_stopping(text: str, max_iterations: int = 3)
 
 def create_comparison_visualization(summary_df):
     """
-    Create and save enhanced visualization of summarization methods comparison.
+    Create and save visualization of summarization methods comparison,
+    focusing only on ROUGE and BERTScore metrics.
 
     Args:
         summary_df: DataFrame with metrics by method
     """
     metrics = ['rouge-1', 'rouge-2', 'rouge-l', 'bertscore']
 
-    # Create figure with two subplots: bar chart and radar chart
-    fig = plt.figure(figsize=(20, 12))
+    # Create figure with bar charts for metrics
+    fig = plt.figure(figsize=(14, 10))
 
-    # 1. Bar charts for each metric
+    # Bar charts for each metric
     for i, metric in enumerate(metrics, 1):
-        ax = fig.add_subplot(2, 3, i)
+        ax = fig.add_subplot(2, 2, i)
         bars = ax.bar(summary_df['method'], summary_df[metric], width=0.6)
         ax.set_title(f"{metric.upper()} by Method")
         ax.set_ylim(0, summary_df[metric].max() * 1.2)
-        ax.set_xticklabels(summary_df['method'], rotation=20)
+        ax.set_xticklabels(summary_df['method'], rotation=25, ha='right')
         for bar in bars:
             h = bar.get_height()
-            ax.text(bar.get_x() + bar.get_width() / 2, h +
-                    0.01, f'{h:.4f}', ha='center', fontsize=9)
+            ax.text(bar.get_x() + bar.get_width() / 2, h + 0.01, f'{h:.4f}',
+                    ha='center', va='bottom', fontsize=9)
         ax.set_ylabel('Score')
 
-    # 2. Length comparison
-    ax = fig.add_subplot(2, 3, 5)
-    bars = ax.bar(summary_df['method'], summary_df['avg_length'], width=0.6)
-    ax.set_title("Average Summary Length (words)")
-    ax.set_xticklabels(summary_df['method'], rotation=20)
-    for bar in bars:
-        h = bar.get_height()
-        ax.text(bar.get_x() + bar.get_width() / 2, h +
-                0.5, f'{int(h)}', ha='center', fontsize=9)
-    ax.set_ylabel('Word Count')
-
-    # 3. Radar chart for normalized comparison
-    ax = fig.add_subplot(2, 3, 6, polar=True)
-    methods = summary_df['method'].tolist()
-
-    # Normalize metrics for radar chart
-    radar_df = summary_df.copy()
-    for metric in metrics:
-        max_val = radar_df[metric].max()
-        min_val = radar_df[metric].min()
-        if max_val > min_val:
-            radar_df[metric] = (radar_df[metric] - min_val) / \
-                (max_val - min_val)
-        else:
-            radar_df[metric] = radar_df[metric] / max_val
-
-    # Number of variables
-    N = len(metrics)
-    angles = [n / float(N) * 2 * np.pi for n in range(N)]
-    angles += angles[:1]  # Close the loop
-
-    # Plot each method
-    for i, method in enumerate(methods):
-        values = radar_df[radar_df['method'] ==
-                          method][metrics].values.flatten().tolist()
-        values += values[:1]  # Close the loop
-        ax.plot(angles, values, linewidth=1.5, linestyle='solid', label=method)
-        ax.fill(angles, values, alpha=0.1)
-
-    # Set category labels
-    ax.set_xticks(angles[:-1])
-    ax.set_xticklabels(metrics)
-    ax.set_title("Normalized Performance Metrics")
-
-    # Add legend
-    ax.legend(loc='upper right', bbox_to_anchor=(0.1, 0.1))
-
     plt.tight_layout()
-    plt.suptitle('Enhanced Comparison of Summarization Methods',
-                 y=1.02, fontsize=16)
+    plt.suptitle('Comparison of Summarization Methods', y=1.02, fontsize=16)
 
     # Save figure
     fig.savefig('textrank_bart_iterative_refinement.png',
