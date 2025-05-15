@@ -6,7 +6,7 @@ This script analyzes articles from an RSS feed and generates four types of summa
    - TextRank: Graph-based ranking algorithm
    - LexRank: Graph-based algorithm using TF-IDF cosine similarity
    - LSA: Latent Semantic Analysis for topic extraction
-2. Abstractive summaries - generates new text using BART
+2. Abstractive summaries - generates new text using T5
 3. Hybrid summaries - combines the best extractive algorithm with abstractive approach
 
 Each summary type is evaluated using ROUGE and BERTScore metrics, and the results are compared.
@@ -39,6 +39,7 @@ from sklearn.decomposition import TruncatedSVD
 from nltk.tokenize import word_tokenize
 from scipy.sparse.linalg import svds
 from scipy import sparse
+from transformers import T5Tokenizer, T5ForConditionalGeneration
 
 # Download necessary NLTK data
 try:
@@ -56,11 +57,11 @@ class RSSFeedSummarizer:
 
         # Initialize transformer models
         print("Loading models...")
-        # BART model for abstractive summarization
-        self.bart_tokenizer = BartTokenizer.from_pretrained(
-            'facebook/bart-large-cnn')
-        self.bart_model = BartForConditionalGeneration.from_pretrained(
-            'facebook/bart-large-cnn')
+        # T5 model for abstractive summarization
+        self.t5_tokenizer = T5Tokenizer.from_pretrained(
+            't5-base')
+        self.t5_model = T5ForConditionalGeneration.from_pretrained(
+            't5-base')
 
         # BERT model for BERTScore
         self.bert_tokenizer = BertTokenizer.from_pretrained(
@@ -279,14 +280,13 @@ class RSSFeedSummarizer:
 
     def abstractive_summarization(self, text, max_length=150, min_length=50):
         """
-        Generate an abstractive summary using BART model
+        Generate an abstractive summary using T5 model
         """
-        # Truncate text if it's too long for BART
-        input_ids = self.bart_tokenizer.encode(
-            text, truncation=True, max_length=1024, return_tensors="pt")
+        input_ids = self.t5_tokenizer.encode(
+            text.strip(), truncation=True, max_length=512, return_tensors="pt"
+        )
 
-        # Generate summary
-        summary_ids = self.bart_model.generate(
+        summary_ids = self.t5_model.generate(
             input_ids,
             max_length=max_length,
             min_length=min_length,
@@ -295,9 +295,8 @@ class RSSFeedSummarizer:
             early_stopping=True
         )
 
-        summary = self.bart_tokenizer.decode(
+        summary = self.t5_tokenizer.decode(
             summary_ids[0], skip_special_tokens=True)
-
         return summary
 
     def hybrid_summarization(self, text, original_text, extractive_summary, abstractive_summary):
@@ -579,7 +578,7 @@ class RSSFeedSummarizer:
 
             # Generate hybrid summary using the best extractive method and abstractive
             print(
-                f"  Generating hybrid summary (using {best_method} + BART)...")
+                f"  Generating hybrid summary (using {best_method} + T5)...")
             hybrid_summary = self.hybrid_summarization(
                 content, content, best_extractive_summary, abstractive_summary
             )
@@ -712,8 +711,8 @@ class RSSFeedSummarizer:
             'LexRank',
             'LSA',
             'Best Extractive',
-            'Abstractive\n(BART)',
-            'Hybrid\n(Best+BART)'
+            'Abstractive\n(T5)',
+            'Hybrid\n(Best+T5)'
         ]
 
         # Calculate average ROUGE-1 F1 scores
@@ -845,17 +844,16 @@ class RSSFeedSummarizer:
                     'TextRank: Graph-based ranking algorithm\n'
                     'LexRank: Graph-based using TF-IDF cosine similarity\n'
                     'LSA: Latent Semantic Analysis for topic extraction\n'
-                    'BART: Pre-trained transformer-based abstractive model\n'
-                    'Hybrid: Combines best extractive method with BART',
+                    'T5: Transformer model pre-trained with gap-sentences generation for abstractive summarization\n'
+                    'Hybrid: Combines best extractive method with T5',
                     ha='center', fontsize=11, bbox={"facecolor": "lightgrey", "alpha": 0.5, "pad": 5})
 
         plt.tight_layout(rect=[0, 0.05, 1, 0.95])
-        plt.savefig('multi_extractive_bart_hybrid_results.png',
+        plt.savefig('best_extractive_then_t5.png',
                     dpi=300, bbox_inches='tight')
-
         plt.close('all')
 
-        print("\nVisualization saved as 'multi_extractive_bart_hybrid_results.png")
+        print("\nVisualization saved as 'best_extractive_then_t5.png")
 
 
 def main():

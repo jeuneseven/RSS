@@ -31,6 +31,8 @@ import matplotlib.pyplot as plt
 import re
 from bs4 import BeautifulSoup
 import time
+from transformers import T5Tokenizer, T5ForConditionalGeneration
+
 
 # Download necessary NLTK data
 try:
@@ -49,10 +51,8 @@ class RSSFeedSummarizer:
         # Initialize transformer models
         print("Loading models...")
         # BART model for abstractive summarization
-        self.bart_tokenizer = BartTokenizer.from_pretrained(
-            'facebook/bart-large-cnn')
-        self.bart_model = BartForConditionalGeneration.from_pretrained(
-            'facebook/bart-large-cnn')
+        self.t5_tokenizer = T5Tokenizer.from_pretrained('t5-base')
+        self.t5_model = T5ForConditionalGeneration.from_pretrained('t5-base')
 
         # BERT model for BERTScore
         self.bert_tokenizer = BertTokenizer.from_pretrained(
@@ -262,21 +262,18 @@ class RSSFeedSummarizer:
         """
         Generate an abstractive summary using BART model
         """
-        # Truncate text if it's too long for BART
-        input_ids = self.bart_tokenizer.encode(
-            text, truncation=True, max_length=1024, return_tensors="pt")
-
-        # Generate summary
-        summary_ids = self.bart_model.generate(
-            input_ids,
-            max_length=max_length,
-            min_length=min_length,
+        input_text = "summarize: " + text
+        inputs = self.t5_tokenizer(
+            input_text, return_tensors="pt", max_length=512, truncation=True)
+        summary_ids = self.t5_model.generate(
+            inputs["input_ids"],
+            max_length=150,
+            min_length=50,
             length_penalty=2.0,
             num_beams=4,
             early_stopping=True
         )
-
-        summary = self.bart_tokenizer.decode(
+        summary = self.t5_tokenizer.decode(
             summary_ids[0], skip_special_tokens=True)
 
         return summary
@@ -727,11 +724,11 @@ class RSSFeedSummarizer:
                     ha='center', fontsize=11, bbox={"facecolor": "lightgrey", "alpha": 0.5, "pad": 5})
 
         plt.tight_layout(rect=[0, 0.05, 1, 0.95])
-        plt.savefig('textrank_bart_hybrid_results.png',
+        plt.savefig('combine_extractive_then_bart​.png',
                     dpi=300, bbox_inches='tight')
         plt.close()
 
-        print("\nEnhanced visualization with algorithm/model labels saved as 'textrank_bart_hybrid_results.png'")
+        print("\nEnhanced visualization with algorithm/model labels saved as 'combine_extractive_then_bart​.png'")
 
 
 def main():
@@ -748,7 +745,7 @@ def main():
     # Process the feed
     print(f"\nProcessing RSS feed: {rss_url}")
     start_time = time.time()
-    summarizer.process_feed(rss_url, num_articles=10)
+    summarizer.process_feed(rss_url, num_articles=3)
     end_time = time.time()
 
     print(f"\nTotal processing time: {end_time - start_time:.2f} seconds")

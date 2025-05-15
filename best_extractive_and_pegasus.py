@@ -6,7 +6,7 @@ This script analyzes articles from an RSS feed and generates four types of summa
    - TextRank: Graph-based ranking algorithm
    - LexRank: Graph-based algorithm using TF-IDF cosine similarity
    - LSA: Latent Semantic Analysis for topic extraction
-2. Abstractive summaries - generates new text using T5
+2. Abstractive summaries - generates new text using Pegasus
 3. Hybrid summaries - combines the best extractive algorithm with abstractive approach
 
 Each summary type is evaluated using ROUGE and BERTScore metrics, and the results are compared.
@@ -39,7 +39,7 @@ from sklearn.decomposition import TruncatedSVD
 from nltk.tokenize import word_tokenize
 from scipy.sparse.linalg import svds
 from scipy import sparse
-from transformers import T5Tokenizer, T5ForConditionalGeneration
+from transformers import PegasusTokenizer, PegasusForConditionalGeneration
 
 # Download necessary NLTK data
 try:
@@ -57,11 +57,11 @@ class RSSFeedSummarizer:
 
         # Initialize transformer models
         print("Loading models...")
-        # T5 model for abstractive summarization
-        self.t5_tokenizer = T5Tokenizer.from_pretrained(
-            't5-base')
-        self.t5_model = T5ForConditionalGeneration.from_pretrained(
-            't5-base')
+        # Three models (BART, T5, Pegasus) for abstractive summarization
+        self.pegasus_tokenizer = PegasusTokenizer.from_pretrained(
+            'google/pegasus-xsum')
+        self.pegasus_model = PegasusForConditionalGeneration.from_pretrained(
+            'google/pegasus-xsum')
 
         # BERT model for BERTScore
         self.bert_tokenizer = BertTokenizer.from_pretrained(
@@ -122,6 +122,8 @@ class RSSFeedSummarizer:
 
         # Clean HTML content
         content = self.clean_html(content)
+        print("\n--- Cleaned Original Content ---")
+        print(content)
 
         # If content is too short, try to fetch the full article
         if len(content.split()) < 100 and article.get('link'):
@@ -278,15 +280,15 @@ class RSSFeedSummarizer:
 
         return summary
 
-    def abstractive_summarization(self, text, max_length=150, min_length=50):
+    def multi_abstractive_summarization(self, text, max_length=150, min_length=50):
         """
-        Generate an abstractive summary using T5 model
+        Generate an abstractive summary using Pegasus model
         """
-        input_ids = self.t5_tokenizer.encode(
+        input_ids = self.pegasus_tokenizer.encode(
             text.strip(), truncation=True, max_length=512, return_tensors="pt"
         )
 
-        summary_ids = self.t5_model.generate(
+        summary_ids = self.pegasus_model.generate(
             input_ids,
             max_length=max_length,
             min_length=min_length,
@@ -295,7 +297,7 @@ class RSSFeedSummarizer:
             early_stopping=True
         )
 
-        summary = self.t5_tokenizer.decode(
+        summary = self.pegasus_tokenizer.decode(
             summary_ids[0], skip_special_tokens=True)
         return summary
 
@@ -565,7 +567,7 @@ class RSSFeedSummarizer:
 
             # Generate abstractive summary
             print("  Generating abstractive summary...")
-            abstractive_summary = self.abstractive_summarization(content)
+            abstractive_summary = self.multi_abstractive_summarization(content)
 
             # Evaluate abstractive summary
             rouge_abstractive = self._evaluate_rouge(
@@ -578,7 +580,7 @@ class RSSFeedSummarizer:
 
             # Generate hybrid summary using the best extractive method and abstractive
             print(
-                f"  Generating hybrid summary (using {best_method} + T5)...")
+                f"  Generating hybrid summary (using {best_method} + Pegasus)...")
             hybrid_summary = self.hybrid_summarization(
                 content, content, best_extractive_summary, abstractive_summary
             )
@@ -600,6 +602,7 @@ class RSSFeedSummarizer:
             print(
                 f"  Abstractive summary: {len(abstractive_summary.split())} words")
             print(f"  Hybrid summary: {len(hybrid_summary.split())} words")
+            print(f"  Hybrid summary: {hybrid_summary}")
 
             print("\n  --- ROUGE-1 Scores ---")
             print(f"  TextRank: {rouge_textrank['rouge-1']['f']:.4f}")
@@ -711,18 +714,34 @@ class RSSFeedSummarizer:
             'LexRank',
             'LSA',
             'Best Extractive',
-            'Abstractive\n(T5)',
-            'Hybrid\n(Best+T5)'
+            'Abstractive (Best of 3)',
+            'Hybrid (Best+Best)'
         ]
 
-        # Calculate average ROUGE-1 F1 scores
-        rouge1_scores = []
-        for method in ['textrank', 'lexrank', 'lsa', 'best_extractive', 'abstractive', 'hybrid']:
-            scores = [results[method]['rouge'][i]['rouge-1']['f']
-                      for i in results[method]['rouge']]
-            rouge1_scores.append(np.mean(scores))
+        # Safely compute average scores even if some methods are missing results
 
-        # Calculate average ROUGE-2 F1 scores
+        def safe_mean(scores, expected_len):
+            if len(scores) < expected_len:
+                scores.extend([0.0] * (expected_len - len(scores)))
+            return np.mean(scores[:expected_len])
+
+        num_articles = len(results['textrank']['rouge'])
+
+        rouge1_scores, rouge2_scores, rougeL_scores, bertscore_scores = [], [], [], []
+        for method in ['textrank', 'lexrank', 'lsa', 'best_extractive', 'abstractive', 'hybrid']:
+            r1 = [results[method]['rouge'][i]['rouge-1']['f']
+                  for i in results[method]['rouge']]
+            r2 = [results[method]['rouge'][i]['rouge-2']['f']
+                  for i in results[method]['rouge']]
+            rl = [results[method]['rouge'][i]['rouge-l']['f']
+                  for i in results[method]['rouge']]
+            bscore = [results[method]['bertscore'][i]['f1']
+                      for i in results[method]['bertscore']]
+            rouge1_scores.append(safe_mean(r1, num_articles))
+            rouge2_scores.append(safe_mean(r2, num_articles))
+            rougeL_scores.append(safe_mean(rl, num_articles))
+            bertscore_scores.append(safe_mean(bscore, num_articles))
+
         rouge2_scores = []
         for method in ['textrank', 'lexrank', 'lsa', 'best_extractive', 'abstractive', 'hybrid']:
             scores = [results[method]['rouge'][i]['rouge-2']['f']
@@ -844,16 +863,16 @@ class RSSFeedSummarizer:
                     'TextRank: Graph-based ranking algorithm\n'
                     'LexRank: Graph-based using TF-IDF cosine similarity\n'
                     'LSA: Latent Semantic Analysis for topic extraction\n'
-                    'T5: Transformer model pre-trained with gap-sentences generation for abstractive summarization\n'
-                    'Hybrid: Combines best extractive method with T5',
+                    'Multi-Abstractive: BART, T5, Pegasus-based models\n'
+                    'Hybrid: Combines best extractive method with Pegasus',
                     ha='center', fontsize=11, bbox={"facecolor": "lightgrey", "alpha": 0.5, "pad": 5})
 
         plt.tight_layout(rect=[0, 0.05, 1, 0.95])
-        plt.savefig('multi_extractive_t5_hybrid_results.png',
+        plt.savefig('best_extractive_then_pegasus.png',
                     dpi=300, bbox_inches='tight')
         plt.close('all')
 
-        print("\nVisualization saved as 'multi_extractive_t5_hybrid_results.png")
+        print("\nVisualization saved as 'best_extractive_then_pegasus.png")
 
 
 def main():
