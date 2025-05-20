@@ -229,7 +229,7 @@ def main():
     all_results = []
     for i, (title, content) in enumerate(articles):
         print(f'\n--- Article {i+1}: {title} ---')
-
+        print(f"\n[Original Article Content]\n{content}\n")
         # --- Direct Single-Method Summarization and Evaluation ---
         print(f"\n--- Direct Single-Method Summarization & Evaluation ---")
 
