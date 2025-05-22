@@ -850,12 +850,12 @@ class RSSFeedSummarizer:
                     ha='center', fontsize=11, bbox={"facecolor": "lightgrey", "alpha": 0.5, "pad": 5})
 
         plt.tight_layout(rect=[0, 0.05, 1, 0.95])
-        plt.savefig('best_extractive_then_bart.png',
+        plt.savefig('best_extractive_and_bart.png',
                     dpi=300, bbox_inches='tight')
 
         plt.close('all')
 
-        print("\nVisualization saved as 'best_extractive_then_bart.png")
+        print("\nVisualization saved as 'best_extractive_and_bart.png")
 
 
 def main():

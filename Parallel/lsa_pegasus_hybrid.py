@@ -714,7 +714,7 @@ def main():
     # Process the feed
     print(f"\nProcessing RSS feed: {rss_url}")
     start_time = time.time()
-    summarizer.process_feed(rss_url, num_articles=3)
+    summarizer.process_feed(rss_url, num_articles=5)
     end_time = time.time()
 
     print(f"\nTotal processing time: {end_time - start_time:.2f} seconds")

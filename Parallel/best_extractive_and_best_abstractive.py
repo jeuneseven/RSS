@@ -1,15 +1,18 @@
 """
 RSS Feed Summarization and Evaluation
 
-This script analyzes articles from an RSS feed and generates four types of summaries:
-1. Extractive summaries using multiple algorithms:
+This script analyzes articles from an RSS feed and generates summaries using:
+1. Extractive methods (selects best from 3 algorithms):
    - TextRank: Graph-based ranking algorithm
    - LexRank: Graph-based algorithm using TF-IDF cosine similarity
    - LSA: Latent Semantic Analysis for topic extraction
-2. Abstractive summaries - generates new text using BART
-3. Hybrid summaries - combines the best extractive algorithm with abstractive approach
+2. Abstractive methods (selects best from 3 models):
+   - BART: Facebook's BART model for conditional generation
+   - T5: Google's Text-to-Text Transfer Transformer
+   - Pegasus: Google's pre-trained model for abstractive summarization
+3. Hybrid method: combines the best extractive and best abstractive approaches
 
-Each summary type is evaluated using ROUGE and BERTScore metrics, and the results are compared.
+Each method is evaluated using ROUGE and BERTScore metrics to determine the best performers.
 """
 
 import feedparser
@@ -24,6 +27,10 @@ import torch
 from transformers import (
     BartForConditionalGeneration,
     BartTokenizer,
+    T5ForConditionalGeneration,
+    T5Tokenizer,
+    PegasusForConditionalGeneration,
+    PegasusTokenizer,
     BertTokenizer,
     BertModel
 )
@@ -34,11 +41,9 @@ import matplotlib.pyplot as plt
 import re
 from bs4 import BeautifulSoup
 import time
-from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
-from sklearn.decomposition import TruncatedSVD
+from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.tokenize import word_tokenize
 from scipy.sparse.linalg import svds
-from scipy import sparse
 
 # Download necessary NLTK data
 try:
@@ -56,20 +61,35 @@ class RSSFeedSummarizer:
 
         # Initialize transformer models
         print("Loading models...")
+
         # BART model for abstractive summarization
+        print("  Loading BART model...")
         self.bart_tokenizer = BartTokenizer.from_pretrained(
             'facebook/bart-large-cnn')
         self.bart_model = BartForConditionalGeneration.from_pretrained(
             'facebook/bart-large-cnn')
 
+        # T5 model for abstractive summarization
+        print("  Loading T5 model...")
+        self.t5_tokenizer = T5Tokenizer.from_pretrained('t5-small')
+        self.t5_model = T5ForConditionalGeneration.from_pretrained('t5-small')
+
+        # Pegasus model for abstractive summarization
+        print("  Loading Pegasus model...")
+        self.pegasus_tokenizer = PegasusTokenizer.from_pretrained(
+            'google/pegasus-xsum')
+        self.pegasus_model = PegasusForConditionalGeneration.from_pretrained(
+            'google/pegasus-xsum')
+
         # BERT model for BERTScore
+        print("  Loading BERT model...")
         self.bert_tokenizer = BertTokenizer.from_pretrained(
             'bert-base-uncased')
         self.bert_model = BertModel.from_pretrained('bert-base-uncased')
 
         # Initialize ROUGE evaluator
         self.rouge = Rouge()
-        print("Models loaded successfully.")
+        print("All models loaded successfully.")
 
     def fetch_rss(self, rss_url):
         """
@@ -82,7 +102,6 @@ class RSSFeedSummarizer:
                 # Handle local file
                 with open(rss_url, 'r') as f:
                     feed = feedparser.parse(f.read())
-
             return feed
         except Exception as e:
             print(f"Error fetching RSS feed: {e}")
@@ -99,8 +118,7 @@ class RSSFeedSummarizer:
         soup = BeautifulSoup(html_content, "html.parser")
         text = soup.get_text(separator=' ')
 
-        # Clean the text
-        # Replace multiple spaces with a single space
+        # Clean the text - replace multiple spaces with a single space
         text = re.sub(r'\s+', ' ', text)
         text = text.strip()
 
@@ -128,9 +146,9 @@ class RSSFeedSummarizer:
                 response = requests.get(article.link, timeout=10)
                 if response.status_code == 200:
                     soup = BeautifulSoup(response.text, "html.parser")
-                    # Try to find the main content (this is a simple approach, might need refinement)
-                    article_tags = soup.find_all(['article', 'div', 'section'], class_=re.compile(
-                        r'(article|content|post|entry)'))
+                    # Try to find the main content
+                    article_tags = soup.find_all(['article', 'div', 'section'],
+                                                 class_=re.compile(r'(article|content|post|entry)'))
                     if article_tags:
                         # Use the largest tag assuming it's the main content
                         largest_tag = max(
@@ -277,43 +295,125 @@ class RSSFeedSummarizer:
 
         return summary
 
-    def abstractive_summarization(self, text, max_length=150, min_length=50):
+    def bart_summarization(self, text, max_length=150, min_length=50):
         """
         Generate an abstractive summary using BART model
         """
-        # Truncate text if it's too long for BART
-        input_ids = self.bart_tokenizer.encode(
-            text, truncation=True, max_length=1024, return_tensors="pt")
+        try:
+            # Truncate text if it's too long for BART
+            input_ids = self.bart_tokenizer.encode(
+                text, truncation=True, max_length=1024, return_tensors="pt")
 
-        # Generate summary
-        summary_ids = self.bart_model.generate(
-            input_ids,
-            max_length=max_length,
-            min_length=min_length,
-            length_penalty=2.0,
-            num_beams=4,
-            early_stopping=True
-        )
+            # Check if input is too short
+            if input_ids.shape[1] < 10:
+                return "Summary not available - input too short."
 
-        summary = self.bart_tokenizer.decode(
-            summary_ids[0], skip_special_tokens=True)
+            # Generate summary
+            summary_ids = self.bart_model.generate(
+                input_ids,
+                max_length=max_length,
+                min_length=min(min_length, input_ids.shape[1]),
+                length_penalty=2.0,
+                num_beams=4,
+                early_stopping=True,
+                pad_token_id=self.bart_tokenizer.pad_token_id,
+                eos_token_id=self.bart_tokenizer.eos_token_id
+            )
 
-        return summary
+            summary = self.bart_tokenizer.decode(
+                summary_ids[0], skip_special_tokens=True)
+            return summary if summary.strip() else "Summary generation failed."
 
-    def hybrid_summarization(self, text, original_text, extractive_summary, abstractive_summary):
+        except Exception as e:
+            print(f"Error in BART summarization: {e}")
+            return "BART summarization failed due to model constraints."
+
+    def t5_summarization(self, text, max_length=150, min_length=50):
         """
-        Generate a hybrid summary that combines extractive and abstractive approaches
+        Generate an abstractive summary using T5 model
+        """
+        try:
+            # T5 requires a task prefix
+            input_text = f"summarize: {text}"
+
+            # Truncate text if it's too long for T5
+            input_ids = self.t5_tokenizer.encode(
+                input_text, truncation=True, max_length=512, return_tensors="pt")
+
+            # Check if input is too short
+            if input_ids.shape[1] < 10:
+                return "Summary not available - input too short."
+
+            # Generate summary
+            summary_ids = self.t5_model.generate(
+                input_ids,
+                max_length=max_length,
+                min_length=min(min_length, input_ids.shape[1]),
+                length_penalty=2.0,
+                num_beams=4,
+                early_stopping=True,
+                pad_token_id=self.t5_tokenizer.pad_token_id,
+                eos_token_id=self.t5_tokenizer.eos_token_id
+            )
+
+            summary = self.t5_tokenizer.decode(
+                summary_ids[0], skip_special_tokens=True)
+            return summary if summary.strip() else "Summary generation failed."
+
+        except Exception as e:
+            print(f"Error in T5 summarization: {e}")
+            return "T5 summarization failed due to model constraints."
+
+    def pegasus_summarization(self, text, max_length=150, min_length=50):
+        """
+        Generate an abstractive summary using Pegasus model
+        """
+        try:
+            # Pegasus has a smaller max position embeddings limit, so use 512 instead of 1024
+            input_ids = self.pegasus_tokenizer.encode(
+                text, truncation=True, max_length=512, return_tensors="pt")
+
+            # Check if input is too short
+            if input_ids.shape[1] < 10:
+                return "Summary not available - input too short."
+
+            # Generate summary with error handling
+            summary_ids = self.pegasus_model.generate(
+                input_ids,
+                max_length=max_length,
+                # Ensure min_length doesn't exceed input length
+                min_length=min(min_length, input_ids.shape[1]),
+                length_penalty=2.0,
+                num_beams=4,
+                early_stopping=True,
+                pad_token_id=self.pegasus_tokenizer.pad_token_id,
+                eos_token_id=self.pegasus_tokenizer.eos_token_id
+            )
+
+            summary = self.pegasus_tokenizer.decode(
+                summary_ids[0], skip_special_tokens=True)
+            return summary if summary.strip() else "Summary generation failed."
+
+        except Exception as e:
+            print(f"Error in Pegasus summarization: {e}")
+            return "Pegasus summarization failed due to model constraints."
+
+    def hybrid_summarization(self, text, original_text, best_extractive_summary, best_abstractive_summary):
+        """
+        Generate a hybrid summary that combines the best extractive and best abstractive approaches
         to achieve higher ROUGE and BERTScore values
         """
         # Get ROUGE scores for both summaries
-        rouge_ext = self._evaluate_rouge(extractive_summary, original_text)
-        rouge_abs = self._evaluate_rouge(abstractive_summary, original_text)
+        rouge_ext = self._evaluate_rouge(
+            best_extractive_summary, original_text)
+        rouge_abs = self._evaluate_rouge(
+            best_abstractive_summary, original_text)
 
         # Get BERTScore for both summaries
         bertscore_ext = self._evaluate_bertscore(
-            extractive_summary, original_text)
+            best_extractive_summary, original_text)
         bertscore_abs = self._evaluate_bertscore(
-            abstractive_summary, original_text)
+            best_abstractive_summary, original_text)
 
         # Calculate weights based on performance
         ext_weight = (rouge_ext['rouge-1']['f'] + bertscore_ext['f1']) / 2
@@ -321,21 +421,23 @@ class RSSFeedSummarizer:
 
         # Normalize weights
         total = ext_weight + abs_weight
-        ext_weight = ext_weight / total
-        abs_weight = abs_weight / total
+        if total > 0:
+            ext_weight = ext_weight / total
+            abs_weight = abs_weight / total
+        else:
+            ext_weight = abs_weight = 0.5
 
         # Combine the summaries based on their strengths
         if ext_weight > abs_weight * 1.2:  # If extractive is significantly better
             # Use extractive as base and enhance with abstractive elements
-            sentences_ext = sent_tokenize(extractive_summary)
-            sentences_abs = sent_tokenize(abstractive_summary)
+            sentences_ext = sent_tokenize(best_extractive_summary)
+            sentences_abs = sent_tokenize(best_abstractive_summary)
 
             # Find unique information in abstractive summary
             unique_abs_sentences = []
             for abs_sent in sentences_abs:
                 is_unique = True
                 for ext_sent in sentences_ext:
-                    # Similarity threshold
                     if self._sentence_similarity(abs_sent, ext_sent) > 0.6:
                         is_unique = False
                         break
@@ -343,33 +445,28 @@ class RSSFeedSummarizer:
                     unique_abs_sentences.append(abs_sent)
 
             # Combine extractive summary with unique abstractive sentences
-            hybrid_summary = extractive_summary
+            hybrid_summary = best_extractive_summary
             if unique_abs_sentences:
-                # Add up to 2 unique sentences
                 hybrid_summary += " " + " ".join(unique_abs_sentences[:2])
 
         elif abs_weight > ext_weight * 1.2:  # If abstractive is significantly better
             # Use abstractive as base and enhance with key extractive sentences
-            sentences_ext = sent_tokenize(extractive_summary)
-
-            # Find key information in extractive that might be missing in abstractive
+            sentences_ext = sent_tokenize(best_extractive_summary)
             # Take top 2 sentences from extractive
             key_sentences = sentences_ext[:2]
 
             # Use abstractive summary as base
-            hybrid_summary = abstractive_summary
+            hybrid_summary = best_abstractive_summary
 
             # Add key extractive sentences that contain unique information
             for sent in key_sentences:
-                if sent not in abstractive_summary:
+                if sent not in best_abstractive_summary:
                     hybrid_summary += " " + sent
         else:
             # Both are comparable, create a more balanced hybrid
-            # Extract key sentences from both summaries
-            sentences_ext = sent_tokenize(extractive_summary)
-            sentences_abs = sent_tokenize(abstractive_summary)
+            sentences_ext = sent_tokenize(best_extractive_summary)
+            sentences_abs = sent_tokenize(best_abstractive_summary)
 
-            # Select sentences from both summaries
             hybrid_sentences = []
 
             # Add first sentence from abstractive (often a good overview)
@@ -379,7 +476,6 @@ class RSSFeedSummarizer:
             # Add important details from extractive
             for i, sent in enumerate(sentences_ext):
                 if i < 3:  # Limit to 3 sentences from extractive
-                    # Check if it's not too similar to what we already have
                     is_unique = True
                     for hybrid_sent in hybrid_sentences:
                         if self._sentence_similarity(sent, hybrid_sent) > 0.7:
@@ -389,7 +485,6 @@ class RSSFeedSummarizer:
                         hybrid_sentences.append(sent)
 
             # Add remaining unique info from abstractive
-            # Skip first sentence which we already added
             for i, sent in enumerate(sentences_abs[1:]):
                 if i < 2:  # Limit to 2 more sentences from abstractive
                     is_unique = True
@@ -400,7 +495,6 @@ class RSSFeedSummarizer:
                     if is_unique:
                         hybrid_sentences.append(sent)
 
-            # Join the selected sentences
             hybrid_summary = " ".join(hybrid_sentences)
 
         # Final check - ensure hybrid summary is not worse than both original summaries
@@ -416,9 +510,9 @@ class RSSFeedSummarizer:
         # If hybrid is worse than both originals, use the better of the two originals
         if hybrid_score < best_original_score:
             if (rouge_ext['rouge-1']['f'] + bertscore_ext['f1']) > (rouge_abs['rouge-1']['f'] + bertscore_abs['f1']):
-                return extractive_summary
+                return best_extractive_summary
             else:
-                return abstractive_summary
+                return best_abstractive_summary
 
         return hybrid_summary
 
@@ -426,8 +520,16 @@ class RSSFeedSummarizer:
         """
         Evaluate summary using ROUGE metrics
         """
-        if not summary or not reference:
-            # Return zero scores if either input is empty
+        if not summary or not reference or summary.strip() == "" or reference.strip() == "":
+            return {
+                'rouge-1': {'f': 0.0, 'p': 0.0, 'r': 0.0},
+                'rouge-2': {'f': 0.0, 'p': 0.0, 'r': 0.0},
+                'rouge-l': {'f': 0.0, 'p': 0.0, 'r': 0.0}
+            }
+
+        # Handle error messages from summarization
+        error_messages = ["failed", "not available", "error", "constraints"]
+        if any(msg in summary.lower() for msg in error_messages):
             return {
                 'rouge-1': {'f': 0.0, 'p': 0.0, 'r': 0.0},
                 'rouge-2': {'f': 0.0, 'p': 0.0, 'r': 0.0},
@@ -435,12 +537,10 @@ class RSSFeedSummarizer:
             }
 
         try:
-            # Calculate ROUGE scores
             scores = self.rouge.get_scores(summary, reference)[0]
             return scores
         except Exception as e:
             print(f"Error calculating ROUGE: {e}")
-            # Return zero scores in case of error
             return {
                 'rouge-1': {'f': 0.0, 'p': 0.0, 'r': 0.0},
                 'rouge-2': {'f': 0.0, 'p': 0.0, 'r': 0.0},
@@ -451,12 +551,15 @@ class RSSFeedSummarizer:
         """
         Evaluate summary using BERTScore metrics
         """
-        if not summary or not reference:
-            # Return zero scores if either input is empty
+        if not summary or not reference or summary.strip() == "" or reference.strip() == "":
+            return {'p': 0.0, 'r': 0.0, 'f1': 0.0}
+
+        # Handle error messages from summarization
+        error_messages = ["failed", "not available", "error", "constraints"]
+        if any(msg in summary.lower() for msg in error_messages):
             return {'p': 0.0, 'r': 0.0, 'f1': 0.0}
 
         try:
-            # Calculate BERTScore
             P, R, F1 = bert_score([summary], [reference], lang='en')
             return {
                 'p': P.item(),
@@ -465,7 +568,6 @@ class RSSFeedSummarizer:
             }
         except Exception as e:
             print(f"Error calculating BERTScore: {e}")
-            # Return zero scores in case of error
             return {'p': 0.0, 'r': 0.0, 'f1': 0.0}
 
     def process_feed(self, rss_url, num_articles=3):
@@ -484,11 +586,19 @@ class RSSFeedSummarizer:
 
         # Store results for each article and each method
         results = {
+            # Extractive methods
             'textrank': {'rouge': {}, 'bertscore': {}},
             'lexrank': {'rouge': {}, 'bertscore': {}},
             'lsa': {'rouge': {}, 'bertscore': {}},
             'best_extractive': {'rouge': {}, 'bertscore': {}, 'method': {}},
-            'abstractive': {'rouge': {}, 'bertscore': {}},
+
+            # Abstractive methods
+            'bart': {'rouge': {}, 'bertscore': {}},
+            't5': {'rouge': {}, 'bertscore': {}},
+            'pegasus': {'rouge': {}, 'bertscore': {}},
+            'best_abstractive': {'rouge': {}, 'bertscore': {}, 'method': {}},
+
+            # Hybrid method
             'hybrid': {'rouge': {}, 'bertscore': {}}
         }
 
@@ -505,24 +615,24 @@ class RSSFeedSummarizer:
                 print(f"  Insufficient content for article {i+1}, skipping.")
                 continue
 
-            # Generate extractive summaries with different algorithms
-            print("  Generating TextRank summary...")
+            # ====================== EXTRACTIVE METHODS ======================
+            print("  Generating extractive summaries...")
+
+            print("    Generating TextRank summary...")
             textrank_summary = self.textrank_summarization(content)
 
-            print("  Generating LexRank summary...")
+            print("    Generating LexRank summary...")
             lexrank_summary = self.lexrank_summarization(content)
 
-            print("  Generating LSA summary...")
+            print("    Generating LSA summary...")
             lsa_summary = self.lsa_summarization(content)
 
             # Evaluate extractive summaries
             print("  Evaluating extractive summaries...")
-            # ROUGE evaluation
             rouge_textrank = self._evaluate_rouge(textrank_summary, content)
             rouge_lexrank = self._evaluate_rouge(lexrank_summary, content)
             rouge_lsa = self._evaluate_rouge(lsa_summary, content)
 
-            # BERTScore evaluation
             bertscore_textrank = self._evaluate_bertscore(
                 textrank_summary, content)
             bertscore_lexrank = self._evaluate_bertscore(
@@ -541,47 +651,92 @@ class RSSFeedSummarizer:
             # Determine the best extractive method for this article
             textrank_score = (
                 rouge_textrank['rouge-1']['f'] + bertscore_textrank['f1']) / 2
-            lexrank_score = (rouge_lexrank['rouge-1']
-                             ['f'] + bertscore_lexrank['f1']) / 2
+            lexrank_score = (
+                rouge_lexrank['rouge-1']['f'] + bertscore_lexrank['f1']) / 2
             lsa_score = (rouge_lsa['rouge-1']['f'] + bertscore_lsa['f1']) / 2
 
-            best_score = max(textrank_score, lexrank_score, lsa_score)
-            if best_score == textrank_score:
+            best_ext_score = max(textrank_score, lexrank_score, lsa_score)
+            if best_ext_score == textrank_score:
                 best_extractive_summary = textrank_summary
-                best_method = "TextRank"
+                best_ext_method = "TextRank"
                 results['best_extractive']['rouge'][i] = rouge_textrank
                 results['best_extractive']['bertscore'][i] = bertscore_textrank
-            elif best_score == lexrank_score:
+            elif best_ext_score == lexrank_score:
                 best_extractive_summary = lexrank_summary
-                best_method = "LexRank"
+                best_ext_method = "LexRank"
                 results['best_extractive']['rouge'][i] = rouge_lexrank
                 results['best_extractive']['bertscore'][i] = bertscore_lexrank
             else:
                 best_extractive_summary = lsa_summary
-                best_method = "LSA"
+                best_ext_method = "LSA"
                 results['best_extractive']['rouge'][i] = rouge_lsa
                 results['best_extractive']['bertscore'][i] = bertscore_lsa
 
-            results['best_extractive']['method'][i] = best_method
+            results['best_extractive']['method'][i] = best_ext_method
 
-            # Generate abstractive summary
-            print("  Generating abstractive summary...")
-            abstractive_summary = self.abstractive_summarization(content)
+            # ====================== ABSTRACTIVE METHODS ======================
+            print("  Generating abstractive summaries...")
 
-            # Evaluate abstractive summary
-            rouge_abstractive = self._evaluate_rouge(
-                abstractive_summary, content)
-            bertscore_abstractive = self._evaluate_bertscore(
-                abstractive_summary, content)
+            print("    Generating BART summary...")
+            bart_summary = self.bart_summarization(content)
 
-            results['abstractive']['rouge'][i] = rouge_abstractive
-            results['abstractive']['bertscore'][i] = bertscore_abstractive
+            print("    Generating T5 summary...")
+            t5_summary = self.t5_summarization(content)
 
-            # Generate hybrid summary using the best extractive method and abstractive
+            print("    Generating Pegasus summary...")
+            pegasus_summary = self.pegasus_summarization(content)
+
+            # Evaluate abstractive summaries
+            print("  Evaluating abstractive summaries...")
+            rouge_bart = self._evaluate_rouge(bart_summary, content)
+            rouge_t5 = self._evaluate_rouge(t5_summary, content)
+            rouge_pegasus = self._evaluate_rouge(pegasus_summary, content)
+
+            bertscore_bart = self._evaluate_bertscore(bart_summary, content)
+            bertscore_t5 = self._evaluate_bertscore(t5_summary, content)
+            bertscore_pegasus = self._evaluate_bertscore(
+                pegasus_summary, content)
+
+            # Store results for abstractive methods
+            results['bart']['rouge'][i] = rouge_bart
+            results['t5']['rouge'][i] = rouge_t5
+            results['pegasus']['rouge'][i] = rouge_pegasus
+
+            results['bart']['bertscore'][i] = bertscore_bart
+            results['t5']['bertscore'][i] = bertscore_t5
+            results['pegasus']['bertscore'][i] = bertscore_pegasus
+
+            # Determine the best abstractive method for this article
+            bart_score = (rouge_bart['rouge-1']
+                          ['f'] + bertscore_bart['f1']) / 2
+            t5_score = (rouge_t5['rouge-1']['f'] + bertscore_t5['f1']) / 2
+            pegasus_score = (
+                rouge_pegasus['rouge-1']['f'] + bertscore_pegasus['f1']) / 2
+
+            best_abs_score = max(bart_score, t5_score, pegasus_score)
+            if best_abs_score == bart_score:
+                best_abstractive_summary = bart_summary
+                best_abs_method = "BART"
+                results['best_abstractive']['rouge'][i] = rouge_bart
+                results['best_abstractive']['bertscore'][i] = bertscore_bart
+            elif best_abs_score == t5_score:
+                best_abstractive_summary = t5_summary
+                best_abs_method = "T5"
+                results['best_abstractive']['rouge'][i] = rouge_t5
+                results['best_abstractive']['bertscore'][i] = bertscore_t5
+            else:
+                best_abstractive_summary = pegasus_summary
+                best_abs_method = "Pegasus"
+                results['best_abstractive']['rouge'][i] = rouge_pegasus
+                results['best_abstractive']['bertscore'][i] = bertscore_pegasus
+
+            results['best_abstractive']['method'][i] = best_abs_method
+
+            # ====================== HYBRID METHOD ======================
             print(
-                f"  Generating hybrid summary (using {best_method} + BART)...")
+                f"  Generating hybrid summary (using {best_ext_method} + {best_abs_method})...")
             hybrid_summary = self.hybrid_summarization(
-                content, content, best_extractive_summary, abstractive_summary
+                content, content, best_extractive_summary, best_abstractive_summary
             )
 
             # Evaluate hybrid summary
@@ -592,32 +747,39 @@ class RSSFeedSummarizer:
             results['hybrid']['rouge'][i] = rouge_hybrid
             results['hybrid']['bertscore'][i] = bertscore_hybrid
 
-            # Print results for this article
+            # Print detailed results for this article
             print(f"\n  === Summary Results for Article {i+1} ===")
             print(f"  Original length: {len(content.split())} words")
             print(f"  TextRank summary: {len(textrank_summary.split())} words")
             print(f"  LexRank summary: {len(lexrank_summary.split())} words")
             print(f"  LSA summary: {len(lsa_summary.split())} words")
-            print(
-                f"  Abstractive summary: {len(abstractive_summary.split())} words")
+            print(f"  BART summary: {len(bart_summary.split())} words")
+            print(f"  T5 summary: {len(t5_summary.split())} words")
+            print(f"  Pegasus summary: {len(pegasus_summary.split())} words")
             print(f"  Hybrid summary: {len(hybrid_summary.split())} words")
 
-            print("\n  --- ROUGE-1 Scores ---")
+            print("\n  --- ROUGE-1 F1 Scores ---")
             print(f"  TextRank: {rouge_textrank['rouge-1']['f']:.4f}")
             print(f"  LexRank: {rouge_lexrank['rouge-1']['f']:.4f}")
             print(f"  LSA: {rouge_lsa['rouge-1']['f']:.4f}")
-            print(f"  Abstractive: {rouge_abstractive['rouge-1']['f']:.4f}")
+            print(f"  BART: {rouge_bart['rouge-1']['f']:.4f}")
+            print(f"  T5: {rouge_t5['rouge-1']['f']:.4f}")
+            print(f"  Pegasus: {rouge_pegasus['rouge-1']['f']:.4f}")
             print(f"  Hybrid: {rouge_hybrid['rouge-1']['f']:.4f}")
 
             print("\n  --- BERTScore F1 ---")
             print(f"  TextRank: {bertscore_textrank['f1']:.4f}")
             print(f"  LexRank: {bertscore_lexrank['f1']:.4f}")
             print(f"  LSA: {bertscore_lsa['f1']:.4f}")
-            print(f"  Abstractive: {bertscore_abstractive['f1']:.4f}")
+            print(f"  BART: {bertscore_bart['f1']:.4f}")
+            print(f"  T5: {bertscore_t5['f1']:.4f}")
+            print(f"  Pegasus: {bertscore_pegasus['f1']:.4f}")
             print(f"  Hybrid: {bertscore_hybrid['f1']:.4f}")
 
             print(
-                f"\n  Best extractive method for this article: {best_method}")
+                f"\n  Best extractive method for this article: {best_ext_method}")
+            print(
+                f"  Best abstractive method for this article: {best_abs_method}")
 
             # Print the summaries
             print("\n  --- TextRank Summary ---")
@@ -629,8 +791,14 @@ class RSSFeedSummarizer:
             print("\n  --- LSA Summary ---")
             print(f"  {lsa_summary}")
 
-            print("\n  --- Abstractive Summary ---")
-            print(f"  {abstractive_summary}")
+            print("\n  --- BART Summary ---")
+            print(f"  {bart_summary}")
+
+            print("\n  --- T5 Summary ---")
+            print(f"  {t5_summary}")
+
+            print("\n  --- Pegasus Summary ---")
+            print(f"  {pegasus_summary}")
 
             print("\n  --- Hybrid Summary ---")
             print(f"  {hybrid_summary}")
@@ -638,8 +806,8 @@ class RSSFeedSummarizer:
         # Calculate and display average scores
         self._calculate_average_scores(results, len(articles))
 
-        # Visualize results
-        self._visualize_results(results)
+        # Visualize final results - only 3 methods
+        self._visualize_final_results(results)
 
         return results
 
@@ -647,24 +815,29 @@ class RSSFeedSummarizer:
         """
         Calculate and display average scores across all articles
         """
-        avg_scores = {
-            'textrank': {'rouge-1': 0, 'rouge-2': 0, 'rouge-l': 0, 'bertscore': 0},
-            'lexrank': {'rouge-1': 0, 'rouge-2': 0, 'rouge-l': 0, 'bertscore': 0},
-            'lsa': {'rouge-1': 0, 'rouge-2': 0, 'rouge-l': 0, 'bertscore': 0},
-            'best_extractive': {'rouge-1': 0, 'rouge-2': 0, 'rouge-l': 0, 'bertscore': 0},
-            'abstractive': {'rouge-1': 0, 'rouge-2': 0, 'rouge-l': 0, 'bertscore': 0},
-            'hybrid': {'rouge-1': 0, 'rouge-2': 0, 'rouge-l': 0, 'bertscore': 0}
-        }
+        # All methods for comprehensive analysis
+        all_methods = ['textrank', 'lexrank', 'lsa', 'best_extractive',
+                       'bart', 't5', 'pegasus', 'best_abstractive', 'hybrid']
 
-        # Count usage of each extractive method
-        method_counts = {'TextRank': 0, 'LexRank': 0, 'LSA': 0}
+        avg_scores = {}
+        for method in all_methods:
+            avg_scores[method] = {'rouge-1': 0,
+                                  'rouge-2': 0, 'rouge-l': 0, 'bertscore': 0}
+
+        # Count usage of each method
+        extractive_method_counts = {'TextRank': 0, 'LexRank': 0, 'LSA': 0}
+        abstractive_method_counts = {'BART': 0, 'T5': 0, 'Pegasus': 0}
+
         for i in range(num_articles):
             if i in results['best_extractive']['method']:
                 method = results['best_extractive']['method'][i]
-                method_counts[method] += 1
+                extractive_method_counts[method] += 1
+            if i in results['best_abstractive']['method']:
+                method = results['best_abstractive']['method'][i]
+                abstractive_method_counts[method] += 1
 
         # Sum scores for each metric
-        for method in ['textrank', 'lexrank', 'lsa', 'best_extractive', 'abstractive', 'hybrid']:
+        for method in all_methods:
             for i in range(num_articles):
                 if i in results[method]['rouge']:
                     avg_scores[method]['rouge-1'] += results[method]['rouge'][i]['rouge-1']['f']
@@ -677,79 +850,113 @@ class RSSFeedSummarizer:
         # Calculate averages
         for method in avg_scores:
             for metric in avg_scores[method]:
-                avg_scores[method][metric] /= num_articles
+                if num_articles > 0:
+                    avg_scores[method][metric] /= num_articles
 
         # Display average results
         print("\n=== Average Scores Across All Articles ===")
 
-        print("\n--- ROUGE Scores ---")
-        for method in ['textrank', 'lexrank', 'lsa', 'best_extractive', 'abstractive', 'hybrid']:
+        print("\n--- Extractive Methods ROUGE Scores ---")
+        for method in ['textrank', 'lexrank', 'lsa', 'best_extractive']:
             method_name = method.replace('_', ' ').title()
-            print(
-                f"{method_name} - ROUGE-1: {avg_scores[method]['rouge-1']:.4f}, ROUGE-2: {avg_scores[method]['rouge-2']:.4f}, ROUGE-L: {avg_scores[method]['rouge-l']:.4f}")
+            print(f"{method_name} - ROUGE-1: {avg_scores[method]['rouge-1']:.4f}, "
+                  f"ROUGE-2: {avg_scores[method]['rouge-2']:.4f}, "
+                  f"ROUGE-L: {avg_scores[method]['rouge-l']:.4f}")
 
-        print("\n--- BERTScore ---")
-        for method in ['textrank', 'lexrank', 'lsa', 'best_extractive', 'abstractive', 'hybrid']:
+        print("\n--- Abstractive Methods ROUGE Scores ---")
+        for method in ['bart', 't5', 'pegasus', 'best_abstractive']:
+            method_name = method.upper() if method in [
+                'bart', 't5'] else method.replace('_', ' ').title()
+            print(f"{method_name} - ROUGE-1: {avg_scores[method]['rouge-1']:.4f}, "
+                  f"ROUGE-2: {avg_scores[method]['rouge-2']:.4f}, "
+                  f"ROUGE-L: {avg_scores[method]['rouge-l']:.4f}")
+
+        print("\n--- Hybrid Method ROUGE Scores ---")
+        print(f"Hybrid - ROUGE-1: {avg_scores['hybrid']['rouge-1']:.4f}, "
+              f"ROUGE-2: {avg_scores['hybrid']['rouge-2']:.4f}, "
+              f"ROUGE-L: {avg_scores['hybrid']['rouge-l']:.4f}")
+
+        print("\n--- Extractive Methods BERTScore ---")
+        for method in ['textrank', 'lexrank', 'lsa', 'best_extractive']:
             method_name = method.replace('_', ' ').title()
             print(f"{method_name} - F1: {avg_scores[method]['bertscore']:.4f}")
 
-        # Display best extractive method usage
+        print("\n--- Abstractive Methods BERTScore ---")
+        for method in ['bart', 't5', 'pegasus', 'best_abstractive']:
+            method_name = method.upper() if method in [
+                'bart', 't5'] else method.replace('_', ' ').title()
+            print(f"{method_name} - F1: {avg_scores[method]['bertscore']:.4f}")
+
+        print("\n--- Hybrid Method BERTScore ---")
+        print(f"Hybrid - F1: {avg_scores['hybrid']['bertscore']:.4f}")
+
+        # Display method selection statistics
         print("\n--- Best Extractive Method Usage ---")
-        for method, count in method_counts.items():
-            percentage = (count / num_articles) * 100
+        for method, count in extractive_method_counts.items():
+            percentage = (count / num_articles) * \
+                100 if num_articles > 0 else 0
+            print(f"{method}: {count} articles ({percentage:.1f}%)")
+
+        print("\n--- Best Abstractive Method Usage ---")
+        for method, count in abstractive_method_counts.items():
+            percentage = (count / num_articles) * \
+                100 if num_articles > 0 else 0
             print(f"{method}: {count} articles ({percentage:.1f}%)")
 
         return avg_scores
 
-    def _visualize_results(self, results):
+    def _visualize_final_results(self, results):
         """
-        Create visualizations comparing the performance of different summarization methods
-        with clear labels of the algorithms/models used
+        Create visualizations comparing only the 3 final methods:
+        Best Extractive, Best Abstractive, and Hybrid
         """
-        # Prepare data for visualization with detailed method labels
+        # Only show 3 final methods
         methods = [
-            'TextRank',
-            'LexRank',
-            'LSA',
-            'Best Extractive',
-            'Abstractive\n(BART)',
-            'Hybrid\n(Best+BART)'
+            'Best Extractive\n(Dynamic Selection)',
+            'Best Abstractive\n(Dynamic Selection)',
+            'Hybrid\n(Best Ext + Best Abs)'
         ]
 
-        # Calculate average ROUGE-1 F1 scores
+        # Calculate average ROUGE-1 F1 scores for final methods only
         rouge1_scores = []
-        for method in ['textrank', 'lexrank', 'lsa', 'best_extractive', 'abstractive', 'hybrid']:
+        for method in ['best_extractive', 'best_abstractive', 'hybrid']:
             scores = [results[method]['rouge'][i]['rouge-1']['f']
                       for i in results[method]['rouge']]
-            rouge1_scores.append(np.mean(scores))
+            rouge1_scores.append(np.mean(scores) if scores else 0)
 
-        # Calculate average ROUGE-2 F1 scores
+        # Calculate average ROUGE-2 F1 scores for final methods only
         rouge2_scores = []
-        for method in ['textrank', 'lexrank', 'lsa', 'best_extractive', 'abstractive', 'hybrid']:
+        for method in ['best_extractive', 'best_abstractive', 'hybrid']:
             scores = [results[method]['rouge'][i]['rouge-2']['f']
                       for i in results[method]['rouge']]
-            rouge2_scores.append(np.mean(scores))
+            rouge2_scores.append(np.mean(scores) if scores else 0)
 
-        # Calculate average ROUGE-L F1 scores
+        # Calculate average ROUGE-L F1 scores for final methods only
         rougeL_scores = []
-        for method in ['textrank', 'lexrank', 'lsa', 'best_extractive', 'abstractive', 'hybrid']:
+        for method in ['best_extractive', 'best_abstractive', 'hybrid']:
             scores = [results[method]['rouge'][i]['rouge-l']['f']
                       for i in results[method]['rouge']]
-            rougeL_scores.append(np.mean(scores))
+            rougeL_scores.append(np.mean(scores) if scores else 0)
 
-        # Calculate average BERTScore F1 scores
+        # Calculate average BERTScore F1 scores for final methods only
         bertscore_scores = []
-        for method in ['textrank', 'lexrank', 'lsa', 'best_extractive', 'abstractive', 'hybrid']:
+        for method in ['best_extractive', 'best_abstractive', 'hybrid']:
             scores = [results[method]['bertscore'][i]['f1']
                       for i in results[method]['bertscore']]
-            bertscore_scores.append(np.mean(scores))
+            bertscore_scores.append(np.mean(scores) if scores else 0)
 
-        # Gather data on which extractive method was chosen as best
-        best_method_counts = {'TextRank': 0, 'LexRank': 0, 'LSA': 0}
+        # Gather data on which methods were chosen as best
+        extractive_method_counts = {'TextRank': 0, 'LexRank': 0, 'LSA': 0}
+        abstractive_method_counts = {'BART': 0, 'T5': 0, 'Pegasus': 0}
+
         for i in results['best_extractive']['method']:
-            best_method_counts[results['best_extractive']['method'][i]] += 1
+            extractive_method_counts[results['best_extractive']
+                                     ['method'][i]] += 1
+        for i in results['best_abstractive']['method']:
+            abstractive_method_counts[results['best_abstractive']
+                                      ['method'][i]] += 1
 
-        # Create a DataFrame for better visualization with algorithm/model info
+        # Create a DataFrame for better visualization with final methods only
         data = {
             'Method': methods,
             'ROUGE-1': rouge1_scores,
@@ -759,103 +966,119 @@ class RSSFeedSummarizer:
         }
         df = pd.DataFrame(data)
 
-        # Print the table with algorithm information
-        print("\n=== Performance Comparison of Summarization Methods ===")
+        # Print the table with final method comparison
+        print("\n=== Final Method Performance Comparison ===")
         print(df.to_string(index=False))
 
-        # Create bar charts with algorithm/model information
-        plt.figure(figsize=(16, 12))
+        # Create bar charts with only 3 final methods
+        plt.figure(figsize=(15, 10))
 
-        # Set colors for each method
-        colors = ['#3498db', '#2ecc71', '#e74c3c',
-                  '#f39c12', '#9b59b6', '#1abc9c']
+        # Set colors for the 3 final methods
+        colors = ['#3498db', '#e74c3c', '#1abc9c']  # Blue, Red, Teal
 
         # ROUGE-1 scores
         plt.subplot(2, 2, 1)
         bars = plt.bar(methods, rouge1_scores, color=colors, width=0.6)
-        plt.title('ROUGE-1 F1 Scores by Method',
+        plt.title('ROUGE-1 F1 Scores - Final Methods Comparison',
                   fontsize=12, fontweight='bold')
-        plt.ylim(0, max(rouge1_scores) * 1.2)
+        plt.ylim(0, max(rouge1_scores) * 1.2 if max(rouge1_scores) > 0 else 1)
         # Add value labels on top of bars
         for bar in bars:
             height = bar.get_height()
-            plt.text(bar.get_x() + bar.get_width()/2., height + 0.01,
-                     f'{height:.4f}', ha='center', fontsize=9)
+            plt.text(bar.get_x() + bar.get_width()/2., height + 0.005,
+                     f'{height:.4f}', ha='center', fontsize=10)
         plt.ylabel('F1 Score')
-        plt.xticks(rotation=45)
+        plt.xticks(rotation=0)
 
         # ROUGE-2 scores
         plt.subplot(2, 2, 2)
         bars = plt.bar(methods, rouge2_scores, color=colors, width=0.6)
-        plt.title('ROUGE-2 F1 Scores by Method',
+        plt.title('ROUGE-2 F1 Scores - Final Methods Comparison',
                   fontsize=12, fontweight='bold')
-        plt.ylim(0, max(rouge2_scores) * 1.2)
+        plt.ylim(0, max(rouge2_scores) * 1.2 if max(rouge2_scores) > 0 else 1)
         # Add value labels on top of bars
         for bar in bars:
             height = bar.get_height()
-            plt.text(bar.get_x() + bar.get_width()/2., height + 0.01,
-                     f'{height:.4f}', ha='center', fontsize=9)
+            plt.text(bar.get_x() + bar.get_width()/2., height + 0.005,
+                     f'{height:.4f}', ha='center', fontsize=10)
         plt.ylabel('F1 Score')
-        plt.xticks(rotation=45)
+        plt.xticks(rotation=0)
 
         # ROUGE-L scores
         plt.subplot(2, 2, 3)
         bars = plt.bar(methods, rougeL_scores, color=colors, width=0.6)
-        plt.title('ROUGE-L F1 Scores by Method',
+        plt.title('ROUGE-L F1 Scores - Final Methods Comparison',
                   fontsize=12, fontweight='bold')
-        plt.ylim(0, max(rougeL_scores) * 1.2)
+        plt.ylim(0, max(rougeL_scores) * 1.2 if max(rougeL_scores) > 0 else 1)
         # Add value labels on top of bars
         for bar in bars:
             height = bar.get_height()
-            plt.text(bar.get_x() + bar.get_width()/2., height + 0.01,
-                     f'{height:.4f}', ha='center', fontsize=9)
+            plt.text(bar.get_x() + bar.get_width()/2., height + 0.005,
+                     f'{height:.4f}', ha='center', fontsize=10)
         plt.ylabel('F1 Score')
-        plt.xticks(rotation=45)
+        plt.xticks(rotation=0)
 
         # BERTScore scores
         plt.subplot(2, 2, 4)
         bars = plt.bar(methods, bertscore_scores, color=colors, width=0.6)
-        plt.title('BERTScore F1 Scores by Method',
+        plt.title('BERTScore F1 Scores - Final Methods Comparison',
                   fontsize=12, fontweight='bold')
-        plt.ylim(0, max(bertscore_scores) * 1.2)
+        plt.ylim(0, max(bertscore_scores) *
+                 1.2 if max(bertscore_scores) > 0 else 1)
         # Add value labels on top of bars
         for bar in bars:
             height = bar.get_height()
-            plt.text(bar.get_x() + bar.get_width()/2., height + 0.01,
-                     f'{height:.4f}', ha='center', fontsize=9)
+            plt.text(bar.get_x() + bar.get_width()/2., height + 0.005,
+                     f'{height:.4f}', ha='center', fontsize=10)
         plt.ylabel('F1 Score')
-        plt.xticks(rotation=45)
+        plt.xticks(rotation=0)
 
-        # Create a pie chart showing which extractive method was chosen as best most often
-        plt.figure(figsize=(10, 8))
-        methods_chosen = list(best_method_counts.keys())
-        values = list(best_method_counts.values())
-        plt.pie(values, labels=methods_chosen, autopct='%1.1f%%',
-                colors=['#3498db', '#2ecc71', '#e74c3c'], startangle=90)
+        # Create pie charts showing method selection distribution
+        plt.figure(figsize=(15, 6))
+
+        # Extractive methods pie chart
+        plt.subplot(1, 2, 1)
+        ext_methods = list(extractive_method_counts.keys())
+        ext_values = list(extractive_method_counts.values())
+        if sum(ext_values) > 0:
+            plt.pie(ext_values, labels=ext_methods, autopct='%1.1f%%',
+                    colors=['#3498db', '#2ecc71', '#e74c3c'], startangle=90)
         plt.title('Best Extractive Method Selection Distribution',
-                  fontsize=14, fontweight='bold')
-        # Equal aspect ratio ensures that pie is drawn as a circle
+                  fontsize=12, fontweight='bold')
+        plt.axis('equal')
+
+        # Abstractive methods pie chart
+        plt.subplot(1, 2, 2)
+        abs_methods = list(abstractive_method_counts.keys())
+        abs_values = list(abstractive_method_counts.values())
+        if sum(abs_values) > 0:
+            plt.pie(abs_values, labels=abs_methods, autopct='%1.1f%%',
+                    colors=['#9b59b6', '#f39c12', '#1abc9c'], startangle=90)
+        plt.title('Best Abstractive Method Selection Distribution',
+                  fontsize=12, fontweight='bold')
         plt.axis('equal')
 
         # Add a super title with explanation to the main comparison chart
         plt.figure(1)
-        plt.suptitle('Comparison of Summarization Methods and Their Performance',
+        plt.suptitle('Final Summarization Methods Performance Comparison',
                      fontsize=16, fontweight='bold', y=0.98)
-        plt.figtext(0.5, 0.01,
-                    'TextRank: Graph-based ranking algorithm\n'
-                    'LexRank: Graph-based using TF-IDF cosine similarity\n'
-                    'LSA: Latent Semantic Analysis for topic extraction\n'
-                    'BART: Pre-trained transformer-based abstractive model\n'
-                    'Hybrid: Combines best extractive method with BART',
-                    ha='center', fontsize=11, bbox={"facecolor": "lightgrey", "alpha": 0.5, "pad": 5})
+        plt.figtext(0.5, 0.02,
+                    'Best Extractive: Dynamically selects the best performing extractive algorithm (TextRank/LexRank/LSA) for each article\n'
+                    'Best Abstractive: Dynamically selects the best performing abstractive model (BART/T5/Pegasus) for each article\n'
+                    'Hybrid: Intelligently combines the best extractive method with the best abstractive method based on performance scores',
+                    ha='center', fontsize=10, bbox={"facecolor": "lightgrey", "alpha": 0.5, "pad": 10})
 
-        plt.tight_layout(rect=[0, 0.05, 1, 0.95])
+        plt.tight_layout(rect=[0, 0.08, 1, 0.95])
         plt.savefig('best_extractive_and_best_abstractive.png',
                     dpi=300, bbox_inches='tight')
 
         plt.close('all')
 
-        print("\nVisualization saved as 'best_extractive_and_best_abstractive.png")
+        print("\nVisualization saved as 'best_extractive_and_best_abstractive.png'")
+        print("Charts show comparison of the 3 final methods:")
+        print("1. Best Extractive (dynamically selected from TextRank/LexRank/LSA)")
+        print("2. Best Abstractive (dynamically selected from BART/T5/Pegasus)")
+        print("3. Hybrid (Best Extractive + Best Abstractive)")
 
 
 def main():

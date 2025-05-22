@@ -23,6 +23,7 @@ from bs4 import BeautifulSoup
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import networkx as nx
+from bert_score import score as bert_score
 
 # Download necessary NLTK data
 try:
@@ -135,47 +136,72 @@ class RSSFeedSummarizer:
             return {'rouge-1': {'f': 0}}
         return self.rouge.get_scores(summary, reference)[0]
 
+    def _evaluate_bertscore(self, summary, reference):
+        """Compute BERTScore F1"""
+        if not summary or not reference:
+            return 0.0
+        P, R, F1 = bert_score([summary], [reference],
+                              lang='en', rescale_with_baseline=True)
+        return F1[0].item()
+
     def process_feed(self, rss_url, num_articles=3):
-        """Fetch feed, generate summaries, evaluate, and plot comparison"""
         feed = self.fetch_rss(rss_url)
         if not feed or not feed.entries:
-            print("No entries found in feed.")
+            print("No entries found.")
             return
 
         lex_scores, t5_scores, hyb_scores = [], [], []
+        bert_lex_scores, bert_t5_scores, bert_hyb_scores = [], [], []
+
         for entry in feed.entries[:num_articles]:
             text = self.get_article_content(entry)
             lex = self.lexrank_summarization(text)
             t5 = self.t5_summarization(text)
             hyb = self.hybrid_summarization(text)
-
             ref = text
+
             lex_scores.append(self._evaluate_rouge(lex, ref)['rouge-1']['f'])
             t5_scores.append(self._evaluate_rouge(t5, ref)['rouge-1']['f'])
             hyb_scores.append(self._evaluate_rouge(hyb, ref)['rouge-1']['f'])
 
-        methods = ['LexRank', 'T5', 'Hybrid']
-        averages = [np.mean(lex_scores), np.mean(
-            t5_scores), np.mean(hyb_scores)]
+            bert_lex_scores.append(self._evaluate_bertscore(lex, ref))
+            bert_t5_scores.append(self._evaluate_bertscore(t5, ref))
+            bert_hyb_scores.append(self._evaluate_bertscore(hyb, ref))
 
-        plt.figure(figsize=(8, 6))
-        bars = plt.bar(methods, averages, width=0.6)
-        plt.title('Average ROUGE-1 F1 Scores by Method', fontsize=14)
-        plt.ylim(0, max(averages) * 1.2)
-        for bar, avg in zip(bars, averages):
-            plt.text(bar.get_x() + bar.get_width()/2,
-                     avg + 0.01, f'{avg:.4f}', ha='center')
-        plt.ylabel('ROUGE-1 F1')
+        methods = ['LexRank', 'T5', 'Hybrid']
+        avg_rouge = [np.mean(lex_scores), np.mean(
+            t5_scores), np.mean(hyb_scores)]
+        avg_bert = [np.mean(bert_lex_scores), np.mean(
+            bert_t5_scores), np.mean(bert_hyb_scores)]
+
+        x = np.arange(len(methods))
+        width = 0.35
+        fig, ax = plt.subplots(figsize=(10, 6))
+
+        bars1 = ax.bar(x - width/2, avg_rouge, width, label='ROUGE-1 F1')
+        bars2 = ax.bar(x + width/2, avg_bert, width, label='BERTScore F1')
+
+        for i in range(len(methods)):
+            ax.text(x[i] - width/2, avg_rouge[i] + 0.01,
+                    f'{avg_rouge[i]:.4f}', ha='center')
+            ax.text(x[i] + width/2, avg_bert[i] + 0.01,
+                    f'{avg_bert[i]:.4f}', ha='center')
+
+        ax.set_xticks(x)
+        ax.set_xticklabels(methods)
+        ax.set_ylabel('F1 Score')
+        ax.set_title('Average ROUGE-1 and BERTScore F1 Scores by Method')
+        ax.legend()
         plt.tight_layout()
         plt.savefig('lexrank_t5_prompt_hybrid.png', dpi=300)
         plt.close()
-        print("Comparison chart saved as 'lexrank_t5_prompt_hybrid.png'")
+        print("Chart saved as 'lexrank_t5_prompt_hybrid.png'")
 
 
 def main():
     summarizer = RSSFeedSummarizer()
     url = input("Enter RSS feed URL or file path: ")
-    summarizer.process_feed(url, num_articles=3)
+    summarizer.process_feed(url, num_articles=5)
 
 
 if __name__ == '__main__':
