@@ -7,71 +7,72 @@
       "link": "https://www.theverge.com/news/662313/meme-coin-stablecoin-genius-act-corruption-trump",
       "published": "2025-05-06T19:28:13-04:00",
       "author": "Tina Nguyen",
-      "extractive_summary": "After abruptly pulling their support from what would have been the Senate’s first stablecoin regulatory bill, Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets – a bill directed at Donald Trump and his family’s current stablecoin and meme coin holdings. [&#8230;]",
-      "abstractive_summary": " Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets . The bill would be directed at Donald Trump and his family's current stablecoin and meme coin holdings .",
-      "hybrid_summary": " Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets . The bill would be directed at Donald Trump and his family's current stablecoin and meme coin holdings .",
-      "rouge_scores": {
-        "Textrank": {
-          "rouge-1": {
-            "r": 1.0,
-            "p": 1.0,
-            "f": 0.999999995
-          },
-          "rouge-2": {
-            "r": 1.0,
-            "p": 1.0,
-            "f": 0.999999995
-          },
-          "rouge-l": {
-            "r": 1.0,
-            "p": 1.0,
-            "f": 0.999999995
-          }
-        },
-        "Bart": {
-          "rouge-1": {
-            "r": 0.6739130434782609,
-            "p": 0.9117647058823529,
-            "f": 0.7749999951125001
-          },
-          "rouge-2": {
-            "r": 0.5818181818181818,
-            "p": 0.8205128205128205,
-            "f": 0.6808510589746491
-          },
-          "rouge-l": {
-            "r": 0.6739130434782609,
-            "p": 0.9117647058823529,
-            "f": 0.7749999951125001
-          }
-        },
-        "Textrank→bart": {
-          "rouge-1": {
-            "r": 0.6739130434782609,
-            "p": 0.9117647058823529,
-            "f": 0.7749999951125001
-          },
-          "rouge-2": {
-            "r": 0.5818181818181818,
-            "p": 0.8205128205128205,
-            "f": 0.6808510589746491
-          },
-          "rouge-l": {
-            "r": 0.6739130434782609,
-            "p": 0.9117647058823529,
-            "f": 0.7749999951125001
-          }
-        }
-      },
+      "original_content": "After abruptly pulling their support from what would have been the Senate’s first stablecoin regulatory bill, Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets – a bill directed at Donald Trump and his family’s current stablecoin and meme coin holdings. [&#8230;]",
+      "textrank_summary": "After abruptly pulling their support from what would have been the Senate’s first stablecoin regulatory bill, Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets – a bill directed at Donald Trump and his family’s current stablecoin and meme coin holdings. [&#8230;]",
+      "bart_summary": "Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets. The bill is directed at Donald Trump and his family’s current stablecoin and meme coin holdings.",
+      "hybrid_summary": "Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets. The bill is directed at Donald Trump and his family’s current stablecoin and meme coin holdings.",
       "classification": {
         "predictions": [
           {
-            "label": "Health",
-            "confidence": 0.21944361925125122
+            "label": "Entertainment",
+            "confidence": 0.2192927449941635
           }
         ],
-        "top_category": "Health",
-        "confidence": 0.21944361925125122
+        "top_category": "Entertainment",
+        "confidence": 0.2192927449941635
+      },
+      "rouge_scores": {
+        "TextRank": {
+          "rouge-1": {
+            "r": 1.0,
+            "p": 1.0,
+            "f": 0.999999995
+          },
+          "rouge-2": {
+            "r": 1.0,
+            "p": 1.0,
+            "f": 0.999999995
+          },
+          "rouge-l": {
+            "r": 1.0,
+            "p": 1.0,
+            "f": 0.999999995
+          }
+        },
+        "BART": {
+          "rouge-1": {
+            "r": 0.6956521739130435,
+            "p": 0.9411764705882353,
+            "f": 0.7999999951125
+          },
+          "rouge-2": {
+            "r": 0.6181818181818182,
+            "p": 0.8947368421052632,
+            "f": 0.7311827908659961
+          },
+          "rouge-l": {
+            "r": 0.6956521739130435,
+            "p": 0.9411764705882353,
+            "f": 0.7999999951125
+          }
+        },
+        "TextRank→BART": {
+          "rouge-1": {
+            "r": 0.6956521739130435,
+            "p": 0.9411764705882353,
+            "f": 0.7999999951125
+          },
+          "rouge-2": {
+            "r": 0.6181818181818182,
+            "p": 0.8947368421052632,
+            "f": 0.7311827908659961
+          },
+          "rouge-l": {
+            "r": 0.6956521739130435,
+            "p": 0.9411764705882353,
+            "f": 0.7999999951125
+          }
+        }
       }
     },
     {
@@ -79,71 +80,72 @@
       "link": "https://www.theverge.com/news/662321/amazon-zoox-recall-robotaxi-las-vegas-crash-software-fix",
       "published": "2025-05-06T19:12:14-04:00",
       "author": "Umar Shakir",
-      "extractive_summary": "Amazon-owned Zoox says it issued a software recall for all 270 of its vehicles after an unoccupied robotaxi in Las Vegas crashed into a passenger vehicle on April 8th, Reuters reports. The update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph [&#8230;]",
-      "abstractive_summary": " Amazon-owned Zoox says it issued a software recall for all 270 of its vehicles after an unoccupied robotaxi in Las Vegas crashed into a passenger vehicle on April 8th . The update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph .",
-      "hybrid_summary": " Amazon-owned Zoox says it issued a software recall for all 270 of its vehicles after an unoccupied robotaxi in Las Vegas crashed into a passenger vehicle on April 8th . The update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph .",
-      "rouge_scores": {
-        "Textrank": {
-          "rouge-1": {
-            "r": 1.0,
-            "p": 1.0,
-            "f": 0.999999995
-          },
-          "rouge-2": {
-            "r": 1.0,
-            "p": 1.0,
-            "f": 0.999999995
-          },
-          "rouge-l": {
-            "r": 1.0,
-            "p": 1.0,
-            "f": 0.999999995
-          }
-        },
-        "Bart": {
-          "rouge-1": {
-            "r": 0.9230769230769231,
-            "p": 0.9795918367346939,
-            "f": 0.950495044509362
-          },
-          "rouge-2": {
-            "r": 0.9090909090909091,
-            "p": 0.9615384615384616,
-            "f": 0.934579434256267
-          },
-          "rouge-l": {
-            "r": 0.9230769230769231,
-            "p": 0.9795918367346939,
-            "f": 0.950495044509362
-          }
-        },
-        "Textrank→bart": {
-          "rouge-1": {
-            "r": 0.9230769230769231,
-            "p": 0.9795918367346939,
-            "f": 0.950495044509362
-          },
-          "rouge-2": {
-            "r": 0.9090909090909091,
-            "p": 0.9615384615384616,
-            "f": 0.934579434256267
-          },
-          "rouge-l": {
-            "r": 0.9230769230769231,
-            "p": 0.9795918367346939,
-            "f": 0.950495044509362
-          }
-        }
-      },
+      "original_content": "Amazon-owned Zoox says it issued a software recall for all 270 of its vehicles after an unoccupied robotaxi in Las Vegas crashed into a passenger vehicle on April 8th, Reuters reports. The update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph [&#8230;]",
+      "textrank_summary": "Amazon-owned Zoox says it issued a software recall for all 270 of its vehicles after an unoccupied robotaxi in Las Vegas crashed into a passenger vehicle on April 8th, Reuters reports. The update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph [&#8230;]",
+      "bart_summary": "Zoox issued a software recall for all 270 of its vehicles after an unoccupied robotaxi in Las Vegas crashed into a passenger vehicle on April 8th. The update rolled out between April 16th and 17th.",
+      "hybrid_summary": "Zoox issued a software recall for all 270 of its vehicles after an unoccupied robotaxi in Las Vegas crashed into a passenger vehicle on April 8th. The update rolled out between April 16th and 17th.",
       "classification": {
         "predictions": [
           {
-            "label": "Health",
-            "confidence": 0.2297774851322174
+            "label": "Business",
+            "confidence": 0.21335607767105103
           }
         ],
-        "top_category": "Health",
-        "confidence": 0.2297774851322174
+        "top_category": "Business",
+        "confidence": 0.21335607767105103
+      },
+      "rouge_scores": {
+        "TextRank": {
+          "rouge-1": {
+            "r": 1.0,
+            "p": 1.0,
+            "f": 0.999999995
+          },
+          "rouge-2": {
+            "r": 1.0,
+            "p": 1.0,
+            "f": 0.999999995
+          },
+          "rouge-l": {
+            "r": 1.0,
+            "p": 1.0,
+            "f": 0.999999995
+          }
+        },
+        "BART": {
+          "rouge-1": {
+            "r": 0.6153846153846154,
+            "p": 0.9696969696969697,
+            "f": 0.7529411717204153
+          },
+          "rouge-2": {
+            "r": 0.5636363636363636,
+            "p": 0.9117647058823529,
+            "f": 0.6966292087615201
+          },
+          "rouge-l": {
+            "r": 0.6153846153846154,
+            "p": 0.9696969696969697,
+            "f": 0.7529411717204153
+          }
+        },
+        "TextRank→BART": {
+          "rouge-1": {
+            "r": 0.6153846153846154,
+            "p": 0.9696969696969697,
+            "f": 0.7529411717204153
+          },
+          "rouge-2": {
+            "r": 0.5636363636363636,
+            "p": 0.9117647058823529,
+            "f": 0.6966292087615201
+          },
+          "rouge-l": {
+            "r": 0.6153846153846154,
+            "p": 0.9696969696969697,
+            "f": 0.7529411717204153
+          }
+        }
       }
     },
     {
@@ -151,11 +153,22 @@
       "link": "https://www.theverge.com/22985108/best-fitness-tracker",
       "published": "2025-05-06T19:06:44-04:00",
       "author": "Victoria Song",
-      "extractive_summary": "Fitness trackers have come a long way from the simple bands that tracked steps and little else. Modern trackers can monitor everything from your heart health to how well you’ve recovered from a hard bout of training. Even flagship smartwatches, which used to be lackluster trackers, have become pretty adept workout companions.",
-      "abstractive_summary": " Modern trackers can monitor everything from heart health to how well you've recovered from a hard bout of training . Even flagship smartwatches, which used to be lackluster trackers, have become pretty adept workout companions .",
-      "hybrid_summary": " Modern trackers can monitor everything from heart health to how well you've recovered from a hard bout of training . Even flagship smartwatches, which used to be lackluster trackers, have become pretty adept workout companions .",
+      "original_content": "Fitness trackers have come a long way from the simple bands that tracked steps and little else. Modern trackers can monitor everything from your heart health to how well you’ve recovered from a hard bout of training. Even flagship smartwatches, which used to be lackluster trackers, have become pretty adept workout companions. Whatever your fitness [&#8230;]",
+      "textrank_summary": "Fitness trackers have come a long way from the simple bands that tracked steps and little else. Modern trackers can monitor everything from your heart health to how well you’ve recovered from a hard bout of training. Even flagship smartwatches, which used to be lackluster trackers, have become pretty adept workout companions.",
+      "bart_summary": "Fitness trackers have come a long way from the simple bands that tracked steps and little else. Modern trackers can monitor everything from your heart health to how well you’ve recovered from a hard bout of training.",
+      "hybrid_summary": "Fitness trackers have come a long way from the simple bands that tracked steps and little else. Modern trackers can monitor everything from your heart health to how well you’ve recovered from a hard bout of training.",
+      "classification": {
+        "predictions": [
+          {
+            "label": "Entertainment",
+            "confidence": 0.21204347908496857
+          }
+        ],
+        "top_category": "Entertainment",
+        "confidence": 0.21204347908496857
+      },
       "rouge_scores": {
-        "Textrank": {
+        "TextRank": {
           "rouge-1": {
             "r": 0.9387755102040817,
             "p": 1.0,
@@ -172,268 +185,41 @@
             "f": 0.9684210476365651
           }
         },
-        "Bart": {
+        "BART": {
           "rouge-1": {
-            "r": 0.6326530612244898,
-            "p": 0.96875,
-            "f": 0.765432093985673
+            "r": 0.673469387755102,
+            "p": 1.0,
+            "f": 0.8048780439708507
           },
           "rouge-2": {
-            "r": 0.5454545454545454,
-            "p": 0.9090909090909091,
-            "f": 0.6818181771306818
+            "r": 0.6545454545454545,
+            "p": 1.0,
+            "f": 0.7912087864267601
           },
           "rouge-l": {
-            "r": 0.6326530612244898,
-            "p": 0.96875,
-            "f": 0.765432093985673
+            "r": 0.673469387755102,
+            "p": 1.0,
+            "f": 0.8048780439708507
           }
         },
-        "Textrank→bart": {
+        "TextRank→BART": {
           "rouge-1": {
-            "r": 0.6326530612244898,
-            "p": 0.96875,
-            "f": 0.765432093985673
+            "r": 0.673469387755102,
+            "p": 1.0,
+            "f": 0.8048780439708507
           },
           "rouge-2": {
-            "r": 0.5454545454545454,
-            "p": 0.9090909090909091,
-            "f": 0.6818181771306818
+            "r": 0.6545454545454545,
+            "p": 1.0,
+            "f": 0.7912087864267601
           },
           "rouge-l": {
-            "r": 0.6326530612244898,
-            "p": 0.96875,
-            "f": 0.765432093985673
+            "r": 0.673469387755102,
+            "p": 1.0,
+            "f": 0.8048780439708507
           }
         }
-      },
-      "classification": {
-        "predictions": [
-          {
-            "label": "Health",
-            "confidence": 0.21616460382938385
-          }
-        ],
-        "top_category": "Health",
-        "confidence": 0.21616460382938385
-      }
-    },
-    {
-      "title": "Meta awarded $167.25 million over Pegasus spyware attack",
-      "link": "https://www.theverge.com/news/662242/meta-nso-group-pegasus-whatsapp-hack-damages",
-      "published": "2025-05-06T18:33:39-04:00",
-      "author": "Emma Roth",
-      "extractive_summary": "NSO Group, the Israeli spyware-maker behind Pegasus, must pay Meta $167.25 million for hacking 1,400 users across WhatsApp. A federal jury in California made the decision on Tuesday after the court found the NSO Group liable for the attacks last year. Meta sued NSO Group in 2019 after Citizen Lab found a vulnerability that allowed [&#8230;]",
-      "abstractive_summary": "NSO Group, the Israeli spyware-maker behind Pegasus, must pay Meta $167.25 million for hacking 1,400 users across WhatsApp . Meta sued NSO Group in 2019 after Citizen Lab found a vulnerability that allowed a vulnerability .",
-      "hybrid_summary": "NSO Group, the Israeli spyware-maker behind Pegasus, must pay Meta $167.25 million for hacking 1,400 users across WhatsApp . Meta sued NSO Group in 2019 after Citizen Lab found a vulnerability that allowed a vulnerability .",
-      "rouge_scores": {
-        "Textrank": {
-          "rouge-1": {
-            "r": 1.0,
-            "p": 1.0,
-            "f": 0.999999995
-          },
-          "rouge-2": {
-            "r": 1.0,
-            "p": 1.0,
-            "f": 0.999999995
-          },
-          "rouge-l": {
-            "r": 1.0,
-            "p": 1.0,
-            "f": 0.999999995
-          }
-        },
-        "Bart": {
-          "rouge-1": {
-            "r": 0.6888888888888889,
-            "p": 1.0,
-            "f": 0.8157894688538782
-          },
-          "rouge-2": {
-            "r": 0.5636363636363636,
-            "p": 0.9393939393939394,
-            "f": 0.7045454498579546
-          },
-          "rouge-l": {
-            "r": 0.6888888888888889,
-            "p": 1.0,
-            "f": 0.8157894688538782
-          }
-        },
-        "Textrank→bart": {
-          "rouge-1": {
-            "r": 0.6888888888888889,
-            "p": 1.0,
-            "f": 0.8157894688538782
-          },
-          "rouge-2": {
-            "r": 0.5636363636363636,
-            "p": 0.9393939393939394,
-            "f": 0.7045454498579546
-          },
-          "rouge-l": {
-            "r": 0.6888888888888889,
-            "p": 1.0,
-            "f": 0.8157894688538782
-          }
-        }
-      },
-      "classification": {
-        "predictions": [
-          {
-            "label": "Health",
-            "confidence": 0.22443489730358124
-          }
-        ],
-        "top_category": "Health",
-        "confidence": 0.22443489730358124
-      }
-    },
-    {
-      "title": "Be careful what you read about an Elden Ring movie",
-      "link": "https://www.theverge.com/news/662200/elden-ring-movie-nexus-point-news-be-careful",
-      "published": "2025-05-06T17:30:48-04:00",
-      "author": "Jay Peters",
-      "extractive_summary": "On Tuesday, a publication called Nexus Point News published a headline for what looked to be a major piece of entertainment news: \"EXCLUSIVE: Alex Garland Set To Direct 'Elden Ring' Film For A24.\" The article claimed that Elden Ring \"is expected to be Garland's next film\" and that shooting is expected to start in 2026. [&#8230;]",
-      "abstractive_summary": " The article claimed that Elden Ring \"is expected to be Garland's next film\" and that shooting is expected to start in 2026 .",
-      "hybrid_summary": " The article claimed that Elden Ring \"is expected to be Garland's next film\" and that shooting is expected to start in 2026 .",
-      "rouge_scores": {
-        "Textrank": {
-          "rouge-1": {
-            "r": 1.0,
-            "p": 1.0,
-            "f": 0.999999995
-          },
-          "rouge-2": {
-            "r": 1.0,
-            "p": 1.0,
-            "f": 0.999999995
-          },
-          "rouge-l": {
-            "r": 1.0,
-            "p": 1.0,
-            "f": 0.999999995
-          }
-        },
-        "Bart": {
-          "rouge-1": {
-            "r": 0.38,
-            "p": 1.0,
-            "f": 0.5507246336904013
-          },
-          "rouge-2": {
-            "r": 0.37037037037037035,
-            "p": 1.0,
-            "f": 0.5405405365960556
-          },
-          "rouge-l": {
-            "r": 0.38,
-            "p": 1.0,
-            "f": 0.5507246336904013
-          }
-        },
-        "Textrank→bart": {
-          "rouge-1": {
-            "r": 0.38,
-            "p": 1.0,
-            "f": 0.5507246336904013
-          },
-          "rouge-2": {
-            "r": 0.37037037037037035,
-            "p": 1.0,
-            "f": 0.5405405365960556
-          },
-          "rouge-l": {
-            "r": 0.38,
-            "p": 1.0,
-            "f": 0.5507246336904013
-          }
-        }
-      },
-      "classification": {
-        "predictions": [
-          {
-            "label": "Health",
-            "confidence": 0.22357654571533203
-          }
-        ],
-        "top_category": "Health",
-        "confidence": 0.22357654571533203
       }
     }
-  ],
-  "summarizers_info": {
-    "extractive": {
-      "name": "TextRank",
-      "type": "extractive",
-      "description": "Graph-based extractive summarization using TextRank algorithm",
-      "language": "english"
-    },
-    "abstractive": {
-      "name": "BART",
-      "type": "abstractive",
-      "description": "Abstractive summarization using the BART model",
-      "model_name": "sshleifer/distilbart-cnn-6-6"
-    },
-    "hybrid": {
-      "name": "TextRank→BART",
-      "type": "hybrid",
-      "description": "Hybrid summarization that extracts sentences with TextRank then applies BART",
-      "extractive_sentences": 10
-    }
-  },
-  "average_scores": {
-    "Textrank": {
-      "rouge-1": {
-        "f": 0.9936842055273131,
-        "p": 1.0,
-        "r": 0.9877551020408163
-      },
-      "rouge-2": {
-        "f": 0.9924528251901034,
-        "p": 1.0,
-        "r": 0.9854545454545456
-      },
-      "rouge-l": {
-        "f": 0.9936842055273131,
-        "p": 1.0,
-        "r": 0.9877551020408163
-      }
-    },
-    "Bart": {
-      "rouge-1": {
-        "f": 0.7714882472303628,
-        "p": 0.9720213085234093,
-        "r": 0.6597063833337126
-      },
-      "rouge-2": {
-        "f": 0.7084669313631217,
-        "p": 0.9261072261072261,
-        "r": 0.594074074074074
-      },
-      "rouge-l": {
-        "f": 0.7714882472303628,
-        "p": 0.9720213085234093,
-        "r": 0.6597063833337126
-      }
-    },
-    "Textrank→bart": {
-      "rouge-1": {
-        "f": 0.7714882472303628,
-        "p": 0.9720213085234093,
-        "r": 0.6597063833337126
-      },
-      "rouge-2": {
-        "f": 0.7084669313631217,
-        "p": 0.9261072261072261,
-        "r": 0.594074074074074
-      },
-      "rouge-l": {
-        "f": 0.7714882472303628,
-        "p": 0.9720213085234093,
-        "r": 0.6597063833337126
-      }
-    }
-  }
+  ]
 }
