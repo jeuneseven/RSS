@@ -137,7 +137,7 @@ class RSSFeedSummarizer:
         if not summary or not reference:
             return 0.0
         P, R, F1 = bert_score([summary], [reference],
-                              lang='en', rescale_with_baseline=True)
+                              lang='en', rescale_with_baseline=False)
         return F1[0].item()
 
     def process_feed(self, rss_url, num_articles=3):

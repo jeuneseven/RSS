@@ -208,7 +208,7 @@ def compute_bertscore(reference, summary):
     Compute BERTScore F1.
     """
     P, R, F1 = bert_score([summary], [reference],
-                          lang="en", rescale_with_baseline=True)
+                          lang="en", rescale_with_baseline=False)
     return F1[0].item()
 
 
