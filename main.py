@@ -1,6 +1,7 @@
 """
-main.py (fix: iterative never prompts for extractive model)
-- Only pipeline and parallel modes allow extractive selection
+main.py (parallel 3+1/3+3 不再提示 extractive, 只有 1+1 才提示)
+- Only prompt for extractive if mode is 1+1 in parallel, otherwise skip
+- All logic for serial/iterative/parallel auto adapts
 """
 
 import os
@@ -52,11 +53,11 @@ def main():
             'Choose parallel mode (1+1, 3+1, 3+3)', default='1+1', cast_type=str)
     else:
         parallel_mode = None
-    # Only prompt for extractive if needed
+    # Prompt for extractive only if needed
     if pipeline_type == 'pipeline' and combine:
         extractive = 'textrank'
         extractive_label = 'ALL'
-    elif pipeline_type in ('pipeline', 'parallel'):
+    elif pipeline_type == 'pipeline' or (pipeline_type == 'parallel' and parallel_mode == '1+1'):
         extractive = ask('Extractive summarization method (textrank/lexrank/lsa)',
                          default='textrank', cast_type=str)
         extractive_label = extractive
