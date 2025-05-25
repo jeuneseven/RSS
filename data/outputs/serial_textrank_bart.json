@@ -1,0 +1,127 @@
+{
+  "articles": [
+    {
+      "title": "Senate Dems propose ban on presidents investing or endorsing crypto assets",
+      "link": "https://www.theverge.com/news/662313/meme-coin-stablecoin-genius-act-corruption-trump",
+      "extractive_summary": "After abruptly pulling their support from what would have been the Senate’s first stablecoin regulatory bill, Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets – a bill directed at Donald Trump and his family’s current stablecoin and meme coin holdings. “Currently, people who wish to cultivate influence with the president can enrich him personally by buying cryptocurrency he owns or controls,” said Sen. Jeff Merkley (D-OR), who introduced the bill to the Senate floor, in a press release . First, a New York Times report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm under the current regulatory framework. Second, Trump announced a contest in April wherein the top holders of his meme coin would win a private dinner with the president, and the top 25 holders would win an additional guided tour of the White House. Though they admitted that there’s not much they can do to stop the president right now (see: no laws), Senate Republicans also expressed skepticism over the $TRUMP contest to NBC , and at least one staunch Trump ally, Sen. Cynthia Lummis of Wyoming, offered to partner with the Democrats on efforts to regulate lawmakers holding digital assets.",
+      "abstractive_summary": "Senate Democrats are introducing a bill that would prevent federal officials and their families from issuing digital assets. The bill is directed at Donald Trump and his family’s current stablecoin and meme coin holdings. A New York Times report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm.",
+      "hybrid_summary": "The End Crypto Corruption Act comes in response to concerns inside the Democratic party that the GENIUS Act, which previously had strong bipartisan support, was inadequate at preventing corruption. “Currently, people who wish to cultivate influence with the president can enrich him personally by buying cryptocurrency he owns or controls,” said Sen. Jeff Merkley (D-OR) in a press release.",
+      "extractive_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.6282051282051282,
+            "p": 1.0,
+            "f": 0.7716535385677972
+          },
+          "rouge-2": {
+            "r": 0.6069364161849711,
+            "p": 0.9905660377358491,
+            "f": 0.7526881673313551
+          },
+          "rouge-l": {
+            "r": 0.6282051282051282,
+            "p": 1.0,
+            "f": 0.7716535385677972
+          }
+        },
+        "bertscore": {
+          "p": 0.97955322265625,
+          "r": 0.9188334345817566,
+          "f1": 0.9482222199440002
+        }
+      },
+      "abstractive_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.20512820512820512,
+            "p": 0.9411764705882353,
+            "f": 0.3368421023246538
+          },
+          "rouge-2": {
+            "r": 0.14450867052023122,
+            "p": 0.847457627118644,
+            "f": 0.24691357775778086
+          },
+          "rouge-l": {
+            "r": 0.20512820512820512,
+            "p": 0.9411764705882353,
+            "f": 0.3368421023246538
+          }
+        },
+        "bertscore": {
+          "p": 0.9381728172302246,
+          "r": 0.8261978030204773,
+          "f1": 0.8786320686340332
+        }
+      },
+      "hybrid_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.23076923076923078,
+            "p": 0.9818181818181818,
+            "f": 0.3737024190634691
+          },
+          "rouge-2": {
+            "r": 0.15895953757225434,
+            "p": 0.9482758620689655,
+            "f": 0.2722772252636997
+          },
+          "rouge-l": {
+            "r": 0.23076923076923078,
+            "p": 0.9818181818181818,
+            "f": 0.3737024190634691
+          }
+        },
+        "bertscore": {
+          "p": 0.9635320901870728,
+          "r": 0.8350448608398438,
+          "f1": 0.8946990370750427
+        }
+      }
+    }
+  ],
+  "average_scores": {
+    "extractive": {
+      "rouge_rouge-1_f": 0.7716535385677972,
+      "rouge_rouge-1_p": 1.0,
+      "rouge_rouge-1_r": 0.6282051282051282,
+      "rouge_rouge-2_f": 0.7526881673313551,
+      "rouge_rouge-2_p": 0.9905660377358491,
+      "rouge_rouge-2_r": 0.6069364161849711,
+      "rouge_rouge-l_f": 0.7716535385677972,
+      "rouge_rouge-l_p": 1.0,
+      "rouge_rouge-l_r": 0.6282051282051282,
+      "bertscore_p": 0.97955322265625,
+      "bertscore_r": 0.9188334345817566,
+      "bertscore_f1": 0.9482222199440002
+    },
+    "abstractive": {
+      "rouge_rouge-1_f": 0.3368421023246538,
+      "rouge_rouge-1_p": 0.9411764705882353,
+      "rouge_rouge-1_r": 0.20512820512820512,
+      "rouge_rouge-2_f": 0.24691357775778086,
+      "rouge_rouge-2_p": 0.847457627118644,
+      "rouge_rouge-2_r": 0.14450867052023122,
+      "rouge_rouge-l_f": 0.3368421023246538,
+      "rouge_rouge-l_p": 0.9411764705882353,
+      "rouge_rouge-l_r": 0.20512820512820512,
+      "bertscore_p": 0.9381728172302246,
+      "bertscore_r": 0.8261978030204773,
+      "bertscore_f1": 0.8786320686340332
+    },
+    "hybrid": {
+      "rouge_rouge-1_f": 0.3737024190634691,
+      "rouge_rouge-1_p": 0.9818181818181818,
+      "rouge_rouge-1_r": 0.23076923076923078,
+      "rouge_rouge-2_f": 0.2722772252636997,
+      "rouge_rouge-2_p": 0.9482758620689655,
+      "rouge_rouge-2_r": 0.15895953757225434,
+      "rouge_rouge-l_f": 0.3737024190634691,
+      "rouge_rouge-l_p": 0.9818181818181818,
+      "rouge_rouge-l_r": 0.23076923076923078,
+      "bertscore_p": 0.9635320901870728,
+      "bertscore_r": 0.8350448608398438,
+      "bertscore_f1": 0.8946990370750427
+    }
+  }
+}

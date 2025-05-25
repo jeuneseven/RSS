@@ -1,0 +1,139 @@
+{
+  "articles": [
+    {
+      "title": "Senate Dems propose ban on presidents investing or endorsing crypto assets",
+      "link": "https://www.theverge.com/news/662313/meme-coin-stablecoin-genius-act-corruption-trump",
+      "extractive_summaries": {
+        "textrank": "After abruptly pulling their support from what would have been the Senate’s first stablecoin regulatory bill, Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets – a bill directed at Donald Trump and his family’s current stablecoin and meme coin holdings. “Currently, people who wish to cultivate influence with the president can enrich him personally by buying cryptocurrency he owns or controls,” said Sen. Jeff Merkley (D-OR), who introduced the bill to the Senate floor, in a press release . First, a New York Times report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm under the current regulatory framework. Second, Trump announced a contest in April wherein the top holders of his meme coin would win a private dinner with the president, and the top 25 holders would win an additional guided tour of the White House. Though they admitted that there’s not much they can do to stop the president right now (see: no laws), Senate Republicans also expressed skepticism over the $TRUMP contest to NBC , and at least one staunch Trump ally, Sen. Cynthia Lummis of Wyoming, offered to partner with the Democrats on efforts to regulate lawmakers holding digital assets."
+      },
+      "abstractive_summaries": {
+        "bart": "Senate Democrats are introducing a bill that would prevent federal officials and their families from issuing digital assets. The bill is directed at Donald Trump and his family’s current stablecoin and meme coin holdings. A New York Times report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm."
+      },
+      "combo": {
+        "summary": "After abruptly pulling their support from what would have been the Senate’s first stablecoin regulatory bill, Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets – a bill directed at Donald Trump and his family’s current stablecoin and meme coin holdings. “Currently, people who wish to cultivate influence with the president can enrich him personally by buying cryptocurrency he owns or controls,” said Sen. Jeff Merkley (D-OR), who introduced the bill to the Senate floor, in a press release . First, a New York Times report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm under the current regulatory framework. Second, Trump announced a contest in April wherein the top holders of his meme coin would win a private dinner with the president, and the top 25 holders would win an additional guided tour of the White House. Though they admitted that there’s not much they can do to stop the president right now (see: no laws), Senate Republicans also expressed skepticism over the $TRUMP contest to NBC , and at least one staunch Trump ally, Sen. Cynthia Lummis of Wyoming, offered to partner with the Democrats on efforts to regulate lawmakers holding digital assets. Senate Democrats are introducing a bill that would prevent federal officials and their families from issuing digital assets. The bill is directed at Donald Trump and his family’s current stablecoin and meme coin holdings. A New York Times report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm.",
+        "score": {
+          "rouge": {
+            "rouge-1": {
+              "r": 0.6367521367521367,
+              "p": 0.9802631578947368,
+              "f": 0.7720207206142448
+            },
+            "rouge-2": {
+              "r": 0.6069364161849711,
+              "p": 0.9459459459459459,
+              "f": 0.7394366149566058
+            },
+            "rouge-l": {
+              "r": 0.6367521367521367,
+              "p": 0.9802631578947368,
+              "f": 0.7720207206142448
+            }
+          },
+          "bertscore": {
+            "p": 0.9580082297325134,
+            "r": 0.9134719371795654,
+            "f1": 0.935210108757019
+          }
+        }
+      },
+      "best_single": {
+        "summary": "After abruptly pulling their support from what would have been the Senate’s first stablecoin regulatory bill, Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets – a bill directed at Donald Trump and his family’s current stablecoin and meme coin holdings. “Currently, people who wish to cultivate influence with the president can enrich him personally by buying cryptocurrency he owns or controls,” said Sen. Jeff Merkley (D-OR), who introduced the bill to the Senate floor, in a press release . First, a New York Times report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm under the current regulatory framework. Second, Trump announced a contest in April wherein the top holders of his meme coin would win a private dinner with the president, and the top 25 holders would win an additional guided tour of the White House. Though they admitted that there’s not much they can do to stop the president right now (see: no laws), Senate Republicans also expressed skepticism over the $TRUMP contest to NBC , and at least one staunch Trump ally, Sen. Cynthia Lummis of Wyoming, offered to partner with the Democrats on efforts to regulate lawmakers holding digital assets. Senate Democrats are introducing a bill that would prevent federal officials and their families from issuing digital assets. The bill is directed at Donald Trump and his family’s current stablecoin and meme coin holdings. A New York Times report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm.",
+        "score": {
+          "rouge": {
+            "rouge-1": {
+              "r": 0.6367521367521367,
+              "p": 0.9802631578947368,
+              "f": 0.7720207206142448
+            },
+            "rouge-2": {
+              "r": 0.6069364161849711,
+              "p": 0.9459459459459459,
+              "f": 0.7394366149566058
+            },
+            "rouge-l": {
+              "r": 0.6367521367521367,
+              "p": 0.9802631578947368,
+              "f": 0.7720207206142448
+            }
+          },
+          "bertscore": {
+            "p": 0.9580082297325134,
+            "r": 0.9134719371795654,
+            "f1": 0.935210108757019
+          }
+        }
+      },
+      "best_best": {
+        "summary": "After abruptly pulling their support from what would have been the Senate’s first stablecoin regulatory bill, Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets – a bill directed at Donald Trump and his family’s current stablecoin and meme coin holdings. “Currently, people who wish to cultivate influence with the president can enrich him personally by buying cryptocurrency he owns or controls,” said Sen. Jeff Merkley (D-OR), who introduced the bill to the Senate floor, in a press release . First, a New York Times report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm under the current regulatory framework. Second, Trump announced a contest in April wherein the top holders of his meme coin would win a private dinner with the president, and the top 25 holders would win an additional guided tour of the White House. Though they admitted that there’s not much they can do to stop the president right now (see: no laws), Senate Republicans also expressed skepticism over the $TRUMP contest to NBC , and at least one staunch Trump ally, Sen. Cynthia Lummis of Wyoming, offered to partner with the Democrats on efforts to regulate lawmakers holding digital assets. Senate Democrats are introducing a bill that would prevent federal officials and their families from issuing digital assets. The bill is directed at Donald Trump and his family’s current stablecoin and meme coin holdings. A New York Times report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm.",
+        "score": {
+          "rouge": {
+            "rouge-1": {
+              "r": 0.6367521367521367,
+              "p": 0.9802631578947368,
+              "f": 0.7720207206142448
+            },
+            "rouge-2": {
+              "r": 0.6069364161849711,
+              "p": 0.9459459459459459,
+              "f": 0.7394366149566058
+            },
+            "rouge-l": {
+              "r": 0.6367521367521367,
+              "p": 0.9802631578947368,
+              "f": 0.7720207206142448
+            }
+          },
+          "bertscore": {
+            "p": 0.9580082297325134,
+            "r": 0.9134719371795654,
+            "f1": 0.935210108757019
+          }
+        }
+      }
+    }
+  ],
+  "average_scores": {
+    "combo": {
+      "rouge_rouge-1_f": 0.7720207206142448,
+      "rouge_rouge-1_p": 0.9802631578947368,
+      "rouge_rouge-1_r": 0.6367521367521367,
+      "rouge_rouge-2_f": 0.7394366149566058,
+      "rouge_rouge-2_p": 0.9459459459459459,
+      "rouge_rouge-2_r": 0.6069364161849711,
+      "rouge_rouge-l_f": 0.7720207206142448,
+      "rouge_rouge-l_p": 0.9802631578947368,
+      "rouge_rouge-l_r": 0.6367521367521367,
+      "bertscore_p": 0.9580082297325134,
+      "bertscore_r": 0.9134719371795654,
+      "bertscore_f1": 0.935210108757019
+    },
+    "best_single": {
+      "rouge_rouge-1_f": 0.7720207206142448,
+      "rouge_rouge-1_p": 0.9802631578947368,
+      "rouge_rouge-1_r": 0.6367521367521367,
+      "rouge_rouge-2_f": 0.7394366149566058,
+      "rouge_rouge-2_p": 0.9459459459459459,
+      "rouge_rouge-2_r": 0.6069364161849711,
+      "rouge_rouge-l_f": 0.7720207206142448,
+      "rouge_rouge-l_p": 0.9802631578947368,
+      "rouge_rouge-l_r": 0.6367521367521367,
+      "bertscore_p": 0.9580082297325134,
+      "bertscore_r": 0.9134719371795654,
+      "bertscore_f1": 0.935210108757019
+    },
+    "best_best": {
+      "rouge_rouge-1_f": 0.7720207206142448,
+      "rouge_rouge-1_p": 0.9802631578947368,
+      "rouge_rouge-1_r": 0.6367521367521367,
+      "rouge_rouge-2_f": 0.7394366149566058,
+      "rouge_rouge-2_p": 0.9459459459459459,
+      "rouge_rouge-2_r": 0.6069364161849711,
+      "rouge_rouge-l_f": 0.7720207206142448,
+      "rouge_rouge-l_p": 0.9802631578947368,
+      "rouge_rouge-l_r": 0.6367521367521367,
+      "bertscore_p": 0.9580082297325134,
+      "bertscore_r": 0.9134719371795654,
+      "bertscore_f1": 0.935210108757019
+    }
+  }
+}
