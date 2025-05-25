@@ -1,0 +1,127 @@
+{
+  "articles": [
+    {
+      "title": "Senate Dems propose ban on presidents investing or endorsing crypto assets",
+      "link": "https://www.theverge.com/news/662313/meme-coin-stablecoin-genius-act-corruption-trump",
+      "extractive_summary": "“Currently, people who wish to cultivate influence with the president can enrich him personally by buying cryptocurrency he owns or controls,” said Sen. Jeff Merkley (D-OR), who introduced the bill to the Senate floor, in a press release . Let’s end this corruption immediately.” The End Crypto Corruption Act comes in response to concerns inside the Democratic party that the GENIUS Act, which previously had strong bipartisan support, was inadequate at preventing corruption. First, a New York Times report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm under the current regulatory framework. Second, Trump announced a contest in April wherein the top holders of his meme coin would win a private dinner with the president, and the top 25 holders would win an additional guided tour of the White House. According to a report from Chainalysis, the meme coin’s issuers, Official Trump, have earned $320 million from trading fees from the contest alone.",
+      "abstractive_summary": "the end crypto corruption act comes in response to concerns inside the Democratic party that the GENIUS Act was inadequate at preventing corruption . a new report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm . the meme coin’s issuers, Official Trump, have earned $320 million from trading fees from the contest alone .",
+      "hybrid_summary": "the end crypto corruption act comes in response to concerns inside the Democratic party that the GENIUS Act was inadequate at preventing corruption . a new report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm .",
+      "extractive_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.5384615384615384,
+            "p": 1.0,
+            "f": 0.6999999954500001
+          },
+          "rouge-2": {
+            "r": 0.4595375722543353,
+            "p": 0.9875776397515528,
+            "f": 0.6272189305769718
+          },
+          "rouge-l": {
+            "r": 0.5384615384615384,
+            "p": 1.0,
+            "f": 0.6999999954500001
+          }
+        },
+        "bertscore": {
+          "p": 0.9611607789993286,
+          "r": 0.8918579816818237,
+          "f1": 0.9252134561538696
+        }
+      },
+      "abstractive_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.21794871794871795,
+            "p": 0.9622641509433962,
+            "f": 0.35540069385278444
+          },
+          "rouge-2": {
+            "r": 0.15028901734104047,
+            "p": 0.8387096774193549,
+            "f": 0.25490195820693967
+          },
+          "rouge-l": {
+            "r": 0.21367521367521367,
+            "p": 0.9433962264150944,
+            "f": 0.3484320527378019
+          }
+        },
+        "bertscore": {
+          "p": 0.9172806739807129,
+          "r": 0.8242716193199158,
+          "f1": 0.868292510509491
+        }
+      },
+      "hybrid_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.1623931623931624,
+            "p": 0.95,
+            "f": 0.27737226028024936
+          },
+          "rouge-2": {
+            "r": 0.10404624277456648,
+            "p": 0.8,
+            "f": 0.18414322046951553
+          },
+          "rouge-l": {
+            "r": 0.1581196581196581,
+            "p": 0.925,
+            "f": 0.27007299020725667
+          }
+        },
+        "bertscore": {
+          "p": 0.9241527318954468,
+          "r": 0.8106310367584229,
+          "f1": 0.8636775016784668
+        }
+      }
+    }
+  ],
+  "average_scores": {
+    "extractive": {
+      "rouge_rouge-1_f": 0.6999999954500001,
+      "rouge_rouge-1_p": 1.0,
+      "rouge_rouge-1_r": 0.5384615384615384,
+      "rouge_rouge-2_f": 0.6272189305769718,
+      "rouge_rouge-2_p": 0.9875776397515528,
+      "rouge_rouge-2_r": 0.4595375722543353,
+      "rouge_rouge-l_f": 0.6999999954500001,
+      "rouge_rouge-l_p": 1.0,
+      "rouge_rouge-l_r": 0.5384615384615384,
+      "bertscore_p": 0.9611607789993286,
+      "bertscore_r": 0.8918579816818237,
+      "bertscore_f1": 0.9252134561538696
+    },
+    "abstractive": {
+      "rouge_rouge-1_f": 0.35540069385278444,
+      "rouge_rouge-1_p": 0.9622641509433962,
+      "rouge_rouge-1_r": 0.21794871794871795,
+      "rouge_rouge-2_f": 0.25490195820693967,
+      "rouge_rouge-2_p": 0.8387096774193549,
+      "rouge_rouge-2_r": 0.15028901734104047,
+      "rouge_rouge-l_f": 0.3484320527378019,
+      "rouge_rouge-l_p": 0.9433962264150944,
+      "rouge_rouge-l_r": 0.21367521367521367,
+      "bertscore_p": 0.9172806739807129,
+      "bertscore_r": 0.8242716193199158,
+      "bertscore_f1": 0.868292510509491
+    },
+    "hybrid": {
+      "rouge_rouge-1_f": 0.27737226028024936,
+      "rouge_rouge-1_p": 0.95,
+      "rouge_rouge-1_r": 0.1623931623931624,
+      "rouge_rouge-2_f": 0.18414322046951553,
+      "rouge_rouge-2_p": 0.8,
+      "rouge_rouge-2_r": 0.10404624277456648,
+      "rouge_rouge-l_f": 0.27007299020725667,
+      "rouge_rouge-l_p": 0.925,
+      "rouge_rouge-l_r": 0.1581196581196581,
+      "bertscore_p": 0.9241527318954468,
+      "bertscore_r": 0.8106310367584229,
+      "bertscore_f1": 0.8636775016784668
+    }
+  }
+}

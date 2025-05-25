@@ -1,10 +1,7 @@
 """
-pipelines/pipeline_iterative.py
-
-Iterative refinement summarization:
-- Multiple rounds of extractive followed by abstractive summarization, each round on new content
-- Designed to maximize information coverage through diversity of extractive methods
-- Outputs ROUGE/BERTScore for each iteration and for final summary
+pipeline_iterative.py (final output: bar groups = all single-methods on original + iterative refinement result)
+- Five bar groups: textrank(original), lexrank(original), lsa(original), bart(original), hybrid(iterative refinement)
+- 'hybrid' is the true iterative-refined summary, others are direct single-methods
 """
 
 import os
@@ -13,67 +10,88 @@ from models.abstractive import AbstractiveSummarizer
 from evaluation.scorer import Evaluator
 from utils.rss_parser import RSSParser
 from utils.common import ensure_dir, save_json
-import nltk
+from nltk.tokenize import sent_tokenize
 
 
 class IterativePipeline:
-    def __init__(self, extractive_order=None, abstractive_method='bart',
-                 max_length=150, min_length=50, num_beams=4, device=None):
-        if extractive_order is None:
-            extractive_order = ['textrank', 'lexrank', 'lsa']
-        self.extractive_order = extractive_order
+    def __init__(self, abstractive_method='bart', max_length=150, min_length=50, num_beams=4, device=None, reduction_ratio=0.8):
         self.abstractive_method = abstractive_method
+        self.max_length = max_length
+        self.min_length = min_length
+        self.num_beams = num_beams
+        self.device = device
+        self.reduction_ratio = reduction_ratio
         self.extractive = ExtractiveSummarizer(num_sentences=5)
         self.abstractive = AbstractiveSummarizer(
             max_length=max_length, min_length=min_length, num_beams=num_beams, device=device)
         self.evaluator = Evaluator()
 
-    def run(self, rss_path_or_url, outdir='data/outputs/', max_articles=5, n_rounds=3):
+    def run(self, rss_path_or_url, outdir='data/outputs/', max_articles=5):
         ensure_dir(outdir)
         parser = RSSParser()
         articles = parser.parse(rss_path_or_url, max_articles=max_articles)
-        results_json = []
         references = [a['content'] for a in articles]
-        final_summaries = []
-        all_iteration_scores = []
-
-        for idx, article in enumerate(articles):
-            item = {'title': article['title'], 'link': article['link']}
+        # Direct methods on original text
+        textrank_sums, lexrank_sums, lsa_sums, abstractive_sums = [], [], [], []
+        # Iterative refinement hybrid
+        hybrid_sums = []
+        MIN_TOKENS = 50
+        MAX_TOKENS = 150
+        reduction_ratio = self.reduction_ratio
+        for article in articles:
             content = article['content']
-            history = []  # List of summaries at each iteration
-            current_text = content
-            for round_idx in range(n_rounds):
-                method = self.extractive_order[round_idx % len(
-                    self.extractive_order)]
-                ext_summary = getattr(self.extractive, method)(current_text)
-                # Optionally can filter already summarized sentences
-                # current_text = ' '.join([s for s in nltk.sent_tokenize(content) if s not in nltk.sent_tokenize(ext_summary)])
-                current_text = ext_summary  # For next round, summarize previous output
-                abs_summary = getattr(
-                    self.abstractive, self.abstractive_method)(current_text)
-                history.append({
-                    'extractive_method': method,
-                    'extractive_summary': ext_summary,
-                    'abstractive_summary': abs_summary
-                })
-            # Final summary = abstractive result of last round
-            final_summary = history[-1]['abstractive_summary']
-            item['iterations'] = history
-            item['final_summary'] = final_summary
-            item['final_scores'] = self.evaluator.score(final_summary, content)
-            final_summaries.append(final_summary)
-            all_iteration_scores.append(item['final_scores'])
-            results_json.append(item)
-
-        # Average scores for final summaries
-        avg_final = self.evaluator.batch_score(final_summaries, references)[1]
+            # All single-method summaries on original text
+            tr_sum = self.extractive.textrank(content)
+            lr_sum = self.extractive.lexrank(content)
+            lsa_sum = self.extractive.lsa(content)
+            abs_sum = getattr(self.abstractive,
+                              self.abstractive_method)(content)
+            textrank_sums.append(tr_sum)
+            lexrank_sums.append(lr_sum)
+            lsa_sums.append(lsa_sum)
+            abstractive_sums.append(abs_sum)
+            # Iterative refinement
+            # Stage 1: TextRank
+            tr_target = min(MAX_TOKENS, max(
+                MIN_TOKENS, int(len(content.split()) * 0.3)))
+            tr_sentc = max(
+                1, int(tr_target / (len(tr_sum.split()) / max(1, len(sent_tokenize(tr_sum))))))
+            iter_tr = self.extractive.textrank(content, num_sentences=tr_sentc)
+            # Stage 2: LexRank on TextRank output
+            lr_target = max(MIN_TOKENS, int(
+                len(iter_tr.split()) * reduction_ratio))
+            lr_sentc = max(1, int(
+                lr_target / (len(iter_tr.split()) / max(1, len(sent_tokenize(iter_tr))))))
+            iter_lr = self.extractive.lexrank(iter_tr, num_sentences=lr_sentc)
+            # Stage 3: LSA on LexRank output
+            lsa_target = max(MIN_TOKENS, int(
+                len(iter_lr.split()) * reduction_ratio))
+            lsa_sentc = max(1, int(
+                lsa_target / (len(iter_lr.split()) / max(1, len(sent_tokenize(iter_lr))))))
+            iter_lsa = self.extractive.lsa(iter_lr, num_sentences=lsa_sentc)
+            # Stage 4: Abstractive on LSA output
+            abs_target = max(MIN_TOKENS, min(MAX_TOKENS, int(
+                len(iter_lsa.split()) * reduction_ratio)))
+            iter_abs = getattr(
+                self.abstractive, self.abstractive_method)(iter_lsa)
+            # Hybrid = iterative-refined result
+            hybrid_sums.append(iter_abs)
+        avg_textrank = self.evaluator.batch_score(textrank_sums, references)[1]
+        avg_lexrank = self.evaluator.batch_score(lexrank_sums, references)[1]
+        avg_lsa = self.evaluator.batch_score(lsa_sums, references)[1]
+        avg_abstractive = self.evaluator.batch_score(
+            abstractive_sums, references)[1]
+        avg_hybrid = self.evaluator.batch_score(hybrid_sums, references)[1]
         output = {
-            'articles': results_json,
             'average_scores': {
-                'final': avg_final
+                'textrank': avg_textrank,
+                'lexrank': avg_lexrank,
+                'lsa': avg_lsa,
+                'abstractive': avg_abstractive,
+                'final': avg_hybrid
             }
         }
-        json_path = os.path.join(outdir, 'iterative_refinement.json')
+        json_path = os.path.join(outdir, 'iterative_results.json')
         save_json(output, json_path)
         print(f'JSON result saved to {json_path}')
         return output

@@ -1,0 +1,446 @@
+{
+  "articles": [
+    {
+      "title": "Senate Dems propose ban on presidents investing or endorsing crypto assets",
+      "link": "https://www.theverge.com/news/662313/meme-coin-stablecoin-genius-act-corruption-trump",
+      "extractive_summary": "After abruptly pulling their support from what would have been the Senate’s first stablecoin regulatory bill, Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets – a bill directed at Donald Trump and his family’s current stablecoin and meme coin holdings. “Currently, people who wish to cultivate influence with the president can enrich him personally by buying cryptocurrency he owns or controls,” said Sen. Jeff Merkley (D-OR), who introduced the bill to the Senate floor, in a press release . “This is a profoundly corrupt scheme. It endangers our national security and erodes public trust in government. Let’s end this corruption immediately.” The End Crypto Corruption Act comes in response to concerns inside the Democratic party that the GENIUS Act, which previously had strong bipartisan support, was inadequate at preventing corruption.",
+      "abstractive_summary": "the end crypto corruption act comes in response to concerns inside the Democratic party that the GENIUS Act was inadequate at preventing corruption . a new report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm . the meme coin’s issuers, Official Trump, have earned $320 million from trading fees from the contest alone .",
+      "hybrid_summary": "the end crypto corruption act comes in response to concerns inside the Democratic party that the GENIUS Act was inadequate at preventing corruption . the bill would have been the first stablecoin regulatory bill to be introduced in the u.s.",
+      "extractive_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.5,
+            "p": 1.0,
+            "f": 0.6666666622222223
+          },
+          "rouge-2": {
+            "r": 0.4161849710982659,
+            "p": 1.0,
+            "f": 0.5877550978905457
+          },
+          "rouge-l": {
+            "r": 0.5,
+            "p": 1.0,
+            "f": 0.6666666622222223
+          }
+        },
+        "bertscore": {
+          "p": 0.9840325713157654,
+          "r": 0.8838510513305664,
+          "f1": 0.9312552213668823
+        }
+      },
+      "abstractive_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.21794871794871795,
+            "p": 0.9622641509433962,
+            "f": 0.35540069385278444
+          },
+          "rouge-2": {
+            "r": 0.15028901734104047,
+            "p": 0.8387096774193549,
+            "f": 0.25490195820693967
+          },
+          "rouge-l": {
+            "r": 0.21367521367521367,
+            "p": 0.9433962264150944,
+            "f": 0.3484320527378019
+          }
+        },
+        "bertscore": {
+          "p": 0.9172806739807129,
+          "r": 0.8242716193199158,
+          "f1": 0.868292510509491
+        }
+      },
+      "hybrid_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.11538461538461539,
+            "p": 0.8709677419354839,
+            "f": 0.20377358283972946
+          },
+          "rouge-2": {
+            "r": 0.06647398843930635,
+            "p": 0.5897435897435898,
+            "f": 0.11948051765977402
+          },
+          "rouge-l": {
+            "r": 0.10256410256410256,
+            "p": 0.7741935483870968,
+            "f": 0.1811320734057672
+          }
+        },
+        "bertscore": {
+          "p": 0.9238196015357971,
+          "r": 0.805787980556488,
+          "f1": 0.860776424407959
+        }
+      }
+    },
+    {
+      "title": "Amazon’s Zoox issued a robotaxi software recall after a crash in Las Vegas",
+      "link": "https://www.theverge.com/news/662321/amazon-zoox-recall-robotaxi-las-vegas-crash-software-fix",
+      "extractive_summary": "The update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph closed in on another vehicle that approaches its lane from a perpendicular driveway before stopping. In a press release on Tuesday , Zoox said there was only minor damage to both vehicles and no injuries were reported. Zoox shared how the incident played out in the voluntary safety recall report it sent to the National Highway Traffic Safety Administration (NHTSA) on May 1st: The incident involved a passenger car quickly approaching the lane where our purpose-built robotaxi was traveling. Anticipating that the passenger car would proceed forward, the Zoox robotaxi slowed down and steered to the right. The report states that, prior to the update, the company says, “In situations where Zoox vehicles are operating at speeds greater than 40mph, and a vehicle incrementally encroaches from a perpendicular driveway approaching the Zoox vehicle’s lane, the Zoox vehicle may make an inaccurately confident prediction that the vehicle is going to proceed into the Zoox vehicle’s lane.” Reacting based on that inaccurate projection could cause a crash, as happened here.",
+      "abstractive_summary": "the update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph closed in on another vehicle that approaches its lane from a perpendicular driveway before stopping . in a press release on Tuesday, Zoox said there was only minor damage to both vehicles and no injuries were reported .",
+      "hybrid_summary": "the update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph closed in on another vehicle . in a press release on Tuesday , Zoox said there was only minor damage to both vehicles and no injuries were reported .",
+      "extractive_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.72,
+            "p": 1.0,
+            "f": 0.8372092974580855
+          },
+          "rouge-2": {
+            "r": 0.6604477611940298,
+            "p": 0.9943820224719101,
+            "f": 0.7937219682977739
+          },
+          "rouge-l": {
+            "r": 0.72,
+            "p": 1.0,
+            "f": 0.8372092974580855
+          }
+        },
+        "bertscore": {
+          "p": 0.9700183868408203,
+          "r": 0.930935800075531,
+          "f1": 0.9500753283500671
+        }
+      },
+      "abstractive_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.2857142857142857,
+            "p": 0.9803921568627451,
+            "f": 0.4424778726114026
+          },
+          "rouge-2": {
+            "r": 0.20149253731343283,
+            "p": 0.9152542372881356,
+            "f": 0.33027522640032175
+          },
+          "rouge-l": {
+            "r": 0.2857142857142857,
+            "p": 0.9803921568627451,
+            "f": 0.4424778726114026
+          }
+        },
+        "bertscore": {
+          "p": 0.9360122680664062,
+          "r": 0.8336744904518127,
+          "f1": 0.8818843960762024
+        }
+      },
+      "hybrid_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.25142857142857145,
+            "p": 1.0,
+            "f": 0.4018264808073227
+          },
+          "rouge-2": {
+            "r": 0.17537313432835822,
+            "p": 0.94,
+            "f": 0.29559748162651794
+          },
+          "rouge-l": {
+            "r": 0.25142857142857145,
+            "p": 1.0,
+            "f": 0.4018264808073227
+          }
+        },
+        "bertscore": {
+          "p": 0.9287424087524414,
+          "r": 0.821465253829956,
+          "f1": 0.871816098690033
+        }
+      }
+    },
+    {
+      "title": "The best fitness trackers to buy right now",
+      "link": "https://www.theverge.com/22985108/best-fitness-tracker",
+      "extractive_summary": "What I like most about this watch, however, is that it’s one that you can grow with. It’s a bit more expensive than the base Oura Ring, but it doesn’t come with a subscription, and you get much better battery life when used with the Galaxy Watch. It’s not the best option for hardcore fitness tracking, but this is a great option if all you’re looking to do is casually track activity and your steps. Now that the watch has an ultra wideband chip, it can also now unlock your Pixel phone. The budget-friendly fitness band, which we’re also in the process of testing, doesn’t come with built-in GPS like Samsung’s pricier Galaxy Watch 7 , but it can monitor your sleep patterns and heart rate, check blood oxygen levels, detect snoring, and track more than 100 workout types.",
+      "abstractive_summary": "the ideal fitness tracker for hardcore athletes will look different than the best one for casual users looking to get a few more steps in . battery life A fitness tracker should be able to go at least two to three days between charges. if it’s a flagship smartwatch, it should at least offer quick charging .",
+      "hybrid_summary": "the budget-friendly fitness band doesn’t come with built-in GPS like Samsung’s pricier Galaxy Watch 7 . it can monitor your sleep patterns and heart rate, check blood oxygen levels, detect snoring, and track more than 100 workout types .",
+      "extractive_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.06653491436100131,
+            "p": 1.0,
+            "f": 0.12476837437060907
+          },
+          "rouge-2": {
+            "r": 0.03468516542155817,
+            "p": 0.9774436090225563,
+            "f": 0.06699304236824452
+          },
+          "rouge-l": {
+            "r": 0.06653491436100131,
+            "p": 1.0,
+            "f": 0.12476837437060907
+          }
+        },
+        "bertscore": {
+          "p": 0.842110276222229,
+          "r": 0.8117552995681763,
+          "f1": 0.8266542553901672
+        }
+      },
+      "abstractive_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.029644268774703556,
+            "p": 1.0,
+            "f": 0.05758157333711562
+          },
+          "rouge-2": {
+            "r": 0.013073639274279616,
+            "p": 0.9423076923076923,
+            "f": 0.025789473414271468
+          },
+          "rouge-l": {
+            "r": 0.029644268774703556,
+            "p": 1.0,
+            "f": 0.05758157333711562
+          }
+        },
+        "bertscore": {
+          "p": 0.9190029501914978,
+          "r": 0.814612865447998,
+          "f1": 0.863664984703064
+        }
+      },
+      "hybrid_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.023715415019762844,
+            "p": 1.0,
+            "f": 0.04633204587945916
+          },
+          "rouge-2": {
+            "r": 0.008804695837780149,
+            "p": 0.9166666666666666,
+            "f": 0.017441860276651663
+          },
+          "rouge-l": {
+            "r": 0.023715415019762844,
+            "p": 1.0,
+            "f": 0.04633204587945916
+          }
+        },
+        "bertscore": {
+          "p": 0.844344973564148,
+          "r": 0.7921551465988159,
+          "f1": 0.8174178600311279
+        }
+      }
+    },
+    {
+      "title": "Meta awarded $167.25 million over Pegasus spyware attack",
+      "link": "https://www.theverge.com/news/662242/meta-nso-group-pegasus-whatsapp-hack-damages",
+      "extractive_summary": "Meta sued NSO Group in 2019 after Citizen Lab found a vulnerability that allowed the spyware vendor to install Pegasus through a phone call – even if users didn’t pick up. Pegasus could then turn on a user’s camera and microphone, look through emails and text messages, and access location information. The hack targeted activists, journalists, diplomats, and others. Apple has also sued the NSO Group for targeting iPhone users with Pegasus. “The jury’s decision to force NSO, a notorious foreign spyware merchant, to pay damages is a critical deterrent to this malicious industry.” Going forward, Meta will attempt to secure a court order preventing the NSO Group from targeting WhatsApp.",
+      "abstractive_summary": "a federal jury in California made the decision on Tuesday after the court found the NSO Group liable for the attacks last year . Meta sued NSO Group in 2019 after Citizen Lab found a vulnerability that allowed the spyware vendor to install Pegasus through a phone call . the hack targeted activists, journalists, diplomats, and others .",
+      "hybrid_summary": "Meta sued NSO Group in 2019 after Citizen Lab found a vulnerability that allowed the spyware vendor to install Pegasus through a phone call . the hack targeted activists, journalists, diplomats, and others . Apple has also sued the NSO Group for targeting iPhone users with Pegasus .",
+      "extractive_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.5,
+            "p": 1.0,
+            "f": 0.6666666622222223
+          },
+          "rouge-2": {
+            "r": 0.4163424124513619,
+            "p": 0.9907407407407407,
+            "f": 0.5863013656962283
+          },
+          "rouge-l": {
+            "r": 0.5,
+            "p": 1.0,
+            "f": 0.6666666622222223
+          }
+        },
+        "bertscore": {
+          "p": 0.9565073847770691,
+          "r": 0.8822653293609619,
+          "f1": 0.9178875088691711
+        }
+      },
+      "abstractive_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.25,
+            "p": 1.0,
+            "f": 0.39999999680000003
+          },
+          "rouge-2": {
+            "r": 0.19455252918287938,
+            "p": 0.9433962264150944,
+            "f": 0.3225806423265349
+          },
+          "rouge-l": {
+            "r": 0.25,
+            "p": 1.0,
+            "f": 0.39999999680000003
+          }
+        },
+        "bertscore": {
+          "p": 0.9445440769195557,
+          "r": 0.8376933336257935,
+          "f1": 0.8879156708717346
+        }
+      },
+      "hybrid_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.22093023255813954,
+            "p": 1.0,
+            "f": 0.36190475894058965
+          },
+          "rouge-2": {
+            "r": 0.15953307392996108,
+            "p": 0.9534883720930233,
+            "f": 0.27333333087755557
+          },
+          "rouge-l": {
+            "r": 0.22093023255813954,
+            "p": 1.0,
+            "f": 0.36190475894058965
+          }
+        },
+        "bertscore": {
+          "p": 0.9376450777053833,
+          "r": 0.8293370008468628,
+          "f1": 0.8801716566085815
+        }
+      }
+    },
+    {
+      "title": "Be careful what you read about an Elden Ring movie",
+      "link": "https://www.theverge.com/news/662200/elden-ring-movie-nexus-point-news-be-careful",
+      "extractive_summary": "On Tuesday, a publication called Nexus Point News published a headline for what looked to be a major piece of entertainment news: \"EXCLUSIVE: Alex Garland Set To Direct 'Elden Ring' Film For A24.\" The article claimed that Elden Ring \"is expected to be Garland's next film\" and that shooting is expected to start in 2026. But don't get your hopes up: soon after the article was published, Nexus Point News pulled it, and the publication won't say why. How this article made the rounds is an interesting case study in the way news travels on the internet. (Another recent Nexus Point News \"exclusive\" includes a potential cast member \"being eyed\" for one of the male leads of Star Wars: Starfighter , but the article includes an update that says \"a LucasFilm spokesperso … Read the full story at The Verge.",
+      "abstractive_summary": "the article claimed that \"Elden Ring\" is expected to be Garland's next film . but soon after the article was published, Nexus Point News pulled it . the publication won't say why, but it's a case study in the way news travels online .",
+      "hybrid_summary": "\"elden ring\" is \"expected to be Garland's next film,\" a report says . but soon after the article was published, Nexus Point News pulled it . the publication won't say why, and the article won't say why .",
+      "extractive_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.7019867549668874,
+            "p": 1.0,
+            "f": 0.8249027188887039
+          },
+          "rouge-2": {
+            "r": 0.6376811594202898,
+            "p": 0.9924812030075187,
+            "f": 0.7764705834721453
+          },
+          "rouge-l": {
+            "r": 0.7019867549668874,
+            "p": 1.0,
+            "f": 0.8249027188887039
+          }
+        },
+        "bertscore": {
+          "p": 0.9849912524223328,
+          "r": 0.9304079413414001,
+          "f1": 0.9569218754768372
+        }
+      },
+      "abstractive_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.1986754966887417,
+            "p": 0.8333333333333334,
+            "f": 0.3208556118642226
+          },
+          "rouge-2": {
+            "r": 0.12077294685990338,
+            "p": 0.6410256410256411,
+            "f": 0.2032520298522705
+          },
+          "rouge-l": {
+            "r": 0.1986754966887417,
+            "p": 0.8333333333333334,
+            "f": 0.3208556118642226
+          }
+        },
+        "bertscore": {
+          "p": 0.9323135614395142,
+          "r": 0.8378093242645264,
+          "f1": 0.8825387358665466
+        }
+      },
+      "hybrid_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.15894039735099338,
+            "p": 0.8,
+            "f": 0.2651933674002625
+          },
+          "rouge-2": {
+            "r": 0.0821256038647343,
+            "p": 0.53125,
+            "f": 0.1422594119066543
+          },
+          "rouge-l": {
+            "r": 0.15894039735099338,
+            "p": 0.8,
+            "f": 0.2651933674002625
+          }
+        },
+        "bertscore": {
+          "p": 0.9002298712730408,
+          "r": 0.8228381872177124,
+          "f1": 0.8597960472106934
+        }
+      }
+    }
+  ],
+  "average_scores": {
+    "extractive": {
+      "rouge_rouge-1_f": 0.6240427430323686,
+      "rouge_rouge-1_p": 1.0,
+      "rouge_rouge-1_r": 0.4977043338655777,
+      "rouge_rouge-2_f": 0.5622484115449875,
+      "rouge_rouge-2_p": 0.9910095150485452,
+      "rouge_rouge-2_r": 0.43306829391710105,
+      "rouge_rouge-l_f": 0.6240427430323686,
+      "rouge_rouge-l_p": 1.0,
+      "rouge_rouge-l_r": 0.4977043338655777,
+      "bertscore_p": 0.9475319743156433,
+      "bertscore_r": 0.8878430843353271,
+      "bertscore_f1": 0.916558837890625
+    },
+    "abstractive": {
+      "rouge_rouge-1_f": 0.31526314969310504,
+      "rouge_rouge-1_p": 0.955197928227895,
+      "rouge_rouge-1_r": 0.1963965538252898,
+      "rouge_rouge-2_f": 0.22735986604006767,
+      "rouge_rouge-2_p": 0.8561386948911837,
+      "rouge_rouge-2_r": 0.13603613399430714,
+      "rouge_rouge-l_f": 0.31386942147010854,
+      "rouge_rouge-l_p": 0.9514243433222346,
+      "rouge_rouge-l_r": 0.19554185297058896,
+      "bertscore_p": 0.9298307061195373,
+      "bertscore_r": 0.8296123266220092,
+      "bertscore_f1": 0.8768592596054077
+    },
+    "hybrid": {
+      "rouge_rouge-1_f": 0.2558060471734727,
+      "rouge_rouge-1_p": 0.9341935483870968,
+      "rouge_rouge-1_r": 0.1540798463484165,
+      "rouge_rouge-2_f": 0.1696225204694307,
+      "rouge_rouge-2_p": 0.7862297257006559,
+      "rouge_rouge-2_r": 0.09846209928002803,
+      "rouge_rouge-l_f": 0.25127774528668023,
+      "rouge_rouge-l_p": 0.9148387096774193,
+      "rouge_rouge-l_r": 0.15151574378431396,
+      "bertscore_p": 0.9069563865661621,
+      "bertscore_r": 0.8143167138099671,
+      "bertscore_f1": 0.857995617389679
+    },
+    "textrank": {},
+    "lexrank": {},
+    "lsa": {}
+  }
+}

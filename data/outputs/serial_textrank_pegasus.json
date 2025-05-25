@@ -4,8 +4,8 @@
       "title": "Senate Dems propose ban on presidents investing or endorsing crypto assets",
       "link": "https://www.theverge.com/news/662313/meme-coin-stablecoin-genius-act-corruption-trump",
       "extractive_summary": "After abruptly pulling their support from what would have been the Senate’s first stablecoin regulatory bill, Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets – a bill directed at Donald Trump and his family’s current stablecoin and meme coin holdings. “Currently, people who wish to cultivate influence with the president can enrich him personally by buying cryptocurrency he owns or controls,” said Sen. Jeff Merkley (D-OR), who introduced the bill to the Senate floor, in a press release . First, a New York Times report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm under the current regulatory framework. Second, Trump announced a contest in April wherein the top holders of his meme coin would win a private dinner with the president, and the top 25 holders would win an additional guided tour of the White House. Though they admitted that there’s not much they can do to stop the president right now (see: no laws), Senate Republicans also expressed skepticism over the $TRUMP contest to NBC , and at least one staunch Trump ally, Sen. Cynthia Lummis of Wyoming, offered to partner with the Democrats on efforts to regulate lawmakers holding digital assets.",
-      "abstractive_summary": "Senate Democrats are introducing a bill that would prevent federal officials and their families from issuing digital assets. The bill is directed at Donald Trump and his family’s current stablecoin and meme coin holdings. A New York Times report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm.",
-      "hybrid_summary": "The End Crypto Corruption Act comes in response to concerns inside the Democratic party that the GENIUS Act, which previously had strong bipartisan support, was inadequate at preventing corruption. “Currently, people who wish to cultivate influence with the president can enrich him personally by buying cryptocurrency he owns or controls,” said Sen. Jeff Merkley (D-OR) in a press release.",
+      "abstractive_summary": "As the Trump family’s cryptocurrency empire continues to grow, Democrats in the US Senate are taking a stand against the president and his family’s ownership of digital assets.... and they’re not going to let it go to waste..",
+      "hybrid_summary": "Democrats in the US Senate are taking action to stop President Donald Trump and his family from profiting from their holdings of stablecoins and meme coins, by introducing a new bill that would ban federal officials and their families from issuing digital assets, such as stablecoins and meme coins.",
       "extractive_scores": {
         "rouge": {
           "rouge-1": {
@@ -33,49 +33,49 @@
       "abstractive_scores": {
         "rouge": {
           "rouge-1": {
-            "r": 0.20512820512820512,
-            "p": 0.9411764705882353,
-            "f": 0.3368421023246538
+            "r": 0.06837606837606838,
+            "p": 0.5,
+            "f": 0.12030074976312967
           },
           "rouge-2": {
-            "r": 0.14450867052023122,
-            "p": 0.847457627118644,
-            "f": 0.24691357775778086
+            "r": 0.014450867052023121,
+            "p": 0.13513513513513514,
+            "f": 0.026109658828951166
           },
           "rouge-l": {
-            "r": 0.20512820512820512,
-            "p": 0.9411764705882353,
-            "f": 0.3368421023246538
+            "r": 0.0641025641025641,
+            "p": 0.46875,
+            "f": 0.11278195277064845
           }
         },
         "bertscore": {
-          "p": 0.9381728172302246,
-          "r": 0.8261978030204773,
-          "f1": 0.8786320686340332
+          "p": 0.8777920603752136,
+          "r": 0.8063017725944519,
+          "f1": 0.8405295014381409
         }
       },
       "hybrid_scores": {
         "rouge": {
           "rouge-1": {
-            "r": 0.23076923076923078,
-            "p": 0.9818181818181818,
-            "f": 0.3737024190634691
+            "r": 0.11965811965811966,
+            "p": 0.6829268292682927,
+            "f": 0.20363636109910746
           },
           "rouge-2": {
-            "r": 0.15895953757225434,
-            "p": 0.9482758620689655,
-            "f": 0.2722772252636997
+            "r": 0.049132947976878616,
+            "p": 0.3695652173913043,
+            "f": 0.08673469180601838
           },
           "rouge-l": {
-            "r": 0.23076923076923078,
-            "p": 0.9818181818181818,
-            "f": 0.3737024190634691
+            "r": 0.10256410256410256,
+            "p": 0.5853658536585366,
+            "f": 0.17454545200819838
           }
         },
         "bertscore": {
-          "p": 0.9635320901870728,
-          "r": 0.8350448608398438,
-          "f1": 0.8946990370750427
+          "p": 0.9096829891204834,
+          "r": 0.8110259175300598,
+          "f1": 0.8575261831283569
         }
       },
       "textrank_summary": "After abruptly pulling their support from what would have been the Senate’s first stablecoin regulatory bill, Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets – a bill directed at Donald Trump and his family’s current stablecoin and meme coin holdings. “Currently, people who wish to cultivate influence with the president can enrich him personally by buying cryptocurrency he owns or controls,” said Sen. Jeff Merkley (D-OR), who introduced the bill to the Senate floor, in a press release . First, a New York Times report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm under the current regulatory framework. Second, Trump announced a contest in April wherein the top holders of his meme coin would win a private dinner with the president, and the top 25 holders would win an additional guided tour of the White House. Though they admitted that there’s not much they can do to stop the president right now (see: no laws), Senate Republicans also expressed skepticism over the $TRUMP contest to NBC , and at least one staunch Trump ally, Sen. Cynthia Lummis of Wyoming, offered to partner with the Democrats on efforts to regulate lawmakers holding digital assets.",
@@ -158,8 +158,8 @@
       "title": "Amazon’s Zoox issued a robotaxi software recall after a crash in Las Vegas",
       "link": "https://www.theverge.com/news/662321/amazon-zoox-recall-robotaxi-las-vegas-crash-software-fix",
       "extractive_summary": "The update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph closed in on another vehicle that approaches its lane from a perpendicular driveway before stopping. Zoox shared how the incident played out in the voluntary safety recall report it sent to the National Highway Traffic Safety Administration (NHTSA) on May 1st: The incident involved a passenger car quickly approaching the lane where our purpose-built robotaxi was traveling. Instead, the car came to a stop, fully yielding to the Zoox robotaxi and remaining in the shoulder lane. The report states that, prior to the update, the company says, “In situations where Zoox vehicles are operating at speeds greater than 40mph, and a vehicle incrementally encroaches from a perpendicular driveway approaching the Zoox vehicle’s lane, the Zoox vehicle may make an inaccurately confident prediction that the vehicle is going to proceed into the Zoox vehicle’s lane.” Reacting based on that inaccurate projection could cause a crash, as happened here. A March recall notice from Zoox also notes that after two incidents where its Toyota Highlander-based robotaxis performed sudden hard braking, causing approaching motorcyclists to rear-end them , it rolled out a software update to address the problem last November.",
-      "abstractive_summary": "Zoox says it issued a software recall for all 270 of its vehicles after an unoccupied robotaxi in Las Vegas crashed into a passenger vehicle on April 8th. The update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph closed in on another vehicle that approaches its lane.",
-      "hybrid_summary": "The update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph closed in on another vehicle. Zoox shared how the incident played out in the voluntary safety recall report it sent to the National Highway Traffic Safety Administration (NHTSA) on May 1st.",
+      "abstractive_summary": "A self-driving car company has issued a safety update for all of its vehicles after one of its vehicles crashed into a vehicle that was approaching its lane from a perpendicular driveway. The report states that, prior to the update, the company says, “In situations where Zoox vehicles are operating at speeds greater than 40mph, and a vehicle incrementally encroaches from a perpendicular driveway approaching the Zoox vehicle’s lane, the Zoox vehicle may make an inaccurately confident prediction that the vehicle is going to proceed into the Zoox vehicle’s lane.” Reacting based on that inaccurate projection could cause a crash, as happened here.",
+      "hybrid_summary": "Zoox, the maker of robotic taxis, has reported a crash involving one of its vehicles after rolling out a software update to address a problem with its vehicles that could cause them to rear-end other vehicles on the road. A March recall notice from Zoox also notes that after two incidents where its Toyota Highlander-based robotaxis performed sudden hard braking, causing motorcyclists approaching to rear-end them , it rolled out a software update to address the problem last November.",
       "extractive_scores": {
         "rouge": {
           "rouge-1": {
@@ -187,49 +187,49 @@
       "abstractive_scores": {
         "rouge": {
           "rouge-1": {
-            "r": 0.2914285714285714,
-            "p": 0.9807692307692307,
-            "f": 0.44933920351646645
+            "r": 0.3942857142857143,
+            "p": 0.9583333333333334,
+            "f": 0.5587044493107576
           },
           "rouge-2": {
-            "r": 0.21641791044776118,
-            "p": 0.9666666666666667,
-            "f": 0.3536585335960738
+            "r": 0.291044776119403,
+            "p": 0.8297872340425532,
+            "f": 0.43093922267452156
           },
           "rouge-l": {
-            "r": 0.2914285714285714,
-            "p": 0.9807692307692307,
-            "f": 0.44933920351646645
+            "r": 0.3942857142857143,
+            "p": 0.9583333333333334,
+            "f": 0.5587044493107576
           }
         },
         "bertscore": {
-          "p": 0.95528244972229,
-          "r": 0.8386837840080261,
-          "f1": 0.8931939005851746
+          "p": 0.9361639022827148,
+          "r": 0.8610351085662842,
+          "f1": 0.8970291614532471
         }
       },
       "hybrid_scores": {
         "rouge": {
           "rouge-1": {
-            "r": 0.26285714285714284,
-            "p": 0.9787234042553191,
-            "f": 0.4144144110766172
+            "r": 0.2571428571428571,
+            "p": 0.7894736842105263,
+            "f": 0.3879310307762337
           },
           "rouge-2": {
-            "r": 0.19402985074626866,
-            "p": 0.9629629629629629,
-            "f": 0.3229813636680684
+            "r": 0.15671641791044777,
+            "p": 0.5915492957746479,
+            "f": 0.24778760730797683
           },
           "rouge-l": {
-            "r": 0.26285714285714284,
-            "p": 0.9787234042553191,
-            "f": 0.4144144110766172
+            "r": 0.24571428571428572,
+            "p": 0.7543859649122807,
+            "f": 0.3706896514658889
           }
         },
         "bertscore": {
-          "p": 0.9408206343650818,
-          "r": 0.8322351574897766,
-          "f1": 0.8832029104232788
+          "p": 0.9182068109512329,
+          "r": 0.8363306522369385,
+          "f1": 0.8753583431243896
         }
       },
       "textrank_summary": "The update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph closed in on another vehicle that approaches its lane from a perpendicular driveway before stopping. Zoox shared how the incident played out in the voluntary safety recall report it sent to the National Highway Traffic Safety Administration (NHTSA) on May 1st: The incident involved a passenger car quickly approaching the lane where our purpose-built robotaxi was traveling. Instead, the car came to a stop, fully yielding to the Zoox robotaxi and remaining in the shoulder lane. The report states that, prior to the update, the company says, “In situations where Zoox vehicles are operating at speeds greater than 40mph, and a vehicle incrementally encroaches from a perpendicular driveway approaching the Zoox vehicle’s lane, the Zoox vehicle may make an inaccurately confident prediction that the vehicle is going to proceed into the Zoox vehicle’s lane.” Reacting based on that inaccurate projection could cause a crash, as happened here. A March recall notice from Zoox also notes that after two incidents where its Toyota Highlander-based robotaxis performed sudden hard braking, causing approaching motorcyclists to rear-end them , it rolled out a software update to address the problem last November.",
@@ -312,8 +312,8 @@
       "title": "The best fitness trackers to buy right now",
       "link": "https://www.theverge.com/22985108/best-fitness-tracker",
       "extractive_summary": "Smartwatches are definitely getting more high-tech, but the Active 2 keeps the spirit of a humble fitness tracker — a good price, all the basic health features with a holistic tracking approach, and a comfy yet stylish design. Best for serious outdoor athletes Sizes: 7S Pro: 42mm w/ 20mm straps; 7: 47mm w/ 22mm straps; 7X: 51mm w/ 26mm straps / Weight: 7S Pro: 63g (Solar), 58g or 65g (Sapphire Solar, titanium or stainless steel); 7: 79g (Solar), 73g (Sapphire Solar); 7X: 96g (Solar), 89g (Sapphire Solar) / Battery life: 7S: up to 11 days, 14 w/ Solar; 7: up to 18 days, 22 days w/ solar; 7X: up to 28 days, 37 w/ solar / Display type: MIP touchscreen / GPS: All-systems GNSS and dual-frequency GPS / Connectivity: Bluetooth, Ant Plus, Wi-Fi / Water resistance: 10ATM / Music storage: Up to 32GB Garmin’s flagship Fenix 7 series is no joke, and the Fenix 7 Pro lineup takes it up a notch. It’s a bit more expensive than the base Oura Ring, but it doesn’t come with a subscription, and you get much better battery life when used with the Galaxy Watch. That’s why I think the extra $100 in savings is worth it for the Light, especially since both are lacking in safety features, contactless payments, and some other bells and whistles you can get from other watches in the $350 price range. Best fitness smartwatch for Samsung phones Sizes: 47mm / Weight: 60.5g / Battery life: Up to 100 hours / Display type: Always-on OLED / GPS: Built-in GPS / Connectivity: LTE (optional), Bluetooth, Wi-Fi / Water resistance: 10ATM, IP68 / Music storage: 32GB Truthfully, the Samsung Galaxy Watch Ultra left me a bit disappointed after reviewing it — not because it’s a bad piece of hardware, but because it copies a bit too much from Apple.",
-      "abstractive_summary": "Fitness trackers have come a long way from the simple bands that tracked steps and little else. Modern trackers can monitor everything from your heart health to how well you’ve recovered from a hard bout of training. The Amazfit Active 2 keeps the spirit of a humble fitness tracker with a holistic tracking approach.",
-      "hybrid_summary": "The Oura Ring 4 doesn’t come with a subscription, and you get much better battery life when used with the Galaxy Watch. It’s not the best option for hardcore fitness tracking, but this is a great option if all you’re looking to do is casually track activity and your steps. Now that the watch has an ultra wideband chip, it can also now unlock your Pixel phone.",
+      "abstractive_summary": "If you’re looking to keep track of how many steps you’ve taken and how many calories you’ve burned, a fitness tracker might be just what you’ve been looking for.., but what do you need to know about them?",
+      "hybrid_summary": "Best fitness smartwatch for Samsung phones: 47mm / Weight: 60.5g / Battery life: Up to 100 hours / Display type: Always-on OLED / GPS: Built-in GPS / Connectivity: Bluetooth, Ant Plus, Wi-Fi / Water resistance: 10ATM / Music storage: 32GB",
       "extractive_scores": {
         "rouge": {
           "rouge-1": {
@@ -341,49 +341,49 @@
       "abstractive_scores": {
         "rouge": {
           "rouge-1": {
-            "r": 0.029644268774703556,
-            "p": 0.9782608695652174,
-            "f": 0.057544756462313836
+            "r": 0.019762845849802372,
+            "p": 0.9375,
+            "f": 0.03870967701497607
           },
           "rouge-2": {
-            "r": 0.013073639274279616,
-            "p": 0.9245283018867925,
-            "f": 0.025782688491128736
+            "r": 0.0032017075773745998,
+            "p": 0.32432432432432434,
+            "f": 0.006340818828859668
           },
           "rouge-l": {
-            "r": 0.029644268774703556,
-            "p": 0.9782608695652174,
-            "f": 0.057544756462313836
+            "r": 0.019104084321475624,
+            "p": 0.90625,
+            "f": 0.037419354434330906
           }
         },
         "bertscore": {
-          "p": 0.9330595135688782,
-          "r": 0.809247612953186,
-          "f1": 0.8667543530464172
+          "p": 0.8611501455307007,
+          "r": 0.7912331223487854,
+          "f1": 0.8247123956680298
         }
       },
       "hybrid_scores": {
         "rouge": {
           "rouge-1": {
-            "r": 0.038866930171278,
-            "p": 1.0,
-            "f": 0.07482561754226197
+            "r": 0.022397891963109356,
+            "p": 0.9714285714285714,
+            "f": 0.04378621977834895
           },
           "rouge-2": {
-            "r": 0.01680896478121665,
-            "p": 0.9545454545454546,
-            "f": 0.033036182145475136
+            "r": 0.010138740661686232,
+            "p": 0.95,
+            "f": 0.020063357763581768
           },
           "rouge-l": {
-            "r": 0.038866930171278,
-            "p": 1.0,
-            "f": 0.07482561754226197
+            "r": 0.022397891963109356,
+            "p": 0.9714285714285714,
+            "f": 0.04378621977834895
           }
         },
         "bertscore": {
-          "p": 0.8496127724647522,
-          "r": 0.7996664047241211,
-          "f1": 0.8238832950592041
+          "p": 0.8393311500549316,
+          "r": 0.7840105295181274,
+          "f1": 0.8107282519340515
         }
       },
       "textrank_summary": "Smartwatches are definitely getting more high-tech, but the Active 2 keeps the spirit of a humble fitness tracker — a good price, all the basic health features with a holistic tracking approach, and a comfy yet stylish design. Best for serious outdoor athletes Sizes: 7S Pro: 42mm w/ 20mm straps; 7: 47mm w/ 22mm straps; 7X: 51mm w/ 26mm straps / Weight: 7S Pro: 63g (Solar), 58g or 65g (Sapphire Solar, titanium or stainless steel); 7: 79g (Solar), 73g (Sapphire Solar); 7X: 96g (Solar), 89g (Sapphire Solar) / Battery life: 7S: up to 11 days, 14 w/ Solar; 7: up to 18 days, 22 days w/ solar; 7X: up to 28 days, 37 w/ solar / Display type: MIP touchscreen / GPS: All-systems GNSS and dual-frequency GPS / Connectivity: Bluetooth, Ant Plus, Wi-Fi / Water resistance: 10ATM / Music storage: Up to 32GB Garmin’s flagship Fenix 7 series is no joke, and the Fenix 7 Pro lineup takes it up a notch. It’s a bit more expensive than the base Oura Ring, but it doesn’t come with a subscription, and you get much better battery life when used with the Galaxy Watch. That’s why I think the extra $100 in savings is worth it for the Light, especially since both are lacking in safety features, contactless payments, and some other bells and whistles you can get from other watches in the $350 price range. Best fitness smartwatch for Samsung phones Sizes: 47mm / Weight: 60.5g / Battery life: Up to 100 hours / Display type: Always-on OLED / GPS: Built-in GPS / Connectivity: LTE (optional), Bluetooth, Wi-Fi / Water resistance: 10ATM, IP68 / Music storage: 32GB Truthfully, the Samsung Galaxy Watch Ultra left me a bit disappointed after reviewing it — not because it’s a bad piece of hardware, but because it copies a bit too much from Apple.",
@@ -466,8 +466,8 @@
       "title": "Meta awarded $167.25 million over Pegasus spyware attack",
       "link": "https://www.theverge.com/news/662242/meta-nso-group-pegasus-whatsapp-hack-damages",
       "extractive_summary": "A federal jury in California made the decision on Tuesday after the court found the NSO Group liable for the attacks last year. “Today’s verdict in WhatsApp’s case is an important step forward for privacy and security as the first victory against the development and use of illegal spyware that threatens the safety and privacy of everyone,” Meta said in an announcement . “The jury’s decision to force NSO, a notorious foreign spyware merchant, to pay damages is a critical deterrent to this malicious industry.” Going forward, Meta will attempt to secure a court order preventing the NSO Group from targeting WhatsApp. It has also published the unofficial transcripts from deposition videos during the trial, and says it will make a donation to digital rights organizations working to protect users from spyware. NSO Group spokesperson Gil Lainer says the company “will carefully examine the verdict’s details and pursue appropriate legal remedies, including further proceedings and an appeal.” Update, May 6th: Added information from NSO Group.",
-      "abstractive_summary": "NSO Group, the Israeli spyware-maker behind Pegasus, must pay Meta $167.25 million for hacking 1,400 users across WhatsApp. The hack targeted activists, journalists, diplomats, and others. Apple has also sued the NSO Group for targeting iPhone users with Pegasus.",
-      "hybrid_summary": "A federal jury in California made the decision on Tuesday after the court found the NSO Group liable for the attacks last year. Pegasus could then turn on a user’s camera and microphone, look through emails and text messages, and access location information. The hack targeted activists, journalists, diplomats, and others.",
+      "abstractive_summary": "A US court has ordered a spyware company to pay millions of dollars for targeting users of the messaging app WhatsApp with its Pegasus program., according to the privacy group Meta, which brought the case against NSO Group., which has not yet decided whether to appeal.",
+      "hybrid_summary": "A spyware vendor has been ordered to pay more than $2m (£1.4m) in damages for targeting users of messaging service WhatsApp with its Pegasus program in 2015..., according to the privacy group Meta, which sued the company for the attacks.",
       "extractive_scores": {
         "rouge": {
           "rouge-1": {
@@ -495,49 +495,49 @@
       "abstractive_scores": {
         "rouge": {
           "rouge-1": {
-            "r": 0.20930232558139536,
-            "p": 1.0,
-            "f": 0.3461538432914202
+            "r": 0.12790697674418605,
+            "p": 0.55,
+            "f": 0.20754716674973306
           },
           "rouge-2": {
-            "r": 0.14785992217898833,
-            "p": 0.9743589743589743,
-            "f": 0.2567567544688185
+            "r": 0.011673151750972763,
+            "p": 0.06382978723404255,
+            "f": 0.019736839491213992
           },
           "rouge-l": {
-            "r": 0.20930232558139536,
-            "p": 1.0,
-            "f": 0.3461538432914202
+            "r": 0.12209302325581395,
+            "p": 0.525,
+            "f": 0.1981132044855821
           }
         },
         "bertscore": {
-          "p": 0.9482818245887756,
-          "r": 0.8336105942726135,
-          "f1": 0.8872564435005188
+          "p": 0.8673202991485596,
+          "r": 0.8240941166877747,
+          "f1": 0.845154881477356
         }
       },
       "hybrid_scores": {
         "rouge": {
           "rouge-1": {
-            "r": 0.2558139534883721,
-            "p": 1.0,
-            "f": 0.4074074041632374
+            "r": 0.11627906976744186,
+            "p": 0.5405405405405406,
+            "f": 0.19138755689475975
           },
           "rouge-2": {
-            "r": 0.19066147859922178,
-            "p": 0.98,
-            "f": 0.3192182383155259
+            "r": 0.027237354085603113,
+            "p": 0.17073170731707318,
+            "f": 0.0469798633987209
           },
           "rouge-l": {
-            "r": 0.2558139534883721,
-            "p": 1.0,
-            "f": 0.4074074041632374
+            "r": 0.11046511627906977,
+            "p": 0.5135135135135135,
+            "f": 0.18181817890432916
           }
         },
         "bertscore": {
-          "p": 0.9507836103439331,
-          "r": 0.8378949761390686,
-          "f1": 0.8907768726348877
+          "p": 0.8727039098739624,
+          "r": 0.8136172890663147,
+          "f1": 0.842125415802002
         }
       },
       "textrank_summary": "A federal jury in California made the decision on Tuesday after the court found the NSO Group liable for the attacks last year. “Today’s verdict in WhatsApp’s case is an important step forward for privacy and security as the first victory against the development and use of illegal spyware that threatens the safety and privacy of everyone,” Meta said in an announcement . “The jury’s decision to force NSO, a notorious foreign spyware merchant, to pay damages is a critical deterrent to this malicious industry.” Going forward, Meta will attempt to secure a court order preventing the NSO Group from targeting WhatsApp. It has also published the unofficial transcripts from deposition videos during the trial, and says it will make a donation to digital rights organizations working to protect users from spyware. NSO Group spokesperson Gil Lainer says the company “will carefully examine the verdict’s details and pursue appropriate legal remedies, including further proceedings and an appeal.” Update, May 6th: Added information from NSO Group.",
@@ -620,8 +620,8 @@
       "title": "Be careful what you read about an Elden Ring movie",
       "link": "https://www.theverge.com/news/662200/elden-ring-movie-nexus-point-news-be-careful",
       "extractive_summary": "On Tuesday, a publication called Nexus Point News published a headline for what looked to be a major piece of entertainment news: \"EXCLUSIVE: Alex Garland Set To Direct 'Elden Ring' Film For A24.\" But don't get your hopes up: soon after the article was published, Nexus Point News pulled it, and the publication won't say why. How this article made the rounds is an interesting case study in the way news travels on the internet. But none of us at The Verge had ever heard of Nexus Point News , let alone recognized it as a place that reliably breaks entertainment news, so something didn't seem right. (Another recent Nexus Point News \"exclusive\" includes a potential cast member \"being eyed\" for one of the male leads of Star Wars: Starfighter , but the article includes an update that says \"a LucasFilm spokesperso … Read the full story at The Verge.",
-      "abstractive_summary": "Nexus Point News published an article claiming to be an \"Elden Ring\" exclusive. The article was posted on Wario64, a popular video game account. Nexus Point News pulled the article soon after it was published. The publication won't say why it was pulled.",
-      "hybrid_summary": "On Tuesday, a publication called Nexus Point News published a headline for what looked to be a major piece of entertainment news. The article claimed that Elden Ring \"is expected to be Garland's next film\" and that shooting is expected to start in 2026. How this article made the rounds is an interesting case study in the way news travels on the internet.",
+      "abstractive_summary": "If you're a fan of Alex Garland's work, you might have been interested in an article about the director's next film. On Tuesday, a publication called Nexus Point News published a headline for what looked to be a major piece of entertainment news: \"EXCLUSIVE: Alex Garland Set To Direct 'Elden Ring' Film For A24.\" The article claimed that Elden Ring \"is expected to be Garland's next film\" and that shooting is expected to start in 2026.",
+      "hybrid_summary": "If you want to know what's going on in the world of film news, you might want to check out Nexus Point News, a website that claims to be \"the world's first and only news outlet dedicated to breaking the news in the entertainment industry.\"",
       "extractive_scores": {
         "rouge": {
           "rouge-1": {
@@ -649,49 +649,49 @@
       "abstractive_scores": {
         "rouge": {
           "rouge-1": {
-            "r": 0.152317880794702,
-            "p": 0.7419354838709677,
-            "f": 0.2527472499209033
+            "r": 0.33774834437086093,
+            "p": 0.8095238095238095,
+            "f": 0.47663550986418035
           },
           "rouge-2": {
-            "r": 0.057971014492753624,
-            "p": 0.3076923076923077,
-            "f": 0.09756097294170143
+            "r": 0.2560386473429952,
+            "p": 0.7162162162162162,
+            "f": 0.37722419540836616
           },
           "rouge-l": {
-            "r": 0.1390728476821192,
-            "p": 0.6774193548387096,
-            "f": 0.23076922794288132
+            "r": 0.33774834437086093,
+            "p": 0.8095238095238095,
+            "f": 0.47663550986418035
           }
         },
         "bertscore": {
-          "p": 0.9229881763458252,
-          "r": 0.8328545093536377,
-          "f1": 0.8756079077720642
+          "p": 0.9366640448570251,
+          "r": 0.8504717350006104,
+          "f1": 0.8914893865585327
         }
       },
       "hybrid_scores": {
         "rouge": {
           "rouge-1": {
-            "r": 0.33112582781456956,
-            "p": 1.0,
-            "f": 0.49751243407341417
+            "r": 0.11258278145695365,
+            "p": 0.4594594594594595,
+            "f": 0.18085106066828888
           },
           "rouge-2": {
-            "r": 0.2753623188405797,
-            "p": 0.95,
-            "f": 0.42696628865042296
+            "r": 0.01932367149758454,
+            "p": 0.09302325581395349,
+            "f": 0.031999997151680254
           },
           "rouge-l": {
-            "r": 0.33112582781456956,
-            "p": 1.0,
-            "f": 0.49751243407341417
+            "r": 0.09933774834437085,
+            "p": 0.40540540540540543,
+            "f": 0.159574464923608
           }
         },
         "bertscore": {
-          "p": 0.9621230363845825,
-          "r": 0.8517535328865051,
-          "f1": 0.9035804271697998
+          "p": 0.858874499797821,
+          "r": 0.8101198077201843,
+          "f1": 0.8337850570678711
         }
       },
       "textrank_summary": "On Tuesday, a publication called Nexus Point News published a headline for what looked to be a major piece of entertainment news: \"EXCLUSIVE: Alex Garland Set To Direct 'Elden Ring' Film For A24.\" But don't get your hopes up: soon after the article was published, Nexus Point News pulled it, and the publication won't say why. How this article made the rounds is an interesting case study in the way news travels on the internet. But none of us at The Verge had ever heard of Nexus Point News , let alone recognized it as a place that reliably breaks entertainment news, so something didn't seem right. (Another recent Nexus Point News \"exclusive\" includes a potential cast member \"being eyed\" for one of the male leads of Star Wars: Starfighter , but the article includes an update that says \"a LucasFilm spokesperso … Read the full story at The Verge.",
@@ -787,32 +787,32 @@
       "bertscore_f1": 0.9242807745933532
     },
     "abstractive": {
-      "rouge_rouge-1_f": 0.2885254311031515,
-      "rouge_rouge-1_p": 0.9284284109587302,
-      "rouge_rouge-1_r": 0.17756425034151552,
-      "rouge_rouge-2_f": 0.19613450545110067,
-      "rouge_rouge-2_p": 0.8041407755446771,
-      "rouge_rouge-2_r": 0.11596623138280279,
-      "rouge_rouge-l_f": 0.28412982670754705,
-      "rouge_rouge-l_p": 0.9155251851522787,
-      "rouge_rouge-l_r": 0.17491524371899897,
-      "bertscore_p": 0.9395569562911987,
-      "bertscore_r": 0.8281188607215881,
-      "bertscore_f1": 0.8802889347076416
+      "rouge_rouge-1_f": 0.2803795105405554,
+      "rouge_rouge-1_p": 0.7510714285714286,
+      "rouge_rouge-1_r": 0.1896159899253264,
+      "rouge_rouge-2_f": 0.17207014704638252,
+      "rouge_rouge-2_p": 0.41385853939045425,
+      "rouge_rouge-2_r": 0.11528182996855374,
+      "rouge_rouge-l_f": 0.2767308941730999,
+      "rouge_rouge-l_p": 0.7335714285714285,
+      "rouge_rouge-l_r": 0.18746674606728578,
+      "bertscore_p": 0.8958180904388428,
+      "bertscore_r": 0.8266271710395813,
+      "bertscore_f1": 0.8597830653190612
     },
     "hybrid": {
-      "rouge_rouge-1_f": 0.3535724571837999,
-      "rouge_rouge-1_p": 0.9921083172147002,
-      "rouge_rouge-1_r": 0.22388661702011864,
-      "rouge_rouge-2_f": 0.2748958596086384,
-      "rouge_rouge-2_p": 0.9591568559154766,
-      "rouge_rouge-2_r": 0.1671644301079082,
-      "rouge_rouge-l_f": 0.3535724571837999,
-      "rouge_rouge-l_p": 0.9921083172147002,
-      "rouge_rouge-l_r": 0.22388661702011864,
-      "bertscore_p": 0.9333744287490845,
-      "bertscore_r": 0.831318986415863,
-      "bertscore_f1": 0.8792285084724426
+      "rouge_rouge-1_f": 0.20151844584334774,
+      "rouge_rouge-1_p": 0.6887658169814781,
+      "rouge_rouge-1_r": 0.12561214399769632,
+      "rouge_rouge-2_f": 0.08671310348559562,
+      "rouge_rouge-2_p": 0.4349738952593958,
+      "rouge_rouge-2_r": 0.05250982642644005,
+      "rouge_rouge-l_f": 0.18608279341607464,
+      "rouge_rouge-l_p": 0.6460198617836614,
+      "rouge_rouge-l_r": 0.11609582897298765,
+      "bertscore_p": 0.8797598719596863,
+      "bertscore_r": 0.811020839214325,
+      "bertscore_f1": 0.8439046502113342
     },
     "textrank": {
       "rouge_rouge-1_f": 0.7086912868796696,

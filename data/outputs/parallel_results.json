@@ -1,0 +1,102 @@
+{
+  "average_scores": {
+    "textrank": {
+      "rouge_rouge-1_f": 0.7086912868796696,
+      "rouge_rouge-1_p": 1.0,
+      "rouge_rouge-1_r": 0.5930535855598297,
+      "rouge_rouge-2_f": 0.6588128279288045,
+      "rouge_rouge-2_p": 0.9899026834286756,
+      "rouge_rouge-2_r": 0.5401312874248078,
+      "rouge_rouge-l_f": 0.7086912868796696,
+      "rouge_rouge-l_p": 1.0,
+      "rouge_rouge-l_r": 0.5930535855598297,
+      "bertscore_p": 0.9426811933517456,
+      "bertscore_r": 0.9068325161933899,
+      "bertscore_f1": 0.9242807745933532
+    },
+    "lexrank": {
+      "rouge_rouge-1_f": 0.6240427430323686,
+      "rouge_rouge-1_p": 1.0,
+      "rouge_rouge-1_r": 0.4977043338655777,
+      "rouge_rouge-2_f": 0.5622484115449875,
+      "rouge_rouge-2_p": 0.9910095150485452,
+      "rouge_rouge-2_r": 0.43306829391710105,
+      "rouge_rouge-l_f": 0.6240427430323686,
+      "rouge_rouge-l_p": 1.0,
+      "rouge_rouge-l_r": 0.4977043338655777,
+      "bertscore_p": 0.9475319743156433,
+      "bertscore_r": 0.8878430843353271,
+      "bertscore_f1": 0.916558837890625
+    },
+    "lsa": {
+      "rouge_rouge-1_f": 0.5886293525465816,
+      "rouge_rouge-1_p": 1.0,
+      "rouge_rouge-1_r": 0.46406019690940575,
+      "rouge_rouge-2_f": 0.5391824937745341,
+      "rouge_rouge-2_p": 0.9766209736071844,
+      "rouge_rouge-2_r": 0.41075106312900916,
+      "rouge_rouge-l_f": 0.5886293525465816,
+      "rouge_rouge-l_p": 1.0,
+      "rouge_rouge-l_r": 0.46406019690940575,
+      "bertscore_p": 0.9280225396156311,
+      "bertscore_r": 0.8724642038345337,
+      "bertscore_f1": 0.8993197679519653
+    },
+    "abstractive": {
+      "rouge_rouge-1_f": 0.2885254311031515,
+      "rouge_rouge-1_p": 0.9284284109587302,
+      "rouge_rouge-1_r": 0.17756425034151552,
+      "rouge_rouge-2_f": 0.19613450545110067,
+      "rouge_rouge-2_p": 0.8041407755446771,
+      "rouge_rouge-2_r": 0.11596623138280279,
+      "rouge_rouge-l_f": 0.28412982670754705,
+      "rouge_rouge-l_p": 0.9155251851522787,
+      "rouge_rouge-l_r": 0.17491524371899897,
+      "bertscore_p": 0.9395569562911987,
+      "bertscore_r": 0.8281188607215881,
+      "bertscore_f1": 0.8802889347076416
+    },
+    "best_single": {
+      "rouge_rouge-1_f": 0.5592927600453721,
+      "rouge_rouge-1_p": 0.9697901562568806,
+      "rouge_rouge-1_r": 0.415607178468802,
+      "rouge_rouge-2_f": 0.48068215550061294,
+      "rouge_rouge-2_p": 0.9171016224825834,
+      "rouge_rouge-2_r": 0.3487794963269085,
+      "rouge_rouge-l_f": 0.5575383740804598,
+      "rouge_rouge-l_p": 0.967192753659478,
+      "rouge_rouge-l_r": 0.4142826751575438,
+      "bertscore_p": 0.9331407904624939,
+      "bertscore_r": 0.8764840602874756,
+      "bertscore_f1": 0.9037034630775451
+    },
+    "extractive": {
+      "rouge_rouge-1_f": 0.7086912868796696,
+      "rouge_rouge-1_p": 1.0,
+      "rouge_rouge-1_r": 0.5930535855598297,
+      "rouge_rouge-2_f": 0.6588128279288045,
+      "rouge_rouge-2_p": 0.9899026834286756,
+      "rouge_rouge-2_r": 0.5401312874248078,
+      "rouge_rouge-l_f": 0.7086912868796696,
+      "rouge_rouge-l_p": 1.0,
+      "rouge_rouge-l_r": 0.5930535855598297,
+      "bertscore_p": 0.9426811933517456,
+      "bertscore_r": 0.9068325161933899,
+      "bertscore_f1": 0.9242807745933532
+    },
+    "combo": {
+      "rouge_rouge-1_f": 0.5592927600453721,
+      "rouge_rouge-1_p": 0.9697901562568806,
+      "rouge_rouge-1_r": 0.415607178468802,
+      "rouge_rouge-2_f": 0.48068215550061294,
+      "rouge_rouge-2_p": 0.9171016224825834,
+      "rouge_rouge-2_r": 0.3487794963269085,
+      "rouge_rouge-l_f": 0.5575383740804598,
+      "rouge_rouge-l_p": 0.967192753659478,
+      "rouge_rouge-l_r": 0.4142826751575438,
+      "bertscore_p": 0.9331407904624939,
+      "bertscore_r": 0.8764840602874756,
+      "bertscore_f1": 0.9037034630775451
+    }
+  }
+}

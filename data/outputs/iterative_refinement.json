@@ -1,0 +1,250 @@
+{
+  "articles": [
+    {
+      "title": "Senate Dems propose ban on presidents investing or endorsing crypto assets",
+      "link": "https://www.theverge.com/news/662313/meme-coin-stablecoin-genius-act-corruption-trump",
+      "iterations": [
+        {
+          "extractive_method": "textrank",
+          "extractive_summary": "After abruptly pulling their support from what would have been the Senate’s first stablecoin regulatory bill, Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets – a bill directed at Donald Trump and his family’s current stablecoin and meme coin holdings. “Currently, people who wish to cultivate influence with the president can enrich him personally by buying cryptocurrency he owns or controls,” said Sen. Jeff Merkley (D-OR), who introduced the bill to the Senate floor, in a press release . First, a New York Times report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm under the current regulatory framework. Second, Trump announced a contest in April wherein the top holders of his meme coin would win a private dinner with the president, and the top 25 holders would win an additional guided tour of the White House. Though they admitted that there’s not much they can do to stop the president right now (see: no laws), Senate Republicans also expressed skepticism over the $TRUMP contest to NBC , and at least one staunch Trump ally, Sen. Cynthia Lummis of Wyoming, offered to partner with the Democrats on efforts to regulate lawmakers holding digital assets.",
+          "abstractive_summary": "Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets. The bill would be directed at Donald Trump and his family’s current stablecoin and meme coin holdings. A report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm."
+        },
+        {
+          "extractive_method": "lexrank",
+          "extractive_summary": "After abruptly pulling their support from what would have been the Senate’s first stablecoin regulatory bill, Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets – a bill directed at Donald Trump and his family’s current stablecoin and meme coin holdings. “Currently, people who wish to cultivate influence with the president can enrich him personally by buying cryptocurrency he owns or controls,” said Sen. Jeff Merkley (D-OR), who introduced the bill to the Senate floor, in a press release . First, a New York Times report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm under the current regulatory framework. Second, Trump announced a contest in April wherein the top holders of his meme coin would win a private dinner with the president, and the top 25 holders would win an additional guided tour of the White House. Though they admitted that there’s not much they can do to stop the president right now (see: no laws), Senate Republicans also expressed skepticism over the $TRUMP contest to NBC , and at least one staunch Trump ally, Sen. Cynthia Lummis of Wyoming, offered to partner with the Democrats on efforts to regulate lawmakers holding digital assets.",
+          "abstractive_summary": "Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets. The bill would be directed at Donald Trump and his family’s current stablecoin and meme coin holdings. A report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm."
+        },
+        {
+          "extractive_method": "lsa",
+          "extractive_summary": "After abruptly pulling their support from what would have been the Senate’s first stablecoin regulatory bill, Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets – a bill directed at Donald Trump and his family’s current stablecoin and meme coin holdings. “Currently, people who wish to cultivate influence with the president can enrich him personally by buying cryptocurrency he owns or controls,” said Sen. Jeff Merkley (D-OR), who introduced the bill to the Senate floor, in a press release . First, a New York Times report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm under the current regulatory framework. Second, Trump announced a contest in April wherein the top holders of his meme coin would win a private dinner with the president, and the top 25 holders would win an additional guided tour of the White House. Though they admitted that there’s not much they can do to stop the president right now (see: no laws), Senate Republicans also expressed skepticism over the $TRUMP contest to NBC , and at least one staunch Trump ally, Sen. Cynthia Lummis of Wyoming, offered to partner with the Democrats on efforts to regulate lawmakers holding digital assets.",
+          "abstractive_summary": "Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets. The bill would be directed at Donald Trump and his family’s current stablecoin and meme coin holdings. A report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm."
+        }
+      ],
+      "final_summary": "Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets. The bill would be directed at Donald Trump and his family’s current stablecoin and meme coin holdings. A report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm.",
+      "final_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.21367521367521367,
+            "p": 0.9803921568627451,
+            "f": 0.35087719004395196
+          },
+          "rouge-2": {
+            "r": 0.15895953757225434,
+            "p": 0.8870967741935484,
+            "f": 0.2696078405598809
+          },
+          "rouge-l": {
+            "r": 0.21367521367521367,
+            "p": 0.9803921568627451,
+            "f": 0.35087719004395196
+          }
+        },
+        "bertscore": {
+          "p": 0.9421654939651489,
+          "r": 0.8282865285873413,
+          "f1": 0.8815635442733765
+        }
+      }
+    },
+    {
+      "title": "Amazon’s Zoox issued a robotaxi software recall after a crash in Las Vegas",
+      "link": "https://www.theverge.com/news/662321/amazon-zoox-recall-robotaxi-las-vegas-crash-software-fix",
+      "iterations": [
+        {
+          "extractive_method": "textrank",
+          "extractive_summary": "The update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph closed in on another vehicle that approaches its lane from a perpendicular driveway before stopping. Zoox shared how the incident played out in the voluntary safety recall report it sent to the National Highway Traffic Safety Administration (NHTSA) on May 1st: The incident involved a passenger car quickly approaching the lane where our purpose-built robotaxi was traveling. Instead, the car came to a stop, fully yielding to the Zoox robotaxi and remaining in the shoulder lane. The report states that, prior to the update, the company says, “In situations where Zoox vehicles are operating at speeds greater than 40mph, and a vehicle incrementally encroaches from a perpendicular driveway approaching the Zoox vehicle’s lane, the Zoox vehicle may make an inaccurately confident prediction that the vehicle is going to proceed into the Zoox vehicle’s lane.” Reacting based on that inaccurate projection could cause a crash, as happened here. A March recall notice from Zoox also notes that after two incidents where its Toyota Highlander-based robotaxis performed sudden hard braking, causing approaching motorcyclists to rear-end them , it rolled out a software update to address the problem last November.",
+          "abstractive_summary": "The update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph closed in on another vehicle. Zoox shared how the incident played out in a voluntary safety recall report it sent to the National Highway Traffic Safety Administration."
+        },
+        {
+          "extractive_method": "lexrank",
+          "extractive_summary": "The update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph closed in on another vehicle that approaches its lane from a perpendicular driveway before stopping. Zoox shared how the incident played out in the voluntary safety recall report it sent to the National Highway Traffic Safety Administration (NHTSA) on May 1st: The incident involved a passenger car quickly approaching the lane where our purpose-built robotaxi was traveling. Instead, the car came to a stop, fully yielding to the Zoox robotaxi and remaining in the shoulder lane. The report states that, prior to the update, the company says, “In situations where Zoox vehicles are operating at speeds greater than 40mph, and a vehicle incrementally encroaches from a perpendicular driveway approaching the Zoox vehicle’s lane, the Zoox vehicle may make an inaccurately confident prediction that the vehicle is going to proceed into the Zoox vehicle’s lane.” Reacting based on that inaccurate projection could cause a crash, as happened here. A March recall notice from Zoox also notes that after two incidents where its Toyota Highlander-based robotaxis performed sudden hard braking, causing approaching motorcyclists to rear-end them , it rolled out a software update to address the problem last November.",
+          "abstractive_summary": "The update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph closed in on another vehicle. Zoox shared how the incident played out in a voluntary safety recall report it sent to the National Highway Traffic Safety Administration."
+        },
+        {
+          "extractive_method": "lsa",
+          "extractive_summary": "The update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph closed in on another vehicle that approaches its lane from a perpendicular driveway before stopping. Zoox shared how the incident played out in the voluntary safety recall report it sent to the National Highway Traffic Safety Administration (NHTSA) on May 1st: The incident involved a passenger car quickly approaching the lane where our purpose-built robotaxi was traveling. Instead, the car came to a stop, fully yielding to the Zoox robotaxi and remaining in the shoulder lane. The report states that, prior to the update, the company says, “In situations where Zoox vehicles are operating at speeds greater than 40mph, and a vehicle incrementally encroaches from a perpendicular driveway approaching the Zoox vehicle’s lane, the Zoox vehicle may make an inaccurately confident prediction that the vehicle is going to proceed into the Zoox vehicle’s lane.” Reacting based on that inaccurate projection could cause a crash, as happened here. A March recall notice from Zoox also notes that after two incidents where its Toyota Highlander-based robotaxis performed sudden hard braking, causing approaching motorcyclists to rear-end them , it rolled out a software update to address the problem last November.",
+          "abstractive_summary": "The update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph closed in on another vehicle. Zoox shared how the incident played out in a voluntary safety recall report it sent to the National Highway Traffic Safety Administration."
+        }
+      ],
+      "final_summary": "The update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph closed in on another vehicle. Zoox shared how the incident played out in a voluntary safety recall report it sent to the National Highway Traffic Safety Administration.",
+      "final_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.25142857142857145,
+            "p": 1.0,
+            "f": 0.4018264808073227
+          },
+          "rouge-2": {
+            "r": 0.17537313432835822,
+            "p": 0.94,
+            "f": 0.29559748162651794
+          },
+          "rouge-l": {
+            "r": 0.25142857142857145,
+            "p": 1.0,
+            "f": 0.4018264808073227
+          }
+        },
+        "bertscore": {
+          "p": 0.9374485015869141,
+          "r": 0.8287064433097839,
+          "f1": 0.8797298073768616
+        }
+      }
+    },
+    {
+      "title": "The best fitness trackers to buy right now",
+      "link": "https://www.theverge.com/22985108/best-fitness-tracker",
+      "iterations": [
+        {
+          "extractive_method": "textrank",
+          "extractive_summary": "Smartwatches are definitely getting more high-tech, but the Active 2 keeps the spirit of a humble fitness tracker — a good price, all the basic health features with a holistic tracking approach, and a comfy yet stylish design. Best for serious outdoor athletes Sizes: 7S Pro: 42mm w/ 20mm straps; 7: 47mm w/ 22mm straps; 7X: 51mm w/ 26mm straps / Weight: 7S Pro: 63g (Solar), 58g or 65g (Sapphire Solar, titanium or stainless steel); 7: 79g (Solar), 73g (Sapphire Solar); 7X: 96g (Solar), 89g (Sapphire Solar) / Battery life: 7S: up to 11 days, 14 w/ Solar; 7: up to 18 days, 22 days w/ solar; 7X: up to 28 days, 37 w/ solar / Display type: MIP touchscreen / GPS: All-systems GNSS and dual-frequency GPS / Connectivity: Bluetooth, Ant Plus, Wi-Fi / Water resistance: 10ATM / Music storage: Up to 32GB Garmin’s flagship Fenix 7 series is no joke, and the Fenix 7 Pro lineup takes it up a notch. It’s a bit more expensive than the base Oura Ring, but it doesn’t come with a subscription, and you get much better battery life when used with the Galaxy Watch. That’s why I think the extra $100 in savings is worth it for the Light, especially since both are lacking in safety features, contactless payments, and some other bells and whistles you can get from other watches in the $350 price range. Best fitness smartwatch for Samsung phones Sizes: 47mm / Weight: 60.5g / Battery life: Up to 100 hours / Display type: Always-on OLED / GPS: Built-in GPS / Connectivity: LTE (optional), Bluetooth, Wi-Fi / Water resistance: 10ATM, IP68 / Music storage: 32GB Truthfully, the Samsung Galaxy Watch Ultra left me a bit disappointed after reviewing it — not because it’s a bad piece of hardware, but because it copies a bit too much from Apple.",
+          "abstractive_summary": "Garmin’s flagship Fenix 7 series is no joke, and the Fenix7 Pro lineup takes it up a notch. The Samsung Galaxy Watch Ultra left me a bit disappointed after reviewing it. It copies a bit too much from Apple. You get much better battery life when used with the Galaxy Watch."
+        },
+        {
+          "extractive_method": "lexrank",
+          "extractive_summary": "Smartwatches are definitely getting more high-tech, but the Active 2 keeps the spirit of a humble fitness tracker — a good price, all the basic health features with a holistic tracking approach, and a comfy yet stylish design. Best for serious outdoor athletes Sizes: 7S Pro: 42mm w/ 20mm straps; 7: 47mm w/ 22mm straps; 7X: 51mm w/ 26mm straps / Weight: 7S Pro: 63g (Solar), 58g or 65g (Sapphire Solar, titanium or stainless steel); 7: 79g (Solar), 73g (Sapphire Solar); 7X: 96g (Solar), 89g (Sapphire Solar) / Battery life: 7S: up to 11 days, 14 w/ Solar; 7: up to 18 days, 22 days w/ solar; 7X: up to 28 days, 37 w/ solar / Display type: MIP touchscreen / GPS: All-systems GNSS and dual-frequency GPS / Connectivity: Bluetooth, Ant Plus, Wi-Fi / Water resistance: 10ATM / Music storage: Up to 32GB Garmin’s flagship Fenix 7 series is no joke, and the Fenix 7 Pro lineup takes it up a notch. It’s a bit more expensive than the base Oura Ring, but it doesn’t come with a subscription, and you get much better battery life when used with the Galaxy Watch. That’s why I think the extra $100 in savings is worth it for the Light, especially since both are lacking in safety features, contactless payments, and some other bells and whistles you can get from other watches in the $350 price range. Best fitness smartwatch for Samsung phones Sizes: 47mm / Weight: 60.5g / Battery life: Up to 100 hours / Display type: Always-on OLED / GPS: Built-in GPS / Connectivity: LTE (optional), Bluetooth, Wi-Fi / Water resistance: 10ATM, IP68 / Music storage: 32GB Truthfully, the Samsung Galaxy Watch Ultra left me a bit disappointed after reviewing it — not because it’s a bad piece of hardware, but because it copies a bit too much from Apple.",
+          "abstractive_summary": "Garmin’s flagship Fenix 7 series is no joke, and the Fenix7 Pro lineup takes it up a notch. The Samsung Galaxy Watch Ultra left me a bit disappointed after reviewing it. It copies a bit too much from Apple. You get much better battery life when used with the Galaxy Watch."
+        },
+        {
+          "extractive_method": "lsa",
+          "extractive_summary": "Smartwatches are definitely getting more high-tech, but the Active 2 keeps the spirit of a humble fitness tracker — a good price, all the basic health features with a holistic tracking approach, and a comfy yet stylish design. Best for serious outdoor athletes Sizes: 7S Pro: 42mm w/ 20mm straps; 7: 47mm w/ 22mm straps; 7X: 51mm w/ 26mm straps / Weight: 7S Pro: 63g (Solar), 58g or 65g (Sapphire Solar, titanium or stainless steel); 7: 79g (Solar), 73g (Sapphire Solar); 7X: 96g (Solar), 89g (Sapphire Solar) / Battery life: 7S: up to 11 days, 14 w/ Solar; 7: up to 18 days, 22 days w/ solar; 7X: up to 28 days, 37 w/ solar / Display type: MIP touchscreen / GPS: All-systems GNSS and dual-frequency GPS / Connectivity: Bluetooth, Ant Plus, Wi-Fi / Water resistance: 10ATM / Music storage: Up to 32GB Garmin’s flagship Fenix 7 series is no joke, and the Fenix 7 Pro lineup takes it up a notch. It’s a bit more expensive than the base Oura Ring, but it doesn’t come with a subscription, and you get much better battery life when used with the Galaxy Watch. That’s why I think the extra $100 in savings is worth it for the Light, especially since both are lacking in safety features, contactless payments, and some other bells and whistles you can get from other watches in the $350 price range. Best fitness smartwatch for Samsung phones Sizes: 47mm / Weight: 60.5g / Battery life: Up to 100 hours / Display type: Always-on OLED / GPS: Built-in GPS / Connectivity: LTE (optional), Bluetooth, Wi-Fi / Water resistance: 10ATM, IP68 / Music storage: 32GB Truthfully, the Samsung Galaxy Watch Ultra left me a bit disappointed after reviewing it — not because it’s a bad piece of hardware, but because it copies a bit too much from Apple.",
+          "abstractive_summary": "Garmin’s flagship Fenix 7 series is no joke, and the Fenix7 Pro lineup takes it up a notch. The Samsung Galaxy Watch Ultra left me a bit disappointed after reviewing it. It copies a bit too much from Apple. You get much better battery life when used with the Galaxy Watch."
+        }
+      ],
+      "final_summary": "Garmin’s flagship Fenix 7 series is no joke, and the Fenix7 Pro lineup takes it up a notch. The Samsung Galaxy Watch Ultra left me a bit disappointed after reviewing it. It copies a bit too much from Apple. You get much better battery life when used with the Galaxy Watch.",
+      "final_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.02766798418972332,
+            "p": 0.9767441860465116,
+            "f": 0.05381165865707236
+          },
+          "rouge-2": {
+            "r": 0.010939167556029883,
+            "p": 0.8541666666666666,
+            "f": 0.02160168573554771
+          },
+          "rouge-l": {
+            "r": 0.02766798418972332,
+            "p": 0.9767441860465116,
+            "f": 0.05381165865707236
+          }
+        },
+        "bertscore": {
+          "p": 0.8340570330619812,
+          "r": 0.780792772769928,
+          "f1": 0.8065464496612549
+        }
+      }
+    },
+    {
+      "title": "Meta awarded $167.25 million over Pegasus spyware attack",
+      "link": "https://www.theverge.com/news/662242/meta-nso-group-pegasus-whatsapp-hack-damages",
+      "iterations": [
+        {
+          "extractive_method": "textrank",
+          "extractive_summary": "A federal jury in California made the decision on Tuesday after the court found the NSO Group liable for the attacks last year. “Today’s verdict in WhatsApp’s case is an important step forward for privacy and security as the first victory against the development and use of illegal spyware that threatens the safety and privacy of everyone,” Meta said in an announcement . “The jury’s decision to force NSO, a notorious foreign spyware merchant, to pay damages is a critical deterrent to this malicious industry.” Going forward, Meta will attempt to secure a court order preventing the NSO Group from targeting WhatsApp. It has also published the unofficial transcripts from deposition videos during the trial, and says it will make a donation to digital rights organizations working to protect users from spyware. NSO Group spokesperson Gil Lainer says the company “will carefully examine the verdict’s details and pursue appropriate legal remedies, including further proceedings and an appeal.” Update, May 6th: Added information from NSO Group.",
+          "abstractive_summary": "A federal jury in California made the decision on Tuesday. The court found the NSO Group liable for the attacks last year. The jury’s decision to force NSO, a notorious foreign spyware merchant, to pay damages is a critical deterrent to this malicious industry."
+        },
+        {
+          "extractive_method": "lexrank",
+          "extractive_summary": "A federal jury in California made the decision on Tuesday after the court found the NSO Group liable for the attacks last year. “Today’s verdict in WhatsApp’s case is an important step forward for privacy and security as the first victory against the development and use of illegal spyware that threatens the safety and privacy of everyone,” Meta said in an announcement . “The jury’s decision to force NSO, a notorious foreign spyware merchant, to pay damages is a critical deterrent to this malicious industry.” Going forward, Meta will attempt to secure a court order preventing the NSO Group from targeting WhatsApp. It has also published the unofficial transcripts from deposition videos during the trial, and says it will make a donation to digital rights organizations working to protect users from spyware. NSO Group spokesperson Gil Lainer says the company “will carefully examine the verdict’s details and pursue appropriate legal remedies, including further proceedings and an appeal.” Update, May 6th: Added information from NSO Group.",
+          "abstractive_summary": "A federal jury in California made the decision on Tuesday. The court found the NSO Group liable for the attacks last year. The jury’s decision to force NSO, a notorious foreign spyware merchant, to pay damages is a critical deterrent to this malicious industry."
+        },
+        {
+          "extractive_method": "lsa",
+          "extractive_summary": "A federal jury in California made the decision on Tuesday after the court found the NSO Group liable for the attacks last year. “Today’s verdict in WhatsApp’s case is an important step forward for privacy and security as the first victory against the development and use of illegal spyware that threatens the safety and privacy of everyone,” Meta said in an announcement . “The jury’s decision to force NSO, a notorious foreign spyware merchant, to pay damages is a critical deterrent to this malicious industry.” Going forward, Meta will attempt to secure a court order preventing the NSO Group from targeting WhatsApp. It has also published the unofficial transcripts from deposition videos during the trial, and says it will make a donation to digital rights organizations working to protect users from spyware. NSO Group spokesperson Gil Lainer says the company “will carefully examine the verdict’s details and pursue appropriate legal remedies, including further proceedings and an appeal.” Update, May 6th: Added information from NSO Group.",
+          "abstractive_summary": "A federal jury in California made the decision on Tuesday. The court found the NSO Group liable for the attacks last year. The jury’s decision to force NSO, a notorious foreign spyware merchant, to pay damages is a critical deterrent to this malicious industry."
+        }
+      ],
+      "final_summary": "A federal jury in California made the decision on Tuesday. The court found the NSO Group liable for the attacks last year. The jury’s decision to force NSO, a notorious foreign spyware merchant, to pay damages is a critical deterrent to this malicious industry.",
+      "final_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.21511627906976744,
+            "p": 1.0,
+            "f": 0.35406698273208037
+          },
+          "rouge-2": {
+            "r": 0.1517509727626459,
+            "p": 0.9069767441860465,
+            "f": 0.2599999975442222
+          },
+          "rouge-l": {
+            "r": 0.21511627906976744,
+            "p": 1.0,
+            "f": 0.35406698273208037
+          }
+        },
+        "bertscore": {
+          "p": 0.946280300617218,
+          "r": 0.8376263976097107,
+          "f1": 0.8886443972587585
+        }
+      }
+    },
+    {
+      "title": "Be careful what you read about an Elden Ring movie",
+      "link": "https://www.theverge.com/news/662200/elden-ring-movie-nexus-point-news-be-careful",
+      "iterations": [
+        {
+          "extractive_method": "textrank",
+          "extractive_summary": "On Tuesday, a publication called Nexus Point News published a headline for what looked to be a major piece of entertainment news: \"EXCLUSIVE: Alex Garland Set To Direct 'Elden Ring' Film For A24.\" But don't get your hopes up: soon after the article was published, Nexus Point News pulled it, and the publication won't say why. How this article made the rounds is an interesting case study in the way news travels on the internet. But none of us at The Verge had ever heard of Nexus Point News , let alone recognized it as a place that reliably breaks entertainment news, so something didn't seem right. (Another recent Nexus Point News \"exclusive\" includes a potential cast member \"being eyed\" for one of the male leads of Star Wars: Starfighter , but the article includes an update that says \"a LucasFilm spokesperso … Read the full story at The Verge.",
+          "abstractive_summary": "Nexus Point News published an article about Alex Garland directing \"Elden Ring\" Soon after the article was published, Nexus Point News pulled it. The publication won't say why it pulled the article. It's an interesting case study in the way news travels online."
+        },
+        {
+          "extractive_method": "lexrank",
+          "extractive_summary": "On Tuesday, a publication called Nexus Point News published a headline for what looked to be a major piece of entertainment news: \"EXCLUSIVE: Alex Garland Set To Direct 'Elden Ring' Film For A24.\" But don't get your hopes up: soon after the article was published, Nexus Point News pulled it, and the publication won't say why. How this article made the rounds is an interesting case study in the way news travels on the internet. But none of us at The Verge had ever heard of Nexus Point News , let alone recognized it as a place that reliably breaks entertainment news, so something didn't seem right. (Another recent Nexus Point News \"exclusive\" includes a potential cast member \"being eyed\" for one of the male leads of Star Wars: Starfighter , but the article includes an update that says \"a LucasFilm spokesperso … Read the full story at The Verge.",
+          "abstractive_summary": "Nexus Point News published an article about Alex Garland directing \"Elden Ring\" Soon after the article was published, Nexus Point News pulled it. The publication won't say why it pulled the article. It's an interesting case study in the way news travels online."
+        },
+        {
+          "extractive_method": "lsa",
+          "extractive_summary": "On Tuesday, a publication called Nexus Point News published a headline for what looked to be a major piece of entertainment news: \"EXCLUSIVE: Alex Garland Set To Direct 'Elden Ring' Film For A24.\" But don't get your hopes up: soon after the article was published, Nexus Point News pulled it, and the publication won't say why. How this article made the rounds is an interesting case study in the way news travels on the internet. But none of us at The Verge had ever heard of Nexus Point News , let alone recognized it as a place that reliably breaks entertainment news, so something didn't seem right. (Another recent Nexus Point News \"exclusive\" includes a potential cast member \"being eyed\" for one of the male leads of Star Wars: Starfighter , but the article includes an update that says \"a LucasFilm spokesperso … Read the full story at The Verge.",
+          "abstractive_summary": "Nexus Point News published an article about Alex Garland directing \"Elden Ring\" Soon after the article was published, Nexus Point News pulled it. The publication won't say why it pulled the article. It's an interesting case study in the way news travels online."
+        }
+      ],
+      "final_summary": "Nexus Point News published an article about Alex Garland directing \"Elden Ring\" Soon after the article was published, Nexus Point News pulled it. The publication won't say why it pulled the article. It's an interesting case study in the way news travels online.",
+      "final_scores": {
+        "rouge": {
+          "rouge-1": {
+            "r": 0.17218543046357615,
+            "p": 0.7878787878787878,
+            "f": 0.2826086927085303
+          },
+          "rouge-2": {
+            "r": 0.10144927536231885,
+            "p": 0.5384615384615384,
+            "f": 0.1707317046490185
+          },
+          "rouge-l": {
+            "r": 0.17218543046357615,
+            "p": 0.7878787878787878,
+            "f": 0.2826086927085303
+          }
+        },
+        "bertscore": {
+          "p": 0.9281165599822998,
+          "r": 0.8292567729949951,
+          "f1": 0.8759060502052307
+        }
+      }
+    }
+  ],
+  "average_scores": {
+    "final": {
+      "rouge_rouge-1_f": 0.28863820098979154,
+      "rouge_rouge-1_p": 0.949003026157609,
+      "rouge_rouge-1_r": 0.1760146957653704,
+      "rouge_rouge-2_f": 0.20350774202303742,
+      "rouge_rouge-2_p": 0.82534034470156,
+      "rouge_rouge-2_r": 0.11969441751632144,
+      "rouge_rouge-l_f": 0.28863820098979154,
+      "rouge_rouge-l_p": 0.949003026157609,
+      "rouge_rouge-l_r": 0.1760146957653704,
+      "bertscore_p": 0.9176135778427124,
+      "bertscore_r": 0.8209337830543518,
+      "bertscore_f1": 0.8664780497550965
+    }
+  }
+}
