@@ -1,0 +1,9 @@
+NSO Group, the Israeli spyware-maker behind Pegasus, must pay Meta $167.25 million for hacking 1,400 users across WhatsApp. A federal jury in California made the decision on Tuesday after the court found the NSO Group liable for the attacks last year.
+
+Meta sued NSO Group in 2019 after Citizen Lab found a vulnerability that allowed the spyware vendor to install Pegasus through a phone call – even if users didn’t pick up. Pegasus could then turn on a user’s camera and microphone, look through emails and text messages, and access location information. The hack targeted activists, journalists, diplomats, and others. Apple has also sued the NSO Group for targeting iPhone users with Pegasus.
+
+The jury also awarded Meta $444,719 in compensatory damages. “Today’s verdict in WhatsApp’s case is an important step forward for privacy and security as the first victory against the development and use of illegal spyware that threatens the safety and privacy of everyone,” Meta said in an announcement. “The jury&#8217;s decision to force NSO, a notorious foreign spyware merchant, to pay damages is a critical deterrent to this malicious industry.”
+
+Going forward, Meta will attempt to secure a court order preventing the NSO Group from targeting WhatsApp. It has also published the unofficial transcripts from deposition videos during the trial, and says it will make a donation to digital rights organizations working to protect users from spyware.
+
+NSO Group spokesperson Gil Lainer says the company “will carefully examine the verdict&#8217;s details and pursue appropriate legal remedies, including further proceedings and an appeal.”

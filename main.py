@@ -1,7 +1,8 @@
 """
-main.py (parallel 3+1/3+3 不再提示 extractive, 只有 1+1 才提示)
+main.py (UPDATED - Fixed parallel pipeline parameter passing)
 - Only prompt for extractive if mode is 1+1 in parallel, otherwise skip
 - All logic for serial/iterative/parallel auto adapts
+- FIXED: Proper parameter passing for all parallel modes
 """
 
 import os
@@ -39,11 +40,17 @@ def main():
                        default=5, cast_type=int)
     pipeline_type = ask(
         'Pipeline type (pipeline/parallel/iterative)', default='pipeline', cast_type=str)
+
+    # Initialize variables with defaults
+    extractive = 'textrank'  # Default extractive method
+    abstractive = 'bart'     # Default abstractive method
+    combine = False
+    parallel_mode = None
+
     if pipeline_type == 'pipeline':
         combine = yesno(
             'Combine all extractive summaries as prompt?', default='n')
-    else:
-        combine = False
+
     if pipeline_type == 'parallel':
         print('Parallel mode options:')
         print('  1. Single Extractive + Single Abstractive (1+1)')
@@ -51,21 +58,30 @@ def main():
         print('  3. Best Extractive + Best Abstractive (3+3)')
         parallel_mode = ask(
             'Choose parallel mode (1+1, 3+1, 3+3)', default='1+1', cast_type=str)
-    else:
-        parallel_mode = None
-    # Prompt for extractive only if needed
+
+    # Prompt for extractive method only if needed
     if pipeline_type == 'pipeline' and combine:
-        extractive = 'textrank'
+        extractive = 'textrank'  # Will use all extractive methods when combine=True
         extractive_label = 'ALL'
     elif pipeline_type == 'pipeline' or (pipeline_type == 'parallel' and parallel_mode == '1+1'):
         extractive = ask('Extractive summarization method (textrank/lexrank/lsa)',
                          default='textrank', cast_type=str)
         extractive_label = extractive
     else:
-        extractive = None
-        extractive_label = None
-    abstractive = ask('Abstractive model (bart/t5/pegasus)',
-                      default='bart', cast_type=str)
+        # For 3+1 and 3+3 modes, we don't need user to select extractive method
+        extractive = 'textrank'  # Default value for parameter passing
+        extractive_label = 'Auto-selected'
+
+    # Prompt for abstractive method (skip for 3+3 mode as it's fully automatic)
+    if pipeline_type == 'parallel' and parallel_mode == '3+3':
+        print("3+3 mode: All methods will be evaluated automatically to find the best combination.")
+        # Default value for parameter passing, won't be used in actual selection
+        abstractive = 'bart'
+    else:
+        abstractive = ask('Abstractive model (bart/t5/pegasus)',
+                          default='bart', cast_type=str)
+
+    # Advanced options
     if yesno('Show other advanced options?', default='n'):
         outdir = ask('Output directory',
                      default='data/outputs/', cast_type=str)
@@ -83,8 +99,11 @@ def main():
         min_length = 50
         num_beams = 4
         device = None
+
     ensure_dir(outdir)
     plotter = Plotter()
+
+    # Run the selected pipeline
     if pipeline_type == 'pipeline':
         print(
             f"Running SERIAL pipeline: {extractive_label} -> {abstractive} (combine={combine})")
@@ -98,6 +117,8 @@ def main():
         )
         result = pipeline.run(rss, outdir=outdir,
                               max_articles=max_articles, combine=combine)
+
+        # Prepare plotting data for serial pipeline
         if combine:
             method_names = ['TextRank', 'LexRank', 'LSA',
                             abstractive, f'Hybrid({abstractive})']
@@ -116,7 +137,11 @@ def main():
                 result['average_scores']['abstractive'],
                 result['average_scores']['hybrid']
             ]
+
     elif pipeline_type == 'parallel':
+        print(
+            f"Running PARALLEL pipeline: mode={parallel_mode}, extractive={extractive}, abstractive={abstractive}")
+
         pipeline = ParallelPipeline(
             extractive_methods=['textrank', 'lexrank', 'lsa'],
             abstractive_methods=['bart', 't5', 'pegasus'],
@@ -125,8 +150,19 @@ def main():
             num_beams=num_beams,
             device=device if device not in (None, '', 'None') else None
         )
-        result = pipeline.run(rss, outdir=outdir,
-                              max_articles=max_articles, mode=parallel_mode)
+
+        # FIXED: Pass the selected methods to the run() method for proper dynamic selection
+        result = pipeline.run(
+            rss,
+            outdir=outdir,
+            max_articles=max_articles,
+            mode=parallel_mode,
+            # Pass user's extractive choice (or default)
+            selected_extractive=extractive,
+            selected_abstractive=abstractive   # Pass user's abstractive choice
+        )
+
+        # Prepare plotting data for parallel pipeline
         if parallel_mode == '1+1':
             method_names = [extractive, abstractive,
                             f'{extractive}+{abstractive}']
@@ -153,9 +189,13 @@ def main():
                 result['average_scores']['best_best']
             ]
         else:
+            # Fallback for any other parallel mode
             method_names = [f'{extractive}+{abstractive}']
             score_dicts = [result['average_scores']['combo']]
+
     elif pipeline_type == 'iterative':
+        print(f"Running ITERATIVE pipeline: {abstractive}")
+
         pipeline = IterativePipeline(
             abstractive_method=abstractive,
             max_length=max_length,
@@ -164,6 +204,8 @@ def main():
             device=device if device not in (None, '', 'None') else None
         )
         result = pipeline.run(rss, outdir=outdir, max_articles=max_articles)
+
+        # Prepare plotting data for iterative pipeline
         method_names = ['TextRank', 'LexRank', 'LSA', abstractive, 'Hybrid']
         score_dicts = [
             result['average_scores']['textrank'],
@@ -172,13 +214,17 @@ def main():
             result['average_scores']['abstractive'],
             result['average_scores']['final']
         ]
+
     else:
         raise NotImplementedError(
             f"Pipeline type '{pipeline_type}' is not implemented!")
+
+    # Generate and save the comparison plot
     png_path = os.path.join(outdir, f"{pipeline_type}_comparison.png")
     plotter.plot_multi_panel(method_names, score_dicts,
                              output_png=png_path, title='Summarization Methods Comparison')
-    print(f"PNG plot saved to {png_path}\nDone.")
+    print(f"PNG plot saved to {png_path}")
+    print("Done.")
 
 
 if __name__ == '__main__':
