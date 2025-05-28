@@ -1,262 +1,122 @@
-"""
-basic_diagnostic.py - 基础诊断脚本
-专门检查评估系统为什么返回0分
-"""
-
+import nltk
+import torch
+import numpy as np
+from transformers import BartForConditionalGeneration, BartTokenizer
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+from rouge_score import rouge_scorer
 from bert_score import score as bert_score
-from rouge import Rouge
-from utils.rss_parser import RSSParser
-from evaluation.scorer import Evaluator
-from models.abstractive import AbstractiveSummarizer
-from models.extractive import ExtractiveSummarizer
-import sys
-import os
-sys.path.append('.')
+from nltk.tokenize import sent_tokenize
+from sklearn.cluster import KMeans
+from sentence_transformers import SentenceTransformer
+
+nltk.download("punkt")
+
+# ---------------------- Summarizers ----------------------
 
 
-class BasicDiagnostic:
-    def __init__(self):
-        self.extractive = ExtractiveSummarizer(num_sentences=5)
-        self.abstractive = AbstractiveSummarizer()
-        self.evaluator = Evaluator()
-        self.rouge = Rouge()
+def textrank_summary(text, num_sentences=5):
+    from sumy.parsers.plaintext import PlaintextParser
+    from sumy.nlp.tokenizers import Tokenizer
+    from sumy.summarizers.text_rank import TextRankSummarizer
 
-    def test_evaluation_system(self):
-        """Test if the evaluation system works with simple examples"""
-        print("=" * 60)
-        print("TESTING EVALUATION SYSTEM")
-        print("=" * 60)
-
-        # Test with simple, known examples
-        reference = "The cat sat on the mat. The dog ran in the park."
-        summary1 = "The cat sat on the mat."  # Should get decent ROUGE score
-        summary2 = "A feline was sitting."    # Should get lower ROUGE score
-        summary3 = ""                         # Should get 0 score
-
-        test_cases = [
-            ("Good overlap", summary1, reference),
-            ("Some overlap", summary2, reference),
-            ("Empty summary", summary3, reference),
-        ]
-
-        for name, summary, ref in test_cases:
-            print(f"\nTest: {name}")
-            print(f"Reference: {ref}")
-            print(f"Summary: '{summary}'")
-
-            # Test direct ROUGE
-            try:
-                if summary.strip():
-                    rouge_scores = self.rouge.get_scores(summary, ref)[0]
-                    print(
-                        f"Direct ROUGE-1 F1: {rouge_scores['rouge-1']['f']:.4f}")
-                else:
-                    print("Direct ROUGE: Skipped (empty summary)")
-            except Exception as e:
-                print(f"Direct ROUGE Error: {e}")
-
-            # Test direct BERTScore
-            try:
-                if summary.strip():
-                    P, R, F1 = bert_score([summary], [ref], lang='en')
-                    print(f"Direct BERTScore F1: {F1.item():.4f}")
-                else:
-                    print("Direct BERTScore: Skipped (empty summary)")
-            except Exception as e:
-                print(f"Direct BERTScore Error: {e}")
-
-            # Test through Evaluator class
-            try:
-                eval_scores = self.evaluator.score(summary, ref)
-                print(
-                    f"Evaluator ROUGE-1: {eval_scores.get('rouge_rouge-1_f', 'NOT FOUND')}")
-                print(
-                    f"Evaluator BERTScore: {eval_scores.get('bertscore_f1', 'NOT FOUND')}")
-                # Show first 5 keys
-                print(f"All Evaluator keys: {list(eval_scores.keys())[:5]}...")
-            except Exception as e:
-                print(f"Evaluator Error: {e}")
-
-    def test_single_article(self, rss_url):
-        """Test with a single real article"""
-        print("\n" + "=" * 60)
-        print("TESTING WITH REAL ARTICLE")
-        print("=" * 60)
-
-        parser = RSSParser()
-        articles = parser.parse(rss_url, max_articles=1)
-
-        if not articles:
-            print("No articles found!")
-            return
-
-        article = articles[0]
-        content = article['content']
-
-        print(f"Article title: {article['title']}")
-        print(
-            f"Content length: {len(content)} characters, {len(content.split())} words")
-        print(f"Content preview: {content[:200]}...")
-
-        if len(content.split()) < 30:
-            print("Content too short for meaningful testing!")
-            return
-
-        # Generate summaries
-        print("\nGenerating summaries...")
-        try:
-            tr_sum = self.extractive.textrank(content)
-            print(f"TextRank summary: {tr_sum[:100]}...")
-            print(
-                f"TextRank length: {len(tr_sum)} chars, {len(tr_sum.split())} words")
-        except Exception as e:
-            print(f"TextRank generation error: {e}")
-            return
-
-        try:
-            abs_sum = self.abstractive.bart(content)
-            print(f"BART summary: {abs_sum[:100]}...")
-            print(
-                f"BART length: {len(abs_sum)} chars, {len(abs_sum.split())} words")
-        except Exception as e:
-            print(f"BART generation error: {e}")
-            return
-
-        # Test evaluation with real summaries
-        print("\nTesting evaluation with real summaries...")
-
-        # Test TextRank summary
-        print(f"\nEvaluating TextRank summary against original content:")
-        self.test_single_evaluation(tr_sum, content, "TextRank")
-
-        # Test BART summary
-        print(f"\nEvaluating BART summary against original content:")
-        self.test_single_evaluation(abs_sum, content, "BART")
-
-        # Test a simple truncated version of original (should score high)
-        simple_ref = " ".join(content.split()[:50])
-        print(f"\nEvaluating truncated original against full original (should score high):")
-        self.test_single_evaluation(simple_ref, content, "Truncated Original")
-
-    def test_single_evaluation(self, summary, reference, name):
-        """Test evaluation of a single summary-reference pair"""
-        if not summary.strip():
-            print(f"{name}: Empty summary, skipping evaluation")
-            return
-
-        if not reference.strip():
-            print(f"{name}: Empty reference, skipping evaluation")
-            return
-
-        print(f"\n{name} Evaluation:")
-        print(
-            f"  Summary length: {len(summary)} chars, {len(summary.split())} words")
-        print(
-            f"  Reference length: {len(reference)} chars, {len(reference.split())} words")
-
-        # Direct ROUGE test
-        try:
-            rouge_scores = self.rouge.get_scores(summary, reference)[0]
-            print(f"  Direct ROUGE-1 F1: {rouge_scores['rouge-1']['f']:.4f}")
-            print(f"  Direct ROUGE-2 F1: {rouge_scores['rouge-2']['f']:.4f}")
-            print(f"  Direct ROUGE-L F1: {rouge_scores['rouge-l']['f']:.4f}")
-        except Exception as e:
-            print(f"  Direct ROUGE Error: {e}")
-
-        # Direct BERTScore test
-        try:
-            P, R, F1 = bert_score([summary], [reference], lang='en')
-            print(
-                f"  Direct BERTScore - P: {P.item():.4f}, R: {R.item():.4f}, F1: {F1.item():.4f}")
-        except Exception as e:
-            print(f"  Direct BERTScore Error: {e}")
-
-        # Evaluator class test
-        try:
-            eval_scores = self.evaluator.score(summary, reference)
-            print(f"  Evaluator output keys: {list(eval_scores.keys())}")
-
-            # Try different possible key formats
-            possible_rouge_keys = [
-                'rouge_rouge-1_f', 'rouge-1_f', 'rouge_1_f',
-                'rouge', 'rouge-1', 'rouge_rouge-1'
-            ]
-            possible_bert_keys = [
-                'bertscore_f1', 'bertscore', 'bert_score_f1',
-                'bert_score', 'f1', 'bertscore_f'
-            ]
-
-            print("  Looking for ROUGE keys:")
-            for key in possible_rouge_keys:
-                if key in eval_scores:
-                    print(f"    Found {key}: {eval_scores[key]}")
-
-            print("  Looking for BERTScore keys:")
-            for key in possible_bert_keys:
-                if key in eval_scores:
-                    print(f"    Found {key}: {eval_scores[key]}")
-
-            # Print all values to see what we actually have
-            print("  All evaluator values:")
-            for key, value in eval_scores.items():
-                if isinstance(value, (int, float)):
-                    print(f"    {key}: {value:.4f}")
-                elif isinstance(value, dict):
-                    print(f"    {key}: {value}")
-                else:
-                    print(f"    {key}: {type(value)}")
-
-        except Exception as e:
-            print(f"  Evaluator Error: {e}")
-
-    def check_dependencies(self):
-        """Check if all required libraries are properly installed"""
-        print("=" * 60)
-        print("CHECKING DEPENDENCIES")
-        print("=" * 60)
-
-        try:
-            import rouge
-            print("✓ rouge library imported successfully")
-        except Exception as e:
-            print(f"✗ rouge library error: {e}")
-
-        try:
-            import bert_score
-            print("✓ bert_score library imported successfully")
-        except Exception as e:
-            print(f"✗ bert_score library error: {e}")
-
-        try:
-            from evaluation.scorer import Evaluator
-            evaluator = Evaluator()
-            print("✓ Evaluator class imported successfully")
-        except Exception as e:
-            print(f"✗ Evaluator class error: {e}")
+    parser = PlaintextParser.from_string(text, Tokenizer("english"))
+    summarizer = TextRankSummarizer()
+    summary = summarizer(parser.document, num_sentences)
+    return [str(sentence) for sentence in summary]
 
 
-def main():
-    diagnostic = BasicDiagnostic()
+def bart_summary(text, max_length=130):
+    tokenizer = BartTokenizer.from_pretrained("facebook/bart-large-cnn")
+    model = BartForConditionalGeneration.from_pretrained(
+        "facebook/bart-large-cnn")
+    model = model.to(torch.device(
+        "cuda" if torch.cuda.is_available() else "cpu"))
+    inputs = tokenizer([text], max_length=1024,
+                       return_tensors="pt", truncation=True)
+    inputs = inputs.to(model.device)
+    summary_ids = model.generate(
+        inputs["input_ids"], num_beams=4, max_length=max_length, early_stopping=True)
+    return tokenizer.decode(summary_ids[0], skip_special_tokens=True)
 
-    print("Basic Evaluation System Diagnostic")
-    print("This will help identify why all scores are showing as 0.0000")
+# ---------------------- Fusion Methods ----------------------
 
-    # Check dependencies first
-    diagnostic.check_dependencies()
 
-    # Test evaluation system with simple examples
-    diagnostic.test_evaluation_system()
+def interleaved_fusion(summ1, summ2):
+    interleaved = []
+    for s1, s2 in zip(summ1, summ2):
+        interleaved.extend([s1, s2])
+    interleaved += summ1[len(summ2):] + summ2[len(summ1):]
+    return interleaved
 
-    # Test with real article
-    rss_url = input(
-        "\nEnter RSS feed URL or local file path to test with real article: ")
-    if rss_url.strip():
-        diagnostic.test_single_article(rss_url)
 
-    print("\n" + "=" * 60)
-    print("Diagnostic complete. Please share the output to identify the issue.")
-    print("=" * 60)
+def ranked_selection_fusion(summ1, summ2, original_text, top_k=5):
+    all_sents = summ1 + summ2
+    vectorizer = TfidfVectorizer().fit([original_text] + all_sents)
+    sims = cosine_similarity(vectorizer.transform(
+        all_sents), vectorizer.transform([original_text])).flatten()
+    top_indices = sims.argsort()[-top_k:][::-1]
+    return [all_sents[i] for i in top_indices]
+
+
+def weighted_score_fusion(summ1, summ2, weight1=0.6, weight2=0.4, top_k=5):
+    all_sents = summ1 + summ2
+    tfidf = TfidfVectorizer().fit(all_sents)
+    tfidf_matrix = tfidf.transform(all_sents).toarray()
+    scores = []
+    for i, vec in enumerate(tfidf_matrix):
+        w = weight1 if i < len(summ1) else weight2
+        scores.append(w * np.sum(vec))
+    top_indices = np.argsort(scores)[-top_k:][::-1]
+    return [all_sents[i] for i in top_indices]
+
+
+def semantic_cluster_fusion(summ1, summ2, num_clusters=3):
+    model = SentenceTransformer("all-MiniLM-L6-v2")
+    sents = summ1 + summ2
+    embeddings = model.encode(sents)
+    kmeans = KMeans(n_clusters=num_clusters, random_state=0).fit(embeddings)
+    cluster_centers = kmeans.cluster_centers_
+    selected = []
+    for i in range(num_clusters):
+        idx = np.argmin(np.linalg.norm(
+            embeddings[kmeans.labels_ == i] - cluster_centers[i], axis=1))
+        sent_idx = np.where(kmeans.labels_ == i)[0][idx]
+        selected.append(sents[sent_idx])
+    return selected
+
+# ---------------------- Evaluation ----------------------
+
+
+def evaluate_summary(summary, reference):
+    scorer = rouge_scorer.RougeScorer(
+        ["rouge1", "rouge2", "rougeL"], use_stemmer=True)
+    scores = scorer.score(reference, summary)
+    bert_p, bert_r, bert_f1 = bert_score(
+        [summary], [reference], lang="en", verbose=False)
+    return {
+        "rouge1": round(scores["rouge1"].fmeasure, 4),
+        "rouge2": round(scores["rouge2"].fmeasure, 4),
+        "rougeL": round(scores["rougeL"].fmeasure, 4),
+        "bertscore": round(float(bert_f1[0]), 4)
+    }
+
+# ---------------------- Main Script ----------------------
 
 
 if __name__ == "__main__":
-    main()
+    text = """After abruptly pulling their support from what would have been the Senate’s first stablecoin regulatory bill, Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets – a bill directed at Donald Trump and his family’s current stablecoin and meme coin holdings. “Currently, people who wish to cultivate influence with the president can enrich him personally by buying cryptocurrency he owns or controls,” said Sen. Jeff Merkley (D-OR), who introduced the bill to the Senate floor, in a press release . “This is a profoundly corrupt scheme. It endangers our national security and erodes public trust in government. Let’s end this corruption immediately.” The End Crypto Corruption Act comes in response to concerns inside the Democratic party that the GENIUS Act, which previously had strong bipartisan support, was inadequate at preventing corruption. Though the Senate Banking Committee passed the bill in March with a bipartisan vote, two subsequent developments reportedly pushed the Democrats to change course . First, a New York Times report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm under the current regulatory framework. Second, Trump announced a contest in April wherein the top holders of his meme coin would win a private dinner with the president, and the top 25 holders would win an additional guided tour of the White House. According to a report from Chainalysis, the meme coin’s issuers, Official Trump, have earned $320 million from trading fees from the contest alone. Though they admitted that there’s not much they can do to stop the president right now (see: no laws), Senate Republicans also expressed skepticism over the $TRUMP contest to NBC , and at least one staunch Trump ally, Sen. Cynthia Lummis of Wyoming, offered to partner with the Democrats on efforts to regulate lawmakers holding digital assets. “Even what may appear to be ‘cringey’ with regard to meme coins, it’s legal, and what we need to do is have a regulatory framework that makes this more clear, so we don’t have this Wild West scenario,” she told NBC."""
+
+    textrank_sents = textrank_summary(text, num_sentences=5)
+    bart_sents = sent_tokenize(bart_summary(text, max_length=130))
+
+    fusion_results = {
+        "TextRank": evaluate_summary(" ".join(textrank_sents), text),
+        "Interleaved": evaluate_summary(" ".join(interleaved_fusion(textrank_sents, bart_sents)), text),
+        "RankedSelection": evaluate_summary(" ".join(ranked_selection_fusion(textrank_sents, bart_sents, text)), text),
+        "WeightedScore": evaluate_summary(" ".join(weighted_score_fusion(textrank_sents, bart_sents)), text),
+        "SemanticCluster": evaluate_summary(" ".join(semantic_cluster_fusion(textrank_sents, bart_sents)), text)
+    }
+
+    from pprint import pprint
+    pprint(fusion_results)
