@@ -1,122 +1,129 @@
-import nltk
 import torch
-import numpy as np
 from transformers import BartForConditionalGeneration, BartTokenizer
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+from sumy.summarizers.text_rank import TextRankSummarizer
+from sumy.parsers.plaintext import PlaintextParser
+from sumy.nlp.tokenizers import Tokenizer
 from rouge_score import rouge_scorer
 from bert_score import score as bert_score
-from nltk.tokenize import sent_tokenize
-from sklearn.cluster import KMeans
+import nltk
 from sentence_transformers import SentenceTransformer
+import numpy as np
 
-nltk.download("punkt")
-
-# ---------------------- Summarizers ----------------------
+nltk.download('punkt')
 
 
-def textrank_summary(text, num_sentences=5):
-    from sumy.parsers.plaintext import PlaintextParser
-    from sumy.nlp.tokenizers import Tokenizer
-    from sumy.summarizers.text_rank import TextRankSummarizer
-
+def textrank_summary(text, sent_count=5):
     parser = PlaintextParser.from_string(text, Tokenizer("english"))
     summarizer = TextRankSummarizer()
-    summary = summarizer(parser.document, num_sentences)
-    return [str(sentence) for sentence in summary]
+    summary = summarizer(parser.document, sent_count)
+    return " ".join([str(sentence) for sentence in summary])
 
 
-def bart_summary(text, max_length=130):
-    tokenizer = BartTokenizer.from_pretrained("facebook/bart-large-cnn")
-    model = BartForConditionalGeneration.from_pretrained(
-        "facebook/bart-large-cnn")
-    model = model.to(torch.device(
-        "cuda" if torch.cuda.is_available() else "cpu"))
-    inputs = tokenizer([text], max_length=1024,
-                       return_tensors="pt", truncation=True)
-    inputs = inputs.to(model.device)
+def bart_summary(text, max_len=130, min_len=40):
+    model_name = 'facebook/bart-large-cnn'
+    tokenizer = BartTokenizer.from_pretrained(model_name)
+    model = BartForConditionalGeneration.from_pretrained(model_name)
+    inputs = tokenizer.batch_encode_plus(
+        [text], return_tensors='pt', truncation=True, max_length=1024)
     summary_ids = model.generate(
-        inputs["input_ids"], num_beams=4, max_length=max_length, early_stopping=True)
+        inputs['input_ids'], num_beams=4, max_length=max_len, min_length=min_len, early_stopping=True)
     return tokenizer.decode(summary_ids[0], skip_special_tokens=True)
 
-# ---------------------- Fusion Methods ----------------------
+# 用BART为各部分生成短语
 
 
-def interleaved_fusion(summ1, summ2):
-    interleaved = []
-    for s1, s2 in zip(summ1, summ2):
-        interleaved.extend([s1, s2])
-    interleaved += summ1[len(summ2):] + summ2[len(summ1):]
-    return interleaved
+def generate_phrases_by_section(text, section_len=2):
+    sentences = nltk.sent_tokenize(text)
+    model_name = 'facebook/bart-large-cnn'
+    tokenizer = BartTokenizer.from_pretrained(model_name)
+    model = BartForConditionalGeneration.from_pretrained(model_name)
+    phrases = []
+    for i in range(0, len(sentences), section_len):
+        part = " ".join(sentences[i:i+section_len])
+        if not part.strip():
+            continue
+        inputs = tokenizer.batch_encode_plus(
+            [part], return_tensors='pt', truncation=True, max_length=256)
+        summary_ids = model.generate(
+            inputs['input_ids'], num_beams=4, max_length=16, min_length=3, early_stopping=True)
+        phrase = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+        phrases.append(phrase)
+    return phrases
+
+# 用BERTScore计算每个短语与所有句子的相似度，选出最相关句子
 
 
-def ranked_selection_fusion(summ1, summ2, original_text, top_k=5):
-    all_sents = summ1 + summ2
-    vectorizer = TfidfVectorizer().fit([original_text] + all_sents)
-    sims = cosine_similarity(vectorizer.transform(
-        all_sents), vectorizer.transform([original_text])).flatten()
-    top_indices = sims.argsort()[-top_k:][::-1]
-    return [all_sents[i] for i in top_indices]
-
-
-def weighted_score_fusion(summ1, summ2, weight1=0.6, weight2=0.4, top_k=5):
-    all_sents = summ1 + summ2
-    tfidf = TfidfVectorizer().fit(all_sents)
-    tfidf_matrix = tfidf.transform(all_sents).toarray()
+def phrase_guided_extraction(text, phrases, top_k=4):
+    sentences = nltk.sent_tokenize(text)
+    model = SentenceTransformer('all-MiniLM-L6-v2')
+    sent_emb = model.encode(sentences)
+    phrase_emb = model.encode(phrases)
+    selected = set()
     scores = []
-    for i, vec in enumerate(tfidf_matrix):
-        w = weight1 if i < len(summ1) else weight2
-        scores.append(w * np.sum(vec))
-    top_indices = np.argsort(scores)[-top_k:][::-1]
-    return [all_sents[i] for i in top_indices]
+    for emb in phrase_emb:
+        sims = [np.dot(emb, s) / (np.linalg.norm(emb) *
+                                  np.linalg.norm(s) + 1e-8) for s in sent_emb]
+        idx = int(np.argmax(sims))
+        selected.add(idx)
+        scores.append((idx, sims[idx]))
+    # 如果不足top_k，则按和所有phrase平均相似度从高到低补齐
+    if len(selected) < top_k:
+        avg_sims = np.mean([
+            [np.dot(emb, s) / (np.linalg.norm(emb)*np.linalg.norm(s) + 1e-8)
+             for emb in phrase_emb]
+            for s in sent_emb
+        ], axis=1)
+        for idx in np.argsort(avg_sims)[::-1]:
+            if len(selected) >= top_k:
+                break
+            selected.add(idx)
+    selected = sorted(selected)
+    return " ".join([sentences[i] for i in selected])
 
 
-def semantic_cluster_fusion(summ1, summ2, num_clusters=3):
-    model = SentenceTransformer("all-MiniLM-L6-v2")
-    sents = summ1 + summ2
-    embeddings = model.encode(sents)
-    kmeans = KMeans(n_clusters=num_clusters, random_state=0).fit(embeddings)
-    cluster_centers = kmeans.cluster_centers_
-    selected = []
-    for i in range(num_clusters):
-        idx = np.argmin(np.linalg.norm(
-            embeddings[kmeans.labels_ == i] - cluster_centers[i], axis=1))
-        sent_idx = np.where(kmeans.labels_ == i)[0][idx]
-        selected.append(sents[sent_idx])
-    return selected
-
-# ---------------------- Evaluation ----------------------
-
-
-def evaluate_summary(summary, reference):
+def evaluate(summary, reference):
     scorer = rouge_scorer.RougeScorer(
-        ["rouge1", "rouge2", "rougeL"], use_stemmer=True)
+        ['rouge1', 'rouge2', 'rougeL'], use_stemmer=True)
     scores = scorer.score(reference, summary)
-    bert_p, bert_r, bert_f1 = bert_score(
-        [summary], [reference], lang="en", verbose=False)
+    P, R, F1 = bert_score([summary], [reference], lang="en", verbose=False)
     return {
-        "rouge1": round(scores["rouge1"].fmeasure, 4),
-        "rouge2": round(scores["rouge2"].fmeasure, 4),
-        "rougeL": round(scores["rougeL"].fmeasure, 4),
-        "bertscore": round(float(bert_f1[0]), 4)
+        "rouge1": scores["rouge1"].fmeasure,
+        "rouge2": scores["rouge2"].fmeasure,
+        "rougeL": scores["rougeL"].fmeasure,
+        "bertscore": float(F1.mean())
     }
 
-# ---------------------- Main Script ----------------------
+
+def percent_improve(new, base):
+    return 100 * (new - base) / (base + 1e-8)
 
 
 if __name__ == "__main__":
-    text = """After abruptly pulling their support from what would have been the Senate’s first stablecoin regulatory bill, Senate Democrats announced Tuesday that they would introduce a new bill that would prevent federal officials and their families from issuing digital assets – a bill directed at Donald Trump and his family’s current stablecoin and meme coin holdings. “Currently, people who wish to cultivate influence with the president can enrich him personally by buying cryptocurrency he owns or controls,” said Sen. Jeff Merkley (D-OR), who introduced the bill to the Senate floor, in a press release . “This is a profoundly corrupt scheme. It endangers our national security and erodes public trust in government. Let’s end this corruption immediately.” The End Crypto Corruption Act comes in response to concerns inside the Democratic party that the GENIUS Act, which previously had strong bipartisan support, was inadequate at preventing corruption. Though the Senate Banking Committee passed the bill in March with a bipartisan vote, two subsequent developments reportedly pushed the Democrats to change course . First, a New York Times report last week revealed that the Trump family could potentially earn $2 billion from a stablecoin transaction with a Dubai-based investment firm under the current regulatory framework. Second, Trump announced a contest in April wherein the top holders of his meme coin would win a private dinner with the president, and the top 25 holders would win an additional guided tour of the White House. According to a report from Chainalysis, the meme coin’s issuers, Official Trump, have earned $320 million from trading fees from the contest alone. Though they admitted that there’s not much they can do to stop the president right now (see: no laws), Senate Republicans also expressed skepticism over the $TRUMP contest to NBC , and at least one staunch Trump ally, Sen. Cynthia Lummis of Wyoming, offered to partner with the Democrats on efforts to regulate lawmakers holding digital assets. “Even what may appear to be ‘cringey’ with regard to meme coins, it’s legal, and what we need to do is have a regulatory framework that makes this more clear, so we don’t have this Wild West scenario,” she told NBC."""
+    original_text = """We’re coming up on the 10-year anniversary of Undertale ’s release, and to mark the occasion, a 25-piece orchestra will perform the game’s soundtrack for a one-night-only concert at London's Eventim Apollo this summer. The event, dubbed The Determination Symphony , will be held on June 22, and tickets are on sale now. The Determination Symphony is described as “a musical journey from your initial fall at Mount Ebott, leading you through Froggit Village, the Snowdin Forest, Temmie Village and so much more.” Attendees (who I’m deeply envious of) will be able to watch all of that on screen while the orchestra makes its way through arrangements of the soundtrack. It’s hard to believe that Toby Fox’s Undertale is already 10 years old, but its enduring popularity just speaks to the impact it’s had on so many who have played it. We may not all get to experience the orchestral rendition, but at least we'll always have the original soundtrack . This article originally appeared on Engadget at https://www.engadget.com/gaming/a-live-orchestra-will-perform-undertales-soundtrack-in-london-to-celebrate-its-10th-anniversary-214830716.html?src=rss"""
 
-    textrank_sents = textrank_summary(text, num_sentences=5)
-    bart_sents = sent_tokenize(bart_summary(text, max_length=130))
+    tr_sum = textrank_summary(original_text, sent_count=3)
+    bart_sum = bart_summary(original_text, max_len=80, min_len=30)
+    phrases = generate_phrases_by_section(original_text, section_len=2)
+    fusion_sum = phrase_guided_extraction(original_text, phrases, top_k=4)
 
-    fusion_results = {
-        "TextRank": evaluate_summary(" ".join(textrank_sents), text),
-        "Interleaved": evaluate_summary(" ".join(interleaved_fusion(textrank_sents, bart_sents)), text),
-        "RankedSelection": evaluate_summary(" ".join(ranked_selection_fusion(textrank_sents, bart_sents, text)), text),
-        "WeightedScore": evaluate_summary(" ".join(weighted_score_fusion(textrank_sents, bart_sents)), text),
-        "SemanticCluster": evaluate_summary(" ".join(semantic_cluster_fusion(textrank_sents, bart_sents)), text)
-    }
+    score_tr = evaluate(tr_sum, original_text)
+    score_bart = evaluate(bart_sum, original_text)
+    score_fusion = evaluate(fusion_sum, original_text)
 
-    from pprint import pprint
-    pprint(fusion_results)
+    print("\n==== TextRank ====")
+    print(score_tr)
+    print("\n==== BART ====")
+    print(score_bart)
+    print("\n==== Phrases (from BART): ====")
+    print(phrases)
+    print("\n==== Fusion (Phrase-guided extraction) ====")
+    print(fusion_sum)
+    print(score_fusion)
+
+    print("\n==== Improvements Over Baselines ====")
+    for metric in ["rouge1", "rouge2", "rougeL", "bertscore"]:
+        tr_improve = percent_improve(score_fusion[metric], score_tr[metric])
+        bart_improve = percent_improve(
+            score_fusion[metric], score_bart[metric])
+        print(
+            f"{metric.upper()}: vs TextRank: {tr_improve:+.2f}%  vs BART: {bart_improve:+.2f}%")
