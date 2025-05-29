@@ -79,79 +79,79 @@
           "f1": 0.7963712811470032
         }
       },
-      "extractive_summary": "It seemed like a perfect time to do a quick rundown of some of the most interesting new products and features coming to Samsung’s Bespoke portfolio later this year. But being able to have your fridge generate a list of what’s inside when you’re at the store is the kind of convenience I’d like to see more of. The idea is that in normal use, the compressor provides consistent baseline cooling while the Peltier module (through the power of AI) turns on to address big changes in temperature. But if you prefer to go off-script and create something original, Samsung says the oven will give you the option to save the recipe and temperature settings after cooking the same dish five times. Sam Rutherford for Engadget Moving on to laundry, Samsung says its $3,099 Bespoke AI Laundry Vented Combo is the first of its kind, as most combined washer/dryers are typically meant for ventless installations like small apartments (of course, there is a non-vented model as well). You can even play videos from TikTok on it, if that’s what you’re into. While it doesn’t have a Peltier module, the advantage of this model is that it has different doors and hinges that don’t protrude nearly as much when open.",
-      "abstractive_summary": "Samsung’s 4-door French-Door refrigerator is now available with two different-sized screens. Samsung is hoping to entice people to take advantage of those displays with even more AI-powered tools. Other features include built-in Wi-Fi and SmartThings connectivity, a Dual Auto Ice maker that can create both regular and smaller “Ice Bite” cubes.",
-      "hybrid_summary": "It seemed like a perfect time to do a quick rundown of some of the most interesting new products and features coming to Samsung’s Bespoke portfolio later this year. You can even play videos from TikTok on it, if that’s what you’re into. But being able to have your fridge generate a list of what’s inside when you’re at the store is the kind of convenience I’d like to see more of. Other features include built-in Wi-Fi and SmartThings connectivity, a Dual Auto Ice maker that can create both regular and smaller “Ice Bite” cubes. The idea is that in normal use, the compressor provides consistent baseline cooling while the Peltier module (through the power of AI) turns on to address big changes in temperature. While it doesn’t have a Peltier module, the advantage of this model is that it has different doors and hinges that don’t protrude nearly as much when open. But if you prefer to go off-script and create something original, Samsung says the oven will give you the option to save the recipe and temperature settings after cooking the same dish five times. Sam Rutherford for Engadget Moving on to laundry, Samsung says its $3,099 Bespoke AI Laundry Vented Combo is the first of its kind, as most combined washer/dryers are typically meant for ventless installations like small apartments (of course, there is a non-vented model as well).",
+      "extractive_summary": "You can even play videos from TikTok on it, if that’s what you’re into. While it doesn’t have a Peltier module, the advantage of this model is that it has different doors and hinges that don’t protrude nearly as much when open. In addition to a 7-inch display, there are also cameras and sensors inside the oven that can recognize up to 80 different recipes to provide optimal cooking times. Sam Rutherford for Engadget Moving on to laundry, Samsung says its $3,099 Bespoke AI Laundry Vented Combo is the first of its kind, as most combined washer/dryers are typically meant for ventless installations like small apartments (of course, there is a non-vented model as well). It also uses AI to better detect what surface its on to more effectively hoover up dirt and debris.",
+      "abstractive_summary": "the centerpiece of the Bespoke line remains Samsung’s 4-door french-door refrigerator . there’s a model with a smaller 9-inch screen that starts at $3,999 or one with a massive 32-inch panel called the Family Hub+ for $4,699 . the larger model is for families who aren’t afraid of having a small TV in their face every time they open their fridge .",
+      "hybrid_summary": "the centerpiece of the Bespoke line remains Samsung’s 4-door french-door refrigerator . You can even play videos from TikTok on it, if that’s what you’re into. While it doesn’t have a Peltier module, the advantage of this model is that it has different doors and hinges that don’t protrude nearly as much when open. In addition to a 7-inch display, there are also cameras and sensors inside the oven that can recognize up to 80 different recipes to provide optimal cooking times. there’s a model with a smaller 9-inch screen that starts at $3,999 or one with a massive 32-inch panel called the Family Hub+ for $4,699 . the larger model is for families who aren’t afraid of having a small TV in their face every time they open their fridge .",
       "extractive_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 0.2962466487935657,
-            "p": 0.2962466487935657,
-            "r": 0.2962466487935657
+            "f": 0.20099079971691436,
+            "p": 0.20099079971691436,
+            "r": 0.20099079971691436
           },
           "rouge-2": {
-            "f": 0.28859060402684567,
-            "p": 0.28859060402684567,
-            "r": 0.28859060402684567
+            "f": 0.19418851878100638,
+            "p": 0.19418851878100638,
+            "r": 0.19418851878100638
           },
           "rouge-l": {
-            "f": 0.2546916890080429,
-            "p": 0.2546916890080429,
-            "r": 0.2546916890080429
+            "f": 0.20099079971691436,
+            "p": 0.20099079971691436,
+            "r": 0.20099079971691436
           }
         },
         "bertscore": {
-          "p": 0.8739616274833679,
-          "r": 0.8518509864807129,
-          "f1": 0.8627646565437317
+          "p": 0.8541087508201599,
+          "r": 0.829802930355072,
+          "f1": 0.841780424118042
         }
       },
       "abstractive_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 0.08728367193378479,
-            "p": 0.08728367193378479,
-            "r": 0.08728367193378479
+            "f": 0.10156833457804333,
+            "p": 0.10156833457804333,
+            "r": 0.10156833457804333
           },
           "rouge-2": {
-            "f": 0.07987942727957799,
-            "p": 0.07987942727957799,
-            "r": 0.07987942727957799
+            "f": 0.09872849663425579,
+            "p": 0.09872849663425579,
+            "r": 0.09872849663425579
           },
           "rouge-l": {
-            "f": 0.08728367193378479,
-            "p": 0.08728367193378479,
-            "r": 0.08728367193378479
+            "f": 0.10156833457804333,
+            "p": 0.10156833457804333,
+            "r": 0.10156833457804333
           }
         },
         "bertscore": {
-          "p": 0.8812731504440308,
-          "r": 0.8070732951164246,
-          "f1": 0.8425427675247192
+          "p": 0.9443178176879883,
+          "r": 0.8231358528137207,
+          "f1": 0.8795725107192993
         }
       },
       "hybrid_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 0.3243243243243243,
-            "p": 0.3243243243243243,
-            "r": 0.3243243243243243
+            "f": 0.20226308345120225,
+            "p": 0.20226308345120225,
+            "r": 0.20226308345120225
           },
           "rouge-2": {
-            "f": 0.31419141914191423,
-            "p": 0.31419141914191423,
-            "r": 0.31419141914191423
+            "f": 0.1954674220963173,
+            "p": 0.1954674220963173,
+            "r": 0.1954674220963173
           },
           "rouge-l": {
-            "f": 0.3243243243243243,
-            "p": 0.3243243243243243,
-            "r": 0.3243243243243243
+            "f": 0.1485148514851485,
+            "p": 0.1485148514851485,
+            "r": 0.1485148514851485
           }
         },
         "bertscore": {
-          "p": 0.8673347234725952,
-          "r": 0.8538120985031128,
-          "f1": 0.8605202436447144
+          "p": 0.9111825227737427,
+          "r": 0.8453491926193237,
+          "f1": 0.8770321607589722
         }
       }
     },
@@ -234,79 +234,79 @@
           "f1": 0.9608774781227112
         }
       },
-      "extractive_summary": "We’re coming up on the 10-year anniversary of Undertale ’s release, and to mark the occasion, a 25-piece orchestra will perform the game’s soundtrack for a one-night-only concert at London's Eventim Apollo this summer. The event, dubbed The Determination Symphony , will be held on June 22, and tickets are on sale now. The Determination Symphony is described as “a musical journey from your initial fall at Mount Ebott, leading you through Froggit Village, the Snowdin Forest, Temmie Village and so much more.” Attendees (who I’m deeply envious of) will be able to watch all of that on screen while the orchestra makes its way through arrangements of the soundtrack. It’s hard to believe that Toby Fox’s Undertale is already 10 years old, but its enduring popularity just speaks to the impact it’s had on so many who have played it. We may not all get to experience the orchestral rendition, but at least we'll always have the original soundtrack . This article originally appeared on Engadget at https://www.engadget.com/gaming/a-live-orchestra-will-perform-undertales-soundtrack-in-london-to-celebrate-its-10th-anniversary-214830716.html?src=rss",
-      "abstractive_summary": "A 25-piece orchestra will perform the game’s soundtrack for a one-night-only concert at London's Eventim Apollo this summer. The event, dubbed The Determination Symphony , will be held on June 22, and tickets are on sale now.",
-      "hybrid_summary": "We’re coming up on the 10-year anniversary of Undertale ’s release, and to mark the occasion, a 25-piece orchestra will perform the game’s soundtrack for a one-night-only concert at London's Eventim Apollo this summer. The event, dubbed The Determination Symphony , will be held on June 22, and tickets are on sale now. The Determination Symphony is described as “a musical journey from your initial fall at Mount Ebott, leading you through Froggit Village, the Snowdin Forest, Temmie Village and so much more.” Attendees (who I’m deeply envious of) will be able to watch all of that on screen while the orchestra makes its way through arrangements of the soundtrack. It’s hard to believe that Toby Fox’s Undertale is already 10 years old, but its enduring popularity just speaks to the impact it’s had on so many who have played it. We may not all get to experience the orchestral rendition, but at least we'll always have the original soundtrack . This article originally appeared on Engadget at https://www.engadget.com/gaming/a-live-orchestra-will-perform-undertales-soundtrack-in-london-to-celebrate-its-10th-anniversary-214830716.html?src=rss",
+      "extractive_summary": "We’re coming up on the 10-year anniversary of Undertale ’s release, and to mark the occasion, a 25-piece orchestra will perform the game’s soundtrack for a one-night-only concert at London's Eventim Apollo this summer. The event, dubbed The Determination Symphony , will be held on June 22, and tickets are on sale now. The Determination Symphony is described as “a musical journey from your initial fall at Mount Ebott, leading you through Froggit Village, the Snowdin Forest, Temmie Village and so much more.” Attendees (who I’m deeply envious of) will be able to watch all of that on screen while the orchestra makes its way through arrangements of the soundtrack. It’s hard to believe that Toby Fox’s Undertale is already 10 years old, but its enduring popularity just speaks to the impact it’s had on so many who have played it. We may not all get to experience the orchestral rendition, but at least we'll always have the original soundtrack .",
+      "abstractive_summary": "the event, dubbed the Determination Symphony , will be held on June 22 . it's hard to believe that Toby Fox’s Undertale is already 10 years old . but its enduring popularity speaks to the impact it’s had on so many who have played it .",
+      "hybrid_summary": "We’re coming up on the 10-year anniversary of Undertale ’s release, and to mark the occasion, a 25-piece orchestra will perform the game’s soundtrack for a one-night-only concert at London's Eventim Apollo this summer. The event, dubbed The Determination Symphony , will be held on June 22, and tickets are on sale now. The Determination Symphony is described as “a musical journey from your initial fall at Mount Ebott, leading you through Froggit Village, the Snowdin Forest, Temmie Village and so much more.” Attendees (who I’m deeply envious of) will be able to watch all of that on screen while the orchestra makes its way through arrangements of the soundtrack. It’s hard to believe that Toby Fox’s Undertale is already 10 years old, but its enduring popularity just speaks to the impact it’s had on so many who have played it. We may not all get to experience the orchestral rendition, but at least we'll always have the original soundtrack .",
       "extractive_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 1.0,
-            "p": 1.0,
-            "r": 1.0
+            "f": 0.9193548387096774,
+            "p": 0.9193548387096774,
+            "r": 0.9193548387096774
           },
           "rouge-2": {
-            "f": 1.0,
-            "p": 1.0,
-            "r": 1.0
+            "f": 0.9189189189189189,
+            "p": 0.9189189189189189,
+            "r": 0.9189189189189189
           },
           "rouge-l": {
-            "f": 1.0,
-            "p": 1.0,
-            "r": 1.0
+            "f": 0.9193548387096774,
+            "p": 0.9193548387096774,
+            "r": 0.9193548387096774
           }
         },
         "bertscore": {
-          "p": 0.9999999403953552,
-          "r": 0.9999999403953552,
-          "f1": 0.9999999403953552
+          "p": 0.9974275827407837,
+          "r": 0.9387500286102295,
+          "f1": 0.9671996235847473
         }
       },
       "abstractive_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 0.33884297520661155,
-            "p": 0.33884297520661155,
-            "r": 0.33884297520661155
+            "f": 0.36585365853658536,
+            "p": 0.36585365853658536,
+            "r": 0.36585365853658536
           },
           "rouge-2": {
-            "f": 0.33333333333333337,
-            "p": 0.33333333333333337,
-            "r": 0.33333333333333337
+            "f": 0.34426229508196726,
+            "p": 0.34426229508196726,
+            "r": 0.34426229508196726
           },
           "rouge-l": {
-            "f": 0.33884297520661155,
-            "p": 0.33884297520661155,
-            "r": 0.33884297520661155
+            "f": 0.36585365853658536,
+            "p": 0.36585365853658536,
+            "r": 0.36585365853658536
           }
         },
         "bertscore": {
-          "p": 0.9613487720489502,
-          "r": 0.8222408294677734,
-          "f1": 0.886370062828064
+          "p": 0.9430930614471436,
+          "r": 0.8131051063537598,
+          "f1": 0.8732884526252747
         }
       },
       "hybrid_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 1.0,
-            "p": 1.0,
-            "r": 1.0
+            "f": 0.9193548387096774,
+            "p": 0.9193548387096774,
+            "r": 0.9193548387096774
           },
           "rouge-2": {
-            "f": 1.0,
-            "p": 1.0,
-            "r": 1.0
+            "f": 0.9189189189189189,
+            "p": 0.9189189189189189,
+            "r": 0.9189189189189189
           },
           "rouge-l": {
-            "f": 1.0,
-            "p": 1.0,
-            "r": 1.0
+            "f": 0.9193548387096774,
+            "p": 0.9193548387096774,
+            "r": 0.9193548387096774
           }
         },
         "bertscore": {
-          "p": 0.9999999403953552,
-          "r": 0.9999999403953552,
-          "f1": 0.9999999403953552
+          "p": 0.9974275827407837,
+          "r": 0.9387500286102295,
+          "f1": 0.9671996235847473
         }
       }
     },
@@ -389,79 +389,79 @@
           "f1": 0.9284842610359192
         }
       },
-      "extractive_summary": "The Nintendo Direct livestream on Thursday brought some unexpected news for Tamagotchi fans: the Tamagotchi Connection: Corner Shop game series of the early 2000s is being resurrected with a new entry, Tamagotchi Plaza . As spotted by Tama-Palace , Bandai Namco says on the game’s official website that Tamagotchi Plaza will be compatible with the Tamagotchi Uni . In Tamagotchi Plaza , players will act as shopkeepers and help get the town ready for the big Tamagotchi festival. For the first time, players can connect with the latest toy model, the Tamagotchi Uni. By linking the Tamagotchi Uni, they will gain access to exclusive items, special events, and unique conversations not available in the base game, while supplies last. But it seems the announcement trailer left out the best part. Players will be able to link their Uni devices to the game to access special perks — kind of like how the beloved, defunct TamaTown worked.",
-      "abstractive_summary": "The Nintendo Direct livestream on Thursday brought some unexpected news for Tamagotchi fans. Players will be able to link their Uni devices to the game to access special perks — kind of like how the beloved, defunct TamaTown worked. The game comes out on June 27.",
-      "hybrid_summary": "The Nintendo Direct livestream on Thursday brought some unexpected news for Tamagotchi fans: the Tamagotchi Connection: Corner Shop game series of the early 2000s is being resurrected with a new entry, Tamagotchi Plaza . But it seems the announcement trailer left out the best part. As spotted by Tama-Palace , Bandai Namco says on the game’s official website that Tamagotchi Plaza will be compatible with the Tamagotchi Uni . Players will be able to link their Uni devices to the game to access special perks — kind of like how the beloved, defunct TamaTown worked. The game comes out on June 27. In Tamagotchi Plaza , players will act as shopkeepers and help get the town ready for the big Tamagotchi festival. For the first time, players can connect with the latest toy model, the Tamagotchi Uni. By linking the Tamagotchi Uni, they will gain access to exclusive items, special events, and unique conversations not available in the base game, while supplies last.",
+      "extractive_summary": "The Nintendo Direct livestream on Thursday brought some unexpected news for Tamagotchi fans: the Tamagotchi Connection: Corner Shop game series of the early 2000s is being resurrected with a new entry, Tamagotchi Plaza . But it seems the announcement trailer left out the best part. As spotted by Tama-Palace , Bandai Namco says on the game’s official website that Tamagotchi Plaza will be compatible with the Tamagotchi Uni . Players will be able to link their Uni devices to the game to access special perks — kind of like how the beloved, defunct TamaTown worked. For anyone who grew bored of the Uni and has been neglecting it, Tamagotchi Plaza seems like a pretty compelling reason to dust it off and get playing again.",
+      "abstractive_summary": "the Tamagotchi Connection: Corner Shop game series of the early 2000s is being resurrected with a new entry, Tamagotchi Plaza . players will be able to link their Uni devices to the game to access special perks .",
+      "hybrid_summary": "The Nintendo Direct livestream on Thursday brought some unexpected news for Tamagotchi fans: the Tamagotchi Connection: Corner Shop game series of the early 2000s is being resurrected with a new entry, Tamagotchi Plaza . But it seems the announcement trailer left out the best part. As spotted by Tama-Palace , Bandai Namco says on the game’s official website that Tamagotchi Plaza will be compatible with the Tamagotchi Uni . Players will be able to link their Uni devices to the game to access special perks — kind of like how the beloved, defunct TamaTown worked. For anyone who grew bored of the Uni and has been neglecting it, Tamagotchi Plaza seems like a pretty compelling reason to dust it off and get playing again.",
       "extractive_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 0.6799999999999999,
-            "p": 0.6799999999999999,
-            "r": 0.6799999999999999
+            "f": 0.5823389021479713,
+            "p": 0.5823389021479713,
+            "r": 0.5823389021479713
           },
           "rouge-2": {
-            "f": 0.65625,
-            "p": 0.65625,
-            "r": 0.65625
+            "f": 0.5755395683453237,
+            "p": 0.5755395683453237,
+            "r": 0.5755395683453237
           },
           "rouge-l": {
-            "f": 0.5555555555555556,
-            "p": 0.5555555555555556,
-            "r": 0.5555555555555556
+            "f": 0.5823389021479713,
+            "p": 0.5823389021479713,
+            "r": 0.5823389021479713
           }
         },
         "bertscore": {
-          "p": 0.9696544408798218,
-          "r": 0.8899962306022644,
-          "f1": 0.9281192421913147
+          "p": 0.9764261841773987,
+          "r": 0.8806847333908081,
+          "f1": 0.9260875582695007
         }
       },
       "abstractive_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 0.2631578947368421,
-            "p": 0.2631578947368421,
-            "r": 0.2631578947368421
+            "f": 0.21621621621621626,
+            "p": 0.21621621621621626,
+            "r": 0.21621621621621626
           },
           "rouge-2": {
-            "f": 0.24117647058823527,
-            "p": 0.24117647058823527,
-            "r": 0.24117647058823527
+            "f": 0.21148036253776437,
+            "p": 0.21148036253776437,
+            "r": 0.21148036253776437
           },
           "rouge-l": {
-            "f": 0.2514619883040936,
-            "p": 0.2514619883040936,
-            "r": 0.2514619883040936
+            "f": 0.21621621621621626,
+            "p": 0.21621621621621626,
+            "r": 0.21621621621621626
           }
         },
         "bertscore": {
-          "p": 0.9509617686271667,
-          "r": 0.8148597478866577,
-          "f1": 0.8776657581329346
+          "p": 0.9320863485336304,
+          "r": 0.8115943074226379,
+          "f1": 0.8676772117614746
         }
       },
       "hybrid_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 0.700218818380744,
-            "p": 0.700218818380744,
-            "r": 0.700218818380744
+            "f": 0.5823389021479713,
+            "p": 0.5823389021479713,
+            "r": 0.5823389021479713
           },
           "rouge-2": {
-            "f": 0.6813186813186813,
-            "p": 0.6813186813186813,
-            "r": 0.6813186813186813
+            "f": 0.5755395683453237,
+            "p": 0.5755395683453237,
+            "r": 0.5755395683453237
           },
           "rouge-l": {
-            "f": 0.6914660831509848,
-            "p": 0.6914660831509848,
-            "r": 0.6914660831509848
+            "f": 0.5823389021479713,
+            "p": 0.5823389021479713,
+            "r": 0.5823389021479713
           }
         },
         "bertscore": {
-          "p": 0.9834115505218506,
-          "r": 0.898102343082428,
-          "f1": 0.9388229846954346
+          "p": 0.9764261841773987,
+          "r": 0.8806847333908081,
+          "f1": 0.9260875582695007
         }
       }
     },
@@ -544,79 +544,79 @@
           "f1": 0.7979874610900879
         }
       },
-      "extractive_summary": "Some of the discounts below have technically been live for a few days, but a good price is a good price, and the offers include several devices we recommend in our various buying guides . Its USB cable is on the shorter side, and it can’t match the overall accuracy of our top pick, but it’s still a clear upgrade over a built-in laptop camera for a much lower price. It can’t provide the absolute fastest charge to your smartphone or laptop (topping out at a quick enough 67W), but it packs four USB ports — two USB-C, two USB-A — and three AC outlets in a frame that’s small enough to fit on a crowded desk. Blink Mini 2 for $20 ($20 off) : This deal ties the lowest price to date for the Blink Mini 2, which is the budget pick in our guide to the best security cameras . This one comes with its share of trade-offs for the low price — its image quality isn’t the best, it locks certain features behind a paywall and it won’t automatically arm when you leave the house — but it still provides functional 1080p video, color night vision, motion alerts and Alexa support in a weather-resistant frame. Also at Anker . Amazon Fire TV Stick HD for $20 ($15 off): This is the budget pick in our guide to the best streaming devices .",
-      "abstractive_summary": "Amazon’s Spring Sale runs through March 31. Some of the discounts below have technically been live for a few days. The offers include several devices we recommend in our various buying guides. We’ll update this guide with the latest discounts throughout the sale.",
-      "hybrid_summary": "Some of the discounts below have technically been live for a few days, but a good price is a good price, and the offers include several devices we recommend in our various buying guides . We’ll update this guide with the latest discounts throughout the sale. Its USB cable is on the shorter side, and it can’t match the overall accuracy of our top pick, but it’s still a clear upgrade over a built-in laptop camera for a much lower price. Also at Anker . It can’t provide the absolute fastest charge to your smartphone or laptop (topping out at a quick enough 67W), but it packs four USB ports — two USB-C, two USB-A — and three AC outlets in a frame that’s small enough to fit on a crowded desk. Amazon Fire TV Stick HD for $20 ($15 off): This is the budget pick in our guide to the best streaming devices . Blink Mini 2 for $20 ($20 off) : This deal ties the lowest price to date for the Blink Mini 2, which is the budget pick in our guide to the best security cameras . This one comes with its share of trade-offs for the low price — its image quality isn’t the best, it locks certain features behind a paywall and it won’t automatically arm when you leave the house — but it still provides functional 1080p video, color night vision, motion alerts and Alexa support in a weather-resistant frame.",
+      "extractive_summary": "Its USB cable is on the shorter side, and it can’t match the overall accuracy of our top pick, but it’s still a clear upgrade over a built-in laptop camera for a much lower price. Also at Anker . Also at Anker . Amazon Fire TV Stick HD for $20 ($15 off): This is the budget pick in our guide to the best streaming devices . This is another discount that’s been available for a few weeks, but it’s just 10 cents more the best price we’ve seen.",
+      "abstractive_summary": "the so-called spring sale runs through march 31, and while it mostly focuses on things like apparel and outdoor goods, it still includes a handful of discounts on electronics . some of the discounts below have technically been live for a few days, but a good price is a good price .",
+      "hybrid_summary": "the so-called spring sale runs through march 31, and while it mostly focuses on things like apparel and outdoor goods, it still includes a handful of discounts on electronics . Its USB cable is on the shorter side, and it can’t match the overall accuracy of our top pick, but it’s still a clear upgrade over a built-in laptop camera for a much lower price. Also at Anker . some of the discounts below have technically been live for a few days, but a good price is a good price .",
       "extractive_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 0.39565943238731216,
-            "p": 0.39565943238731216,
-            "r": 0.39565943238731216
+            "f": 0.17300380228136883,
+            "p": 0.17300380228136883,
+            "r": 0.17300380228136883
           },
           "rouge-2": {
-            "f": 0.3879598662207358,
-            "p": 0.3879598662207358,
-            "r": 0.3879598662207358
+            "f": 0.1657142857142857,
+            "p": 0.1657142857142857,
+            "r": 0.1657142857142857
           },
           "rouge-l": {
-            "f": 0.3772954924874791,
-            "p": 0.3772954924874791,
-            "r": 0.3772954924874791
+            "f": 0.17300380228136883,
+            "p": 0.17300380228136883,
+            "r": 0.17300380228136883
           }
         },
         "bertscore": {
-          "p": 0.9092713594436646,
-          "r": 0.875320553779602,
-          "f1": 0.8919730186462402
+          "p": 0.9074853658676147,
+          "r": 0.8347569704055786,
+          "f1": 0.869603157043457
         }
       },
       "abstractive_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 0.08946322067594434,
-            "p": 0.08946322067594434,
-            "r": 0.08946322067594434
+            "f": 0.1007905138339921,
+            "p": 0.1007905138339921,
+            "r": 0.1007905138339921
           },
           "rouge-2": {
-            "f": 0.08167330677290836,
-            "p": 0.08167330677290836,
-            "r": 0.08167330677290836
+            "f": 0.09702970297029703,
+            "p": 0.09702970297029703,
+            "r": 0.09702970297029703
           },
           "rouge-l": {
-            "f": 0.08946322067594434,
-            "p": 0.08946322067594434,
-            "r": 0.08946322067594434
+            "f": 0.1007905138339921,
+            "p": 0.1007905138339921,
+            "r": 0.1007905138339921
           }
         },
         "bertscore": {
-          "p": 0.9451605081558228,
-          "r": 0.7988958358764648,
-          "f1": 0.8658949732780457
+          "p": 0.9485989212989807,
+          "r": 0.8002147078514099,
+          "f1": 0.8681117296218872
         }
       },
       "hybrid_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 0.4115702479338843,
-            "p": 0.4115702479338843,
-            "r": 0.4115702479338843
+            "f": 0.17473884140550805,
+            "p": 0.17473884140550805,
+            "r": 0.17473884140550805
           },
           "rouge-2": {
-            "f": 0.402317880794702,
-            "p": 0.402317880794702,
-            "r": 0.402317880794702
+            "f": 0.16745956232159845,
+            "p": 0.16745956232159845,
+            "r": 0.16745956232159845
           },
           "rouge-l": {
-            "f": 0.4115702479338843,
-            "p": 0.4115702479338843,
-            "r": 0.4115702479338843
+            "f": 0.1557454890788224,
+            "p": 0.1557454890788224,
+            "r": 0.1557454890788224
           }
         },
         "bertscore": {
-          "p": 0.9083803296089172,
-          "r": 0.8781569004058838,
-          "f1": 0.8930130004882812
+          "p": 0.9459718465805054,
+          "r": 0.8378317356109619,
+          "f1": 0.8886238932609558
         }
       }
     },
@@ -699,84 +699,126 @@
           "f1": 0.8870556354522705
         }
       },
-      "extractive_summary": "We like that it doesn’t take up too much space, but can still cook up a decent amount of food Breville Smart Oven Air Fryer Pro for $320 ($80 off) : If you want a more traditional toaster oven design with a huge capacity, go for our premium air fryer pick. Ninja AF150AMZ Air Fryer for $120 (25 percent off) : This went as low as $100 for the holidays last year, but this matches the lowest price we’ve seen since then. This is a solid $80 discount off of the MSRP, but we’ll note that Amazon sold it for as low as $330 at the end of last year and for $350 last month. The blender has hit this price a few times over the past few months and the deal isn’t as good as the $77 it sold for at the end of last year. This is about $30 more than the low it hit for the holidays last year, but this is the lowest price we’ve seen in 2025. Its two-quart capacity is probably best for small kitchens and can crisp up food for one or two people. Instant Pot Duo Plus 9-in-1 Electric Pressure Cooker for $90 ($40 off) : We like this Instant Pot model because it's simple to use and has several quick-cooking modes including beans, cake, sous vide and more.",
-      "abstractive_summary": "Amazon's Spring Sale is offering discounts on kitchen tech. Brands like KitchenAid, Breville, Instant Pot and more are on sale. If it's time to update your meal prep situation or invest in a time saver, check out the best deals.",
-      "hybrid_summary": "If it's time to update your meal prep situation or invest in a time saver, check out the best deals. We like that it doesn’t take up too much space, but can still cook up a decent amount of food Breville Smart Oven Air Fryer Pro for $320 ($80 off) : If you want a more traditional toaster oven design with a huge capacity, go for our premium air fryer pick. Its two-quart capacity is probably best for small kitchens and can crisp up food for one or two people. Ninja AF150AMZ Air Fryer for $120 (25 percent off) : This went as low as $100 for the holidays last year, but this matches the lowest price we’ve seen since then. This is a solid $80 discount off of the MSRP, but we’ll note that Amazon sold it for as low as $330 at the end of last year and for $350 last month. The blender has hit this price a few times over the past few months and the deal isn’t as good as the $77 it sold for at the end of last year. Instant Pot Duo Plus 9-in-1 Electric Pressure Cooker for $90 ($40 off) : We like this Instant Pot model because it's simple to use and has several quick-cooking modes including beans, cake, sous vide and more. This is about $30 more than the low it hit for the holidays last year, but this is the lowest price we’ve seen in 2025.",
+      "extractive_summary": "We like that it doesn’t take up too much space, but can still cook up a decent amount of food Breville Smart Oven Air Fryer Pro for $320 ($80 off) : If you want a more traditional toaster oven design with a huge capacity, go for our premium air fryer pick. Its two-quart capacity is probably best for small kitchens and can crisp up food for one or two people. The blender has hit this price a few times over the past few months and the deal isn’t as good as the $77 it sold for at the end of last year. Instant Pot Duo Plus 9-in-1 Electric Pressure Cooker for $90 ($40 off) : We like this Instant Pot model because it's simple to use and has several quick-cooking modes including beans, cake, sous vide and more. Instant Pot Pro Plus 9-in-1 Electric Pressure Cooker for $133 ($67 off) : We also suggest this fancier Pro Plus model in our guide to kitchen tech .",
+      "abstractive_summary": "right now, thanks to Amazon’s Spring Sale, a long list of the kitchen tech we’ve covered is on sale . we’re seeing discounts on brands like KitchenAid, Breville, Instant Pot and more .",
+      "hybrid_summary": "We like that it doesn’t take up too much space, but can still cook up a decent amount of food Breville Smart Oven Air Fryer Pro for $320 ($80 off) : If you want a more traditional toaster oven design with a huge capacity, go for our premium air fryer pick. Its two-quart capacity is probably best for small kitchens and can crisp up food for one or two people. The blender has hit this price a few times over the past few months and the deal isn’t as good as the $77 it sold for at the end of last year. Instant Pot Duo Plus 9-in-1 Electric Pressure Cooker for $90 ($40 off) : We like this Instant Pot model because it's simple to use and has several quick-cooking modes including beans, cake, sous vide and more. Instant Pot Pro Plus 9-in-1 Electric Pressure Cooker for $133 ($67 off) : We also suggest this fancier Pro Plus model in our guide to kitchen tech . right now, thanks to Amazon’s Spring Sale, a long list of the kitchen tech we’ve covered is on sale . we’re seeing discounts on brands like KitchenAid, Breville, Instant Pot and more .",
       "extractive_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 0.3162162162162162,
-            "p": 0.3162162162162162,
-            "r": 0.3162162162162162
+            "f": 0.24135497529992944,
+            "p": 0.24135497529992944,
+            "r": 0.24135497529992944
           },
           "rouge-2": {
-            "f": 0.3071718538565629,
-            "p": 0.3071718538565629,
-            "r": 0.3071718538565629
+            "f": 0.23604240282685518,
+            "p": 0.23604240282685518,
+            "r": 0.23604240282685518
           },
           "rouge-l": {
-            "f": 0.254054054054054,
-            "p": 0.254054054054054,
-            "r": 0.254054054054054
+            "f": 0.24135497529992944,
+            "p": 0.24135497529992944,
+            "r": 0.24135497529992944
           }
         },
         "bertscore": {
-          "p": 0.8933871984481812,
-          "r": 0.8555497527122498,
-          "f1": 0.8740592002868652
+          "p": 0.896423876285553,
+          "r": 0.8543534278869629,
+          "f1": 0.874883234500885
         }
       },
       "abstractive_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 0.06211180124223602,
-            "p": 0.06211180124223602,
-            "r": 0.06211180124223602
+            "f": 0.053125000000000006,
+            "p": 0.053125000000000006,
+            "r": 0.053125000000000006
           },
           "rouge-2": {
-            "f": 0.05132192846034215,
-            "p": 0.05132192846034215,
-            "r": 0.05132192846034215
+            "f": 0.051643192488262914,
+            "p": 0.051643192488262914,
+            "r": 0.051643192488262914
           },
           "rouge-l": {
-            "f": 0.055900621118012424,
-            "p": 0.055900621118012424,
-            "r": 0.055900621118012424
+            "f": 0.053125000000000006,
+            "p": 0.053125000000000006,
+            "r": 0.053125000000000006
           }
         },
         "bertscore": {
-          "p": 0.9334886074066162,
-          "r": 0.797035276889801,
-          "f1": 0.8598822355270386
+          "p": 0.9302347898483276,
+          "r": 0.799247145652771,
+          "f1": 0.8597805500030518
         }
       },
       "hybrid_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 0.33977348434377086,
-            "p": 0.33977348434377086,
-            "r": 0.33977348434377086
+            "f": 0.28256374913852517,
+            "p": 0.28256374913852517,
+            "r": 0.28256374913852517
           },
           "rouge-2": {
-            "f": 0.3322214809873249,
-            "p": 0.3322214809873249,
-            "r": 0.3322214809873249
+            "f": 0.27605244996549344,
+            "p": 0.27605244996549344,
+            "r": 0.27605244996549344
           },
           "rouge-l": {
-            "f": 0.33977348434377086,
-            "p": 0.33977348434377086,
-            "r": 0.33977348434377086
+            "f": 0.25223983459682975,
+            "p": 0.25223983459682975,
+            "r": 0.25223983459682975
           }
         },
         "bertscore": {
-          "p": 0.8989126682281494,
-          "r": 0.8651166558265686,
-          "f1": 0.8816909193992615
+          "p": 0.9041795134544373,
+          "r": 0.8679472208023071,
+          "f1": 0.8856930136680603
         }
       }
     }
   ],
   "average_scores": {
+    "extractive": {
+      "rouge_rouge-1_f": 0.4234086636311723,
+      "rouge_rouge-1_p": 0.4234086636311723,
+      "rouge_rouge-1_r": 0.4234086636311723,
+      "rouge_rouge-2_f": 0.418080738917278,
+      "rouge_rouge-2_p": 0.418080738917278,
+      "rouge_rouge-2_r": 0.418080738917278,
+      "rouge_rouge-l_f": 0.4234086636311723,
+      "rouge_rouge-l_p": 0.4234086636311723,
+      "rouge_rouge-l_r": 0.4234086636311723,
+      "bertscore_p": 0.926374328136444,
+      "bertscore_r": 0.8676696062088013,
+      "bertscore_f1": 0.8959107875823975
+    },
+    "abstractive": {
+      "rouge_rouge-1_f": 0.1675107446329674,
+      "rouge_rouge-1_p": 0.1675107446329674,
+      "rouge_rouge-1_r": 0.1675107446329674,
+      "rouge_rouge-2_f": 0.16062880994250944,
+      "rouge_rouge-2_p": 0.16062880994250944,
+      "rouge_rouge-2_r": 0.16062880994250944,
+      "rouge_rouge-l_f": 0.1675107446329674,
+      "rouge_rouge-l_p": 0.1675107446329674,
+      "rouge_rouge-l_r": 0.1675107446329674,
+      "bertscore_p": 0.9396662592887879,
+      "bertscore_r": 0.8094594240188598,
+      "bertscore_f1": 0.8696861386299133
+    },
+    "combo": {
+      "rouge_rouge-1_f": 0.4322518829705769,
+      "rouge_rouge-1_p": 0.4322518829705769,
+      "rouge_rouge-1_r": 0.4322518829705769,
+      "rouge_rouge-2_f": 0.42668758432953036,
+      "rouge_rouge-2_p": 0.42668758432953036,
+      "rouge_rouge-2_r": 0.42668758432953036,
+      "rouge_rouge-l_f": 0.41163878320368985,
+      "rouge_rouge-l_p": 0.41163878320368985,
+      "rouge_rouge-l_r": 0.41163878320368985,
+      "bertscore_p": 0.9470375537872314,
+      "bertscore_r": 0.8741125702857971,
+      "bertscore_f1": 0.9089272379875183
+    },
     "textrank": {
       "rouge_rouge-1_f": 0.46687820013466547,
       "rouge_rouge-1_p": 0.46687820013466547,
@@ -818,34 +860,6 @@
       "bertscore_p": 0.90051748752594,
       "bertscore_r": 0.8496774554252624,
       "bertscore_f1": 0.8741552114486695
-    },
-    "abstractive": {
-      "rouge_rouge-1_f": 0.16817191275908377,
-      "rouge_rouge-1_p": 0.16817191275908377,
-      "rouge_rouge-1_r": 0.16817191275908377,
-      "rouge_rouge-2_f": 0.15747689328687942,
-      "rouge_rouge-2_p": 0.15747689328687942,
-      "rouge_rouge-2_r": 0.15747689328687942,
-      "rouge_rouge-l_f": 0.16459049544768936,
-      "rouge_rouge-l_p": 0.16459049544768936,
-      "rouge_rouge-l_r": 0.16459049544768936,
-      "bertscore_p": 0.9344465374946594,
-      "bertscore_r": 0.8080209970474244,
-      "bertscore_f1": 0.8664711356163025
-    },
-    "best_single": {
-      "rouge_rouge-1_f": 0.5551773749965447,
-      "rouge_rouge-1_p": 0.5551773749965447,
-      "rouge_rouge-1_r": 0.5551773749965447,
-      "rouge_rouge-2_f": 0.5460098924485244,
-      "rouge_rouge-2_p": 0.5460098924485244,
-      "rouge_rouge-2_r": 0.5460098924485244,
-      "rouge_rouge-l_f": 0.5534268279505928,
-      "rouge_rouge-l_p": 0.5534268279505928,
-      "rouge_rouge-l_r": 0.5534268279505928,
-      "bertscore_p": 0.9316078662872315,
-      "bertscore_r": 0.8990375518798828,
-      "bertscore_f1": 0.9148094058036804
     }
   }
 }

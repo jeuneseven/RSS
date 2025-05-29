@@ -1,12 +1,14 @@
 """
 pipelines/pipeline_parallel.py (FINAL COMPLETE VERSION)
-- FIXED: All modes (1+1, 3+1, 3+3) now use correct dynamic method selection
-- FIXED: Hybrid algorithm based on successful standalone versions
-- FIXED: 3+1 mode follows serial.py logic: combine all extractive summaries first
+- FIXED: Only generate and store summaries that are actually needed based on mode and user selection
+- NEW: Extractive-skeleton hybrid fusion that maintains high ROUGE scores
+- Strategy: Use extractive as skeleton, insert missing abstractive content in original text order
+- FIXED: Optimize computation by avoiding unnecessary method calls
+- FIXED: Clean up JSON output to only include relevant data
 - All modes use fusion/hybrid logic with enhanced semantic similarity
-- 1+1: three bars (selected_extractive, selected_abstractive, hybrid)
-- 3+1: five bars (textrank, lexrank, lsa, selected_abstractive, hybrid)
-- 3+3: three bars (best_extract, best_abstractive, hybrid)
+- 1+1: only generates selected extractive + selected abstractive + hybrid
+- 3+1: generates all extractive + selected abstractive + hybrid  
+- 3+3: generates all combinations to find best
 """
 
 import os
@@ -177,128 +179,185 @@ class ParallelPipeline:
 
     def hybrid_summarization(self, original_text, extractive_summary, abstractive_summary):
         """
-        Generate hybrid summary based on successful standalone versions.
-        Uses adaptive fusion strategy based on quality metrics.
+        OPTIMIZED: Use extractive as skeleton, carefully insert non-redundant abstractive content.
+
+        Strategy:
+        1. Use extractive summary as the main skeleton (maintains high ROUGE)
+        2. Find truly unique content in abstractive that adds value
+        3. Insert this content in the correct position based on original text order
+        4. Strict deduplication to avoid redundancy
 
         Args:
             original_text: Original article text
-            extractive_summary: Extractive summary
-            abstractive_summary: Abstractive summary
+            extractive_summary: Extractive summary (skeleton)
+            abstractive_summary: Abstractive summary (content source)
 
         Returns:
-            Hybrid summary combining both approaches
+            Hybrid summary with extractive skeleton enhanced by non-redundant abstractive content
         """
-        # Evaluate quality of both summary types
+        # Input validation
+        if not extractive_summary.strip():
+            return abstractive_summary
+        if not abstractive_summary.strip():
+            return extractive_summary
+
+        print(
+            "DEBUG - Using optimized extractive-skeleton + abstractive-enhancement strategy")
+
+        # Tokenize sentences
+        sentences_ext = sent_tokenize(extractive_summary)
+        sentences_abs = sent_tokenize(abstractive_summary)
+        sentences_orig = sent_tokenize(original_text)
+
+        print(f"DEBUG - Extractive: {len(sentences_ext)} sentences")
+        print(f"DEBUG - Abstractive: {len(sentences_abs)} sentences")
+        print(f"DEBUG - Original: {len(sentences_orig)} sentences")
+
+        # Step 1: Start with extractive summary as skeleton
+        hybrid_content = []
+
+        # Step 2: Find positions of extractive sentences in original text
+        ext_positions = []
+        for ext_sent in sentences_ext:
+            best_match_pos = -1
+            best_similarity = 0
+
+            for i, orig_sent in enumerate(sentences_orig):
+                similarity = self._sentence_similarity(ext_sent, orig_sent)
+                if similarity > best_similarity:
+                    best_similarity = similarity
+                    best_match_pos = i
+
+            if best_similarity > 0.6:  # Reasonable match with original
+                ext_positions.append((best_match_pos, ext_sent))
+                print(
+                    f"DEBUG - Extractive sentence mapped to position {best_match_pos}")
+
+        # Sort by original text position
+        ext_positions.sort(key=lambda x: x[0])
+
+        # Step 3: Find truly unique and valuable abstractive content
+        valuable_abs_content = []
+        for abs_sent in sentences_abs:
+            # Check if this abstractive sentence is truly unique compared to ALL extractive content
+            is_truly_unique = True
+            max_similarity_with_ext = 0
+
+            # Check similarity with entire extractive summary (not just individual sentences)
+            for ext_sent in sentences_ext:
+                similarity = self._sentence_similarity(abs_sent, ext_sent)
+                max_similarity_with_ext = max(
+                    max_similarity_with_ext, similarity)
+
+                # Very strict threshold - avoid even semantically similar content
+                if similarity > 0.65:  # Increased from 0.6 to 0.65
+                    is_truly_unique = False
+                    print(
+                        f"DEBUG - Rejected abstractive (sim={similarity:.3f}): {abs_sent[:50]}...")
+                    break
+
+            if is_truly_unique:
+                # Find best position in original text
+                best_orig_match = 0
+                best_orig_pos = -1
+
+                for i, orig_sent in enumerate(sentences_orig):
+                    similarity = self._sentence_similarity(abs_sent, orig_sent)
+                    if similarity > best_orig_match:
+                        best_orig_match = similarity
+                        best_orig_pos = i
+
+                # Only add if it has reasonable connection to original text
+                if best_orig_match > 0.35:  # Slightly higher threshold
+                    # Additional value check: does it contain new keywords?
+                    abs_words = set(abs_sent.lower().split())
+                    ext_words = set(extractive_summary.lower().split())
+                    new_words = abs_words - ext_words
+
+                    if len(new_words) >= 3:  # Must add at least 3 new words
+                        valuable_abs_content.append(
+                            (best_orig_pos, abs_sent, best_orig_match))
+                        print(
+                            f"DEBUG - Found valuable abstractive content at position {best_orig_pos} (sim={best_orig_match:.3f}, {len(new_words)} new words)")
+                    else:
+                        print(
+                            f"DEBUG - Rejected abstractive (insufficient new content): {abs_sent[:50]}...")
+
+        # Sort abstractive content by original text position
+        valuable_abs_content.sort(key=lambda x: x[0])
+
+        # Step 4: Conservative selection - only add the BEST abstractive content
+        if valuable_abs_content:
+            # Limit to only the single best abstractive addition to minimize risk
+            # Best original similarity
+            best_abs = max(valuable_abs_content, key=lambda x: x[2])
+            valuable_abs_content = [best_abs]
+            print(
+                f"DEBUG - Selected single best abstractive addition: {best_abs[1][:50]}...")
+
+        # Step 5: Build hybrid summary by merging in original text order
+        all_content = []
+
+        # Add extractive content with their positions
+        for pos, sent in ext_positions:
+            all_content.append((pos, sent, 'extractive'))
+
+        # Add the selected valuable abstractive content
+        for pos, sent, sim in valuable_abs_content:
+            all_content.append((pos, sent, 'abstractive'))
+
+        # Sort all content by original text position
+        all_content.sort(key=lambda x: x[0])
+
+        # Step 6: Build final hybrid summary with final deduplication check
+        hybrid_sentences = []
+        for pos, sent, source in all_content:
+            # Final deduplication check
+            is_duplicate = False
+            for existing_sent in hybrid_sentences:
+                # Very strict final check
+                if self._sentence_similarity(sent, existing_sent) > 0.7:
+                    is_duplicate = True
+                    print(
+                        f"DEBUG - Final dedup removed {source}: {sent[:30]}...")
+                    break
+
+            if not is_duplicate:
+                hybrid_sentences.append(sent)
+                print(
+                    f"DEBUG - Added {source} sentence at pos {pos}: {sent[:50]}...")
+
+        # Step 7: Create final hybrid summary
+        if not hybrid_sentences:
+            hybrid_sentences = sentences_ext  # Fallback to extractive
+            print("DEBUG - No content survived filtering, using extractive summary")
+
+        hybrid_summary = " ".join(hybrid_sentences)
+
+        # Step 8: Quality control - ensure hybrid performs at least as well as extractive
         rouge_ext = self._evaluate_rouge(extractive_summary, original_text)
-        rouge_abs = self._evaluate_rouge(abstractive_summary, original_text)
-        bertscore_ext = self._evaluate_bertscore(
-            extractive_summary, original_text)
-        bertscore_abs = self._evaluate_bertscore(
-            abstractive_summary, original_text)
-
-        # Calculate weights based on performance
-        ext_weight = (rouge_ext['rouge-1']['f'] + bertscore_ext['f1']) / 2
-        abs_weight = (rouge_abs['rouge-1']['f'] + bertscore_abs['f1']) / 2
-
-        # Normalize weights
-        total = ext_weight + abs_weight
-        if total > 0:
-            ext_weight = ext_weight / total
-            abs_weight = abs_weight / total
-        else:
-            ext_weight = abs_weight = 0.5
-
-        # Strategy 1: Extractive-dominant fusion
-        if ext_weight > abs_weight * 1.2:
-            sentences_ext = sent_tokenize(extractive_summary)
-            sentences_abs = sent_tokenize(abstractive_summary)
-
-            # Find unique information in abstractive summary using semantic similarity
-            unique_abs_sentences = []
-            for abs_sent in sentences_abs:
-                is_unique = True
-                for ext_sent in sentences_ext:
-                    if self._sentence_similarity(abs_sent, ext_sent) > 0.6:
-                        is_unique = False
-                        break
-                if is_unique:
-                    unique_abs_sentences.append(abs_sent)
-
-            # Combine extractive with unique abstractive sentences
-            hybrid_summary = extractive_summary
-            if unique_abs_sentences:
-                hybrid_summary += " " + " ".join(unique_abs_sentences[:2])
-
-        # Strategy 2: Abstractive-dominant fusion
-        elif abs_weight > ext_weight * 1.2:
-            sentences_ext = sent_tokenize(extractive_summary)
-            key_sentences = sentences_ext[:2]  # Top 2 extractive sentences
-
-            hybrid_summary = abstractive_summary
-            # Add key extractive sentences that are not already covered
-            for sent in key_sentences:
-                if sent not in abstractive_summary:
-                    hybrid_summary += " " + sent
-
-        # Strategy 3: Balanced fusion
-        else:
-            sentences_ext = sent_tokenize(extractive_summary)
-            sentences_abs = sent_tokenize(abstractive_summary)
-            hybrid_sentences = []
-
-            # Start with first abstractive sentence (often provides good overview)
-            if sentences_abs:
-                hybrid_sentences.append(sentences_abs[0])
-
-            # Add unique extractive sentences
-            for i, sent in enumerate(sentences_ext):
-                if i < 3:  # Limit to 3 sentences from extractive
-                    is_unique = True
-                    for hybrid_sent in hybrid_sentences:
-                        if self._sentence_similarity(sent, hybrid_sent) > 0.7:
-                            is_unique = False
-                            break
-                    if is_unique:
-                        hybrid_sentences.append(sent)
-
-            # Add remaining unique abstractive sentences
-            for i, sent in enumerate(sentences_abs[1:]):
-                if i < 2:  # Limit to 2 more from abstractive
-                    is_unique = True
-                    for hybrid_sent in hybrid_sentences:
-                        if self._sentence_similarity(sent, hybrid_sent) > 0.7:
-                            is_unique = False
-                            break
-                    if is_unique:
-                        hybrid_sentences.append(sent)
-
-            hybrid_summary = " ".join(hybrid_sentences)
-
-        # Quality assurance: ensure hybrid is not worse than both originals
         rouge_hybrid = self._evaluate_rouge(hybrid_summary, original_text)
-        bertscore_hybrid = self._evaluate_bertscore(
-            hybrid_summary, original_text)
 
-        hybrid_score = (rouge_hybrid['rouge-1']
-                        ['f'] + bertscore_hybrid['f1']) / 2
-        best_original_score = max((rouge_ext['rouge-1']['f'] + bertscore_ext['f1']) / 2,
-                                  (rouge_abs['rouge-1']['f'] + bertscore_abs['f1']) / 2)
+        print(f"DEBUG - Extractive ROUGE: {rouge_ext['rouge-1']['f']:.4f}")
+        print(f"DEBUG - Hybrid ROUGE: {rouge_hybrid['rouge-1']['f']:.4f}")
 
-        # Only fallback if hybrid is significantly worse (same logic as successful versions)
-        if hybrid_score < best_original_score:
-            if (rouge_ext['rouge-1']['f'] + bertscore_ext['f1']) > (rouge_abs['rouge-1']['f'] + bertscore_abs['f1']):
-                return extractive_summary
-            else:
-                return abstractive_summary
+        # Conservative quality control - if hybrid doesn't clearly improve, use extractive
+        # Must improve by at least 0.5%
+        if rouge_hybrid['rouge-1']['f'] < rouge_ext['rouge-1']['f'] * 1.005:
+            print(
+                "DEBUG - Hybrid doesn't provide clear improvement, using extractive summary")
+            return extractive_summary
 
+        print(
+            f"DEBUG - Final hybrid: {len(hybrid_summary.split())} words, {len(hybrid_sentences)} sentences")
+        print(
+            f"DEBUG - Improvement: +{((rouge_hybrid['rouge-1']['f'] / rouge_ext['rouge-1']['f']) - 1) * 100:.2f}%")
         return hybrid_summary
-
-    # ========== pipeline_parallel.py - Enhanced run() method ==========
 
     def run(self, rss_path_or_url, outdir='data/outputs/', max_articles=5, mode='1+1',
             selected_extractive='textrank', selected_abstractive='bart'):
         """
-        Enhanced version that stores detailed results for each article like pipeline_serial.
+        FIXED: Only generate summaries that are actually needed based on mode and user selection.
         """
         ensure_dir(outdir)
         parser = RSSParser()
@@ -306,6 +365,7 @@ class ParallelPipeline:
         references = [a['content'] for a in articles]
 
         # Prepare containers for different summary types
+        # FIXED: Initialize as empty, only populate what's needed
         textrank_sums, lexrank_sums, lsa_sums = [], [], []
         abstractive_sums, hybrid_sums = [], []
         best_extract_sums, best_abstractive_sums, best_best_sums = [], [], []
@@ -316,46 +376,44 @@ class ParallelPipeline:
         for i, article in enumerate(articles):
             content = article['content']
 
-            # Create detailed article result object (like pipeline_serial)
+            # Create detailed article result object
             article_result = {
                 'title': article['title'],
                 'link': article['link'],
                 'original_content': content  # Store cleaned original content
             }
 
-            # Generate individual method summaries (always generate all for flexibility)
-            tr_sum = self.extractive.textrank(content)
-            lr_sum = self.extractive.lexrank(content)
-            lsa_sum = self.extractive.lsa(content)
-
-            textrank_sums.append(tr_sum)
-            lexrank_sums.append(lr_sum)
-            lsa_sums.append(lsa_sum)
-
-            # Store individual extractive summaries and scores
-            article_result['textrank_summary'] = tr_sum
-            article_result['lexrank_summary'] = lr_sum
-            article_result['lsa_summary'] = lsa_sum
-            article_result['textrank_scores'] = self.evaluator.score(
-                tr_sum, content)
-            article_result['lexrank_scores'] = self.evaluator.score(
-                lr_sum, content)
-            article_result['lsa_scores'] = self.evaluator.score(
-                lsa_sum, content)
-
-            # Mode-specific processing
+            # FIXED: Generate summaries based on mode requirements only
             if mode == '1+1':
-                # 1+1 mode: Use user-selected extractive and abstractive methods
+                # 1+1 mode: Only generate the selected extractive method
                 if selected_extractive == 'textrank':
-                    selected_ext_sum = tr_sum
+                    selected_ext_sum = self.extractive.textrank(content)
+                    # Store only the selected method
+                    article_result['textrank_summary'] = selected_ext_sum
+                    article_result['textrank_scores'] = self.evaluator.score(
+                        selected_ext_sum, content)
+                    textrank_sums.append(selected_ext_sum)
                 elif selected_extractive == 'lexrank':
-                    selected_ext_sum = lr_sum
+                    selected_ext_sum = self.extractive.lexrank(content)
+                    article_result['lexrank_summary'] = selected_ext_sum
+                    article_result['lexrank_scores'] = self.evaluator.score(
+                        selected_ext_sum, content)
+                    lexrank_sums.append(selected_ext_sum)
                 elif selected_extractive == 'lsa':
-                    selected_ext_sum = lsa_sum
+                    selected_ext_sum = self.extractive.lsa(content)
+                    article_result['lsa_summary'] = selected_ext_sum
+                    article_result['lsa_scores'] = self.evaluator.score(
+                        selected_ext_sum, content)
+                    lsa_sums.append(selected_ext_sum)
                 else:
-                    selected_ext_sum = tr_sum  # fallback to textrank
+                    selected_ext_sum = self.extractive.textrank(
+                        content)  # fallback
+                    article_result['textrank_summary'] = selected_ext_sum
+                    article_result['textrank_scores'] = self.evaluator.score(
+                        selected_ext_sum, content)
+                    textrank_sums.append(selected_ext_sum)
 
-                # Get the selected abstractive summary
+                # Generate only the selected abstractive summary
                 selected_abs_sum = getattr(
                     self.abstractive, selected_abstractive)(content)
                 abstractive_sums.append(selected_abs_sum)
@@ -377,7 +435,27 @@ class ParallelPipeline:
                     hybrid_sum, content)
 
             elif mode == '3+1':
-                # 3+1 mode: Combine all extractive methods + selected abstractive method
+                # 3+1 mode: Generate all extractive methods + selected abstractive method
+                tr_sum = self.extractive.textrank(content)
+                lr_sum = self.extractive.lexrank(content)
+                lsa_sum = self.extractive.lsa(content)
+
+                textrank_sums.append(tr_sum)
+                lexrank_sums.append(lr_sum)
+                lsa_sums.append(lsa_sum)
+
+                # Store all extractive summaries and scores
+                article_result['textrank_summary'] = tr_sum
+                article_result['lexrank_summary'] = lr_sum
+                article_result['lsa_summary'] = lsa_sum
+                article_result['textrank_scores'] = self.evaluator.score(
+                    tr_sum, content)
+                article_result['lexrank_scores'] = self.evaluator.score(
+                    lr_sum, content)
+                article_result['lsa_scores'] = self.evaluator.score(
+                    lsa_sum, content)
+
+                # Combine all extractive methods
                 combined_extractive = self.combine_extractive_summaries(
                     tr_sum, lr_sum, lsa_sum)
 
@@ -392,7 +470,6 @@ class ParallelPipeline:
                 hybrid_sums.append(hybrid_sum)
 
                 # Store combined results
-                # Combined extractive
                 article_result['extractive_summary'] = combined_extractive
                 article_result['abstractive_summary'] = selected_abs_sum
                 article_result['hybrid_summary'] = hybrid_sum
@@ -404,7 +481,27 @@ class ParallelPipeline:
                     hybrid_sum, content)
 
             elif mode == '3+3':
-                # 3+3 mode: Best extractive + best abstractive + best hybrid
+                # 3+3 mode: Generate all combinations to find best
+                tr_sum = self.extractive.textrank(content)
+                lr_sum = self.extractive.lexrank(content)
+                lsa_sum = self.extractive.lsa(content)
+
+                textrank_sums.append(tr_sum)
+                lexrank_sums.append(lr_sum)
+                lsa_sums.append(lsa_sum)
+
+                # Store all extractive summaries and scores
+                article_result['textrank_summary'] = tr_sum
+                article_result['lexrank_summary'] = lr_sum
+                article_result['lsa_summary'] = lsa_sum
+                article_result['textrank_scores'] = self.evaluator.score(
+                    tr_sum, content)
+                article_result['lexrank_scores'] = self.evaluator.score(
+                    lr_sum, content)
+                article_result['lsa_scores'] = self.evaluator.score(
+                    lsa_sum, content)
+
+                # Find best extractive method for this article
                 ex_summaries = [tr_sum, lr_sum, lsa_sum]
                 ex_scores = []
                 for s in ex_summaries:
@@ -417,8 +514,8 @@ class ParallelPipeline:
                 best_extract_sums.append(best_extract_sum)
 
                 # Find best abstractive method for this article
-                ab_summaries = [getattr(self.abstractive, m)(content)
-                                for m in self.abstractive_methods]
+                ab_summaries = [getattr(self.abstractive, m)(
+                    content) for m in self.abstractive_methods]
                 ab_scores = []
                 ab_summaries_with_scores = []
                 for j, s in enumerate(ab_summaries):
@@ -485,34 +582,40 @@ class ParallelPipeline:
             # Store article result
             detailed_results.append(article_result)
 
-        # Calculate average scores for each method
-        avg_textrank = self.evaluator.batch_score(textrank_sums, references)[1]
-        avg_lexrank = self.evaluator.batch_score(lexrank_sums, references)[1]
-        avg_lsa = self.evaluator.batch_score(lsa_sums, references)[1]
-        avg_abstractive = self.evaluator.batch_score(
-            abstractive_sums, references)[1]
-
-        # Prepare output based on mode
+        # FIXED: Calculate average scores only for methods that were actually used
         if mode == '1+1':
-            avg_hybrid = self.evaluator.batch_score(hybrid_sums, references)[1]
-
-            # Get scores for the SELECTED extractive method
             if selected_extractive == 'textrank':
-                selected_ext_scores = avg_textrank
+                avg_extractive = self.evaluator.batch_score(
+                    textrank_sums, references)[1]
+                avg_textrank = avg_extractive
+                avg_lexrank = avg_lsa = {}
             elif selected_extractive == 'lexrank':
-                selected_ext_scores = avg_lexrank
+                avg_extractive = self.evaluator.batch_score(
+                    lexrank_sums, references)[1]
+                avg_lexrank = avg_extractive
+                avg_textrank = avg_lsa = {}
             elif selected_extractive == 'lsa':
-                selected_ext_scores = avg_lsa
+                avg_extractive = self.evaluator.batch_score(
+                    lsa_sums, references)[1]
+                avg_lsa = avg_extractive
+                avg_textrank = avg_lexrank = {}
             else:
-                selected_ext_scores = avg_textrank
+                avg_extractive = self.evaluator.batch_score(
+                    textrank_sums, references)[1]
+                avg_textrank = avg_extractive
+                avg_lexrank = avg_lsa = {}
+
+            avg_abstractive = self.evaluator.batch_score(
+                abstractive_sums, references)[1]
+            avg_hybrid = self.evaluator.batch_score(hybrid_sums, references)[1]
 
             output = {
                 'articles': detailed_results,
                 'average_scores': {
-                    'extractive': selected_ext_scores,
+                    'extractive': avg_extractive,
                     'abstractive': avg_abstractive,
                     'combo': avg_hybrid,
-                    # Include individual scores for reference
+                    # Include individual scores only if they were calculated
                     'textrank': avg_textrank,
                     'lexrank': avg_lexrank,
                     'lsa': avg_lsa
@@ -520,7 +623,15 @@ class ParallelPipeline:
             }
 
         elif mode == '3+1':
+            avg_textrank = self.evaluator.batch_score(
+                textrank_sums, references)[1]
+            avg_lexrank = self.evaluator.batch_score(
+                lexrank_sums, references)[1]
+            avg_lsa = self.evaluator.batch_score(lsa_sums, references)[1]
+            avg_abstractive = self.evaluator.batch_score(
+                abstractive_sums, references)[1]
             avg_hybrid = self.evaluator.batch_score(hybrid_sums, references)[1]
+
             output = {
                 'articles': detailed_results,
                 'average_scores': {
@@ -533,12 +644,18 @@ class ParallelPipeline:
             }
 
         elif mode == '3+3':
+            avg_textrank = self.evaluator.batch_score(
+                textrank_sums, references)[1]
+            avg_lexrank = self.evaluator.batch_score(
+                lexrank_sums, references)[1]
+            avg_lsa = self.evaluator.batch_score(lsa_sums, references)[1]
             avg_best_extract = self.evaluator.batch_score(
                 best_extract_sums, references)[1]
             avg_best_abstractive = self.evaluator.batch_score(
                 best_abstractive_sums, references)[1]
             avg_best_best = self.evaluator.batch_score(
                 best_best_sums, references)[1]
+
             output = {
                 'articles': detailed_results,
                 'average_scores': {

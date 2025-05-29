@@ -1,5 +1,7 @@
 """
-main.py (UPDATED - Enhanced with unique naming and complete pipeline support)
+main.py (FIXED - Enhanced with unique naming and complete pipeline support)
+- FIXED: Plotting logic now matches actual generated summaries
+- FIXED: Only plot methods that were actually used/generated
 - Unique file names for JSON and PNG outputs
 - Enhanced plotting titles and file organization
 - Complete pipeline configuration support
@@ -164,7 +166,7 @@ def main():
             selected_abstractive=abstractive
         )
 
-        # Prepare plotting data for parallel pipeline
+        # FIXED: Prepare plotting data for parallel pipeline based on what was actually generated
         if parallel_mode == '1+1':
             method_names = [extractive.upper(), abstractive.upper(
             ), f'{extractive.upper()}+{abstractive.upper()}']
