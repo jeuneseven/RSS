@@ -80,8 +80,8 @@
         }
       },
       "extractive_summary": "It seemed like a perfect time to do a quick rundown of some of the most interesting new products and features coming to Samsung’s Bespoke portfolio later this year. But being able to have your fridge generate a list of what’s inside when you’re at the store is the kind of convenience I’d like to see more of. The idea is that in normal use, the compressor provides consistent baseline cooling while the Peltier module (through the power of AI) turns on to address big changes in temperature. But if you prefer to go off-script and create something original, Samsung says the oven will give you the option to save the recipe and temperature settings after cooking the same dish five times. Sam Rutherford for Engadget Moving on to laundry, Samsung says its $3,099 Bespoke AI Laundry Vented Combo is the first of its kind, as most combined washer/dryers are typically meant for ventless installations like small apartments (of course, there is a non-vented model as well). You can even play videos from TikTok on it, if that’s what you’re into. While it doesn’t have a Peltier module, the advantage of this model is that it has different doors and hinges that don’t protrude nearly as much when open.",
-      "abstractive_summary": "Samsung’s 4-door French-Door refrigerator is now available with two different-sized screens. Samsung is hoping to entice people to take advantage of those displays with even more AI-powered tools. Other features include built-in Wi-Fi and SmartThings connectivity, a Dual Auto Ice maker that can create both regular and smaller “Ice Bite” cubes.",
-      "hybrid_summary": "It seemed like a perfect time to do a quick rundown of some of the most interesting new products and features coming to Samsung’s Bespoke portfolio later this year. You can even play videos from TikTok on it, if that’s what you’re into. But being able to have your fridge generate a list of what’s inside when you’re at the store is the kind of convenience I’d like to see more of. Other features include built-in Wi-Fi and SmartThings connectivity, a Dual Auto Ice maker that can create both regular and smaller “Ice Bite” cubes. The idea is that in normal use, the compressor provides consistent baseline cooling while the Peltier module (through the power of AI) turns on to address big changes in temperature. While it doesn’t have a Peltier module, the advantage of this model is that it has different doors and hinges that don’t protrude nearly as much when open. But if you prefer to go off-script and create something original, Samsung says the oven will give you the option to save the recipe and temperature settings after cooking the same dish five times. Sam Rutherford for Engadget Moving on to laundry, Samsung says its $3,099 Bespoke AI Laundry Vented Combo is the first of its kind, as most combined washer/dryers are typically meant for ventless installations like small apartments (of course, there is a non-vented model as well).",
+      "abstractive_summary": "Samsung's latest Bespoke fridges can detect dozens of different types of fresh ingredients and tell you when they're ready to be put in the fridge.) Sam Rutherford for Engadget.... and it's all powered by artificial intelligence, of course.",
+      "hybrid_summary": "It seemed like a perfect time to do a quick rundown of some of the most interesting new products and features coming to Samsung’s Bespoke portfolio later this year. You can even play videos from TikTok on it, if that’s what you’re into. Samsung's latest Bespoke fridges can detect dozens of different types of fresh ingredients and tell you when they're ready to be put in the fridge.) But being able to have your fridge generate a list of what’s inside when you’re at the store is the kind of convenience I’d like to see more of. The idea is that in normal use, the compressor provides consistent baseline cooling while the Peltier module (through the power of AI) turns on to address big changes in temperature. While it doesn’t have a Peltier module, the advantage of this model is that it has different doors and hinges that don’t protrude nearly as much when open. But if you prefer to go off-script and create something original, Samsung says the oven will give you the option to save the recipe and temperature settings after cooking the same dish five times. Sam Rutherford for Engadget Moving on to laundry, Samsung says its $3,099 Bespoke AI Laundry Vented Combo is the first of its kind, as most combined washer/dryers are typically meant for ventless installations like small apartments (of course, there is a non-vented model as well).",
       "extractive_scores": {
         "rouge": {
           "rouge-1": {
@@ -109,49 +109,49 @@
       "abstractive_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 0.08728367193378479,
-            "p": 0.08728367193378479,
-            "r": 0.08728367193378479
+            "f": 0.053353658536585365,
+            "p": 0.053353658536585365,
+            "r": 0.053353658536585365
           },
           "rouge-2": {
-            "f": 0.07987942727957799,
-            "p": 0.07987942727957799,
-            "r": 0.07987942727957799
+            "f": 0.022900763358778626,
+            "p": 0.022900763358778626,
+            "r": 0.022900763358778626
           },
           "rouge-l": {
-            "f": 0.08728367193378479,
-            "p": 0.08728367193378479,
-            "r": 0.08728367193378479
+            "f": 0.045731707317073184,
+            "p": 0.045731707317073184,
+            "r": 0.045731707317073184
           }
         },
         "bertscore": {
-          "p": 0.8812731504440308,
-          "r": 0.8070732951164246,
-          "f1": 0.8425427675247192
+          "p": 0.8655561804771423,
+          "r": 0.7968893051147461,
+          "f1": 0.8298045992851257
         }
       },
       "hybrid_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 0.3243243243243243,
-            "p": 0.3243243243243243,
-            "r": 0.3243243243243243
+            "f": 0.3212639894667545,
+            "p": 0.3212639894667545,
+            "r": 0.3212639894667545
           },
           "rouge-2": {
-            "f": 0.31419141914191423,
-            "p": 0.31419141914191423,
-            "r": 0.31419141914191423
+            "f": 0.2979564930784443,
+            "p": 0.2979564930784443,
+            "r": 0.2979564930784443
           },
           "rouge-l": {
-            "f": 0.3243243243243243,
-            "p": 0.3243243243243243,
-            "r": 0.3243243243243243
+            "f": 0.3146807109940751,
+            "p": 0.3146807109940751,
+            "r": 0.3146807109940751
           }
         },
         "bertscore": {
-          "p": 0.8673347234725952,
-          "r": 0.8538120985031128,
-          "f1": 0.8605202436447144
+          "p": 0.870903491973877,
+          "r": 0.8529543876647949,
+          "f1": 0.8618354797363281
         }
       }
     },
@@ -235,7 +235,7 @@
         }
       },
       "extractive_summary": "We’re coming up on the 10-year anniversary of Undertale ’s release, and to mark the occasion, a 25-piece orchestra will perform the game’s soundtrack for a one-night-only concert at London's Eventim Apollo this summer. The event, dubbed The Determination Symphony , will be held on June 22, and tickets are on sale now. The Determination Symphony is described as “a musical journey from your initial fall at Mount Ebott, leading you through Froggit Village, the Snowdin Forest, Temmie Village and so much more.” Attendees (who I’m deeply envious of) will be able to watch all of that on screen while the orchestra makes its way through arrangements of the soundtrack. It’s hard to believe that Toby Fox’s Undertale is already 10 years old, but its enduring popularity just speaks to the impact it’s had on so many who have played it. We may not all get to experience the orchestral rendition, but at least we'll always have the original soundtrack . This article originally appeared on Engadget at https://www.engadget.com/gaming/a-live-orchestra-will-perform-undertales-soundtrack-in-london-to-celebrate-its-10th-anniversary-214830716.html?src=rss",
-      "abstractive_summary": "A 25-piece orchestra will perform the game’s soundtrack for a one-night-only concert at London's Eventim Apollo this summer. The event, dubbed The Determination Symphony , will be held on June 22, and tickets are on sale now.",
+      "abstractive_summary": "It’s one of the most beloved video games of all time, and now it’s going to get its own live orchestral performance this summer.... at least if you’re a fan of the original game, or one of its spin-off titles.",
       "hybrid_summary": "We’re coming up on the 10-year anniversary of Undertale ’s release, and to mark the occasion, a 25-piece orchestra will perform the game’s soundtrack for a one-night-only concert at London's Eventim Apollo this summer. The event, dubbed The Determination Symphony , will be held on June 22, and tickets are on sale now. The Determination Symphony is described as “a musical journey from your initial fall at Mount Ebott, leading you through Froggit Village, the Snowdin Forest, Temmie Village and so much more.” Attendees (who I’m deeply envious of) will be able to watch all of that on screen while the orchestra makes its way through arrangements of the soundtrack. It’s hard to believe that Toby Fox’s Undertale is already 10 years old, but its enduring popularity just speaks to the impact it’s had on so many who have played it. We may not all get to experience the orchestral rendition, but at least we'll always have the original soundtrack . This article originally appeared on Engadget at https://www.engadget.com/gaming/a-live-orchestra-will-perform-undertales-soundtrack-in-london-to-celebrate-its-10th-anniversary-214830716.html?src=rss",
       "extractive_scores": {
         "rouge": {
@@ -264,25 +264,25 @@
       "abstractive_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 0.33884297520661155,
-            "p": 0.33884297520661155,
-            "r": 0.33884297520661155
+            "f": 0.25306122448979596,
+            "p": 0.25306122448979596,
+            "r": 0.25306122448979596
           },
           "rouge-2": {
-            "f": 0.33333333333333337,
-            "p": 0.33333333333333337,
-            "r": 0.33333333333333337
+            "f": 0.04938271604938271,
+            "p": 0.04938271604938271,
+            "r": 0.04938271604938271
           },
           "rouge-l": {
-            "f": 0.33884297520661155,
-            "p": 0.33884297520661155,
-            "r": 0.33884297520661155
+            "f": 0.1306122448979592,
+            "p": 0.1306122448979592,
+            "r": 0.1306122448979592
           }
         },
         "bertscore": {
-          "p": 0.9613487720489502,
-          "r": 0.8222408294677734,
-          "f1": 0.886370062828064
+          "p": 0.8659653067588806,
+          "r": 0.7981422543525696,
+          "f1": 0.8306716680526733
         }
       },
       "hybrid_scores": {
@@ -390,8 +390,8 @@
         }
       },
       "extractive_summary": "The Nintendo Direct livestream on Thursday brought some unexpected news for Tamagotchi fans: the Tamagotchi Connection: Corner Shop game series of the early 2000s is being resurrected with a new entry, Tamagotchi Plaza . As spotted by Tama-Palace , Bandai Namco says on the game’s official website that Tamagotchi Plaza will be compatible with the Tamagotchi Uni . In Tamagotchi Plaza , players will act as shopkeepers and help get the town ready for the big Tamagotchi festival. For the first time, players can connect with the latest toy model, the Tamagotchi Uni. By linking the Tamagotchi Uni, they will gain access to exclusive items, special events, and unique conversations not available in the base game, while supplies last. But it seems the announcement trailer left out the best part. Players will be able to link their Uni devices to the game to access special perks — kind of like how the beloved, defunct TamaTown worked.",
-      "abstractive_summary": "The Nintendo Direct livestream on Thursday brought some unexpected news for Tamagotchi fans. Players will be able to link their Uni devices to the game to access special perks — kind of like how the beloved, defunct TamaTown worked. The game comes out on June 27.",
-      "hybrid_summary": "The Nintendo Direct livestream on Thursday brought some unexpected news for Tamagotchi fans: the Tamagotchi Connection: Corner Shop game series of the early 2000s is being resurrected with a new entry, Tamagotchi Plaza . But it seems the announcement trailer left out the best part. As spotted by Tama-Palace , Bandai Namco says on the game’s official website that Tamagotchi Plaza will be compatible with the Tamagotchi Uni . Players will be able to link their Uni devices to the game to access special perks — kind of like how the beloved, defunct TamaTown worked. The game comes out on June 27. In Tamagotchi Plaza , players will act as shopkeepers and help get the town ready for the big Tamagotchi festival. For the first time, players can connect with the latest toy model, the Tamagotchi Uni. By linking the Tamagotchi Uni, they will gain access to exclusive items, special events, and unique conversations not available in the base game, while supplies last.",
+      "abstractive_summary": "The Tamagotchi Connection: Corner Shop game series of the early 2000s is being resurrected with a new entry, Tamagotchi Plaza . The Nintendo Direct livestream on Thursday brought some unexpected news for Tamagotchi fans: the Tamagotchi Connection: Corner Shop game series of the early 2000s is being resurrected with a new entry, Tamagotchi Plaza .",
+      "hybrid_summary": "The Nintendo Direct livestream on Thursday brought some unexpected news for Tamagotchi fans: the Tamagotchi Connection: Corner Shop game series of the early 2000s is being resurrected with a new entry, Tamagotchi Plaza . As spotted by Tama-Palace , Bandai Namco says on the game’s official website that Tamagotchi Plaza will be compatible with the Tamagotchi Uni . In Tamagotchi Plaza , players will act as shopkeepers and help get the town ready for the big Tamagotchi festival. For the first time, players can connect with the latest toy model, the Tamagotchi Uni. By linking the Tamagotchi Uni, they will gain access to exclusive items, special events, and unique conversations not available in the base game, while supplies last. But it seems the announcement trailer left out the best part. Players will be able to link their Uni devices to the game to access special perks — kind of like how the beloved, defunct TamaTown worked.",
       "extractive_scores": {
         "rouge": {
           "rouge-1": {
@@ -419,49 +419,49 @@
       "abstractive_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 0.2631578947368421,
-            "p": 0.2631578947368421,
-            "r": 0.2631578947368421
+            "f": 0.2685714285714285,
+            "p": 0.2685714285714285,
+            "r": 0.2685714285714285
           },
           "rouge-2": {
-            "f": 0.24117647058823527,
-            "p": 0.24117647058823527,
-            "r": 0.24117647058823527
+            "f": 0.20114942528735633,
+            "p": 0.20114942528735633,
+            "r": 0.20114942528735633
           },
           "rouge-l": {
-            "f": 0.2514619883040936,
-            "p": 0.2514619883040936,
-            "r": 0.2514619883040936
+            "f": 0.18857142857142858,
+            "p": 0.18857142857142858,
+            "r": 0.18857142857142858
           }
         },
         "bertscore": {
-          "p": 0.9509617686271667,
-          "r": 0.8148597478866577,
-          "f1": 0.8776657581329346
+          "p": 0.9236273765563965,
+          "r": 0.8118215799331665,
+          "f1": 0.8641229867935181
         }
       },
       "hybrid_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 0.700218818380744,
-            "p": 0.700218818380744,
-            "r": 0.700218818380744
+            "f": 0.6799999999999999,
+            "p": 0.6799999999999999,
+            "r": 0.6799999999999999
           },
           "rouge-2": {
-            "f": 0.6813186813186813,
-            "p": 0.6813186813186813,
-            "r": 0.6813186813186813
+            "f": 0.65625,
+            "p": 0.65625,
+            "r": 0.65625
           },
           "rouge-l": {
-            "f": 0.6914660831509848,
-            "p": 0.6914660831509848,
-            "r": 0.6914660831509848
+            "f": 0.5555555555555556,
+            "p": 0.5555555555555556,
+            "r": 0.5555555555555556
           }
         },
         "bertscore": {
-          "p": 0.9834115505218506,
-          "r": 0.898102343082428,
-          "f1": 0.9388229846954346
+          "p": 0.9696544408798218,
+          "r": 0.8899962306022644,
+          "f1": 0.9281192421913147
         }
       }
     },
@@ -545,8 +545,8 @@
         }
       },
       "extractive_summary": "Some of the discounts below have technically been live for a few days, but a good price is a good price, and the offers include several devices we recommend in our various buying guides . Its USB cable is on the shorter side, and it can’t match the overall accuracy of our top pick, but it’s still a clear upgrade over a built-in laptop camera for a much lower price. It can’t provide the absolute fastest charge to your smartphone or laptop (topping out at a quick enough 67W), but it packs four USB ports — two USB-C, two USB-A — and three AC outlets in a frame that’s small enough to fit on a crowded desk. Blink Mini 2 for $20 ($20 off) : This deal ties the lowest price to date for the Blink Mini 2, which is the budget pick in our guide to the best security cameras . This one comes with its share of trade-offs for the low price — its image quality isn’t the best, it locks certain features behind a paywall and it won’t automatically arm when you leave the house — but it still provides functional 1080p video, color night vision, motion alerts and Alexa support in a weather-resistant frame. Also at Anker . Amazon Fire TV Stick HD for $20 ($15 off): This is the budget pick in our guide to the best streaming devices .",
-      "abstractive_summary": "Amazon’s Spring Sale runs through March 31. Some of the discounts below have technically been live for a few days. The offers include several devices we recommend in our various buying guides. We’ll update this guide with the latest discounts throughout the sale.",
-      "hybrid_summary": "Some of the discounts below have technically been live for a few days, but a good price is a good price, and the offers include several devices we recommend in our various buying guides . We’ll update this guide with the latest discounts throughout the sale. Its USB cable is on the shorter side, and it can’t match the overall accuracy of our top pick, but it’s still a clear upgrade over a built-in laptop camera for a much lower price. Also at Anker . It can’t provide the absolute fastest charge to your smartphone or laptop (topping out at a quick enough 67W), but it packs four USB ports — two USB-C, two USB-A — and three AC outlets in a frame that’s small enough to fit on a crowded desk. Amazon Fire TV Stick HD for $20 ($15 off): This is the budget pick in our guide to the best streaming devices . Blink Mini 2 for $20 ($20 off) : This deal ties the lowest price to date for the Blink Mini 2, which is the budget pick in our guide to the best security cameras . This one comes with its share of trade-offs for the low price — its image quality isn’t the best, it locks certain features behind a paywall and it won’t automatically arm when you leave the house — but it still provides functional 1080p video, color night vision, motion alerts and Alexa support in a weather-resistant frame.",
+      "abstractive_summary": "If you’re on a budget and looking to grab a new gadget on the cheap, we’ve rounded up a few actually decent tech deals that are available now and priced below $50. But if you’re on a budget and looking to grab a new gadget on the cheap, we’ve rounded up a few actually decent tech deals that are available now and priced below $50.",
+      "hybrid_summary": "If you’re on a budget and looking to grab a new gadget on the cheap, we’ve rounded up a few actually decent tech deals that are available now and priced below $50. Some of the discounts below have technically been live for a few days, but a good price is a good price, and the offers include several devices we recommend in our various buying guides . Its USB cable is on the shorter side, and it can’t match the overall accuracy of our top pick, but it’s still a clear upgrade over a built-in laptop camera for a much lower price. Also at Anker . It can’t provide the absolute fastest charge to your smartphone or laptop (topping out at a quick enough 67W), but it packs four USB ports — two USB-C, two USB-A — and three AC outlets in a frame that’s small enough to fit on a crowded desk. Amazon Fire TV Stick HD for $20 ($15 off): This is the budget pick in our guide to the best streaming devices . Blink Mini 2 for $20 ($20 off) : This deal ties the lowest price to date for the Blink Mini 2, which is the budget pick in our guide to the best security cameras . This one comes with its share of trade-offs for the low price — its image quality isn’t the best, it locks certain features behind a paywall and it won’t automatically arm when you leave the house — but it still provides functional 1080p video, color night vision, motion alerts and Alexa support in a weather-resistant frame.",
       "extractive_scores": {
         "rouge": {
           "rouge-1": {
@@ -574,49 +574,49 @@
       "abstractive_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 0.08946322067594434,
-            "p": 0.08946322067594434,
-            "r": 0.08946322067594434
+            "f": 0.11650485436893204,
+            "p": 0.11650485436893204,
+            "r": 0.11650485436893204
           },
           "rouge-2": {
-            "f": 0.08167330677290836,
-            "p": 0.08167330677290836,
-            "r": 0.08167330677290836
+            "f": 0.07976653696498054,
+            "p": 0.07976653696498054,
+            "r": 0.07976653696498054
           },
           "rouge-l": {
-            "f": 0.08946322067594434,
-            "p": 0.08946322067594434,
-            "r": 0.08946322067594434
+            "f": 0.1029126213592233,
+            "p": 0.1029126213592233,
+            "r": 0.1029126213592233
           }
         },
         "bertscore": {
-          "p": 0.9451605081558228,
-          "r": 0.7988958358764648,
-          "f1": 0.8658949732780457
+          "p": 0.9109353423118591,
+          "r": 0.7936102747917175,
+          "f1": 0.848235011100769
         }
       },
       "hybrid_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 0.4115702479338843,
-            "p": 0.4115702479338843,
-            "r": 0.4115702479338843
+            "f": 0.4399350649350649,
+            "p": 0.4399350649350649,
+            "r": 0.4399350649350649
           },
           "rouge-2": {
-            "f": 0.402317880794702,
-            "p": 0.402317880794702,
-            "r": 0.402317880794702
+            "f": 0.43089430894308944,
+            "p": 0.43089430894308944,
+            "r": 0.43089430894308944
           },
           "rouge-l": {
-            "f": 0.4115702479338843,
-            "p": 0.4115702479338843,
-            "r": 0.4115702479338843
+            "f": 0.4399350649350649,
+            "p": 0.4399350649350649,
+            "r": 0.4399350649350649
           }
         },
         "bertscore": {
-          "p": 0.9083803296089172,
-          "r": 0.8781569004058838,
-          "f1": 0.8930130004882812
+          "p": 0.912630558013916,
+          "r": 0.8871021866798401,
+          "f1": 0.8996853232383728
         }
       }
     },
@@ -626,7 +626,7 @@
       "original_content": "Food is probably the third most-discussed topic in Engadget’s Slack rooms. Having more than a few cuisine-obsessed folk on staff means when there’s an opportunity to review a new bit of cooking tech, we jump at the chance. Right now, thanks to Amazon’s Spring Sale , a long list of the kitchen tech we’ve covered is on sale. We’re seeing discounts on brands like KitchenAid, Breville, Instant Pot and more. So if it’s time to update your meal prep situation or invest in a time saver for weeknight dinners, check out the best deals on the kitchen tech we recommend. The best Amazon Spring Sale deals on air fryers, Instant Pots and more Breville Juice Fountain Plus for $140 ($40 off) : The powerful Juice Fountain impressed us with its extraction abilities. Plus it’s relatively easy to clean (as long as you do it right after you juice). It takes up a good amount of space, but can extract an impressive amount of juice from even the driest-seeming carrot. This price isn’t as low as the $110 Amazon sold it for back in January, but this is the lowest price we’ve tracked since then. Cosori 9-in-1 air frier for $90 ($30 off) : Cosori’s fryer earned a spot as the runner up for best overall air fryer in our guide. It has nine preset cooking modes and a six-quart capacity. We like that it doesn’t take up too much space, but can still cook up a decent amount of food Breville Smart Oven Air Fryer Pro for $320 ($80 off) : If you want a more traditional toaster oven design with a huge capacity, go for our premium air fryer pick. The fryer-and-oven combo can accommodate a five-quart dutch oven, so it’s almost an auxiliary oven, which could come in handy when you’re cooking for a crowd. This isn't an all-time low — it went for $300 at the end of last year. Breville the Smart Oven Air Fryer for $280 ($70 off) : This is the non-Pro version of the Breville air fryer we recommend . It has a slightly smaller capacity (0.8 cubic feet instead of one cubic foot) and is missing two cooking functions (dehydrate and proof). But if you’re not making your own jerky or baking a ton of bread, this one can toast, broil, air fry and slow cook. You can even get it in cool colors like Red Velvet Cake for the same price. Ninja DZ401 Foodi 10-quart air fryer for $190 ($40 off) : If you need to air fry two different foods at once, go for our recommendation for a dual-zone air fryer. It’s a beast, so we think it’s best for larger kitchens and people who make big meals. It went as low as $130 for Black Friday last year, but this is the cheapest price we’ve seen since then. Instant Vortex 2QT Mini Air Fryer for $50 ($10 off) : The budget pick in our guide doesn’t go on sale often — it’s already pretty cheap at its $60 list price. It’s sold for as little as $48 for Prime Day in July, but this is the cheapest we’ve seen since then. Its two-quart capacity is probably best for small kitchens and can crisp up food for one or two people. Ninja AF150AMZ Air Fryer for $120 (25 percent off) : This went as low as $100 for the holidays last year, but this matches the lowest price we’ve seen since then. The fryer gets an honorable mention in our air fryer guide because it makes good use of limited counter space with its taller design. The round cooking basket doesn’t feel as roomy as square ones but it does have a dehydrate option that other cookers don’t come with. KitchenAid Artisan 5-quart stand mixer for $380 ($80 off) : Small wonder that the home cook’s gold standard of mixers made its way onto our kitchen tech guide . Its ton of available attachments can be used to make pasta, grind food, strain or spiralize fruits and veggies and more. This is no unitasker. This is a solid $80 discount off of the MSRP, but we’ll note that Amazon sold it for as low as $330 at the end of last year and for $350 last month. KitchenAid Go Cordless Hand Blender for $100 ($30 off) : The big selling point here is the removable battery that you can use for other KitchenAid Go appliances. In our testing, it had enough power to turn a roasted butternut squash into a smooth, creamy soup. The blender has hit this price a few times over the past few months and the deal isn’t as good as the $77 it sold for at the end of last year. Instant Pot Duo Plus 9-in-1 Electric Pressure Cooker for $90 ($40 off) : We like this Instant Pot model because it's simple to use and has several quick-cooking modes including beans, cake, sous vide and more. It went as low as $70 earlier this year, but this is still a 30 percent discount off the list price. Instant Pot Pro Plus 9-in-1 Electric Pressure Cooker for $133 ($67 off) : We also suggest this fancier Pro Plus model in our guide to kitchen tech . It’s a Wi-Fi connected unit with a canning function and you can even release the steam remotely using the companion app — which has over 800 recipes. This isn't an all-time low — it was $125 earlier this week and dipped as low as $99 for Black Friday last year. Fellow Stagg EKG Pro electric kettle for $165 ($30 off) : This exquisitely designed kettle has an LCD panel built into the base so you can choose a specific temperature down to the degree. And the hold feature keeps water hot for up to an hour. This is the pro model of the version we recommend in our tea guide . Anova Culinary Sous Vide 3.0 for $129 ($70 off) : We named this the best overall sous vide machine after testing a number of models for our buyer’s guide. This is about $30 more than the low it hit for the holidays last year, but this is the lowest price we’ve seen in 2025. We appreciate the easy digital controls and found that the high flow rate maintains water temperature better than other machines. Plus, if you’re at a loss for what to cook, you can check out the companion app which is replete with recipes. Expired deals Anova Culinary Sous Vide Precision Cooker Nano for $100 ($50 off) : This is the machine that led our editor to dub these machines the “Millennial crockpot.” She uses this one a few times a week to make unfussy meals that keep her alive. The Nano model is a slightly smaller and less expensive version of the top pick in our buyer’s guide. This is about $10 more than the all-time low, but is the cheapest we’ve seen Amazon sell it for over the past couple of months. This article originally appeared on Engadget at https://www.engadget.com/deals/the-best-amazon-spring-sale-deals-on-kitchen-tech-from-ninja-breville-kitchenaid-and-others-092909576.html?src=rss",
       "textrank_summary": "We like that it doesn’t take up too much space, but can still cook up a decent amount of food Breville Smart Oven Air Fryer Pro for $320 ($80 off) : If you want a more traditional toaster oven design with a huge capacity, go for our premium air fryer pick. Ninja AF150AMZ Air Fryer for $120 (25 percent off) : This went as low as $100 for the holidays last year, but this matches the lowest price we’ve seen since then. This is a solid $80 discount off of the MSRP, but we’ll note that Amazon sold it for as low as $330 at the end of last year and for $350 last month. The blender has hit this price a few times over the past few months and the deal isn’t as good as the $77 it sold for at the end of last year. This is about $30 more than the low it hit for the holidays last year, but this is the lowest price we’ve seen in 2025.",
       "lexrank_summary": "We like that it doesn’t take up too much space, but can still cook up a decent amount of food Breville Smart Oven Air Fryer Pro for $320 ($80 off) : If you want a more traditional toaster oven design with a huge capacity, go for our premium air fryer pick. Its two-quart capacity is probably best for small kitchens and can crisp up food for one or two people. The blender has hit this price a few times over the past few months and the deal isn’t as good as the $77 it sold for at the end of last year. Instant Pot Duo Plus 9-in-1 Electric Pressure Cooker for $90 ($40 off) : We like this Instant Pot model because it's simple to use and has several quick-cooking modes including beans, cake, sous vide and more. Instant Pot Pro Plus 9-in-1 Electric Pressure Cooker for $133 ($67 off) : We also suggest this fancier Pro Plus model in our guide to kitchen tech .",
-      "lsa_summary": "The best Amazon Spring Sale deals on air fryers, Instant Pots and more Breville Juice Fountain Plus for $140 ($40 off) : The powerful Juice Fountain impressed us with its extraction abilities. We like that it doesn’t take up too much space, but can still cook up a decent amount of food Breville Smart Oven Air Fryer Pro for $320 ($80 off) : If you want a more traditional toaster oven design with a huge capacity, go for our premium air fryer pick. Breville the Smart Oven Air Fryer for $280 ($70 off) : This is the non-Pro version of the Breville air fryer we recommend . Ninja DZ401 Foodi 10-quart air fryer for $190 ($40 off) : If you need to air fry two different foods at once, go for our recommendation for a dual-zone air fryer. Instant Pot Pro Plus 9-in-1 Electric Pressure Cooker for $133 ($67 off) : We also suggest this fancier Pro Plus model in our guide to kitchen tech .",
+      "lsa_summary": "We like that it doesn’t take up too much space, but can still cook up a decent amount of food Breville Smart Oven Air Fryer Pro for $320 ($80 off) : If you want a more traditional toaster oven design with a huge capacity, go for our premium air fryer pick. Breville the Smart Oven Air Fryer for $280 ($70 off) : This is the non-Pro version of the Breville air fryer we recommend . Ninja DZ401 Foodi 10-quart air fryer for $190 ($40 off) : If you need to air fry two different foods at once, go for our recommendation for a dual-zone air fryer. Instant Pot Pro Plus 9-in-1 Electric Pressure Cooker for $133 ($67 off) : We also suggest this fancier Pro Plus model in our guide to kitchen tech . This is the pro model of the version we recommend in our tea guide .",
       "textrank_scores": {
         "rouge": {
           "rouge-1": {
@@ -678,30 +678,30 @@
       "lsa_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 0.23387668320340183,
-            "p": 0.23387668320340183,
-            "r": 0.23387668320340183
+            "f": 0.21233859397417504,
+            "p": 0.21233859397417504,
+            "r": 0.21233859397417504
           },
           "rouge-2": {
-            "f": 0.22711142654364797,
-            "p": 0.22711142654364797,
-            "r": 0.22711142654364797
+            "f": 0.20689655172413793,
+            "p": 0.20689655172413793,
+            "r": 0.20689655172413793
           },
           "rouge-l": {
-            "f": 0.23387668320340183,
-            "p": 0.23387668320340183,
-            "r": 0.23387668320340183
+            "f": 0.21233859397417504,
+            "p": 0.21233859397417504,
+            "r": 0.21233859397417504
           }
         },
         "bertscore": {
-          "p": 0.9158999919891357,
-          "r": 0.8590734601020813,
-          "f1": 0.8865770697593689
+          "p": 0.9018040299415588,
+          "r": 0.8431666493415833,
+          "f1": 0.8715001344680786
         }
       },
       "extractive_summary": "We like that it doesn’t take up too much space, but can still cook up a decent amount of food Breville Smart Oven Air Fryer Pro for $320 ($80 off) : If you want a more traditional toaster oven design with a huge capacity, go for our premium air fryer pick. Ninja AF150AMZ Air Fryer for $120 (25 percent off) : This went as low as $100 for the holidays last year, but this matches the lowest price we’ve seen since then. This is a solid $80 discount off of the MSRP, but we’ll note that Amazon sold it for as low as $330 at the end of last year and for $350 last month. The blender has hit this price a few times over the past few months and the deal isn’t as good as the $77 it sold for at the end of last year. This is about $30 more than the low it hit for the holidays last year, but this is the lowest price we’ve seen in 2025. Its two-quart capacity is probably best for small kitchens and can crisp up food for one or two people. Instant Pot Duo Plus 9-in-1 Electric Pressure Cooker for $90 ($40 off) : We like this Instant Pot model because it's simple to use and has several quick-cooking modes including beans, cake, sous vide and more.",
-      "abstractive_summary": "Amazon's Spring Sale is offering discounts on kitchen tech. Brands like KitchenAid, Breville, Instant Pot and more are on sale. If it's time to update your meal prep situation or invest in a time saver, check out the best deals.",
-      "hybrid_summary": "If it's time to update your meal prep situation or invest in a time saver, check out the best deals. We like that it doesn’t take up too much space, but can still cook up a decent amount of food Breville Smart Oven Air Fryer Pro for $320 ($80 off) : If you want a more traditional toaster oven design with a huge capacity, go for our premium air fryer pick. Its two-quart capacity is probably best for small kitchens and can crisp up food for one or two people. Ninja AF150AMZ Air Fryer for $120 (25 percent off) : This went as low as $100 for the holidays last year, but this matches the lowest price we’ve seen since then. This is a solid $80 discount off of the MSRP, but we’ll note that Amazon sold it for as low as $330 at the end of last year and for $350 last month. The blender has hit this price a few times over the past few months and the deal isn’t as good as the $77 it sold for at the end of last year. Instant Pot Duo Plus 9-in-1 Electric Pressure Cooker for $90 ($40 off) : We like this Instant Pot model because it's simple to use and has several quick-cooking modes including beans, cake, sous vide and more. This is about $30 more than the low it hit for the holidays last year, but this is the lowest price we’ve seen in 2025.",
+      "abstractive_summary": "Check out the best Amazon Spring Sale deals on air fryers, Instant Pots and more, as well as our picks for the best kitchen tech we’ve tested so far this year.... and don’t forget to follow us on Twitter and Facebook for the latest news.",
+      "hybrid_summary": "Check out the best Amazon Spring Sale deals on air fryers, Instant Pots and more, as well as our picks for the best kitchen tech we’ve tested so far this year.... and don’t forget to follow us on Twitter and Facebook for the latest news. We like that it doesn’t take up too much space, but can still cook up a decent amount of food Breville Smart Oven Air Fryer Pro for $320 ($80 off) : If you want a more traditional toaster oven design with a huge capacity, go for our premium air fryer pick. Its two-quart capacity is probably best for small kitchens and can crisp up food for one or two people. Ninja AF150AMZ Air Fryer for $120 (25 percent off) : This went as low as $100 for the holidays last year, but this matches the lowest price we’ve seen since then. This is a solid $80 discount off of the MSRP, but we’ll note that Amazon sold it for as low as $330 at the end of last year and for $350 last month. The blender has hit this price a few times over the past few months and the deal isn’t as good as the $77 it sold for at the end of last year. Instant Pot Duo Plus 9-in-1 Electric Pressure Cooker for $90 ($40 off) : We like this Instant Pot model because it's simple to use and has several quick-cooking modes including beans, cake, sous vide and more. This is about $30 more than the low it hit for the holidays last year, but this is the lowest price we’ve seen in 2025.",
       "extractive_scores": {
         "rouge": {
           "rouge-1": {
@@ -729,49 +729,49 @@
       "abstractive_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 0.06211180124223602,
-            "p": 0.06211180124223602,
-            "r": 0.06211180124223602
+            "f": 0.060324825986078884,
+            "p": 0.060324825986078884,
+            "r": 0.060324825986078884
           },
           "rouge-2": {
-            "f": 0.05132192846034215,
-            "p": 0.05132192846034215,
-            "r": 0.05132192846034215
+            "f": 0.035631293570875286,
+            "p": 0.035631293570875286,
+            "r": 0.035631293570875286
           },
           "rouge-l": {
-            "f": 0.055900621118012424,
-            "p": 0.055900621118012424,
-            "r": 0.055900621118012424
+            "f": 0.0525908739365816,
+            "p": 0.0525908739365816,
+            "r": 0.0525908739365816
           }
         },
         "bertscore": {
-          "p": 0.9334886074066162,
-          "r": 0.797035276889801,
-          "f1": 0.8598822355270386
+          "p": 0.8566607236862183,
+          "r": 0.7992007732391357,
+          "f1": 0.8269338011741638
         }
       },
       "hybrid_scores": {
         "rouge": {
           "rouge-1": {
-            "f": 0.33977348434377086,
-            "p": 0.33977348434377086,
-            "r": 0.33977348434377086
+            "f": 0.35756385068762275,
+            "p": 0.35756385068762275,
+            "r": 0.35756385068762275
           },
           "rouge-2": {
-            "f": 0.3322214809873249,
-            "p": 0.3322214809873249,
-            "r": 0.3322214809873249
+            "f": 0.32918032786885243,
+            "p": 0.32918032786885243,
+            "r": 0.32918032786885243
           },
           "rouge-l": {
-            "f": 0.33977348434377086,
-            "p": 0.33977348434377086,
-            "r": 0.33977348434377086
+            "f": 0.3366077275703994,
+            "p": 0.3366077275703994,
+            "r": 0.3366077275703994
           }
         },
         "bertscore": {
-          "p": 0.8989126682281494,
-          "r": 0.8651166558265686,
-          "f1": 0.8816909193992615
+          "p": 0.8902727961540222,
+          "r": 0.8655483722686768,
+          "f1": 0.8777364492416382
         }
       }
     }
@@ -806,46 +806,46 @@
       "bertscore_f1": 0.8959107875823975
     },
     "lsa": {
-      "rouge_rouge-1_f": 0.38329883540119447,
-      "rouge_rouge-1_p": 0.38329883540119447,
-      "rouge_rouge-1_r": 0.38329883540119447,
-      "rouge_rouge-2_f": 0.37598964055553136,
-      "rouge_rouge-2_p": 0.37598964055553136,
-      "rouge_rouge-2_r": 0.37598964055553136,
-      "rouge_rouge-l_f": 0.38329883540119447,
-      "rouge_rouge-l_p": 0.38329883540119447,
-      "rouge_rouge-l_r": 0.38329883540119447,
-      "bertscore_p": 0.9007163643836975,
-      "bertscore_r": 0.8493219375610351,
-      "bertscore_f1": 0.8740594863891602
+      "rouge_rouge-1_f": 0.3789912175553491,
+      "rouge_rouge-1_p": 0.3789912175553491,
+      "rouge_rouge-1_r": 0.3789912175553491,
+      "rouge_rouge-2_f": 0.37194666559162937,
+      "rouge_rouge-2_p": 0.37194666559162937,
+      "rouge_rouge-2_r": 0.37194666559162937,
+      "rouge_rouge-l_f": 0.3789912175553491,
+      "rouge_rouge-l_p": 0.3789912175553491,
+      "rouge_rouge-l_r": 0.3789912175553491,
+      "bertscore_p": 0.8978971719741822,
+      "bertscore_r": 0.8461405754089355,
+      "bertscore_f1": 0.8710440993309021
     },
     "abstractive": {
-      "rouge_rouge-1_f": 0.16817191275908377,
-      "rouge_rouge-1_p": 0.16817191275908377,
-      "rouge_rouge-1_r": 0.16817191275908377,
-      "rouge_rouge-2_f": 0.15747689328687942,
-      "rouge_rouge-2_p": 0.15747689328687942,
-      "rouge_rouge-2_r": 0.15747689328687942,
-      "rouge_rouge-l_f": 0.16459049544768936,
-      "rouge_rouge-l_p": 0.16459049544768936,
-      "rouge_rouge-l_r": 0.16459049544768936,
-      "bertscore_p": 0.9344465374946594,
-      "bertscore_r": 0.8080209970474244,
-      "bertscore_f1": 0.8664711356163025
+      "rouge_rouge-1_f": 0.15036319839056414,
+      "rouge_rouge-1_p": 0.15036319839056414,
+      "rouge_rouge-1_r": 0.15036319839056414,
+      "rouge_rouge-2_f": 0.0777661470462747,
+      "rouge_rouge-2_p": 0.0777661470462747,
+      "rouge_rouge-2_r": 0.0777661470462747,
+      "rouge_rouge-l_f": 0.10408377521645318,
+      "rouge_rouge-l_p": 0.10408377521645318,
+      "rouge_rouge-l_r": 0.10408377521645318,
+      "bertscore_p": 0.8845489859580994,
+      "bertscore_r": 0.7999328374862671,
+      "bertscore_f1": 0.8399535894393921
     },
     "best_single": {
-      "rouge_rouge-1_f": 0.5551773749965447,
-      "rouge_rouge-1_p": 0.5551773749965447,
-      "rouge_rouge-1_r": 0.5551773749965447,
-      "rouge_rouge-2_f": 0.5460098924485244,
-      "rouge_rouge-2_p": 0.5460098924485244,
-      "rouge_rouge-2_r": 0.5460098924485244,
-      "rouge_rouge-l_f": 0.5534268279505928,
-      "rouge_rouge-l_p": 0.5534268279505928,
-      "rouge_rouge-l_r": 0.5534268279505928,
-      "bertscore_p": 0.9316078662872315,
-      "bertscore_r": 0.8990375518798828,
-      "bertscore_f1": 0.9148094058036804
+      "rouge_rouge-1_f": 0.5597525810178885,
+      "rouge_rouge-1_p": 0.5597525810178885,
+      "rouge_rouge-1_r": 0.5597525810178885,
+      "rouge_rouge-2_f": 0.5428562259780774,
+      "rouge_rouge-2_p": 0.5428562259780774,
+      "rouge_rouge-2_r": 0.5428562259780774,
+      "rouge_rouge-l_f": 0.529355811811019,
+      "rouge_rouge-l_p": 0.529355811811019,
+      "rouge_rouge-l_r": 0.529355811811019,
+      "bertscore_p": 0.9286922574043274,
+      "bertscore_r": 0.8991202235221862,
+      "bertscore_f1": 0.9134752988815308
     }
   }
 }
