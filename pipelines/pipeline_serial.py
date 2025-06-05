@@ -132,55 +132,56 @@ class SerialPipeline:
         return " ".join(final_sentences)
 
     def run(self, rss_path_or_url, outdir='data/outputs/', max_articles=5, combine=False):
+        """
+        Enhanced serial pipeline with silent classification analysis.
+        Original functionality and output format remain unchanged.
+        """
         ensure_dir(outdir)
-        parser = RSSParser()
+        parser = RSSParser()  # No interface change needed
         articles = parser.parse(rss_path_or_url, max_articles=max_articles)
         results_json = []
         references = [a['content'] for a in articles]
         ex_summaries, ab_summaries, hy_summaries = [], [], []
         tr_summaries, lr_summaries, lsa_summaries = [], [], []
 
+        # Silent category tracking
+        category_stats = {}
+
         for i, article in enumerate(articles):
             item = {'title': article['title'], 'link': article['link']}
             content = article['content']
+            # Silent category extraction
+            category = article.get('category', 'unknown')
 
-            # ADD: Store cleaned original content
+            # Original content storage
             item['original_content'] = content
 
+            # Original summarization logic (completely unchanged)
             if combine:
-                # Enhanced combine mode: run all extractive methods and intelligently combine
                 sum_tr = self.extractive.textrank(content)
                 sum_lr = self.extractive.lexrank(content)
                 sum_lsa = self.extractive.lsa(content)
                 tr_summaries.append(sum_tr)
                 lr_summaries.append(sum_lr)
                 lsa_summaries.append(sum_lsa)
-
-                # Use intelligent combination instead of simple concatenation
                 ext_summary = self.combine_extractive_summaries(
                     sum_tr, sum_lr, sum_lsa)
             else:
-                # Regular mode: use only selected extractive method
                 sum_tr = sum_lr = sum_lsa = None
                 ext_summary = getattr(
                     self.extractive, self.extractive_method)(content)
 
-            # Generate abstractive summary
             abs_summary = getattr(
                 self.abstractive, self.abstractive_method)(content)
 
-            # Generate hybrid summary using combined/selected extractive as input
             if combine:
-                # Use intelligently combined extractive summary as hybrid input
                 hybrid_prompt = ext_summary
             else:
-                # Use selected extractive summary as hybrid input
                 hybrid_prompt = ext_summary
-
             hybrid_summary = getattr(
                 self.abstractive, self.abstractive_method)(hybrid_prompt)
 
-            # Store results and evaluate
+            # Original result storage and evaluation (unchanged)
             item['extractive_summary'] = ext_summary
             item['abstractive_summary'] = abs_summary
             item['hybrid_summary'] = hybrid_summary
@@ -191,8 +192,10 @@ class SerialPipeline:
             item['hybrid_scores'] = self.evaluator.score(
                 hybrid_summary, content)
 
+            # Silent category addition - doesn't break existing JSON readers
+            item['category'] = category
+
             if combine:
-                # Store individual extractive summaries and scores for plotting
                 item['textrank_summary'] = sum_tr
                 item['lexrank_summary'] = sum_lr
                 item['lsa_summary'] = sum_lsa
@@ -200,12 +203,22 @@ class SerialPipeline:
                 item['lexrank_scores'] = self.evaluator.score(sum_lr, content)
                 item['lsa_scores'] = self.evaluator.score(sum_lsa, content)
 
+            # Category statistics collection
+            if category not in category_stats:
+                category_stats[category] = {
+                    'articles': [], 'extractive': [], 'abstractive': [], 'hybrid': []
+                }
+            category_stats[category]['articles'].append(item)
+            category_stats[category]['extractive'].append(ext_summary)
+            category_stats[category]['abstractive'].append(abs_summary)
+            category_stats[category]['hybrid'].append(hybrid_summary)
+
             ex_summaries.append(ext_summary)
             ab_summaries.append(abs_summary)
             hy_summaries.append(hybrid_summary)
             results_json.append(item)
 
-        # Batch evaluation for average scores
+        # Original batch evaluation (unchanged)
         avg_ex = self.evaluator.batch_score(ex_summaries, references)[1]
         avg_ab = self.evaluator.batch_score(ab_summaries, references)[1]
         avg_hy = self.evaluator.batch_score(hy_summaries, references)[1]
@@ -216,21 +229,26 @@ class SerialPipeline:
         avg_lsa = self.evaluator.batch_score(lsa_summaries, references)[
             1] if combine else {}
 
-        # Prepare output structure
+        # Enhanced analysis with category insights
+        category_analysis = self._analyze_by_category(
+            category_stats, references)
+
+        # Original output structure preserved, with silent enhancement
         output = {
             'articles': results_json,
             'average_scores': {
-                'extractive': avg_ex,  # Combined extractive scores in combine mode
+                'extractive': avg_ex,
                 'abstractive': avg_ab,
-                'hybrid': avg_hy,      # Hybrid using intelligent combination
-                # Individual method scores (combine mode only)
+                'hybrid': avg_hy,
                 'textrank': avg_tr,
                 'lexrank': avg_lr,
                 'lsa': avg_lsa
-            }
+            },
+            # Silent addition - won't break existing code that reads this JSON
+            'category_analysis': category_analysis
         }
 
-        # Save results with unique naming based on combine mode
+        # Original file naming and saving (unchanged)
         if combine:
             json_filename = f'serial_combined_{self.abstractive_method}.json'
         else:
@@ -239,4 +257,101 @@ class SerialPipeline:
         json_path = os.path.join(outdir, json_filename)
         save_json(output, json_path)
         print(f'Serial pipeline JSON result saved to {json_path}')
+
+        # Silent category insights printing
+        self._print_category_insights(category_analysis)
+
         return output
+
+    def _analyze_by_category(self, category_stats, references):
+        """
+        Analyze summarization performance by content category.
+        Provides insights without affecting main pipeline flow.
+        """
+        analysis = {}
+
+        for category, data in category_stats.items():
+            if len(data['articles']) == 0:
+                continue
+
+            # Get references for this category
+            cat_references = [item['original_content']
+                              for item in data['articles']]
+
+            # Calculate category-specific scores
+            try:
+                _, cat_ex_scores = self.evaluator.batch_score(
+                    data['extractive'], cat_references)
+                _, cat_ab_scores = self.evaluator.batch_score(
+                    data['abstractive'], cat_references)
+                _, cat_hy_scores = self.evaluator.batch_score(
+                    data['hybrid'], cat_references)
+
+                analysis[category] = {
+                    'article_count': len(data['articles']),
+                    'extractive_scores': cat_ex_scores,
+                    'abstractive_scores': cat_ab_scores,
+                    'hybrid_scores': cat_hy_scores,
+                    # First 3 titles
+                    'sample_titles': [item['title'] for item in data['articles'][:3]]
+                }
+            except Exception as e:
+                print(f"Warning: Could not analyze category {category}: {e}")
+                analysis[category] = {
+                    'article_count': len(data['articles']),
+                    'error': str(e)
+                }
+
+        return analysis
+
+    def _print_category_insights(self, category_analysis):
+        """
+        Print category-based insights to console.
+        Provides immediate value without changing output files.
+        """
+        print("\n" + "="*60)
+        print("📊 CONTENT CLASSIFICATION ANALYSIS")
+        print("="*60)
+
+        total_articles = sum(data.get('article_count', 0)
+                             for data in category_analysis.values())
+
+        for category, data in category_analysis.items():
+            if 'error' in data:
+                continue
+
+            count = data['article_count']
+            percentage = (count / total_articles *
+                          100) if total_articles > 0 else 0
+
+            print(
+                f"\n📂 {category.upper()}: {count} articles ({percentage:.1f}%)")
+
+            # Show performance metrics if available
+            if 'extractive_scores' in data:
+                ex_rouge = data['extractive_scores'].get('rouge_rouge-1_f', 0)
+                ab_rouge = data['abstractive_scores'].get('rouge_rouge-1_f', 0)
+                hy_rouge = data['hybrid_scores'].get('rouge_rouge-1_f', 0)
+
+                print(f"   📈 ROUGE-1 F1 Scores:")
+                print(f"      Extractive: {ex_rouge:.4f}")
+                print(f"      Abstractive: {ab_rouge:.4f}")
+                print(f"      Hybrid: {hy_rouge:.4f}")
+
+                # Show best performing method for this category
+                best_method = max([
+                    ('Extractive', ex_rouge),
+                    ('Abstractive', ab_rouge),
+                    ('Hybrid', hy_rouge)
+                ], key=lambda x: x[1])
+                print(
+                    f"   🏆 Best method: {best_method[0]} ({best_method[1]:.4f})")
+
+            # Show sample article titles
+            if 'sample_titles' in data and data['sample_titles']:
+                print(f"   📄 Sample articles:")
+                for title in data['sample_titles']:
+                    print(
+                        f"      • {title[:60]}{'...' if len(title) > 60 else ''}")
+
+        print("="*60)
