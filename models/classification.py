@@ -30,12 +30,15 @@ class BertClassifier:
         # You should customize this externally
         self.label_map = {i: f"Label_{i}" for i in range(num_labels)}
 
-    def classify(self, text, return_label=True):
+    # models/classification.py
+
+    def classify(self, text, return_label=True, return_confidence=False):
         """
         Classify a single text using BERT.
         :param text: Text to classify
         :param return_label: If True, return label name, else return logits
-        :return: Predicted label name or logits
+        :param return_confidence: If True, also return confidence scores
+        :return: Predicted label name, confidence scores (optional), or logits
         """
         self.model.eval()
         inputs = self.tokenizer(text, return_tensors="pt",
@@ -45,10 +48,38 @@ class BertClassifier:
             logits = outputs.logits
             probs = F.softmax(logits, dim=1)
             pred_idx = torch.argmax(probs, dim=1).item()
+            confidence = probs[0][pred_idx].item()
+
         if return_label:
-            return self.label_map.get(pred_idx, str(pred_idx))
+            result = self.label_map.get(pred_idx, str(pred_idx))
+            if return_confidence:
+                # Return all class probabilities for analysis
+                all_probs = {self.label_map.get(i, str(i)): probs[0][i].item()
+                             for i in range(len(self.label_map))}
+                return result, confidence, all_probs
+            return result
         else:
             return logits.cpu().numpy()
+
+    def classify_with_scores(self, text):
+        """
+        Classify text and return detailed scoring information.
+        :param text: Text to classify
+        :return: Dict with prediction, confidence, and all class scores
+        """
+        label, confidence, all_probs = self.classify(
+            text, return_confidence=True)
+
+        # Sort probabilities by score
+        sorted_probs = sorted(
+            all_probs.items(), key=lambda x: x[1], reverse=True)
+
+        return {
+            'predicted_label': label,
+            'confidence': confidence,
+            'all_scores': all_probs,
+            'top_3_predictions': sorted_probs[:3]
+        }
 
     def batch_classify(self, texts, return_label=True):
         """

@@ -263,10 +263,11 @@ class SerialPipeline:
 
         return output
 
+    # pipelines/pipeline_serial.py
+
     def _analyze_by_category(self, category_stats, references):
         """
-        Analyze summarization performance by content category.
-        Provides insights without affecting main pipeline flow.
+        Enhanced category analysis including classification confidence metrics.
         """
         analysis = {}
 
@@ -274,11 +275,31 @@ class SerialPipeline:
             if len(data['articles']) == 0:
                 continue
 
-            # Get references for this category
+            # Calculate classification confidence statistics
+            confidences = []
+            classification_details = []
+
+            for item in data['articles']:
+                conf = item.get('classification_confidence', 0.0)
+                confidences.append(conf)
+
+                if 'top_3_predictions' in item:
+                    classification_details.append({
+                        'title': item['title'][:50] + '...',
+                        'confidence': conf,
+                        'top_3': item['top_3_predictions']
+                    })
+
+            # Calculate classification quality metrics
+            avg_confidence = sum(confidences) / \
+                len(confidences) if confidences else 0.0
+            min_confidence = min(confidences) if confidences else 0.0
+            max_confidence = max(confidences) if confidences else 0.0
+
+            # Existing summarization analysis
             cat_references = [item['original_content']
                               for item in data['articles']]
 
-            # Calculate category-specific scores
             try:
                 _, cat_ex_scores = self.evaluator.batch_score(
                     data['extractive'], cat_references)
@@ -292,22 +313,30 @@ class SerialPipeline:
                     'extractive_scores': cat_ex_scores,
                     'abstractive_scores': cat_ab_scores,
                     'hybrid_scores': cat_hy_scores,
-                    # First 3 titles
-                    'sample_titles': [item['title'] for item in data['articles'][:3]]
+                    'sample_titles': [item['title'] for item in data['articles'][:3]],
+                    # New classification metrics
+                    'classification_quality': {
+                        'avg_confidence': avg_confidence,
+                        'min_confidence': min_confidence,
+                        'max_confidence': max_confidence,
+                        'confidence_std': np.std(confidences) if len(confidences) > 1 else 0.0
+                    },
+                    'classification_details': classification_details
                 }
             except Exception as e:
-                print(f"Warning: Could not analyze category {category}: {e}")
                 analysis[category] = {
                     'article_count': len(data['articles']),
-                    'error': str(e)
+                    'classification_quality': {
+                        'avg_confidence': avg_confidence,
+                        'error': str(e)
+                    }
                 }
 
         return analysis
 
     def _print_category_insights(self, category_analysis):
         """
-        Print category-based insights to console.
-        Provides immediate value without changing output files.
+        Enhanced insights printing including classification confidence.
         """
         print("\n" + "="*60)
         print("📊 CONTENT CLASSIFICATION ANALYSIS")
@@ -327,7 +356,40 @@ class SerialPipeline:
             print(
                 f"\n📂 {category.upper()}: {count} articles ({percentage:.1f}%)")
 
-            # Show performance metrics if available
+            # Classification confidence metrics
+            if 'classification_quality' in data:
+                qual = data['classification_quality']
+                avg_conf = qual.get('avg_confidence', 0)
+                min_conf = qual.get('min_confidence', 0)
+                max_conf = qual.get('max_confidence', 0)
+
+                print(f"   🎯 Classification Confidence:")
+                print(f"      Average: {avg_conf:.4f}")
+                print(f"      Range: {min_conf:.4f} - {max_conf:.4f}")
+
+                # Confidence quality indicator
+                if avg_conf > 0.8:
+                    print(f"      Quality: 🟢 High confidence")
+                elif avg_conf > 0.6:
+                    print(f"      Quality: 🟡 Medium confidence")
+                else:
+                    print(f"      Quality: 🔴 Low confidence (review needed)")
+
+            # Show detailed classification for low-confidence items
+            if 'classification_details' in data:
+                low_conf_items = [item for item in data['classification_details']
+                                  if item['confidence'] < 0.7]
+                if low_conf_items:
+                    print(f"   ⚠️  Low confidence classifications:")
+                    for item in low_conf_items[:2]:  # Show top 2
+                        print(
+                            f"      • {item['title']} (conf: {item['confidence']:.3f})")
+                        top_3 = item.get('top_3', [])
+                        if len(top_3) >= 2:
+                            print(
+                                f"        Alternative: {top_3[1][0]} ({top_3[1][1]:.3f})")
+
+            # Original summarization metrics
             if 'extractive_scores' in data:
                 ex_rouge = data['extractive_scores'].get('rouge_rouge-1_f', 0)
                 ab_rouge = data['abstractive_scores'].get('rouge_rouge-1_f', 0)
@@ -338,7 +400,6 @@ class SerialPipeline:
                 print(f"      Abstractive: {ab_rouge:.4f}")
                 print(f"      Hybrid: {hy_rouge:.4f}")
 
-                # Show best performing method for this category
                 best_method = max([
                     ('Extractive', ex_rouge),
                     ('Abstractive', ab_rouge),
@@ -347,11 +408,4 @@ class SerialPipeline:
                 print(
                     f"   🏆 Best method: {best_method[0]} ({best_method[1]:.4f})")
 
-            # Show sample article titles
-            if 'sample_titles' in data and data['sample_titles']:
-                print(f"   📄 Sample articles:")
-                for title in data['sample_titles']:
-                    print(
-                        f"      • {title[:60]}{'...' if len(title) > 60 else ''}")
-
-        print("="*60)
+            print("="*60)

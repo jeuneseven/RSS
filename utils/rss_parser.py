@@ -80,12 +80,19 @@ class RSSParser:
                 # Silent classification enhancement - doesn't break existing code
                 if self.classification_enabled:
                     try:
-                        category = self.classifier.classify(content)
-                        article_data['category'] = category
-                    except Exception:
+                        classification_result = self.classifier.classify_with_scores(
+                            content)
+                        article_data['category'] = classification_result['predicted_label']
+                        article_data['classification_confidence'] = classification_result['confidence']
+                        article_data['classification_scores'] = classification_result['all_scores']
+                        article_data['top_3_predictions'] = classification_result['top_3_predictions']
+                    except Exception as e:
                         article_data['category'] = 'unknown'
+                        article_data['classification_confidence'] = 0.0
+                        article_data['classification_error'] = str(e)
                 else:
                     article_data['category'] = 'unknown'
+                    article_data['classification_confidence'] = 0.0
 
                 results.append(article_data)
 
