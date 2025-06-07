@@ -34,12 +34,13 @@ class BertClassifier:
 
     def classify(self, text, return_label=True, return_confidence=False):
         """
-        Classify a single text using BERT.
-        :param text: Text to classify
-        :param return_label: If True, return label name, else return logits
-        :param return_confidence: If True, also return confidence scores
-        :return: Predicted label name, confidence scores (optional), or logits
+        Classify a single text using BERT with optional confidence scores.
         """
+        if not text or not text.strip():
+            if return_confidence:
+                return "unknown", 0.0, {}
+            return "unknown" if return_label else None
+
         self.model.eval()
         inputs = self.tokenizer(text, return_tensors="pt",
                                 truncation=True, max_length=512).to(self.device)
@@ -51,35 +52,47 @@ class BertClassifier:
             confidence = probs[0][pred_idx].item()
 
         if return_label:
-            result = self.label_map.get(pred_idx, str(pred_idx))
+            label = self.label_map.get(pred_idx, f"unknown_{pred_idx}")
             if return_confidence:
-                # Return all class probabilities for analysis
-                all_probs = {self.label_map.get(i, str(i)): probs[0][i].item()
+                # Return all class probabilities
+                all_probs = {self.label_map.get(i, f"class_{i}"): float(probs[0][i].item())
                              for i in range(len(self.label_map))}
-                return result, confidence, all_probs
-            return result
+                return label, float(confidence), all_probs
+            return label
         else:
             return logits.cpu().numpy()
 
     def classify_with_scores(self, text):
         """
         Classify text and return detailed scoring information.
-        :param text: Text to classify
-        :return: Dict with prediction, confidence, and all class scores
         """
-        label, confidence, all_probs = self.classify(
-            text, return_confidence=True)
+        try:
+            label, confidence, all_probs = self.classify(
+                text, return_confidence=True)
 
-        # Sort probabilities by score
-        sorted_probs = sorted(
-            all_probs.items(), key=lambda x: x[1], reverse=True)
+            # Sort probabilities by score
+            sorted_probs = sorted(
+                all_probs.items(), key=lambda x: x[1], reverse=True)
 
-        return {
-            'predicted_label': label,
-            'confidence': confidence,
-            'all_scores': all_probs,
-            'top_3_predictions': sorted_probs[:3]
-        }
+            return {
+                'predicted_label': label,
+                'confidence': confidence,
+                'all_scores': all_probs,
+                'top_3_predictions': sorted_probs[:3],
+                'success': True
+            }
+        except Exception as e:
+            print(f"Classification error: {e}")
+            import traceback
+            traceback.print_exc()
+            return {
+                'predicted_label': 'unknown',
+                'confidence': 0.0,
+                'all_scores': {},
+                'top_3_predictions': [],
+                'success': False,
+                'error': str(e)
+            }
 
     def batch_classify(self, texts, return_label=True):
         """

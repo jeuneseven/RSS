@@ -17,32 +17,45 @@ class RSSParser:
 
     def __init__(self, min_content_words=30, timeout=10):
         """
-        Initialize RSS parser with optional classification capability.
-        Classification is enabled silently without affecting existing interface.
+        Initialize RSS parser with zero-shot classification.
         """
         self.min_content_words = min_content_words
         self.timeout = timeout
 
-        # Silent classification initialization
+        # Initialize zero-shot classifier
         try:
-            from models.classification import BertClassifier
-            self.classifier = BertClassifier(num_labels=6)
-            self.classifier.set_label_map({
-                0: "technology", 1: "sports", 2: "politics",
-                3: "business", 4: "entertainment", 5: "health"
-            })
+            from models.pretrained_classifier import PretrainedClassifier
+            print("🔄 Initializing zero-shot classifier...")
+            self.classifier = PretrainedClassifier()
             self.classification_enabled = True
-            print("✓ Classification enabled")
+            print("✅ Zero-shot classifier ready")
+
+            # Test classification to ensure it works
+            test_result = self.classifier.classify_with_scores(
+                "This is a test article about Samsung technology products and AI appliances.")
+            if test_result['success']:
+                print(
+                    f"✅ Classification test passed: {test_result['predicted_label']} (conf: {test_result['confidence']:.3f})")
+            else:
+                print(
+                    f"❌ Classification test failed: {test_result.get('error', 'Unknown error')}")
+                self.classification_enabled = False
+
         except Exception as e:
-            print(f"⚠ Classification not available: {e}")
+            print(f"❌ Zero-shot classifier initialization failed: {e}")
+            import traceback
+            traceback.print_exc()
             self.classification_enabled = False
 
     def parse(self, rss_path_or_url, max_articles=5):
         """
-        Parse RSS feed with silent classification enhancement.
-        Original parsing logic remains unchanged.
+        Parse RSS feed with zero-shot classification and detailed logging.
         """
-        # Original RSS parsing logic (unchanged)
+        print(f"🔄 Parsing RSS: {rss_path_or_url}")
+        print(
+            f"📊 Zero-shot classification enabled: {self.classification_enabled}")
+
+        # Load RSS
         if rss_path_or_url.startswith("http"):
             feed = feedparser.parse(rss_path_or_url)
         else:
@@ -50,15 +63,23 @@ class RSSParser:
                 feed = feedparser.parse(f.read())
 
         results = []
-        for entry in feed.entries[:max_articles]:
+        for i, entry in enumerate(feed.entries[:max_articles]):
+            print(
+                f"\n📄 Processing article {i+1}/{min(max_articles, len(feed.entries))}")
+
             title = entry.get('title', '')
+            print(f"   Title: {title[:60]}{'...' if len(title) > 60 else ''}")
+
             content = entry.get('content', [{'value': ''}])[0].get(
                 'value', '') or entry.get('summary', '') or entry.get('description', '')
             content = self.clean_html(content)
             link = entry.get('link', '')
 
-            # Original content validation and fallback logic (unchanged)
+            print(f"   Content length: {len(content.split())} words")
+
+            # Fallback: fetch full article if content is too short
             if len(content.split()) < self.min_content_words and link:
+                print(f"   🔄 Content too short, fetching from URL...")
                 try:
                     resp = requests.get(link, timeout=self.timeout)
                     if resp.status_code == 200:
@@ -69,33 +90,70 @@ class RSSParser:
                             largest = max(
                                 tags, key=lambda t: len(t.get_text()))
                             content = self.clean_html(largest.get_text())
-                except Exception:
-                    pass
+                            print(
+                                f"   ✅ Fetched content: {len(content.split())} words")
+                except Exception as e:
+                    print(f"   ❌ Failed to fetch content: {e}")
 
-            # Final content validation (unchanged)
+            # Final check for minimum content
             if len(content.split()) >= self.min_content_words:
                 article_data = {'title': title,
                                 'content': content, 'link': link}
 
-                # Silent classification enhancement - doesn't break existing code
+                # Zero-shot classification with detailed logging
                 if self.classification_enabled:
-                    try:
-                        classification_result = self.classifier.classify_with_scores(
-                            content)
-                        article_data['category'] = classification_result['predicted_label']
-                        article_data['classification_confidence'] = classification_result['confidence']
+                    print(f"   🤖 Running zero-shot classification...")
+
+                    # Use title + first part of content for classification
+                    classification_text = f"{title}. {' '.join(content.split()[:200])}"
+                    print(
+                        f"   📝 Classification text: {len(classification_text.split())} words")
+
+                    classification_result = self.classifier.classify_with_scores(
+                        classification_text)
+
+                    if classification_result['success']:
+                        predicted_label = classification_result['predicted_label']
+                        confidence = classification_result['confidence']
+
+                        article_data['category'] = predicted_label
+                        article_data['classification_confidence'] = confidence
                         article_data['classification_scores'] = classification_result['all_scores']
                         article_data['top_3_predictions'] = classification_result['top_3_predictions']
-                    except Exception as e:
+                        article_data['classification_method'] = classification_result['method']
+
+                        print(
+                            f"   ✅ Classification: {predicted_label} (confidence: {confidence:.4f})")
+                        print(
+                            f"   📊 Top 3: {classification_result['top_3_predictions'][:3]}")
+
+                        # Show detailed scores for debugging
+                        print(f"   🔍 All scores:")
+                        for cat, score in sorted(classification_result['all_scores'].items(),
+                                                 key=lambda x: x[1], reverse=True):
+                            print(f"      {cat}: {score:.4f}")
+
+                    else:
+                        print(
+                            f"   ❌ Classification failed: {classification_result.get('error', 'Unknown error')}")
                         article_data['category'] = 'unknown'
                         article_data['classification_confidence'] = 0.0
-                        article_data['classification_error'] = str(e)
+                        article_data['classification_error'] = classification_result.get(
+                            'error', 'Classification failed')
+                        article_data['classification_method'] = 'failed'
                 else:
+                    print(f"   ⚠️ Classification disabled")
                     article_data['category'] = 'unknown'
                     article_data['classification_confidence'] = 0.0
+                    article_data['classification_method'] = 'disabled'
 
                 results.append(article_data)
+                print(f"   ✅ Article processed successfully")
+            else:
+                print(
+                    f"   ❌ Content too short ({len(content.split())} words), skipping")
 
+        print(f"\n📊 Processed {len(results)} articles successfully")
         return results
 
     @staticmethod
