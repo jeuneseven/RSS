@@ -104,50 +104,470 @@
           "f1": 0.8815635442733765
         }
       }
+    },
+    {
+      "title": "Amazon’s Zoox issued a robotaxi software recall after a crash in Las Vegas",
+      "link": "https://www.theverge.com/news/662321/amazon-zoox-recall-robotaxi-las-vegas-crash-software-fix",
+      "original_content": "Amazon-owned Zoox says it issued a software recall for all 270 of its vehicles after an unoccupied robotaxi in Las Vegas crashed into a passenger vehicle on April 8th, Reuters reports . The update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph closed in on another vehicle that approaches its lane from a perpendicular driveway before stopping. In a press release on Tuesday , Zoox said there was only minor damage to both vehicles and no injuries were reported. Zoox shared how the incident played out in the voluntary safety recall report it sent to the National Highway Traffic Safety Administration (NHTSA) on May 1st: The incident involved a passenger car quickly approaching the lane where our purpose-built robotaxi was traveling. Anticipating that the passenger car would proceed forward, the Zoox robotaxi slowed down and steered to the right. Instead, the car came to a stop, fully yielding to the Zoox robotaxi and remaining in the shoulder lane. The Zoox robotaxi braked hard, but contact was unavoidable. The report states that, prior to the update, the company says, “In situations where Zoox vehicles are operating at speeds greater than 40mph, and a vehicle incrementally encroaches from a perpendicular driveway approaching the Zoox vehicle’s lane, the Zoox vehicle may make an inaccurately confident prediction that the vehicle is going to proceed into the Zoox vehicle’s lane.” Reacting based on that inaccurate projection could cause a crash, as happened here. A March recall notice from Zoox also notes that after two incidents where its Toyota Highlander-based robotaxis performed sudden hard braking, causing approaching motorcyclists to rear-end them , it rolled out a software update to address the problem last November.",
+      "category": "technology",
+      "classification_confidence": 0.5207815766334534,
+      "classification_scores": {
+        "technology": 0.5207815766334534,
+        "entertainment": 0.12921486794948578,
+        "business": 0.11698192358016968,
+        "health": 0.09935051202774048,
+        "politics": 0.0675637349486351,
+        "sports": 0.06610726565122604
+      },
+      "top_3_predictions": [
+        [
+          "technology",
+          0.5207815766334534
+        ],
+        [
+          "entertainment",
+          0.12921486794948578
+        ],
+        [
+          "business",
+          0.11698192358016968
+        ]
+      ],
+      "classification_method": "zero-shot",
+      "extractive_summary": "The update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph closed in on another vehicle that approaches its lane from a perpendicular driveway before stopping. Zoox shared how the incident played out in the voluntary safety recall report it sent to the National Highway Traffic Safety Administration (NHTSA) on May 1st: The incident involved a passenger car quickly approaching the lane where our purpose-built robotaxi was traveling. Instead, the car came to a stop, fully yielding to the Zoox robotaxi and remaining in the shoulder lane. The report states that, prior to the update, the company says, “In situations where Zoox vehicles are operating at speeds greater than 40mph, and a vehicle incrementally encroaches from a perpendicular driveway approaching the Zoox vehicle’s lane, the Zoox vehicle may make an inaccurately confident prediction that the vehicle is going to proceed into the Zoox vehicle’s lane.” Reacting based on that inaccurate projection could cause a crash, as happened here. A March recall notice from Zoox also notes that after two incidents where its Toyota Highlander-based robotaxis performed sudden hard braking, causing approaching motorcyclists to rear-end them , it rolled out a software update to address the problem last November.",
+      "abstractive_summary": "Zoox says it issued a software recall for all 270 of its vehicles after an unoccupied robotaxi in Las Vegas crashed into a passenger vehicle on April 8th. The update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph closed in on another vehicle that approaches its lane.",
+      "hybrid_summary": "The update rolled out between April 16th and 17th to address a risky situation that could arise when the vehicle operating at over 40mph closed in on another vehicle. Zoox shared how the incident played out in a voluntary safety recall report it sent to the National Highway Traffic Safety Administration.",
+      "extractive_scores": {
+        "rouge": {
+          "rouge-1": {
+            "f": 0.8431372549019608,
+            "p": 0.8431372549019608,
+            "r": 0.8431372549019608
+          },
+          "rouge-2": {
+            "f": 0.8346456692913385,
+            "p": 0.8346456692913385,
+            "r": 0.8346456692913385
+          },
+          "rouge-l": {
+            "f": 0.8431372549019608,
+            "p": 0.8431372549019608,
+            "r": 0.8431372549019608
+          }
+        },
+        "bertscore": {
+          "p": 0.9701837301254272,
+          "r": 0.9410295486450195,
+          "f1": 0.9553842544555664
+        }
+      },
+      "abstractive_scores": {
+        "rouge": {
+          "rouge-1": {
+            "f": 0.3426966292134831,
+            "p": 0.3426966292134831,
+            "r": 0.3426966292134831
+          },
+          "rouge-2": {
+            "f": 0.33333333333333337,
+            "p": 0.33333333333333337,
+            "r": 0.33333333333333337
+          },
+          "rouge-l": {
+            "f": 0.3426966292134831,
+            "p": 0.3426966292134831,
+            "r": 0.3426966292134831
+          }
+        },
+        "bertscore": {
+          "p": 0.95528244972229,
+          "r": 0.8386837840080261,
+          "f1": 0.8931939005851746
+        }
+      },
+      "hybrid_scores": {
+        "rouge": {
+          "rouge-1": {
+            "f": 0.2947976878612717,
+            "p": 0.2947976878612717,
+            "r": 0.2947976878612717
+          },
+          "rouge-2": {
+            "f": 0.27906976744186046,
+            "p": 0.27906976744186046,
+            "r": 0.27906976744186046
+          },
+          "rouge-l": {
+            "f": 0.2890173410404624,
+            "p": 0.2890173410404624,
+            "r": 0.2890173410404624
+          }
+        },
+        "bertscore": {
+          "p": 0.9374485015869141,
+          "r": 0.8287064433097839,
+          "f1": 0.8797298073768616
+        }
+      }
+    },
+    {
+      "title": "The best fitness trackers to buy right now",
+      "link": "https://www.theverge.com/22985108/best-fitness-tracker",
+      "original_content": "Fitness trackers have come a long way from the simple bands that tracked steps and little else. Modern trackers can monitor everything from your heart health to how well you’ve recovered from a hard bout of training. Even flagship smartwatches, which used to be lackluster trackers, have become pretty adept workout companions. Whatever your fitness goals are, there’s probably a fitness tracker that can help you achieve them. Compared to some other gadgets, wearables are incredibly personal, which means there are a few extra considerations you’ll have to take into account before reaching for your wallet. It makes it hard to say that any one fitness tracker is the best for everyone. Thankfully, the best thing about fitness trackers in 2025 is that there’s enough variety to fit into every kind of lifestyle. Featured in this article How we test fitness trackers Fitness trackers are meant to help you keep track of your health and activity. We do a mix of benchmark testing and experiential, real-life testing. That means snoozing with them, taking them out on GPS activities like runs and hikes, working up a sweat in several workouts, and comparing how they do against long-term control devices for heart rate, sleep, and GPS accuracy. Some factors we consider in our rankings are durability, performance, accuracy versus consistency in metrics, and of course, battery life. Audience Who is this fitness tracker for? The ideal fitness tracker for hardcore athletes will look different than the best one for casual users looking to get a few more steps in. Battery life A fitness tracker should be able to go at least two to three days between charges. If it’s a flagship smartwatch, it should at least offer quick charging. Form factor Is it a band or a smartwatch? Is it comfortable to wear 24/7? Metrics What metrics does this device track? We prioritize active minutes over steps and calorie burn, but health metrics like resting heart rate, VO2 Max, and sleep quality are plusses. Consistency Accuracy is nice, but it’s more important for measuring progress that your device delivers consistent results for heart rate, distance tracking, and steps. Platform Certain trackers are limited to specific phone ecosystems — others will work regardless of what your phone is. We prioritize the latter wherever possible. Best fitness tracker overall Size: 43mm w/ 20mm straps / Weight: 29.5g for standard, 31.7g for premium / Battery life: Up to 10 days / Display type: OLED touchscreen / GPS: Five GNSS systems / Connectivity: Bluetooth, Wi-Fi / Water resistance: 5ATM / Music storage: N/A Hear us out: the Amazfit Active 2 is the new all-rounder on the block. Smartwatches are definitely getting more high-tech, but the Active 2 keeps the spirit of a humble fitness tracker — a good price, all the basic health features with a holistic tracking approach, and a comfy yet stylish design. At $99.99 for the standard version, and $129.99 for the premium version, you get an incredible amount of bang for your buck. The hardware and design are surprisingly chic for the price. The standard version has a stainless steel case and tempered glass screen, while the premium version bumps you up to sapphire crystal and gets you an extra leather strap. The screen itself is nice and bright at 2,000 nits and you get an estimated 10 days of regular use on a single charge. (In testing, I got closer to eight to nine days as a power-user.) European users also get NFC payments. As far as health features go, you get all the basics like continuous heart rate monitoring, blood oxygen rate, heart rate variability, stress tracking, alerts for abnormally high and low heart rate, and skin temperature tracking. It’s also got a daily readiness score and detailed sleep tracking if you’re into recovery metrics. (There’s also a Zepp Aura AI chatbot if you ever want to get more in-depth insights into your recovery metrics; It costs an extra $77 yearly but it’s also totally optional.) For workouts, it supports 160 different sport types, including HYROX and a new strength training mode that automatically counts reps. The Active 2 also adds offline maps, turn-by-turn directions, the ability to connect to third-party peripherals, and Zepp Coach — an AI-powered coach that can generate custom training plans for you. Built-in GPS with five satellite systems is also included. I don’t have a lot to complain about. My biggest gripes are the touch screen is hard to use with sweaty fingers and the onboard AI assistant for voice commands sometimes requires you to enunciate. You do lack advanced health features, like EKGs or sleep apnea detection, but that’s not really the point of something like the Active 2. This is meant to be a classic, basic fitness tracker that happens to look like a watch — and it does that with aplomb. Read my full Amazfit Active 2 review . Best fitness watch for casual users Sizes: 40mm w/ 20mm straps / Weight: 38g / Battery life: Up to 11 days / Display type: OLED touchscreen / GPS: All-systems GNSS / Connectivity: Bluetooth, Ant Plus / Water resistance: 5ATM / Music storage: 4GB (for Music Edition) The $250 Garmin Venu Sq 2 is the watch I recommend for anyone looking to replace their aging Fitbit Versa 2 , 3, or 4. It’s got a similar look and vibe, with a much nicer OLED display and longer battery life. Garmin is known for its comprehensive fitness tracking, and that’s not an exception here. Of course, you get the basics, like steps and calories burned, but you get a whole lot more, too. There’s built-in GPS for tracking walks, runs, and bike rides, as well as plenty of other sports profiles like yoga and strength training. For smart features, you get push notifications, timers, contactless payments, and a bunch of safety features like Garmin’s Incident Detection, which is its take on fall detection. (You will need to carry your phone with you, however, as this doesn’t have LTE.) If you want the option of onboard music, you can shell out $50 extra for the Music Edition, which comes with enough storage for about 500 songs. I wouldn’t recommend it, however, as you’ll most likely have your phone on you since this isn’t a true standalone watch. What I like most about this watch, however, is that it’s one that you can grow with. On top of recovery metrics and sleep tracking, it also has Garmin Coach — a built-in, free training program for beginner and intermediate-level runners hoping to tackle a 5K, 10K, or half marathon. For health tracking, you can monitor heart rate, blood oxygen, intensity minutes (how many minutes of moderate exercise you get per week), stress, hydration, respiratory rate, and menstrual cycles. None of these existing data features are locked behind a paywall; however, Garmin recently introduced a premium tier that provides personalized AI-powered insights and additional features for $6.99 a month (or $69.99 a year). One note: there is a Venu 3 , which adds a newer heart rate sensor and nap detection. I liked it quite a bit, and it ticks off a lot of the right boxes — except for price. It’s $450, which puts it outside what I’d consider ideal for casual users. The other option is Garmin’s Forerunner 165 — it’s a $249 budget training watch that’s quite similar to the Venu Sq 2 feature-wise, albeit with a sportier vibe. Basically, go with what you find on sale. I firmly believe older models are still a good choice if all you want is the fitness-tracking basics. This is especially true since newer software updates often make their way to older Garmins. Garmin users also tend to hang onto their devices for a good while. Strava’s 2023 year-end survey found that the most popular smartwatch among its users was an eight-year-old Garmin ! Read my full review Garmin Venu Sq 2 review . Best for serious outdoor athletes Sizes: 7S Pro: 42mm w/ 20mm straps; 7: 47mm w/ 22mm straps; 7X: 51mm w/ 26mm straps / Weight: 7S Pro: 63g (Solar), 58g or 65g (Sapphire Solar, titanium or stainless steel); 7: 79g (Solar), 73g (Sapphire Solar); 7X: 96g (Solar), 89g (Sapphire Solar) / Battery life: 7S: up to 11 days, 14 w/ Solar; 7: up to 18 days, 22 days w/ solar; 7X: up to 28 days, 37 w/ solar / Display type: MIP touchscreen / GPS: All-systems GNSS and dual-frequency GPS / Connectivity: Bluetooth, Ant Plus, Wi-Fi / Water resistance: 10ATM / Music storage: Up to 32GB Garmin’s flagship Fenix 7 series is no joke, and the Fenix 7 Pro lineup takes it up a notch. It’s got built-in multiband GPS, solar charging on all models, the option of touchscreen or button navigation, topographical maps, and oodles upon oodles of data. Plus, every Fenix 7 Pro model has a hands-free LED flashlight, an upgraded heart rate sensor, and an improved memory-in-pixel display that’s slightly easier to read in low lighting. Garmin wearables are also known for providing extensive in-depth metrics, and the Fenix 7 Pro lineup is no exception. You get excellent recovery metrics as well as helpful training guides and coaching programs. The best part is that Garmin doesn’t charge extra for those features. That’s good news, as these are expensive watches. I appreciate how quickly these Fenix 7 watches can pick up a GPS signal. That’s a must if you’re training in the dead of winter. These watches can also take a beating. All models are built to military-grade standards and feature up to 10ATM of water resistance. That means they’re more than capable of a dunk in the ocean. Although the screen is brighter, MIP displays still aren’t my absolute favorite — the OLED on the Garmin Epix 2 and the Epix Pro are much easier on the eyes. It’s admittedly tough to pick between the Fenix 7, Fenix 7 Pro, Epix 2, and Epix Pro lineups — especially now that the Epix Pro also has great battery life, the LED flashlight, and now comes in multiple sizes. What it boils down to is whether you prioritize a brighter display, longer battery life, or price. Personally, I prefer the Epix Pro for better readability, but the Fenix 7 Pro is the better choice if this is your first introduction to Garmin’s platform. You’ll get better battery life, the same LED flashlight, all the same training features, and a lower starting price. (You can also check out our Garmin buying guide if you’d like even more alternatives.) Technically, there’s a new Fenix 8 series on the block. That said, I still think the standard Fenix 7 or 7 Pro lineup is the better overall value. The Fenix 8 adds diving features and voice assistant capabilities, but it also ups the standard Fenix 7’s starting price of $650 by an additional $350. That’s tough to swallow, especially since retailers may offer discounts on older models to get rid of existing inventory. Read my full Garmin Fenix 7S Pro review . Best non-wrist tracker Sizes: 12 proprietary sizes, 4–15, sizing kit needed / Weight: 4–6g (depends on size) / Battery life: Up to seven days / Display type: None / GPS: None / Connectivity: Bluetooth / Water resistance: Up to 328 feet / Music storage: None The vast majority of fitness trackers are worn on the wrist, but the $349 Oura Ring isn’t. The smart ring is a good option for people who are looking for something a little more discreet. It’s also less distracting than some other wrist-based options, as it lacks a screen and doesn’t mirror push notifications from your phone. The new Oura Ring 4 isn’t functionally that much different from the previous Gen 3. It’s slimmer, features a new all-titanium design, has improved battery life, and has a new sensor algorithm that Oura says is more accurate. None of the new software features are gatekept to the Ring 4, so Gen 3 owners shouldn’t feel the need to upgrade unless their ring no longer lasts more than two days on a single charge. That said, the fourth-gen ring has an expanded size range spanning from 4 to 15. If you felt your Gen 3 was a bit snug or couldn’t find a size that fit right, you may have a better option now. While smaller than your average wearable, the Oura Ring still tracks a ton of metrics, including heart rate variability, body temperature, blood oxygen, all-day heart rate monitoring, and cycle tracking. Since launching, the Oura Ring has also added activity tracking, blood oxygen levels, chronotypes to help visualize your circadian rhythms, a social feature called Circles, improved stress tracking, and cardiovascular age and capacity metrics. More recently, it’s added an AI chatbot, meal logging, and glucose tracking, though you’ll have to purchase a $99 Dexcom Stelo CGM to take advantage of the latter. It’s rolled out a more accurate sleep stages algorithm as well, and the app has been entirely revamped to better organize the new features and metrics. The Oura Ring tracks typical metrics — such as steps and calories burned — but its main focus is sleep and recovery. Each day, you’re given three sets of scores for your readiness, sleep, and activity. It’s a simple, holistic look at your overall wellness and an ideal pick if you want a more hands-off experience with your data. If you’ve got a Samsung Galaxy Watch, you may want to consider the $399.99 Galaxy Ring . It’s a bit more expensive than the base Oura Ring, but it doesn’t come with a subscription, and you get much better battery life when used with the Galaxy Watch. The hardware is also excellent, especially the charging case. That said, this is only an option for Android users, and even then, you don’t unlock its full potential unless you’ve got other Samsung gear. I also recommend the Ultrahuman Ring Air for folks who don’t like the idea of Oura’s monthly subscription. You can read my experiences with a bunch of other smart rings , but right now, the Oura Ring is the most polished with the best overall experience. Read my full Oura Ring 4 review . Best fitness band Size: 42mm x 24mm x 12.2mm with 16mm straps / Weight: 28g / Battery life: Up to 18 days / Display type: OLED / GPS: Tethered / Connectivity: Bluetooth / Water resistance: 5ATM / Music storage: None It’s truly hard to beat the Amazfit Band 7’s $49.99 price — doubly so since you can often find it on sale for even less. Wearing the Band 7 feels like a throwback to 2014, which is great if all you’re looking for is a simple and casual tracker that won’t break the bank. No one is going to compliment you on the Band 7’s design, but it’s got a handful of cute watch faces that make good use of its OLED touchscreen. And despite having an OLED display, you’ll still get roughly 14 days of battery life on a single charge. It’s also incredibly lightweight, making it a good option for sleep tracking as well. You also get an absurd number of features for the price. That includes Amazon Alexa, continuous heart rate monitoring, blood oxygen monitoring, stress tracking, advanced sleep tracking, training metrics like VO2 max and load, abnormal heart rate alerts, menstrual tracking, push notifications, find my phone, a camera remote, and even a Pomodoro timer. You’re sacrificing contactless payments and will have to settle for tethered GPS, but this is a fair tradeoff considering everything else you’re getting. It’s not the best option for hardcore fitness tracking, but this is a great option if all you’re looking to do is casually track activity and your steps. Amazfit’s been making surprisingly good budget trackers for a while. That said, if you’re a little wary of a lesser-known brand, the $159.95 Fitbit Charge 6 is a decent alternative. It’s pricier, but you get a lot of what Amazfit is missing. That includes Google services like YouTube Music, Google Wallet, and Google Maps. Plus, it has built-in GPS and the ability to broadcast your heart rate with some Bluetooth-compatible gym equipment. Read my full Amazfit Band 7 review . Most stylish fitness watch Sizes: 37mm with 18mm straps / Weight: 45g / Battery life: Up to 39 days / Display type: OLED display / GPS: Tethered GPS / Connectivity: Bluetooth / Water resistance: 5ATM / Music storage: N/A The $249.95 Withings ScanWatch Light is a fetching hybrid analog smartwatch. Think of it as a dressier fitness band with some Swatch-like design sensibilities. It’s got all your basics like simple push notifications, timers, and alarms. Plus, you can track steps, sleep, menstrual cycles, and GPS activities straight from the wrist. It looks spiffy on the wrist, and if you like a pop of color, Withings offers minty green and pale blue color options. It’s also got excellent battery life, with an estimated 30 days on a single charge. I got a little less in testing at around 25 days, but that’s still much better than the vast majority of flagship smartwatches. This also looks way more stylish than beefier multisport watches with similar battery life. As its name suggests, the Light is a pared-down version of the $349.95 ScanWatch 2. The main things you’re missing are an EKG sensor for atrial fibrillation detection, a temperature sensor, blood oxygen tracking, and an altimeter for tracking elevation. For basic fitness tracking, you don’t really need those sensors. That’s why I think the extra $100 in savings is worth it for the Light, especially since both are lacking in safety features, contactless payments, and some other bells and whistles you can get from other watches in the $350 price range. That said, if you want extras, the ScanWatch 2 also gets you a slightly more elegant look thanks to the second step-counter dial. Another option I like is the $179.99 Garmin Vivomove Sport , which actually dominated this category in the past few years. It’s hard to beat the price, especially since it gets you access to Garmin’s platform. However, Garmin’s “hidden” OLED display can get washed out in bright lighting, and battery life was significantly shorter than other hybrid analog watches at around five days. Still, if you’d prefer a platform with a focus on fitness rather than wellness, the Vivomove Sport may be the better move over a Withings watch. Read my full reviews of the Withings ScanWatch 2 and Light . Best fitness tracker for iPhone users Sizes: 42mm, 46mm / Weight: 29.3g (42mm), 35.3g (46mm) / Battery life: Up to 18 hours / Display type: Always-on LTPO OLED / GPS: Built-in GPS, plus GLONASS, Galileo, QZSS, Beidou / Connectivity: LTE (optional), Bluetooth, Wi-Fi / Water resistance: Up to 50 meters / Music storage: 32GB If you’re looking for a smartwatch that does fitness well, then iPhone owners need to look no further than the $399 Apple Watch Series 10. (The LTE version costs $50 more.) This is another iterative update, but the Series 10 is a much more comfortable watch than previous models. It’s thinner and lighter, plus there’s a larger display. If you’ve got a Series 5 or older, now is a good time to upgrade. With watchOS 11, there’s a new suite of training features. There’s Training Load , which gives you greater insight into how intensely you’ve been working out the past week compared to the last 28 days. There’s also a new Vitals app that flags when key metrics, like sleep duration or heart rate, may be out of whack. Plus, you can finally pause your rings for rest days. The software update also brings some savvy updates to the Smart Stack. For example, if you’re in a noisy cafe wondering what song’s playing, the Smart Stack can now surface the Shazaam widget. It also now supports Live Activities, turning your wrist into a mini Dynamic Island. Health-wise, we also now have FDA-cleared sleep apnea detection. Of course, we also have to address the Apple Watch ban . As of January 18th, 2024, new Apple Watches sold in the US have the blood oxygen feature disabled due to an ongoing patent battle with medical device maker Masimo. This isn’t a huge deal for most people, as this feature isn’t that useful for most people yet, and the new sleep apnea feature exclusively uses the accelerometer rather than the blood oxygen sensor. You might want to consider a refurbished Series 7 or 8 if blood oxygen sensing is important to you, however. If you’re a first-time buyer, you can also opt for the second-gen Apple Watch SE . It’s slightly cheaper at $249, and while you don’t get as many features, it’s a good introduction to the ecosystem. Otherwise, if you’re the type of athlete who covets a Garmin, you may also want to consider splurging on the Apple Watch Ultra 2 . It’s more expensive at $799, but it does have the brightest screen of any Apple Watch, comes with dual-frequency GPS, has diving and hiking safety features, and is made of more durable materials. There’s also a fetching new black color . Read my full Apple Watch Series 10 review . Best fitness smartwatch for Samsung phones Sizes: 47mm / Weight: 60.5g / Battery life: Up to 100 hours / Display type: Always-on OLED / GPS: Built-in GPS / Connectivity: LTE (optional), Bluetooth, Wi-Fi / Water resistance: 10ATM, IP68 / Music storage: 32GB Truthfully, the Samsung Galaxy Watch Ultra left me a bit disappointed after reviewing it — not because it’s a bad piece of hardware, but because it copies a bit too much from Apple. Even so, this is the most full-featured fitness smartwatch a Samsung phone owner can buy. While I prefer the Galaxy Watch 7 myself, I can’t say it’s the best for fitness tracking. There was too much of a gap between it and the Ultra in my testing as far as accuracy, especially for GPS tracking. But what really sealed the deal for me was the difference in battery life. It’s simply night and day, and the Galaxy Watch 7 really struggled in this arena. (The gaps are much less egregious between the base Apple Watch and Ultra 2.) The caveat is, if all you want is casual fitness tracking, the Galaxy Watch 7 is the better choice for wearability. It’s just more comfortable for sleep tracking and lighter overall. Just keep in mind it lacks the Ultra’s emergency siren and shortcut button, and the screen doesn’t get quite as bright. With both watches, you get a faster processor, a new 3-in-1 BioActive Sensor, some AI health features, and FDA-cleared sleep apnea detection. The newer hardware makes for a more futureproof purchase, but I found the AI health features to be hit-or-miss in practice. As always, some features, like EKGs and sleep apnea detection, are limited to Samsung owners. That makes this hard to wholeheartedly recommend this to non-Samsung Android users. But if the Ultra doesn’t float your boat, now is a good time to find the Galaxy Watch 6 series , particularly the base models, on sale. The base Galaxy Watch 7 may have newer hardware, but as far as actual use goes, it’s not a massive update over the Watch 6. And if you’re into a physical rotating bezel, just go ahead and snag a Galaxy Watch 6 Classic. Read my full Samsung Galaxy Watch Ultra review . Best fitness smartwatch for Android Sizes: 41mm, 45mm / Weight: 31g / Battery life: Up to 24 hours / Display type: Always-on OLED / GPS: Built-in GPS / Connectivity: LTE (optional), Bluetooth, Wi-Fi / Water resistance: 5ATM / Music storage: 32GB With the Pixel Watch 3, Google is finally done playing catch-up. There are truly too many updates to call each one out individually, but overall, they fall into two buckets: refinement and expansion. The hardware is mostly the same as the Pixel Watch 2 in terms of design. However, we now have a brighter screen, smaller bezels, and a new 45mm size. The larger size is quite nice, especially if you prefer larger screens without sacrificing wearability. Battery life is also better. There’s a new battery-saver mode that kicks in when you hit 15 percent, and the new displays are also more power efficient. Plus, bedtime mode is automatic now, so that helps the watch last longer overnight for sleep tracking. It’s only a modest improvement over the Pixel Watch 2, but it’s dramatic compared to the original. Software is where the Pixel Watch 3 makes the most updates. There are a ton of new fitness and health features, including a new running dashboard, custom running workouts, and AI-generated workout suggestions. There’s also a revamped Daily Readiness Score and a new Cardio Load metric, which gauges how intensely you’ve been exercising. If you’re located in the US or Europe, you can also take advantage Google’s new Loss of Pulse feature, which calls emergency services on your behalf if it detects you no longer have a pulse. The Pixel Watch 3 also better integrates with Google services and the Pixel ecosystem. You can now view your Nest Doorbell or Camera feed straight from the wrist — and it’s quite handy if you get a lot of packages or guests. If you have Google TV, you can use the watch as a remote. Now that the watch has an ultra wideband chip, it can also now unlock your Pixel phone. You can also use the Recorder app to capture audio and send it straight to your Pixel phone. That said, some of these features now mean the Pixel Watch works best with a Pixel phone. If you’re looking for alternatives to Google and Samsung, the $299.99 OnePlus Watch 2 is a strong alternative. You’re giving up LTE, but it’s a handsome-looking watch with surprisingly long battery life and Google Assistant from the get-go. Read my full Google Pixel Watch 3 review . Best for early adopters and elite athletes Sizes: 43mm by 28mm by 10mm / Weight: 18g / Battery life: 4–5 days / Display type: None / GPS: None / Connectivity: Bluetooth / Water resistance: Up to 10 meters / Music storage: None The Whoop 4.0 is not for the casual enthusiast. Not only does it come with an expensive monthly subscription, but the information it provides is only useful if you’re actively training for a cardio-intensive sport. If strength training is your main form of exercise, you’re better off looking elsewhere. Like the Oura Ring, this is a distraction-free tracker that specializes in sleep and recovery. The main difference is this has a more athletic bent. For instance, you’ll get way more insight into how much strain you’ve taken on in the past week. Whoop also provides a lot of novel ways to wear its tracker , including in underwear and arm/knee sleeves. This makes it an appealing option if you’re one of those unicorns who needs a secondary tracker to supplement another form of fitness tracking. Again, this is a tracker best appreciated by people who go hard and aren’t afraid to experiment. Plus, Whoop recently lowered its subscription prices in certain tiers, so while it’s still expensive, it’s not quite as pricey as it used to be. Read my full Whoop 4.0 review . What’s coming next We’re currently testing the OnePlus Watch 3 , which recently received a $20 price hike due to ongoing “market conditions” (read: tariffs). The $349.99 smartwatch offers a proper rotating crown and a larger, brighter display than the OnePlus Watch 2. It also introduces new health features, including a wrist temperature sensor and OnePlus’ 60S Health Check-In, which gives you a quick scan of your heart rate, blood oxygen levels, mental wellness, wrist temperature, sleep quality, and vascular age when you touch a side button. Samsung launched the $59.99 Galaxy Fit 3 in the US on January 9th. The budget-friendly fitness band, which we’re also in the process of testing, doesn’t come with built-in GPS like Samsung’s pricier Galaxy Watch 7 , but it can monitor your sleep patterns and heart rate, check blood oxygen levels, detect snoring, and track more than 100 workout types. It also features a 1.6-inch AMOLED display and should last up to 13 days on a single charge. Lastly, we’re also testing the $299 RingConn Gen 2 . We weren’t super impressed with the original , but the second-gen model does have a few things going for it over the Oura Ring 4. It provides access to all your standard health-tracking features without a subscription, for one thing, and it features both an IP68 dust and water resistance rating and sleep apnea detection. The company also says it offers longer battery life, which is impressive given its predecessor lasted us up to nine days on a single charge. Update, May 6th: Adjusted pricing / availability and added new details for both the OnePlus Watch 3 and Oura Ring 4.",
+      "category": "technology",
+      "classification_confidence": 0.42489945888519287,
+      "classification_scores": {
+        "technology": 0.42489945888519287,
+        "health": 0.18661116063594818,
+        "sports": 0.16623689234256744,
+        "entertainment": 0.1122712641954422,
+        "business": 0.07946900278329849,
+        "politics": 0.03051215410232544
+      },
+      "top_3_predictions": [
+        [
+          "technology",
+          0.42489945888519287
+        ],
+        [
+          "health",
+          0.18661116063594818
+        ],
+        [
+          "sports",
+          0.16623689234256744
+        ]
+      ],
+      "classification_method": "zero-shot",
+      "extractive_summary": "Smartwatches are definitely getting more high-tech, but the Active 2 keeps the spirit of a humble fitness tracker — a good price, all the basic health features with a holistic tracking approach, and a comfy yet stylish design. Best for serious outdoor athletes Sizes: 7S Pro: 42mm w/ 20mm straps; 7: 47mm w/ 22mm straps; 7X: 51mm w/ 26mm straps / Weight: 7S Pro: 63g (Solar), 58g or 65g (Sapphire Solar, titanium or stainless steel); 7: 79g (Solar), 73g (Sapphire Solar); 7X: 96g (Solar), 89g (Sapphire Solar) / Battery life: 7S: up to 11 days, 14 w/ Solar; 7: up to 18 days, 22 days w/ solar; 7X: up to 28 days, 37 w/ solar / Display type: MIP touchscreen / GPS: All-systems GNSS and dual-frequency GPS / Connectivity: Bluetooth, Ant Plus, Wi-Fi / Water resistance: 10ATM / Music storage: Up to 32GB Garmin’s flagship Fenix 7 series is no joke, and the Fenix 7 Pro lineup takes it up a notch. It’s a bit more expensive than the base Oura Ring, but it doesn’t come with a subscription, and you get much better battery life when used with the Galaxy Watch. That’s why I think the extra $100 in savings is worth it for the Light, especially since both are lacking in safety features, contactless payments, and some other bells and whistles you can get from other watches in the $350 price range. Best fitness smartwatch for Samsung phones Sizes: 47mm / Weight: 60.5g / Battery life: Up to 100 hours / Display type: Always-on OLED / GPS: Built-in GPS / Connectivity: LTE (optional), Bluetooth, Wi-Fi / Water resistance: 10ATM, IP68 / Music storage: 32GB Truthfully, the Samsung Galaxy Watch Ultra left me a bit disappointed after reviewing it — not because it’s a bad piece of hardware, but because it copies a bit too much from Apple.",
+      "abstractive_summary": "Fitness trackers have come a long way from the simple bands that tracked steps and little else. Modern trackers can monitor everything from your heart health to how well you’ve recovered from a hard bout of training. The Amazfit Active 2 keeps the spirit of a humble fitness tracker with a holistic tracking approach.",
+      "hybrid_summary": "Garmin’s flagship Fenix 7 series is no joke, and the Fenix7 Pro lineup takes it up a notch. The Samsung Galaxy Watch Ultra left me a bit disappointed after reviewing it. It copies a bit too much from Apple. You get much better battery life when used with the Galaxy Watch.",
+      "extractive_scores": {
+        "rouge": {
+          "rouge-1": {
+            "f": 0.11571185479296653,
+            "p": 0.11571185479296653,
+            "r": 0.11571185479296653
+          },
+          "rouge-2": {
+            "f": 0.11462076792131642,
+            "p": 0.11462076792131642,
+            "r": 0.11462076792131642
+          },
+          "rouge-l": {
+            "f": 0.11571185479296653,
+            "p": 0.11571185479296653,
+            "r": 0.11571185479296653
+          }
+        },
+        "bertscore": {
+          "p": 0.8122783899307251,
+          "r": 0.8174750804901123,
+          "f1": 0.8148684501647949
+        }
+      },
+      "abstractive_scores": {
+        "rouge": {
+          "rouge-1": {
+            "f": 0.021834061135371178,
+            "p": 0.021834061135371178,
+            "r": 0.021834061135371178
+          },
+          "rouge-2": {
+            "f": 0.020651310563939634,
+            "p": 0.020651310563939634,
+            "r": 0.020651310563939634
+          },
+          "rouge-l": {
+            "f": 0.021834061135371178,
+            "p": 0.021834061135371178,
+            "r": 0.021834061135371178
+          }
+        },
+        "bertscore": {
+          "p": 0.9330595135688782,
+          "r": 0.809247612953186,
+          "f1": 0.8667543530464172
+        }
+      },
+      "hybrid_scores": {
+        "rouge": {
+          "rouge-1": {
+            "f": 0.02025819265143992,
+            "p": 0.02025819265143992,
+            "r": 0.02025819265143992
+          },
+          "rouge-2": {
+            "f": 0.018279356248758198,
+            "p": 0.018279356248758198,
+            "r": 0.018279356248758198
+          },
+          "rouge-l": {
+            "f": 0.019463753723932473,
+            "p": 0.019463753723932473,
+            "r": 0.019463753723932473
+          }
+        },
+        "bertscore": {
+          "p": 0.8340570330619812,
+          "r": 0.780792772769928,
+          "f1": 0.8065464496612549
+        }
+      }
+    },
+    {
+      "title": "Meta awarded $167.25 million over Pegasus spyware attack",
+      "link": "https://www.theverge.com/news/662242/meta-nso-group-pegasus-whatsapp-hack-damages",
+      "original_content": "NSO Group, the Israeli spyware-maker behind Pegasus, must pay Meta $167.25 million for hacking 1,400 users across WhatsApp. A federal jury in California made the decision on Tuesday after the court found the NSO Group liable for the attacks last year. Meta sued NSO Group in 2019 after Citizen Lab found a vulnerability that allowed the spyware vendor to install Pegasus through a phone call – even if users didn’t pick up. Pegasus could then turn on a user’s camera and microphone, look through emails and text messages, and access location information. The hack targeted activists, journalists, diplomats, and others. Apple has also sued the NSO Group for targeting iPhone users with Pegasus. The jury also awarded Meta $444,719 in compensatory damages. “Today’s verdict in WhatsApp’s case is an important step forward for privacy and security as the first victory against the development and use of illegal spyware that threatens the safety and privacy of everyone,” Meta said in an announcement . “The jury’s decision to force NSO, a notorious foreign spyware merchant, to pay damages is a critical deterrent to this malicious industry.” Going forward, Meta will attempt to secure a court order preventing the NSO Group from targeting WhatsApp. It has also published the unofficial transcripts from deposition videos during the trial, and says it will make a donation to digital rights organizations working to protect users from spyware. NSO Group spokesperson Gil Lainer says the company “will carefully examine the verdict’s details and pursue appropriate legal remedies, including further proceedings and an appeal.” Update, May 6th: Added information from NSO Group.",
+      "category": "technology",
+      "classification_confidence": 0.47856301069259644,
+      "classification_scores": {
+        "technology": 0.47856301069259644,
+        "business": 0.13490809500217438,
+        "politics": 0.1253850907087326,
+        "entertainment": 0.1148337870836258,
+        "sports": 0.07429667562246323,
+        "health": 0.07201334089040756
+      },
+      "top_3_predictions": [
+        [
+          "technology",
+          0.47856301069259644
+        ],
+        [
+          "business",
+          0.13490809500217438
+        ],
+        [
+          "politics",
+          0.1253850907087326
+        ]
+      ],
+      "classification_method": "zero-shot",
+      "extractive_summary": "A federal jury in California made the decision on Tuesday after the court found the NSO Group liable for the attacks last year. “Today’s verdict in WhatsApp’s case is an important step forward for privacy and security as the first victory against the development and use of illegal spyware that threatens the safety and privacy of everyone,” Meta said in an announcement . “The jury’s decision to force NSO, a notorious foreign spyware merchant, to pay damages is a critical deterrent to this malicious industry.” Going forward, Meta will attempt to secure a court order preventing the NSO Group from targeting WhatsApp. It has also published the unofficial transcripts from deposition videos during the trial, and says it will make a donation to digital rights organizations working to protect users from spyware. NSO Group spokesperson Gil Lainer says the company “will carefully examine the verdict’s details and pursue appropriate legal remedies, including further proceedings and an appeal.” Update, May 6th: Added information from NSO Group.",
+      "abstractive_summary": "NSO Group, the Israeli spyware-maker behind Pegasus, must pay Meta $167.25 million for hacking 1,400 users across WhatsApp. The hack targeted activists, journalists, diplomats, and others. Apple has also sued the NSO Group for targeting iPhone users with Pegasus.",
+      "hybrid_summary": "A federal jury in California made the decision on Tuesday. The court found the NSO Group liable for the attacks last year. The jury’s decision to force NSO, a notorious foreign spyware merchant, to pay damages is a critical deterrent to this malicious industry.",
+      "extractive_scores": {
+        "rouge": {
+          "rouge-1": {
+            "f": 0.7636363636363637,
+            "p": 0.7636363636363637,
+            "r": 0.7636363636363637
+          },
+          "rouge-2": {
+            "f": 0.7579908675799086,
+            "p": 0.7579908675799086,
+            "r": 0.7579908675799086
+          },
+          "rouge-l": {
+            "f": 0.7636363636363637,
+            "p": 0.7636363636363637,
+            "r": 0.7636363636363637
+          }
+        },
+        "bertscore": {
+          "p": 0.974202036857605,
+          "r": 0.9241279363632202,
+          "f1": 0.9485045671463013
+        }
+      },
+      "abstractive_scores": {
+        "rouge": {
+          "rouge-1": {
+            "f": 0.26751592356687903,
+            "p": 0.26751592356687903,
+            "r": 0.26751592356687903
+          },
+          "rouge-2": {
+            "f": 0.2564102564102564,
+            "p": 0.2564102564102564,
+            "r": 0.2564102564102564
+          },
+          "rouge-l": {
+            "f": 0.26751592356687903,
+            "p": 0.26751592356687903,
+            "r": 0.26751592356687903
+          }
+        },
+        "bertscore": {
+          "p": 0.9482818245887756,
+          "r": 0.8336105942726135,
+          "f1": 0.8872564435005188
+        }
+      },
+      "hybrid_scores": {
+        "rouge": {
+          "rouge-1": {
+            "f": 0.2839116719242902,
+            "p": 0.2839116719242902,
+            "r": 0.2839116719242902
+          },
+          "rouge-2": {
+            "f": 0.26666666666666666,
+            "p": 0.26666666666666666,
+            "r": 0.26666666666666666
+          },
+          "rouge-l": {
+            "f": 0.2839116719242902,
+            "p": 0.2839116719242902,
+            "r": 0.2839116719242902
+          }
+        },
+        "bertscore": {
+          "p": 0.946280300617218,
+          "r": 0.8376263976097107,
+          "f1": 0.8886443972587585
+        }
+      }
+    },
+    {
+      "title": "Be careful what you read about an Elden Ring movie",
+      "link": "https://www.theverge.com/news/662200/elden-ring-movie-nexus-point-news-be-careful",
+      "original_content": "On Tuesday, a publication called Nexus Point News published a headline for what looked to be a major piece of entertainment news: \"EXCLUSIVE: Alex Garland Set To Direct 'Elden Ring' Film For A24.\" The article claimed that Elden Ring \"is expected to be Garland's next film\" and that shooting is expected to start in 2026. But don't get your hopes up: soon after the article was published, Nexus Point News pulled it, and the publication won't say why. How this article made the rounds is an interesting case study in the way news travels on the internet. We first saw the Nexus Point News article from a Wario64 post on X. Generally, Wario64 is a great account to follow to see breaking news in video games almost as soon as it happens. And the account is quite popular, with more than 1 million followers on X. But none of us at The Verge had ever heard of Nexus Point News , let alone recognized it as a place that reliably breaks entertainment news, so something didn't seem right. (Another recent Nexus Point News \"exclusive\" includes a potential cast member \"being eyed\" for one of the male leads of Star Wars: Starfighter , but the article includes an update that says \"a LucasFilm spokesperso … Read the full story at The Verge.",
+      "category": "entertainment",
+      "classification_confidence": 0.905497133731842,
+      "classification_scores": {
+        "entertainment": 0.905497133731842,
+        "technology": 0.05024958774447441,
+        "health": 0.013342889957129955,
+        "sports": 0.011370489373803139,
+        "business": 0.009909207001328468,
+        "politics": 0.009630745276808739
+      },
+      "top_3_predictions": [
+        [
+          "entertainment",
+          0.905497133731842
+        ],
+        [
+          "technology",
+          0.05024958774447441
+        ],
+        [
+          "health",
+          0.013342889957129955
+        ]
+      ],
+      "classification_method": "zero-shot",
+      "extractive_summary": "On Tuesday, a publication called Nexus Point News published a headline for what looked to be a major piece of entertainment news: \"EXCLUSIVE: Alex Garland Set To Direct 'Elden Ring' Film For A24.\" But don't get your hopes up: soon after the article was published, Nexus Point News pulled it, and the publication won't say why. How this article made the rounds is an interesting case study in the way news travels on the internet. But none of us at The Verge had ever heard of Nexus Point News , let alone recognized it as a place that reliably breaks entertainment news, so something didn't seem right. (Another recent Nexus Point News \"exclusive\" includes a potential cast member \"being eyed\" for one of the male leads of Star Wars: Starfighter , but the article includes an update that says \"a LucasFilm spokesperso … Read the full story at The Verge.",
+      "abstractive_summary": "Nexus Point News published an article claiming to be an \"Elden Ring\" exclusive. The article was posted on Wario64, a popular video game account. Nexus Point News pulled the article soon after it was published. The publication won't say why it was pulled.",
+      "hybrid_summary": "Nexus Point News published an article about Alex Garland directing \"Elden Ring\" Soon after the article was published, Nexus Point News pulled it. The publication won't say why it pulled the article. It's an interesting case study in the way news travels online.",
+      "extractive_scores": {
+        "rouge": {
+          "rouge-1": {
+            "f": 0.8064516129032258,
+            "p": 0.8064516129032258,
+            "r": 0.8064516129032258
+          },
+          "rouge-2": {
+            "f": 0.7945945945945945,
+            "p": 0.7945945945945945,
+            "r": 0.7945945945945945
+          },
+          "rouge-l": {
+            "f": 0.8064516129032258,
+            "p": 0.8064516129032258,
+            "r": 0.8064516129032258
+          }
+        },
+        "bertscore": {
+          "p": 0.9771885871887207,
+          "r": 0.9326965808868408,
+          "f1": 0.9544243812561035
+        }
+      },
+      "abstractive_scores": {
+        "rouge": {
+          "rouge-1": {
+            "f": 0.30827067669172936,
+            "p": 0.30827067669172936,
+            "r": 0.30827067669172936
+          },
+          "rouge-2": {
+            "f": 0.15909090909090906,
+            "p": 0.15909090909090906,
+            "r": 0.15909090909090906
+          },
+          "rouge-l": {
+            "f": 0.1804511278195489,
+            "p": 0.1804511278195489,
+            "r": 0.1804511278195489
+          }
+        },
+        "bertscore": {
+          "p": 0.9229881763458252,
+          "r": 0.8328545093536377,
+          "f1": 0.8756079077720642
+        }
+      },
+      "hybrid_scores": {
+        "rouge": {
+          "rouge-1": {
+            "f": 0.3146067415730337,
+            "p": 0.3146067415730337,
+            "r": 0.3146067415730337
+          },
+          "rouge-2": {
+            "f": 0.22641509433962262,
+            "p": 0.22641509433962262,
+            "r": 0.22641509433962262
+          },
+          "rouge-l": {
+            "f": 0.2696629213483146,
+            "p": 0.2696629213483146,
+            "r": 0.2696629213483146
+          }
+        },
+        "bertscore": {
+          "p": 0.9281165599822998,
+          "r": 0.8292567729949951,
+          "f1": 0.8759060502052307
+        }
+      }
     }
   ],
   "average_scores": {
     "extractive": {
-      "rouge_rouge-1_f": 0.7572156196943972,
-      "rouge_rouge-1_p": 0.7572156196943972,
-      "rouge_rouge-1_r": 0.7572156196943972,
-      "rouge_rouge-2_f": 0.7495741056218058,
-      "rouge_rouge-2_p": 0.7495741056218058,
-      "rouge_rouge-2_r": 0.7495741056218058,
-      "rouge_rouge-l_f": 0.7572156196943972,
-      "rouge_rouge-l_p": 0.7572156196943972,
-      "rouge_rouge-l_r": 0.7572156196943972,
-      "bertscore_p": 0.97955322265625,
-      "bertscore_r": 0.9188334345817566,
-      "bertscore_f1": 0.9482222199440002
+      "rouge_rouge-1_f": 0.6572305411857828,
+      "rouge_rouge-1_p": 0.6572305411857828,
+      "rouge_rouge-1_r": 0.6572305411857828,
+      "rouge_rouge-2_f": 0.6502852010017928,
+      "rouge_rouge-2_p": 0.6502852010017928,
+      "rouge_rouge-2_r": 0.6502852010017928,
+      "rouge_rouge-l_f": 0.6572305411857828,
+      "rouge_rouge-l_p": 0.6572305411857828,
+      "rouge_rouge-l_r": 0.6572305411857828,
+      "bertscore_p": 0.9426812052726745,
+      "bertscore_r": 0.9068325281143188,
+      "bertscore_f1": 0.9242807865142822
     },
     "abstractive": {
-      "rouge_rouge-1_f": 0.2850467289719626,
-      "rouge_rouge-1_p": 0.2850467289719626,
-      "rouge_rouge-1_r": 0.2850467289719626,
-      "rouge_rouge-2_f": 0.25821596244131456,
-      "rouge_rouge-2_p": 0.25821596244131456,
-      "rouge_rouge-2_r": 0.25821596244131456,
-      "rouge_rouge-l_f": 0.2757009345794393,
-      "rouge_rouge-l_p": 0.2757009345794393,
-      "rouge_rouge-l_r": 0.2757009345794393,
-      "bertscore_p": 0.9381728172302246,
-      "bertscore_r": 0.8261978030204773,
-      "bertscore_f1": 0.8786320686340332
+      "rouge_rouge-1_f": 0.24507280391588507,
+      "rouge_rouge-1_p": 0.24507280391588507,
+      "rouge_rouge-1_r": 0.24507280391588507,
+      "rouge_rouge-2_f": 0.2055403543679506,
+      "rouge_rouge-2_p": 0.2055403543679506,
+      "rouge_rouge-2_r": 0.2055403543679506,
+      "rouge_rouge-l_f": 0.2176397352629443,
+      "rouge_rouge-l_p": 0.2176397352629443,
+      "rouge_rouge-l_r": 0.2176397352629443,
+      "bertscore_p": 0.9395569562911987,
+      "bertscore_r": 0.8281188607215881,
+      "bertscore_f1": 0.8802889704704284
     },
     "hybrid": {
-      "rouge_rouge-1_f": 0.3016241299303944,
-      "rouge_rouge-1_p": 0.3016241299303944,
-      "rouge_rouge-1_r": 0.3016241299303944,
-      "rouge_rouge-2_f": 0.275058275058275,
-      "rouge_rouge-2_p": 0.275058275058275,
-      "rouge_rouge-2_r": 0.275058275058275,
-      "rouge_rouge-l_f": 0.2877030162412993,
-      "rouge_rouge-l_p": 0.2877030162412993,
-      "rouge_rouge-l_r": 0.2877030162412993,
-      "bertscore_p": 0.9421654939651489,
-      "bertscore_r": 0.8282865285873413,
-      "bertscore_f1": 0.8815635442733765
+      "rouge_rouge-1_f": 0.24303968478808596,
+      "rouge_rouge-1_p": 0.24303968478808596,
+      "rouge_rouge-1_r": 0.24303968478808596,
+      "rouge_rouge-2_f": 0.2130978319510366,
+      "rouge_rouge-2_p": 0.2130978319510366,
+      "rouge_rouge-2_r": 0.2130978319510366,
+      "rouge_rouge-l_f": 0.22995174085565978,
+      "rouge_rouge-l_p": 0.22995174085565978,
+      "rouge_rouge-l_r": 0.22995174085565978,
+      "bertscore_p": 0.9176135897636414,
+      "bertscore_r": 0.8209337830543518,
+      "bertscore_f1": 0.8664780378341674
     },
     "textrank": {},
     "lexrank": {},
@@ -236,6 +656,234 @@
             "entertainment": 0.03436640277504921,
             "health": 0.01779276691377163,
             "sports": 0.017024189233779907
+          }
+        }
+      ]
+    },
+    "technology": {
+      "article_count": 3,
+      "extractive_scores": {
+        "rouge_rouge-1_f": 0.5741618244437636,
+        "rouge_rouge-1_p": 0.5741618244437636,
+        "rouge_rouge-1_r": 0.5741618244437636,
+        "rouge_rouge-2_f": 0.5690857682641878,
+        "rouge_rouge-2_p": 0.5690857682641878,
+        "rouge_rouge-2_r": 0.5690857682641878,
+        "rouge_rouge-l_f": 0.5741618244437636,
+        "rouge_rouge-l_p": 0.5741618244437636,
+        "rouge_rouge-l_r": 0.5741618244437636,
+        "bertscore_p": 0.9188880920410156,
+        "bertscore_r": 0.8942108750343323,
+        "bertscore_f1": 0.9062524437904358
+      },
+      "abstractive_scores": {
+        "rouge_rouge-1_f": 0.21068220463857776,
+        "rouge_rouge-1_p": 0.21068220463857776,
+        "rouge_rouge-1_r": 0.21068220463857776,
+        "rouge_rouge-2_f": 0.20346496676917647,
+        "rouge_rouge-2_p": 0.20346496676917647,
+        "rouge_rouge-2_r": 0.20346496676917647,
+        "rouge_rouge-l_f": 0.21068220463857776,
+        "rouge_rouge-l_p": 0.21068220463857776,
+        "rouge_rouge-l_r": 0.21068220463857776,
+        "bertscore_p": 0.9455412824948629,
+        "bertscore_r": 0.8271806637446085,
+        "bertscore_f1": 0.8824015855789185
+      },
+      "hybrid_scores": {
+        "rouge_rouge-1_f": 0.19965585081233392,
+        "rouge_rouge-1_p": 0.19965585081233392,
+        "rouge_rouge-1_r": 0.19965585081233392,
+        "rouge_rouge-2_f": 0.18800526345242843,
+        "rouge_rouge-2_p": 0.18800526345242843,
+        "rouge_rouge-2_r": 0.18800526345242843,
+        "rouge_rouge-l_f": 0.197464255562895,
+        "rouge_rouge-l_p": 0.197464255562895,
+        "rouge_rouge-l_r": 0.197464255562895,
+        "bertscore_p": 0.9059286316235861,
+        "bertscore_r": 0.8157085180282593,
+        "bertscore_f1": 0.858306884765625
+      },
+      "sample_titles": [
+        "Amazon’s Zoox issued a robotaxi software recall after a crash in Las Vegas",
+        "The best fitness trackers to buy right now",
+        "Meta awarded $167.25 million over Pegasus spyware attack"
+      ],
+      "classification_quality": {
+        "avg_confidence": 0.47474801540374756,
+        "min_confidence": 0.42489945888519287,
+        "max_confidence": 0.5207815766334534,
+        "confidence_std": 0.039236554111043584,
+        "method_counts": {
+          "zero-shot": 3
+        }
+      },
+      "classification_details": [
+        {
+          "title": "Amazon’s Zoox issued a robotaxi software recall af...",
+          "confidence": 0.5207815766334534,
+          "method": "zero-shot",
+          "top_3": [
+            [
+              "technology",
+              0.5207815766334534
+            ],
+            [
+              "entertainment",
+              0.12921486794948578
+            ],
+            [
+              "business",
+              0.11698192358016968
+            ]
+          ],
+          "all_scores": {
+            "technology": 0.5207815766334534,
+            "entertainment": 0.12921486794948578,
+            "business": 0.11698192358016968,
+            "health": 0.09935051202774048,
+            "politics": 0.0675637349486351,
+            "sports": 0.06610726565122604
+          }
+        },
+        {
+          "title": "The best fitness trackers to buy right now",
+          "confidence": 0.42489945888519287,
+          "method": "zero-shot",
+          "top_3": [
+            [
+              "technology",
+              0.42489945888519287
+            ],
+            [
+              "health",
+              0.18661116063594818
+            ],
+            [
+              "sports",
+              0.16623689234256744
+            ]
+          ],
+          "all_scores": {
+            "technology": 0.42489945888519287,
+            "health": 0.18661116063594818,
+            "sports": 0.16623689234256744,
+            "entertainment": 0.1122712641954422,
+            "business": 0.07946900278329849,
+            "politics": 0.03051215410232544
+          }
+        },
+        {
+          "title": "Meta awarded $167.25 million over Pegasus spyware ...",
+          "confidence": 0.47856301069259644,
+          "method": "zero-shot",
+          "top_3": [
+            [
+              "technology",
+              0.47856301069259644
+            ],
+            [
+              "business",
+              0.13490809500217438
+            ],
+            [
+              "politics",
+              0.1253850907087326
+            ]
+          ],
+          "all_scores": {
+            "technology": 0.47856301069259644,
+            "business": 0.13490809500217438,
+            "politics": 0.1253850907087326,
+            "entertainment": 0.1148337870836258,
+            "sports": 0.07429667562246323,
+            "health": 0.07201334089040756
+          }
+        }
+      ]
+    },
+    "entertainment": {
+      "article_count": 1,
+      "extractive_scores": {
+        "rouge_rouge-1_f": 0.8064516129032258,
+        "rouge_rouge-1_p": 0.8064516129032258,
+        "rouge_rouge-1_r": 0.8064516129032258,
+        "rouge_rouge-2_f": 0.7945945945945945,
+        "rouge_rouge-2_p": 0.7945945945945945,
+        "rouge_rouge-2_r": 0.7945945945945945,
+        "rouge_rouge-l_f": 0.8064516129032258,
+        "rouge_rouge-l_p": 0.8064516129032258,
+        "rouge_rouge-l_r": 0.8064516129032258,
+        "bertscore_p": 0.9771885871887207,
+        "bertscore_r": 0.9326965808868408,
+        "bertscore_f1": 0.9544243812561035
+      },
+      "abstractive_scores": {
+        "rouge_rouge-1_f": 0.30827067669172936,
+        "rouge_rouge-1_p": 0.30827067669172936,
+        "rouge_rouge-1_r": 0.30827067669172936,
+        "rouge_rouge-2_f": 0.15909090909090906,
+        "rouge_rouge-2_p": 0.15909090909090906,
+        "rouge_rouge-2_r": 0.15909090909090906,
+        "rouge_rouge-l_f": 0.1804511278195489,
+        "rouge_rouge-l_p": 0.1804511278195489,
+        "rouge_rouge-l_r": 0.1804511278195489,
+        "bertscore_p": 0.9229881763458252,
+        "bertscore_r": 0.8328545093536377,
+        "bertscore_f1": 0.8756079077720642
+      },
+      "hybrid_scores": {
+        "rouge_rouge-1_f": 0.3146067415730337,
+        "rouge_rouge-1_p": 0.3146067415730337,
+        "rouge_rouge-1_r": 0.3146067415730337,
+        "rouge_rouge-2_f": 0.22641509433962262,
+        "rouge_rouge-2_p": 0.22641509433962262,
+        "rouge_rouge-2_r": 0.22641509433962262,
+        "rouge_rouge-l_f": 0.2696629213483146,
+        "rouge_rouge-l_p": 0.2696629213483146,
+        "rouge_rouge-l_r": 0.2696629213483146,
+        "bertscore_p": 0.9281165599822998,
+        "bertscore_r": 0.8292567729949951,
+        "bertscore_f1": 0.8759060502052307
+      },
+      "sample_titles": [
+        "Be careful what you read about an Elden Ring movie"
+      ],
+      "classification_quality": {
+        "avg_confidence": 0.905497133731842,
+        "min_confidence": 0.905497133731842,
+        "max_confidence": 0.905497133731842,
+        "confidence_std": 0.0,
+        "method_counts": {
+          "zero-shot": 1
+        }
+      },
+      "classification_details": [
+        {
+          "title": "Be careful what you read about an Elden Ring movie",
+          "confidence": 0.905497133731842,
+          "method": "zero-shot",
+          "top_3": [
+            [
+              "entertainment",
+              0.905497133731842
+            ],
+            [
+              "technology",
+              0.05024958774447441
+            ],
+            [
+              "health",
+              0.013342889957129955
+            ]
+          ],
+          "all_scores": {
+            "entertainment": 0.905497133731842,
+            "technology": 0.05024958774447441,
+            "health": 0.013342889957129955,
+            "sports": 0.011370489373803139,
+            "business": 0.009909207001328468,
+            "politics": 0.009630745276808739
           }
         }
       ]
