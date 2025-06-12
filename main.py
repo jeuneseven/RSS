@@ -57,9 +57,8 @@ def main():
         print('Parallel mode options:')
         print('  1. Single Extractive + Single Abstractive (1+1)')
         print('  2. All Extractive + Single Abstractive (3+1)')
-        print('  3. Best Extractive + Best Abstractive (3+3)')
         parallel_mode = ask(
-            'Choose parallel mode (1+1, 3+1, 3+3)', default='1+1', cast_type=str)
+            'Choose parallel mode (1+1, 3+1)', default='1+1', cast_type=str)
 
     # Prompt for extractive method only if needed
     if pipeline_type == 'pipeline' and combine:
@@ -70,7 +69,7 @@ def main():
                          default='textrank', cast_type=str)
         extractive_label = extractive
     else:
-        # For 3+1 and 3+3 modes, we don't need user to select extractive method
+        # For 3+1 mode, we don't need user to select extractive method
         extractive = 'textrank'  # Default value for parameter passing
         extractive_label = 'Auto-selected'
 
