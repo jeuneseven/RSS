@@ -480,105 +480,6 @@ class ParallelPipeline:
                 article_result['hybrid_scores'] = self.evaluator.score(
                     hybrid_sum, content)
 
-            elif mode == '3+3':
-                # 3+3 mode: Generate all combinations to find best
-                tr_sum = self.extractive.textrank(content)
-                lr_sum = self.extractive.lexrank(content)
-                lsa_sum = self.extractive.lsa(content)
-
-                textrank_sums.append(tr_sum)
-                lexrank_sums.append(lr_sum)
-                lsa_sums.append(lsa_sum)
-
-                # Store all extractive summaries and scores
-                article_result['textrank_summary'] = tr_sum
-                article_result['lexrank_summary'] = lr_sum
-                article_result['lsa_summary'] = lsa_sum
-                article_result['textrank_scores'] = self.evaluator.score(
-                    tr_sum, content)
-                article_result['lexrank_scores'] = self.evaluator.score(
-                    lr_sum, content)
-                article_result['lsa_scores'] = self.evaluator.score(
-                    lsa_sum, content)
-
-                # Find best extractive method for this article
-                ex_summaries = [tr_sum, lr_sum, lsa_sum]
-                ex_scores = []
-                for s in ex_summaries:
-                    score_dict = self.evaluator.score(s, content)
-                    rouge_f = score_dict.get('rouge', {}).get(
-                        'rouge-1', {}).get('f', 0.0)
-                    ex_scores.append(rouge_f)
-                best_ext_idx = int(np.argmax(ex_scores))
-                best_extract_sum = ex_summaries[best_ext_idx]
-                best_extract_sums.append(best_extract_sum)
-
-                # Find best abstractive method for this article
-                ab_summaries = [getattr(self.abstractive, m)(
-                    content) for m in self.abstractive_methods]
-                ab_scores = []
-                ab_summaries_with_scores = []
-                for j, s in enumerate(ab_summaries):
-                    score_dict = self.evaluator.score(s, content)
-                    rouge_f = score_dict.get('rouge', {}).get(
-                        'rouge-1', {}).get('f', 0.0)
-                    ab_scores.append(rouge_f)
-                    ab_summaries_with_scores.append({
-                        'method': self.abstractive_methods[j],
-                        'summary': s,
-                        'score': score_dict
-                    })
-                best_abs_idx = int(np.argmax(ab_scores))
-                best_abstractive_sum = ab_summaries[best_abs_idx]
-                best_abstractive_sums.append(best_abstractive_sum)
-
-                # Find best hybrid from all 3x3 combinations
-                all_hybrids = []
-                hybrid_combinations = []
-                for e_idx, e in enumerate(ex_summaries):
-                    for a_idx, a in enumerate(ab_summaries):
-                        h = self.hybrid_summarization(content, e, a)
-                        all_hybrids.append(h)
-                        hybrid_combinations.append({
-                            'extractive_method': ['textrank', 'lexrank', 'lsa'][e_idx],
-                            'abstractive_method': self.abstractive_methods[a_idx],
-                            'hybrid_summary': h
-                        })
-
-                hybrid_scores = []
-                for h in all_hybrids:
-                    score_dict = self.evaluator.score(h, content)
-                    rouge_f = score_dict.get('rouge', {}).get(
-                        'rouge-1', {}).get('f', 0.0)
-                    hybrid_scores.append(rouge_f)
-                best_hybrid_idx = int(np.argmax(hybrid_scores))
-                best_best_sum = all_hybrids[best_hybrid_idx]
-                best_best_sums.append(best_best_sum)
-
-                # Store best method results with detailed metadata
-                article_result['extractive_summary'] = best_extract_sum
-                article_result['best_extractive_method'] = [
-                    'textrank', 'lexrank', 'lsa'][best_ext_idx]
-                article_result['abstractive_summary'] = best_abstractive_sum
-                article_result['best_abstractive_method'] = self.abstractive_methods[best_abs_idx]
-                article_result['hybrid_summary'] = best_best_sum
-                article_result['best_hybrid_combination'] = hybrid_combinations[best_hybrid_idx]
-
-                # Store all abstractive results for analysis
-                article_result['all_abstractive_results'] = ab_summaries_with_scores
-
-                # Scores for best methods
-                article_result['extractive_scores'] = self.evaluator.score(
-                    best_extract_sum, content)
-                article_result['abstractive_scores'] = self.evaluator.score(
-                    best_abstractive_sum, content)
-                article_result['hybrid_scores'] = self.evaluator.score(
-                    best_best_sum, content)
-
-                # For 3+3 mode, use first abstractive method as placeholder for batch calculation
-                abstractive_sums.append(
-                    getattr(self.abstractive, self.abstractive_methods[0])(content))
-
             # Store article result
             detailed_results.append(article_result)
 
@@ -642,32 +543,6 @@ class ParallelPipeline:
                     'best_single': avg_hybrid
                 }
             }
-
-        elif mode == '3+3':
-            avg_textrank = self.evaluator.batch_score(
-                textrank_sums, references)[1]
-            avg_lexrank = self.evaluator.batch_score(
-                lexrank_sums, references)[1]
-            avg_lsa = self.evaluator.batch_score(lsa_sums, references)[1]
-            avg_best_extract = self.evaluator.batch_score(
-                best_extract_sums, references)[1]
-            avg_best_abstractive = self.evaluator.batch_score(
-                best_abstractive_sums, references)[1]
-            avg_best_best = self.evaluator.batch_score(
-                best_best_sums, references)[1]
-
-            output = {
-                'articles': detailed_results,
-                'average_scores': {
-                    'best_extract': avg_best_extract,
-                    'best_abstractive': avg_best_abstractive,
-                    'best_best': avg_best_best,
-                    # Include individual scores for reference
-                    'textrank': avg_textrank,
-                    'lexrank': avg_lexrank,
-                    'lsa': avg_lsa
-                }
-            }
         else:
             raise ValueError(f'Unknown mode: {mode}')
 
@@ -676,8 +551,6 @@ class ParallelPipeline:
             json_filename = f'parallel_1plus1_{selected_extractive}_{selected_abstractive}.json'
         elif mode == '3+1':
             json_filename = f'parallel_3plus1_all_{selected_abstractive}.json'
-        elif mode == '3+3':
-            json_filename = f'parallel_3plus3_best_combination.json'
         else:
             json_filename = f'parallel_{mode}_results.json'  # fallback
 

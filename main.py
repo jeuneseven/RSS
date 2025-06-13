@@ -73,15 +73,6 @@ def main():
         extractive = 'textrank'  # Default value for parameter passing
         extractive_label = 'Auto-selected'
 
-    # Prompt for abstractive method (skip for 3+3 mode as it's fully automatic)
-    if pipeline_type == 'parallel' and parallel_mode == '3+3':
-        print("3+3 mode: All methods will be evaluated automatically to find the best combination.")
-        # Default value for parameter passing, won't be used in actual selection
-        abstractive = 'bart'
-    else:
-        abstractive = ask('Abstractive model (bart/t5/pegasus)',
-                          default='bart', cast_type=str)
-
     # Advanced options
     if yesno('Show other advanced options?', default='n'):
         outdir = ask('Output directory',
@@ -188,15 +179,6 @@ def main():
             ]
             png_filename = f"parallel_3plus1_all_{abstractive}_comparison.png"
             plot_title = f'Parallel Pipeline (3+1): All Extractive + {abstractive.upper()}'
-        elif parallel_mode == '3+3':
-            method_names = ['BestExtractive', 'BestAbstractive', 'BestHybrid']
-            score_dicts = [
-                result['average_scores']['best_extract'],
-                result['average_scores']['best_abstractive'],
-                result['average_scores']['best_best']
-            ]
-            png_filename = f"parallel_3plus3_best_combination_comparison.png"
-            plot_title = f'Parallel Pipeline (3+3): Best Combinations'
         else:
             # Fallback for any other parallel mode
             method_names = [f'{extractive.upper()}+{abstractive.upper()}']
