@@ -5,6 +5,7 @@ main.py (FIXED - Enhanced with unique naming and complete pipeline support)
 - Unique file names for JSON and PNG outputs
 - Enhanced plotting titles and file organization
 - Complete pipeline configuration support
+- NEW: Added classification visualization dashboard
 """
 
 import os
@@ -123,6 +124,10 @@ def main():
             ]
             png_filename = f"serial_combined_{abstractive}_comparison.png"
             plot_title = f'Serial Pipeline: Combined Extractive + {abstractive.upper()}'
+
+            # Define classification dashboard filename for combined serial pipeline
+            classification_png = f"serial_combined_{abstractive}_classification.png"
+            classification_title = f'Serial Pipeline Classification Analysis: Combined + {abstractive.upper()}'
         else:
             method_names = [extractive_label.upper(), abstractive.upper(
             ), f'{extractive_label.upper()}+{abstractive.upper()}']
@@ -133,6 +138,10 @@ def main():
             ]
             png_filename = f"serial_{extractive}_{abstractive}_comparison.png"
             plot_title = f'Serial Pipeline: {extractive.upper()} + {abstractive.upper()}'
+
+            # Define classification dashboard filename for regular serial pipeline
+            classification_png = f"serial_{extractive}_{abstractive}_classification.png"
+            classification_title = f'Serial Pipeline Classification Analysis: {extractive.upper()} + {abstractive.upper()}'
 
     elif pipeline_type == 'parallel':
         print(
@@ -167,6 +176,10 @@ def main():
             ]
             png_filename = f"parallel_1plus1_{extractive}_{abstractive}_comparison.png"
             plot_title = f'Parallel Pipeline (1+1): {extractive.upper()} + {abstractive.upper()}'
+
+            # Define classification dashboard filename for 1+1 parallel pipeline
+            classification_png = f"parallel_1plus1_{extractive}_{abstractive}_classification.png"
+            classification_title = f'Parallel Pipeline (1+1) Classification: {extractive.upper()} + {abstractive.upper()}'
         elif parallel_mode == '3+1':
             method_names = ['TextRank', 'LexRank',
                             'LSA', abstractive.upper(), 'Hybrid']
@@ -179,12 +192,20 @@ def main():
             ]
             png_filename = f"parallel_3plus1_all_{abstractive}_comparison.png"
             plot_title = f'Parallel Pipeline (3+1): All Extractive + {abstractive.upper()}'
+
+            # Define classification dashboard filename for 3+1 parallel pipeline
+            classification_png = f"parallel_3plus1_all_{abstractive}_classification.png"
+            classification_title = f'Parallel Pipeline (3+1) Classification: All + {abstractive.upper()}'
         else:
             # Fallback for any other parallel mode
             method_names = [f'{extractive.upper()}+{abstractive.upper()}']
             score_dicts = [result['average_scores']['combo']]
             png_filename = f"parallel_{parallel_mode}_comparison.png"
             plot_title = f'Parallel Pipeline ({parallel_mode})'
+
+            # Define classification dashboard filename for other parallel modes
+            classification_png = f"parallel_{parallel_mode}_classification.png"
+            classification_title = f'Parallel Pipeline ({parallel_mode}) Classification'
 
     elif pipeline_type == 'iterative':
         print(f"Running ITERATIVE pipeline: {abstractive}")
@@ -211,6 +232,10 @@ def main():
         png_filename = f"iterative_refinement_{abstractive}_comparison.png"
         plot_title = f'Iterative Pipeline: Multi-stage Refinement with {abstractive.upper()}'
 
+        # Define classification dashboard filename for iterative pipeline
+        classification_png = f"iterative_refinement_{abstractive}_classification.png"
+        classification_title = f'Iterative Pipeline Classification: {abstractive.upper()}'
+
     else:
         raise NotImplementedError(
             f"Pipeline type '{pipeline_type}' is not implemented!")
@@ -220,7 +245,38 @@ def main():
     plotter.plot_multi_panel(method_names, score_dicts,
                              output_png=png_path, title=plot_title)
     print(f"Comparison plot saved to {png_path}")
+
+    # Generate classification analysis dashboard
+    classification_path = os.path.join(outdir, classification_png)
+    articles_data = result.get('articles', [])
+
+    if articles_data:
+        print(f"\nGenerating classification analysis dashboard...")
+        plotter.plot_classification_dashboard(
+            articles_data=articles_data,
+            output_png=classification_path,
+            title=classification_title
+        )
+        print(f"Classification dashboard saved to {classification_path}")
+
+        # Also generate a simplified classification summary
+        summary_png = classification_png.replace(
+            '_classification.png', '_classification_summary.png')
+        summary_path = os.path.join(outdir, summary_png)
+        plotter.plot_classification_summary(
+            articles_data=articles_data,
+            output_png=summary_path
+        )
+        print(f"Classification summary saved to {summary_path}")
+    else:
+        print("Warning: No article data found for classification analysis")
+
     print("Pipeline execution completed successfully.")
+    print(f"\nGenerated files:")
+    print(f"  - Summarization comparison: {png_path}")
+    if articles_data:
+        print(f"  - Classification dashboard: {classification_path}")
+        print(f"  - Classification summary: {summary_path}")
 
 
 if __name__ == '__main__':
